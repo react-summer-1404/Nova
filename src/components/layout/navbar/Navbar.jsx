@@ -1,28 +1,28 @@
 import React from "react";
-import "../assets/styles/utils.css"
-import Logo from "../assets/Logos/logo1.svg";
+import "../../../assets/styles/global.css";
+import "../../../assets/styles/nav.css";
+import Logo from "../../ui/Logo/Logo";
+import NavbarItems from "./components/NavbarItems";
+import SearchBox from "./components/SearchBox";
+import UserCartFavorites from "./components/UserCartFavorites";
+import AccountBtn from "./components/AccountBtn";
 
 const Navbar = () => {
   return (
-    <div className ="flex-center gap-6">
-      <div className ="flex justify-start gap-3">
-        <div className="flex">
-          <img src={Logo} alt="Logo"></img>
-          <div className=" flex flex-col">
-          <span>نامبروان</span>
-          <span>همیشه بهترین</span>
-          </div>
-          
+    <div className="flex-center w-screen lg:p-5 pb-10 ">
+      <div className ="flex md:flex-wrap md:justify-center md:gap-3 justify-between items-center lg:gap-16  w-full lg:flex-nowrap">
+        <div className="flex justify-start  sm:gap-1 md:pb-4 md:gap-6 lg:gap-8">
+          <Logo />
+          <NavbarItems />
         </div>
-        <div>گزینه ها</div>
-      </div>
 
-      <div className ="flex justify-start gap-3">
-        <div>سرچ باکس</div>
-        <div>سبد و مورد علاقه</div>
-        <div>حساب</div>
+        <div className="flex-center md:flex-start  items-center lg:gap-8 md:gap-2 flex-wrap">
+          <SearchBox />
+          <UserCartFavorites />
+          <AccountBtn />
+        </div>
       </div>
-    </div>
+      </div>
   );
 };
 
