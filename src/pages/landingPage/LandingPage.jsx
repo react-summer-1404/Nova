@@ -1,14 +1,12 @@
 import React from 'react'
-import Navbar from '../../components/layout/navbar/Navbar'
-import HeroSection from '../../components/section/landing/HeroSection/HeroSection'
-import TopCategories from '../../components/section/landing/TopCategories/TopCategories'
+import JoinTheClub from '../../components/section/landing/JoinTheClub/JoinTheClub'
+
 
 const LandingPage = () => {
   return (
     <div>
-     <Navbar/>
-     <HeroSection/>
-     <TopCategories/>
+      {/* LandingPage */}
+      {/* <JoinTheClub/> */}
     </div>
   )
 }

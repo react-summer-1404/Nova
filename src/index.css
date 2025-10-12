@@ -13,5 +13,5 @@ a {
 body {
   font-family: var(--font-base);
   background: var(--color-white);
-  direction: rtl;
+  overflow-x: hidden;
 }
