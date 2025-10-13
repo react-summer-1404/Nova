@@ -7,14 +7,14 @@ import AboutSection from "../../components/section/landing/AboutSection/AboutSec
 
 const LandingPage = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <HeroSection />
       <TopCategories />
       <AboutSection/>
       {/* <JoinTheClub /> */}
       
-    </div>
+    </>
   );
 };
 

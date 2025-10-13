@@ -14,7 +14,7 @@ const YellowButton = ({ width,height, text, icon ,onClick}) => {
     onClick={onClick}
     >
       {text}
-      {icon&& <span >{icon}</span>}
+      {icon && <span >{icon}</span>}
     </button>
   );
 };
