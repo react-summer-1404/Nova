@@ -11,7 +11,20 @@
     --color-text-gray: #6D6C80;
     --color-dark-purple: #5751E1;
     --color-light-purple: #EFEEFE;
+    --color-soft-indigo: #D9D9F3;
 
+    --gradient-main: radial-gradient(
+        circle at 20% 50%,
+        rgba(189, 175, 255, 0.32),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 80% 50%,
+        rgba(255, 190, 255, 0.28),
+        transparent 45%
+      ),
+      #ffffff;
+      
     --font-base: 'Poppins', serif;
 }
 

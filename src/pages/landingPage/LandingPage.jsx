@@ -4,6 +4,7 @@ import Navbar from "../../components/layout/navbar/Navbar";
 import HeroSection from "../../components/section/landing/HeroSection/HeroSection";
 import TopCategories from "../../components/section/landing/TopCategories/TopCategories";
 import AboutSection from "../../components/section/landing/AboutSection/AboutSection";
+import FeaturedCourses from "../../components/section/landing/FeaturedCourses/FeaturedCourses";
 
 const LandingPage = () => {
   return (
@@ -12,6 +13,7 @@ const LandingPage = () => {
       <HeroSection />
       <TopCategories />
       <AboutSection/>
+      <FeaturedCourses/>
       {/* <JoinTheClub /> */}
       
     </>

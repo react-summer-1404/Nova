@@ -1,12 +1,13 @@
 import React from "react";
 import "../../../../assets/styles/global.css";
+import "../../../../assets/styles/variable.css";
 import heroPic from "../../../../assets/images/herosectionPic.svg";
 import PurpleBtn from "../../../ui/button/BlueButton";
 import { GoArrowLeft } from "react-icons/go";
 import AccentText from "../../../ui/accentText/AccentText";
 const HeroSection = () => {
   return (
-    <div className="bg-gradient-to-r from-purple-100 via-gray-50 to-pink-100 w-screen flex-center pt-4">
+    <div style={{ background: "var(--gradient-main)" }} className="w-screen flex-center pt-4">
       <div className="flex justify-between w-5/6">
         <img src={heroPic} className="hidden md:block md:w-1/2 md:h-3/4" />
 

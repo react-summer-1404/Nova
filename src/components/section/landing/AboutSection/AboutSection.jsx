@@ -8,16 +8,11 @@ import { GoArrowLeft ,GoChevronLeft} from "react-icons/go";
 import AccentText from "../../../ui/accentText/AccentText";
 import YellowButton from "../../../ui/button/YellowButton";
 import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
 
 const AboutSection = () => {
-  const options = [
-    "برنامه دوره ای انعطاف پذیر",
-    "از هر کجا به کلاس خود دسترسی داشته باشید",
-    "بهترین مربیان",
-  ];
+  const options = ["برنامه دوره ای انعطاف پذیر","از هر کجا به کلاس خود دسترسی داشته باشید","بهترین مربیان",];
   return (
-    <div className="w-screen flex-center">
+    <div className="w-screen flex-center pb-20 pt-20">
       <div className="flex justify-between  w-3/4 md:w-full lg:w-full xl:w-3/4 g-16">
         <div className="  md:w-1/2 justify-end  flex-center">
          <div className="items-center md:items-end flex flex-col  gap-6">
@@ -60,5 +55,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-// برای قسمتیه که نوشته
-//درباره ما بیشتر بدانید
+
