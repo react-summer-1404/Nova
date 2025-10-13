@@ -21,6 +21,9 @@ const SearchBox = () => {
         />
       </div>
       <div className="hidden md:flex md:justify-start md:border-l md:border-[#BDBABB] md:gap-4 md:items-center md:p-2 w-1/3 ">
+        
+        <GoChevronDown style={{fontSize:"40px"}}/>
+        <span className="whitespace-nowrap text-responsive">دسته بندی ها</span>
         <svg
           width="16"
           height="16"
@@ -45,9 +48,6 @@ const SearchBox = () => {
             </clipPath>
           </defs>
         </svg>
-
-        <span className="whitespace-nowrap text-responsive">دسته بندی ها</span>
-        <GoChevronDown />
       </div>
 
     </div>

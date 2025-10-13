@@ -3,6 +3,7 @@ import React from "react";
 const AccentText = ({ title }) => {
   return (
     <div className="flex justify-end">
+      
       <span className="w-40 relative ">
         <svg
           width="160"
@@ -29,7 +30,7 @@ const AccentText = ({ title }) => {
           </defs>
         </svg>
       </span>
-      <i style={{color: "var(--color-white)"}} className="w-40 absolute text-center mt-0.5">{ title }</i>
+      <i style={{color: "var(--color-white)", }} className="w-40 absolute text-center mt-0.5 font-bold ">{ title }</i>
     </div>
   );
 };

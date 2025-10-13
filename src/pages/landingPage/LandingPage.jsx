@@ -3,6 +3,7 @@ import JoinTheClub from "../../components/section/landing/JoinTheClub/JoinTheClu
 import Navbar from "../../components/layout/navbar/Navbar";
 import HeroSection from "../../components/section/landing/HeroSection/HeroSection";
 import TopCategories from "../../components/section/landing/TopCategories/TopCategories";
+import AboutSection from "../../components/section/landing/AboutSection/AboutSection";
 
 const LandingPage = () => {
   return (
@@ -10,7 +11,9 @@ const LandingPage = () => {
       <Navbar />
       <HeroSection />
       <TopCategories />
-      <JoinTheClub />
+      <AboutSection/>
+      {/* <JoinTheClub /> */}
+      
     </div>
   );
 };
