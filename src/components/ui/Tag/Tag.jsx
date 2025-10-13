@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Tag = ({title ,textColor,bgColor}) => {
+const Tag = ({title ,textColor,bgColor,icon,width,height}) => {
   return (
-    <div style={{backgroundColor:bgColor}} className='rounded-full p-1'>
-    <span style={{color:textColor}} className=' p-6 text-base'>{title}</span>
+    <div style={{backgroundColor:bgColor ,height,width}} className='rounded-full px-2  flex items-center justify-center'>
+    <span style={{color:textColor }} className=' p-1 text-base'>{title}</span>
+    {icon&&<span>{icon}</span>}
   </div>
   )
 }

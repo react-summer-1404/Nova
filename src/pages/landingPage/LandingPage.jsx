@@ -14,7 +14,7 @@ const LandingPage = () => {
       <TopCategories />
       <AboutSection/>
       <FeaturedCourses/>
-      {/* <JoinTheClub /> */}
+      <JoinTheClub />
       
     </>
   );
