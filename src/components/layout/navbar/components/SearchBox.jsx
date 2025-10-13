@@ -39,7 +39,7 @@ const SearchBox = () => {
         <input
           type="text"
           placeholder="جستجوی برای دوره..."
-          className=" focus:outline-none text-responsive hidden md:block w-1/2 "
+          className=" focus:outline-none text-responsive hidden md:block  "
         />
 
         <div className="rounded-full bg-[#5751E1] w-12 h-12 flex-center cursor-pointer">
