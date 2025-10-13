@@ -5,8 +5,10 @@
     --color-navy: #161439;
     --color-dark-gray: #6D6C80;
     --color-light-gray: #f6f6f8;
-    --color-light-blue: #5751e1;
+    /* --color-light-blue: #5751e1; */
     --color-golden-yellow: #ffc124;
+    --color-light-gray: #F7F7F9;
+    --color-text-gray: #6D6C80;
 
     --font-base: 'Poppins', serif;
 }
