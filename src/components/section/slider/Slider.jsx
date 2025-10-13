@@ -1,25 +1,14 @@
 import React, { useState } from 'react'
 import sliderData from "./sliderData"
 import "../../../assets/styles/global.css"
+import useSlider from "../../../hooks/useSlider"
 
 const Slider = () => {
-  const [slide,setSlide]=useState(0);
-  const itemsPerPage = 6
-  const maxSlides = Math.ceil(sliderData.length / itemsPerPage) - 1;
-
-  const nextSlide = () => {
-    if (slide < maxSlides) {
-      setSlide(slide + 1);
-    }
-    console.log("next", slide);
-  };
-  
-  const prevSlide = () => {
-    if (slide > 0) {
-      setSlide(slide - 1);
-    }
-    console.log("pre", slide);
-  };
+  const itemsPerPage = 6;
+  const { slide, nextSlide, prevSlide } = useSlider({
+    itemsLength: sliderData.length,
+    itemsPerPage: itemsPerPage
+  });
   
   return (
     <div className="bg-gray-500 flex-center md:w-3/4  p-2 rounded-full w-[400px]">
