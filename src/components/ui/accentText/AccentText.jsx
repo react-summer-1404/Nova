@@ -1,8 +1,11 @@
 import React from "react";
 
-const AccentText = ({ title }) => {
+const AccentText = ({beforeLabel,afterLabel ,title}) => {
   return (
+    <div className="text-right font-bold  text-4xl flex flex-col items-end">
+    <div className="flex">
     <div className="flex justify-end">
+      
       <span className="w-40 relative ">
         <svg
           width="160"
@@ -29,7 +32,13 @@ const AccentText = ({ title }) => {
           </defs>
         </svg>
       </span>
-      <i style={{color: "var(--color-white)"}} className="w-40 absolute text-center mt-0.5">{ title }</i>
+      <i style={{color: "var(--color-white)", }} className="w-40 absolute text-center mt-0.5 font-bold ">{ title }</i>
+    </div>
+      <h2>{beforeLabel}</h2>
+    </div>
+    <h2 className="max-w-md">
+    {afterLabel}   
+    </h2>
     </div>
   );
 };

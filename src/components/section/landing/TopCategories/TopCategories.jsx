@@ -1,6 +1,6 @@
 import React from 'react'
 import Tag from '../../../ui/Tag/Tag'
-import Slider from '../../slider/Slider'
+import Slider from '../../landing/TopCategories/slider/Slider'
 import "../../../../assets/styles/global.css"
 
 const TopCategories = () => {

@@ -5,7 +5,25 @@ import "../../../../assets/styles/global.css";
 const SearchBox = () => {
   return (
     <div className="flex-center md:border md:border-[#D3D2DF] rounded-full md:gap-4 p-1 ">
+      
+
+      <div className="flex justify-between">
+        
+
+        <div className="rounded-full bg-[#5751E1] w-12 h-12 flex-center cursor-pointer">
+          <VscSearch style={{ color: "#fff", fontSize: "24px" }} />
+
+        </div>
+        <input
+          type="text"
+          placeholder="...جستجوی برای دوره"
+          className=" focus:outline-none text-responsive hidden md:block  text-right"
+        />
+      </div>
       <div className="hidden md:flex md:justify-start md:border-l md:border-[#BDBABB] md:gap-4 md:items-center md:p-2 w-1/3 ">
+        
+        <GoChevronDown style={{fontSize:"40px"}}/>
+        <span className="whitespace-nowrap text-responsive">دسته بندی ها</span>
         <svg
           width="16"
           height="16"
@@ -30,22 +48,8 @@ const SearchBox = () => {
             </clipPath>
           </defs>
         </svg>
-
-        <span className="whitespace-nowrap text-responsive">دسته بندی ها</span>
-        <GoChevronDown />
       </div>
 
-      <div className="flex justify-between">
-        <input
-          type="text"
-          placeholder="جستجوی برای دوره..."
-          className=" focus:outline-none text-responsive hidden md:block  "
-        />
-
-        <div className="rounded-full bg-[#5751E1] w-12 h-12 flex-center cursor-pointer">
-          <VscSearch style={{ color: "#fff", fontSize: "24px" }} />
-        </div>
-      </div>
     </div>
   );
 };

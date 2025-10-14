@@ -9,17 +9,18 @@ import AccountBtn from "./components/AccountBtn";
 
 const Navbar = () => {
   return (
-    <div className="flex-center w-screen lg:p-5 pb-10 ">
-      <div className ="flex md:flex-wrap md:justify-center md:gap-3 justify-between items-center lg:gap-16  w-full lg:flex-nowrap">
-        <div className="flex justify-start  sm:gap-1 md:pb-4 md:gap-6 lg:gap-8">
-          <Logo />
-          <NavbarItems />
+    <div className="flex-center w-screen lg:p-5 pb-4 gap-6">
+      <div className ="flex md:flex-wrap md:justify-center md:gap-7 justify-between items-center p-4  lg:gap-16  w-full lg:flex-nowrap">
+     
+        <div className="flex-center md:flex-start  items-center lg:gap-8 md:gap-2 flex-wrap-reverse">
+          <AccountBtn />
+          <UserCartFavorites />
+          <SearchBox />
         </div>
 
-        <div className="flex-center md:flex-start  items-center lg:gap-8 md:gap-2 flex-wrap">
-          <SearchBox />
-          <UserCartFavorites />
-          <AccountBtn />
+        <div className="flex justify-start  sm:gap-1 md:pb-4 md:gap-6 lg:gap-8">
+          <NavbarItems />
+          <Logo />
         </div>
       </div>
       </div>

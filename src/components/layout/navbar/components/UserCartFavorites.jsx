@@ -5,7 +5,6 @@ import { IoIosMenu } from "react-icons/io";
 const UserCartFavorites = () => {
   return(
    <>
-   <IoIosMenu fontSize={"40px"} color='#5751E1' className='md:hidden cursor-pointer'/>
  <div className="md:flex gap-3 hidden">
     <div className ="relative flex items-end  min-w-[40px]">
       <img src={shopIcon} ></img>
@@ -18,6 +17,8 @@ const UserCartFavorites = () => {
     </div>
 
   </div>
+  <IoIosMenu fontSize={"40px"} color='#5751E1' className='md:hidden cursor-pointer'/>
+
   </>
    
   )

@@ -5,9 +5,17 @@
 }
 
 a {
-  color: unset;
+  color: inherit;                
+  font-weight: 600;
   text-decoration: none;
+  transition: color 0.25s ease;
 }
+
+a:hover {
+  color: var(--color-dark-purple);
+}
+
+
 
 body {
   font-family: var(--font-base);
