@@ -15,7 +15,7 @@ const HeroSection = () => {
           
        <AccentText beforeLabel={"هرگز از"} afterLabel={"دست نکشید زندگی هرگز از اموزش دست نمیکشد"} title={"یادگیری"} />
 
-          <h3 className="text-[#6D6C80] text-responsive text-right pb-[35px] max-w-md ">
+          <h3 style={{backgroundColor:"var(--color-text-gray)"}}className="text-responsive text-right pb-[35px] max-w-md ">
             هر سفر اموزشی و یادگیری دنبال کردن منحصر به فرد است ما به شما کمک
             خواهیم کرد
           </h3>

@@ -32,7 +32,7 @@ const FeaturedCourses = () => {
           <h2 className="font-bold md:text-4xl text-2xl">
             بهترین دوره‌های آموزشی جهان ما را کاوش کنید
           </h2>
-          <h3 className="text-[#6D6C80] text-responsive">
+          <h3 style={{backgroundColor:"var(--color-text-gray)"}} className=" text-responsive">
             امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است
           </h3>
           <Tab />
