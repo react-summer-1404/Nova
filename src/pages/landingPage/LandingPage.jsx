@@ -13,11 +13,11 @@ import FeaturedCourses from '../../components/section/landing/FeaturedCourses/Fe
 const LandingPage = () => {
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/>
       <HeroSection/>
       <TopCategories/>
       <AboutSection/>
-      <FeaturedCourses/>
+      <FeaturedCourses/> */}
       <JoinTheClub/>
       <MasterMentors/>
       <OurNumbers/>
