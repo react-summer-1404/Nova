@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import sliderData from "./sliderData"
 import "../../../../../assets/styles/global.css"
 import "../../../../../assets/styles/variable.css"
-import useSlider from "../../../../../hooks/useSlider"
 import YellowButton from '../../../../ui/button/YellowButton'
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { useSlider } from "../../../../../hooks/useSlider";
 
 const Slider = () => {
   const itemsPerPage = 6;
