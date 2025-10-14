@@ -2,6 +2,7 @@
 import React from 'react'
 import JoinTheClub from '../../components/section/landing/JoinTheClub/JoinTheClub'
 import MasterMentors from '../../components/section/landing/MasterMentors/MasterMentors'
+import OurNumbers from '../../components/section/landing/OurNumbers/OurNumbers'
 
 
 const LandingPage = () => {
@@ -10,6 +11,7 @@ const LandingPage = () => {
       {/* LandingPage */}
       {/* <JoinTheClub/> */}
       {/* <MasterMentors/> */}
+      {/* <OurNumbers/> */}
     </div>
   )
 }

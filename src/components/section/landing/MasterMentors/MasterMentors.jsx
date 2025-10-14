@@ -33,9 +33,9 @@ const MasterMentors = () => {
           </h2>
           <button
             type="submit"
-            className ="!bg-[#5751E1] shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] text-white rounded-full text-responsive flex gap-1 p-1 text-[12px] ml-[112px] mt-[10px]"
+            className ="!bg-[#5751E1] shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] text-white rounded-full text-responsive flex gap-1 p-1 text-[12px] ml-[112px] mt-[20px]"
           >
-            <FaArrowLeft className ='mt-[4px]'/>
+            <FaArrowLeft className ='mt-[5px]'/>
             <span>همه مربیان را ببینید</span>
             
           </button>
