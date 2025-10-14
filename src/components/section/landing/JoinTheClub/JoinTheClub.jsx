@@ -1,5 +1,4 @@
 import React from 'react'
-// className ='absolute left-[66px]' 
 const JoinTheClub = () => {
   return (
     <div className ='w-screen h-[321px] bg-[#5751E1] flex flex-row'>
