@@ -7,6 +7,7 @@ import FAQSection from '../../components/section/landing/FAQSection/FAQSection'
 import GettingStartedSection from '../../components/section/landing/GettingStartedSection/GettingStartedSection'
 
 
+
 const LandingPage = () => {
   return (
     <div>
