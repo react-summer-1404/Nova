@@ -1,10 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const AccountBtn = () => {
+const AccountBtn = ({ isOpen }) => {
   return (
-    <button style={{backgroundColor:"var(--color-golden-yellow)"}} className ="text-responsive !rounded-full whitespace-nowrap border-[#06235B30] p-2 font-bold hidden md:block">حساب کاربری</button>
+    <button
+      style={{ backgroundColor: "var(--color-golden-yellow)" }}
+      className={`text-responsive !rounded-full whitespace-nowrap border-[#06235B30] p-2 font-bold 
+      ${isOpen ? "block z-30 absolute right-5 top-[70px]" : "hidden"} md:block`}
+    >
+      حساب کاربری
+    </button>
+  );
+};
 
-  )
-}
-
-export default AccountBtn
+export default AccountBtn;
