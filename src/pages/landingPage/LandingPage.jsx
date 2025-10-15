@@ -7,20 +7,30 @@ import FAQSection from '../../components/section/landing/FAQSection/FAQSection'
 import GettingStartedSection from '../../components/section/landing/GettingStartedSection/GettingStartedSection'
 import BlogSection from '../../components/section/landing/BlogSection/BlogSection'
 import Footer from '../../components/layout/footer/Footer'
+import Navbar from '../../components/layout/navbar/Navbar'
+import HeroSection from '../../components/section/landing/HeroSection/HeroSection'
+import TopCategories from '../../components/section/landing/TopCategories/TopCategories'
+import AboutSection from '../../components/section/landing/AboutSection/AboutSection'
+import FeaturedCourses from '../../components/section/landing/FeaturedCourses/FeaturedCourses'
+
 
 
 
 const LandingPage = () => {
   return (
     <div>
-      {/* LandingPage */}
-      {/* <JoinTheClub/> */}
-      {/* <MasterMentors/> */}
-      {/* <OurNumbers/> */}
-      {/* <FAQSection/> */}
-      {/* <GettingStartedSection/> */}
-      {/* <BlogSection/> */}
-      {/* <Footer/> */}
+        <Navbar/>
+      <HeroSection/>
+      <TopCategories/>
+      <AboutSection/>
+      <FeaturedCourses/>
+      <JoinTheClub/>
+      <MasterMentors/>
+      <OurNumbers/>
+      <FAQSection/>
+      <GettingStartedSection/>
+      <BlogSection/>
+      <Footer/>
     </div>
   )
 }

@@ -13,7 +13,7 @@
  }
 
 body {
-  background: var(--color-light-blue);
+  /* background: var(--color-light-blue); */
   font-family: var(--font-base);
 }
 

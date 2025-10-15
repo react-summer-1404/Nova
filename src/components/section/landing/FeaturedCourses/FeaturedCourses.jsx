@@ -32,7 +32,7 @@ const FeaturedCourses = () => {
           <h2 className="font-bold md:text-4xl text-2xl">
             بهترین دوره‌های آموزشی جهان ما را کاوش کنید
           </h2>
-          <h3 style={{backgroundColor:"var(--color-text-gray)"}} className=" text-responsive">
+          <h3 style={{color:"var(--color-text-gray)"}} className=" text-responsive">
             امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است
           </h3>
           <Tab />
@@ -41,12 +41,12 @@ const FeaturedCourses = () => {
         <div className="flex items-center justify-between w-[95%] md:w-full gap-4">
   <BlueButton
     onClick={prevSlide}
-    BtnIcon={<GoArrowLeft size={"20px"} className="m-1" />}
+    BtnIcon={<GoArrowLeft size={"20px"} className="m-2" />}
     width={"50px"}
     height={"50px"}
   />
   
-  <div className="overflow-hidden w-[90%] md:h-fit h-[450px]  border-amber-800 ">  
+  <div className="overflow-hidden w-[90%] md:h-fit h-[450px] ">  
     <div
       className="flex  transition-transform duration-500 ease-in-out  "       
       style={{
@@ -63,7 +63,7 @@ const FeaturedCourses = () => {
   
   <BlueButton
     onClick={nextSlide}
-    BtnIcon={<GoArrowRight size={"20px"} className="m-1" />}
+    BtnIcon={<GoArrowRight size={"20px"} className="m-2" />}
     width={"50px"}
     height={"50px"}
   />
