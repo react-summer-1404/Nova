@@ -5,6 +5,7 @@ import MasterMentors from '../../components/section/landing/MasterMentors/Master
 import OurNumbers from '../../components/section/landing/OurNumbers/OurNumbers'
 import FAQSection from '../../components/section/landing/FAQSection/FAQSection'
 import GettingStartedSection from '../../components/section/landing/GettingStartedSection/GettingStartedSection'
+import BlogSection from '../../components/section/landing/BlogSection/BlogSection'
 
 
 
@@ -17,6 +18,7 @@ const LandingPage = () => {
       {/* <OurNumbers/> */}
       {/* <FAQSection/> */}
       {/* <GettingStartedSection/> */}
+      {/* <BlogSection/> */}
     </div>
   )
 }
