@@ -6,7 +6,7 @@ import BlogsPage from './blogsPage/BlogsPage';
 import CartPage from './cartPage/CartPage';
 import CoachesPage from './coaches/CoachesPage';
 import CoachesDetailPage from './coachesDetailPage/CoachesDetailPage';
-import CompairCoursPage from './CompareCoursePage/CompareCoursePage';
+import CompareCoursePage from './CompareCoursePage/CompareCoursePage';
 import ContactUsPage from './contactUSPage/ContactUsPage';
 import CourseDetailPage from './courseDetailPage/CourseDetailPage';
 import CoursesPage from './coursesPage/CoursesPage';
@@ -20,7 +20,7 @@ export {
     CartPage,
     CoachesPage,
     CoachesDetailPage,
-    CompairCoursPage,
+    CompareCoursePage,
     ContactUsPage,
     CourseDetailPage,
     CoursesPage,
