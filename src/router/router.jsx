@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../components/layout/PageLayout";
 import {
   LandingPage,
   AboutUsPage,
@@ -9,12 +8,13 @@ import {
   CartPage,
   CoachesPage,
   CoachesDetailPage,
-  CompairCoursPage,
+  CompareCoursePage,
   ContactUsPage,
   CourseDetailPage,
   CoursesPage,
 } from "../pages/index";
 import { AuthRoutes } from "../features/auth/routes/routes";
+import PageLayout from "../components/layout/PageLayout/PageLayout";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       { path: "/cart", element: <CartPage /> },
       { path: "/coaches", element: <CoachesPage /> },
       { path: "/coachesDetail", element: <CoachesDetailPage /> },
-      { path: "/compareCourse", element: <CompairCoursPage /> },
+      { path: "/compareCourse", element: <CompareCoursePage /> },
       { path: "/contactUs", element: <ContactUsPage /> },
       { path: "/courseDetail", element: <CourseDetailPage /> },
       { path: "/courses", element: <CoursesPage /> },

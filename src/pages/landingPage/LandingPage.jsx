@@ -16,7 +16,7 @@ import FeaturedCourses from '../../components/section/landing/FeaturedCourses/Fe
 
 const LandingPage = () => {
   return (
-    <div>
+    <>
       <HeroSection/>
       <TopCategories/>
       <AboutSection/>
@@ -27,7 +27,7 @@ const LandingPage = () => {
       <FAQSection/>
       <GettingStartedSection/>
       <BlogSection/>
-    </div>
+    </>
   )
 }
 
