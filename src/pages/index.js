@@ -7,7 +7,7 @@ import CartPage from './cartPage/CartPage';
 import CoachesPage from './coaches/CoachesPage';
 import CoachesDetailPage from './coachesDetailPage/CoachesDetailPage';
 import CompareCoursePage from './CompareCoursePage/CompareCoursePage';
-import ContactUsPage from './contactUSPage/CompareCoursePage';
+import ContactUsPage from './contactUSPage/ContactUSPage';
 import CourseDetailPage from './courseDetailPage/CourseDetailPage';
 import CoursesPage from './coursesPage/CoursesPage';
 
