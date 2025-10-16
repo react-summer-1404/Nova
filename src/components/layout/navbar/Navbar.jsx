@@ -42,7 +42,7 @@ const Navbar = () => {
             <GoX onClick={toggle} fontSize={"40px"} />
           </div>
         )}
-        <div className="flex justify-start  sm:gap-1 md:pb-4 md:gap-6 lg:gap-8">
+        <div className="flex justify-start items-center sm:gap-1 md:pb-4 md:gap-6 lg:gap-8">
           <NavbarItems isOpen={isOpen} />
           <Logo />
         </div>

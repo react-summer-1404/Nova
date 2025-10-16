@@ -19,7 +19,6 @@ import FeaturedCourses from '../../components/section/landing/FeaturedCourses/Fe
 const LandingPage = () => {
   return (
     <div>
-        <Navbar/>
       <HeroSection/>
       <TopCategories/>
       <AboutSection/>
@@ -30,7 +29,6 @@ const LandingPage = () => {
       <FAQSection/>
       <GettingStartedSection/>
       <BlogSection/>
-      <Footer/>
     </div>
   )
 }
