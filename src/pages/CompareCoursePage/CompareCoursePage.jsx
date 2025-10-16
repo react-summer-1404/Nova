@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CompairCoursPage = () => {
+const CompareCoursePage = () => {
   return (
     <div>
       CompairCoursPage
@@ -8,4 +8,4 @@ const CompairCoursPage = () => {
   )
 }
 
-export default CompairCoursPage
+export default CompareCoursePage
