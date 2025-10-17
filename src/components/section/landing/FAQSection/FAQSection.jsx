@@ -5,7 +5,7 @@ const FAQSection = () => {
   return (
     <div className ='w-screen bg-[#F7F7F9] h-[780px] flex items-center'>
       <div className ='w-2/4 h-[480px] flex flex-col items-end text-right gap-3 pr-10'>
-        <button className ='w-[13%] h-[25px] rounded-[30px] bg-[#EFEEFE] text-[9px] text-[#5751E1] '>
+        <button className ='px-4 h-[25px] rounded-[30px] bg-[#EFEEFE] text-[9px] text-[#5751E1] '>
           سوالات متداول
         </button>
         <span className ='text-[19px] font-[700] w-[32%] leading-6 text-[#161439]'>شروع به تمرین از مربیان حرفه ای جهان</span>
