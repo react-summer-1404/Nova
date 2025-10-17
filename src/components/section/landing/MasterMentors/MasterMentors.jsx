@@ -7,8 +7,8 @@ import Dummy_teacher from './TeacherData';
 const MasterMentors = () => {
   return (
     <div className ='w-screen h-[320px] flex'>
-      <div className ='w-4/6 flex justify-end px-6'>
-        <div className ='w-[80%] grid grid-cols-2 gap-1 p-1.5'>
+      <div className ='w-3/5 flex justify-end md:px-6'>
+        <div className =' w-[89%] md:w-[80%] grid grid-cols-2 p-4'>
           {Dummy_teacher.map((item) => (
             <TeacherCard 
               key={item.id}
@@ -20,27 +20,28 @@ const MasterMentors = () => {
         </div>
       </div>
 
-      <section className =' w-2/6 flex justify-center items-center '>
-        <div className ='w-[52%] text-right'>
-          <button className ='w-[35%] h-[20px] rounded-[30px] bg-[#EFEEFE] text-[9px] text-[#5751E1] '>
+      <div className =' w-2/6 flex justify-center items-center '>
+        <div className ='w-[52%] text-right flex flex-col items-end md:gap-4 gap-1'>
+          <button style={{color: "var(--color-dark-purple)" ,backgroundColor: "var(--color-light-purple)"}} className ='md:px-5 p-1 px-2.5 rounded-[30px] text-[9px] '>
             معلم های ماهر
           </button>
-          <p className ='pt-[10px] text-[#161439] font-[900] text-[22px]'>کلاس برتر ما و مربیان خبره در یک مکان</p>
-          <h2 className ='text-[#6D6C80]  pt-[10px] text-[12px]'> 
+          <p style={{color : "var(--color-navy)"}} className =' font-[900] text-[18px] md:text-[22px]'>کلاس برتر ما و مربیان خبره در یک مکان</p>
+          <h2 style={{color : "var(--color-text-gray)"}} className ='text-[10px] md:text-[12px]'> 
               هنگامی که یک چاپگر ناشناس یک گالری از نوع و
               کتاب نمونه درهم درست شده باقی نمانده است
               فقط پنج قرن 
-          </h2>
+          </h2>  
           <button
             type="submit"
-            className ="!bg-[#5751E1] shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] text-white rounded-full text-responsive flex gap-1 p-1 text-[12px] ml-[112px] mt-[20px]"
+            style={{color : "var(--color-white)",backgroundColor: "var(--color-dark-purple)"}}
+            className =" text-[10px] shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] rounded-full flex gap-1 p-1 md:text-[12px]px-4 items-center"
           >
-            <FaArrowLeft className ='mt-[5px]'/>
+            <FaArrowLeft />
             <span>همه مربیان را ببینید</span>
             
           </button>
         </div>
-      </section>
+      </div>
       
       
     </div>
