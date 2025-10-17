@@ -3,6 +3,7 @@ import "../../assets/styles/global.css";
 import NavigationSection from "./components/NavigationSection";
 import SearchSection from "./components/Result";
 import Result from "./components/Search";
+import Upside from "./components/Upside";
 
 const CoursesPage = () => {
   return (
@@ -14,7 +15,7 @@ const CoursesPage = () => {
         <Result/>
         </div>
         <span style={{ color: "var(--color-dark-purple)" }}>: مرتب سازی بر اساس</span>
-
+      <Upside/>
 
       </div>
 
