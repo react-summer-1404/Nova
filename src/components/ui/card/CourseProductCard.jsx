@@ -63,7 +63,7 @@ const CourseProductCard = ({ product }) => {
               height={"34px"}
             />
           </div>
-          <div className="flex gap-0.5 items-center  " style={{direction:"rtl"}}>
+          <div className="flex gap-0.5 items-center  ">
             <div className="overflow-hidden text-ellipsis whitespace-nowrap w-[61px] rtl ">
               {product.teacher}
             </div>
@@ -74,10 +74,10 @@ const CourseProductCard = ({ product }) => {
 
       <div className="flex justify-between">
         <span
-          style={{ color: "var(--color-dark-purple)" }}
+          style={{ color: "var(--color-dark-purple)" , direction:"rtl"}}
           className="font-bold text-xl"
         >
-          {`هزار${product.price}`}
+          {`${product.price}هزار تومان`}
         </span>
         <div className="flex items-center">
           <div>{product.date}</div>
