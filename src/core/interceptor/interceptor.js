@@ -7,7 +7,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  const token = getToken;
+  const token = getToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -29,3 +29,4 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+export default instance;
