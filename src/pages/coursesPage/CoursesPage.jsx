@@ -4,7 +4,10 @@ import NavigationSection from "./components/NavigationSection";
 import SearchSection from "./components/Search";
 import Result from "./components/Result";
 import SortingSection from "./components/SortingSection";
-import ViewMode from "./components/ViewMode";
+import ViewMode from "../../components/section/shared/ViewMode";
+import InfoCard from "./components/InfoCard";
+import CheckList from "./components/CheckList";
+import { categories, courseLevel, teachers } from "./components/categoriesData";
 
 const CoursesPage = () => {
   return (
@@ -24,12 +27,13 @@ const CoursesPage = () => {
         </div>
 
         <div>
-          <div
-            style={{ backgroundColor: "var(--color-bg-light)" }}
-            className="flex flex-col"
-          >
-            <h2 className="font-semibold tex-xl">عنوان</h2>
+          <div className="flex flex-col gap-5 ">
+          <InfoCard title="دسته بندی ها"><CheckList data={categories}/></InfoCard>
+          <InfoCard title=" سطح دوره"><CheckList data={courseLevel}/></InfoCard>
+          <InfoCard title="مربیان"><CheckList data={teachers} /></InfoCard>
           </div>
+         
+
           <div>products</div>
         </div>
         <div>numbers</div>
