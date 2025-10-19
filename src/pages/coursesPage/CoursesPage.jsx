@@ -7,6 +7,7 @@ import SortingSection from "./components/SortingSection";
 
 const CoursesPage = () => {
   return (
+
     <div className="flex flex-col gap-8">
       <NavigationSection />
     <div className="w-screen flex flex-col items-center gap-8">
@@ -25,7 +26,7 @@ const CoursesPage = () => {
 
       <div>
         <div>
-          
+
         </div>
         <div></div>
       </div>
