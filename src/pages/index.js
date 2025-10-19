@@ -20,7 +20,7 @@ export {
     CartPage,
     CoachesPage,
     CoachesDetailPage,
-    CompareCoursePage,
+    // CompareCoursePage,
     ContactUsPage,
     CourseDetailPage,
     CoursesPage,
