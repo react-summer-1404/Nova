@@ -19,13 +19,13 @@ const FAQSection = () => {
         <h3 style={{color: "var(--color-light-blue)"}} className ='md:w-[57%] md:h-[45px] h-[50px] flex flex-row-reverse md:flex md:flex-row-reverse md:justify-between w-[70%] font-[400] text-[9px] md:text-[10px] pt-1.5'>
           صندوق ورودی مشترک بصری Groove سازماندهی اعضای تیم را آسان می کند در این قسمت نه تنها پنج قرن زنده ماند چاپگر ناشناخته یک گالری از نوع و درهم گرفت.
         </h3>
-        <div style={{color: "var(--color-text-gray)"}} className ='md:w-[57%] w-[70%] border-b-[1px] border-b-[#B2BBCC] h-[50px] md:h-[45px] font-[500] text-[14px] pt-1.5 flex flex-row-reverse md:flex md:flex-row-reverse'> چرا ما را برای تحصیل خود انتخاب کنید؟
+        <div style={{color: "var(--color-text-gray)"}} className ='md:w-[57%] w-[70%] border-b-[1px] border-b-[#B2BBCC] h-[50px] md:h-[45px] font-[500] text-[14px] pt-1.5 flex flex-row-reverse md:flex md:flex-row-reverse md:justify-between'> چرا ما را برای تحصیل خود انتخاب کنید؟
           <FaChevronLeft className ='size-3 mt-[5px]'/>
         </div>
-        <div style={{color: "var(--color-text-gray)"}} className ='md:w-[57%] w-[70%] border-b-[1px] border-b-[#B2BBCC] h-[50px] md:h-[45px] font-[500] text-[14px] pt-1.5 flex flex-row-reverse md:flex md:flex-row-reverse'>چگونه خدماتی را برای شما ارائه می کنیم؟
+        <div style={{color: "var(--color-text-gray)"}} className ='md:w-[57%] w-[70%] border-b-[1px] border-b-[#B2BBCC] h-[50px] md:h-[45px] font-[500] text-[14px] pt-1.5 flex flex-row-reverse md:flex md:flex-row-reverse md:justify-between'>چگونه خدماتی را برای شما ارائه می کنیم؟
           <FaChevronLeft className ='size-3 mt-[5px]'/>
         </div>
-        <div style={{color: "var(--color-text-gray)"}} className ='md:w-[57%] w-[70%] border-b-[1px] border-b-[#B2BBCC] h-[50px] md:h-[45px] font-[500] text-[14px] pt-1.5 flex flex-row-reverse md:flex md:flex-row-reverse'>آیا برای دوره خود مقرون به صرفه هستید؟
+        <div style={{color: "var(--color-text-gray)"}} className ='md:w-[57%] w-[70%] border-b-[1px] border-b-[#B2BBCC] h-[50px] md:h-[45px] font-[500] text-[14px] pt-1.5 flex flex-row-reverse md:flex md:flex-row-reverse md:justify-between'>آیا برای دوره خود مقرون به صرفه هستید؟
           <FaChevronLeft  className ='size-3 mt-[5px]'/>
         </div>
       </div>
