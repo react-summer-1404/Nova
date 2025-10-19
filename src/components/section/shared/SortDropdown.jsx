@@ -10,11 +10,11 @@ export default function SortDropdown({ options }) {
       <DropdownTrigger>
         <Button
           variant="bordered"
-          className="flex rounded-sm p-2"
+          className="flex rounded-sm  w-[120px] h-[40px] relative items-center"
           style={{ border: "1px solid var(--color-border-gray)" }}
         >
-          <GoChevronDown color="var(--color-dark-purple)" style={{ borderRight: "2px solid var(--color-border-gray)" }} />
-          {selected}
+          <GoChevronDown color="var(--color-dark-purple)" style={{ borderRight: "1px solid var(--color-border-gray)" }} className="h-[20px] w-[40px] absolute left-0"/>
+          <span className="absolute right-2">{selected}</span>
         </Button>
       </DropdownTrigger>
 
@@ -32,3 +32,6 @@ export default function SortDropdown({ options }) {
     </Dropdown>
   );
 }
+
+
+

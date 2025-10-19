@@ -5,14 +5,8 @@ import YellowButton from "../../../../ui/button/YellowButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../../hooks/useSlider";
 import { useQuery } from "@tanstack/react-query";
-import instance from "../../../../../core/interceptor/interceptor";
-
+import { getTechs } from "../../../../../servises/api/landing/topCategories";
 const Slider = () => {
-  const getTechs = async () => {
-    const response = await instance.get("/Home/GetTechnologies");
-    console.log("API Response:", response.data);
-    return response.data;
-  };
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["techs"],
