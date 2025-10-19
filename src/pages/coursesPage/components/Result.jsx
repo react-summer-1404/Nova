@@ -1,12 +1,25 @@
 import React from 'react'
+import { BsSearch } from "react-icons/bs";
 
 const SearchSection = () => {
   return (
-    <div className="flex gap-2">
-    <span style={{ color: "var(--color-dark-purple)" }}> 250</span>
-    <span>از</span>
-    <span style={{ color: "var(--color-dark-purple)" }}>250</span>
-    <span>نمایش نتیجه</span>
+    <div
+    style={{ background: "var(--color-bg-light)" }}
+    className="flex rounded-[6px] p-1 items-center"
+  >
+    <BsSearch
+      style={{
+        color: "var(--color-black)",
+        fontSize: "18px",
+        transform: "scaleX(-1)",
+        cursor: "pointer",
+      }}
+    />
+    <input
+      className="text-right focus:outline-none w-4/5 "
+      type="text"
+      placeholder="جستجو"
+    />
   </div>
   )
 }

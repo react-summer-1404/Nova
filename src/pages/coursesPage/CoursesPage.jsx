@@ -3,25 +3,36 @@ import "../../assets/styles/global.css";
 import NavigationSection from "./components/NavigationSection";
 import SearchSection from "./components/Result";
 import Result from "./components/Search";
-import Upside from "./components/Upside";
+import SortingSection from "./components/SortingSection";
 
 const CoursesPage = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-8">
       <NavigationSection />
-      <div className="flex justify-between">
-        <div className="flex-center gap-4">
-        <SearchSection/>
-        <Result/>
+    <div className="w-screen flex flex-col items-center gap-8">
+      <div className="flex justify-between  w-4/5 gap-2">
+
+        <div className="flex gap-2 items-center">
+          <SortingSection />
         </div>
-        <span style={{ color: "var(--color-dark-purple)" }}>: مرتب سازی بر اساس</span>
-      <Upside/>
+
+        <div className="flex-center gap-8">
+          <Result />
+          <SearchSection />
+        </div>
 
       </div>
 
-        <div>main section</div>
-        <div>numbers</div>
+      <div>
+        <div>
+          
+        </div>
+        <div></div>
+      </div>
+      <div>numbers</div>
     </div>
+    </div>
+    
   );
 };
 

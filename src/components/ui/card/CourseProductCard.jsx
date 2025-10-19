@@ -8,8 +8,8 @@ const CourseProductCard = ({ product }) => {
   return (
     
     <div
-      style={{ backgroundColor: "var(--color-white)" }}
-      className="flex flex-col p-5 rounded-[10px] border border-[#B5B5C380] gap-6 "
+      style={{ backgroundColor: "var(--color-white)", border:" 1px solid var(--color-border-gray)" }}
+      className="flex flex-col p-5 rounded-[10px]   gap-6 "
     >
       <img
         src={product.pic}
@@ -63,8 +63,8 @@ const CourseProductCard = ({ product }) => {
               height={"34px"}
             />
           </div>
-          <div className="flex gap-0.5 items-center">
-            <div className="overflow-hidden text-ellipsis whitespace-nowrap w-[61px]">
+          <div className="flex gap-0.5 items-center  " style={{direction:"rtl"}}>
+            <div className="overflow-hidden text-ellipsis whitespace-nowrap w-[61px] rtl ">
               {product.teacher}
             </div>
             <img src="/public/coch 1.svg" className="w-[18px] h-[16px]" />
