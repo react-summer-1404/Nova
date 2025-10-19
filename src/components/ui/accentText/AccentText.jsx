@@ -32,7 +32,13 @@ const AccentText = ({beforeLabel,afterLabel ,title}) => {
           </defs>
         </svg>
       </span>
-      <i style={{color: "var(--color-white)"}} className="w-40 absolute text-center mt-0.5">{ title }</i>
+      <i style={{color: "var(--color-white)", }} className="w-40 absolute text-center mt-0.5 font-bold ">{ title }</i>
+    </div>
+      <h2 style={{color:"var(--color-black)"}} className="leading-[60px]">{beforeLabel}</h2>
+    </div>
+    <h2 style={{color:"var(--color-black)"}} className="max-w-md leading-[60px]">
+    {afterLabel}   
+    </h2>
     </div>
   );
 };
