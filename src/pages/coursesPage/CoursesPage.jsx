@@ -6,7 +6,7 @@ import Result from "./components/Result";
 import SortingSection from "./components/SortingSection";
 import ViewMode from "../../components/section/shared/ViewMode";
 import InfoCard from "./components/InfoCard";
-import CheckList from "./components/CheckList";
+import CheckList from "../../components/section/shared/CheckList";
 import { categories, courseLevel, teachers } from "./components/categoriesData";
 
 const CoursesPage = () => {
