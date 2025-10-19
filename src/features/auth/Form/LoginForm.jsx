@@ -20,6 +20,7 @@ const validationSchema = yup.object({
     .matches(/[A-Z]+/, "حداقل شامل یک حرف بزرگ باشد")
     .matches(/\d+/, "پسورد باید شامل عدد باشد")
     .required("فیلدر پسورد نمیتواد خالی باشد"),
+  rememberme: yup.boolean(),
 });
 
 const LoginForm = () => {
@@ -31,8 +32,10 @@ const LoginForm = () => {
       initialValues={{
         email: "",
         password: "",
+        rememberme: undefined,
       }}
       onSubmit={(values) => {
+        
         console.log(values);
       }}
       validationSchema={validationSchema}
