@@ -19,7 +19,7 @@ export default function CheckList({ data }) {
       {data.map((item) => (
         <label
           key={item.id}
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 cursor-pointer"
           style={{ color: "var(--color-text-gray)" }}
         >
           <input
