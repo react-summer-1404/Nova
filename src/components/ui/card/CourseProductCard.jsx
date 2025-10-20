@@ -9,15 +9,15 @@ const CourseProductCard = ({ product }) => {
     
     <div
       style={{ backgroundColor: "var(--color-white)", border:" 1px solid var(--color-border-gray)" }}
-      className="flex flex-col p-5 rounded-[10px]   gap-6 "
+      className="flex flex-col p-5 rounded-[10px]   gap-6 w-[300px] h-[500px] "
     >
       <img
         src={product.pic}
         alt={product.title}
-        className="w-full rounded-[8px] shadow-[0px_5px_20px_0px_#00000040]"
+        className="w-[300px] rounded-[8px] shadow-[0px_5px_20px_0px_#00000040]"
       />
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4">
         <h2 className="font-semibold text-responsive ">{product.title}</h2>
 
         <div className="flex items-center justify-between gap-5 md:gap-12">

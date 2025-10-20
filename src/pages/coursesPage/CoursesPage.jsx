@@ -6,15 +6,21 @@ import Result from "./components/Result";
 import SortingSection from "./components/SortingSection";
 import ViewMode from "../../components/section/shared/ViewMode";
 import InfoCard from "./components/InfoCard";
-import CheckList from "../../components/section/shared/CheckList";
-import { categories, courseLevel, teachers } from "./components/categoriesData";
+import CheckList from "./components/CheckList";
+import productData from "../../components/ui/card/productData";
+import CourseProductCard from "../../components/ui/card/CourseProductCard";
+import {
+  categories,
+  courseLevel,
+  teachers,
+} from "../../components/section/shared/categoriesData";
 
 const CoursesPage = () => {
   return (
     <div className="flex flex-col gap-8">
       <NavigationSection />
       <div className="w-screen flex flex-col items-center gap-8">
-        <div className="flex sm:flex-row justify-between  w-4/5 gap-2 flex-col-reverse items-center">
+        <div className="flex sm:flex-row justify-between  w-4/5 gap-8 flex-col-reverse items-center">
           <div className="flex gap-6 items-center">
             <ViewMode />
             <SortingSection />
@@ -26,15 +32,25 @@ const CoursesPage = () => {
           </div>
         </div>
 
-        <div>
-          <div className="flex flex-col gap-5 ">
-          <InfoCard title="دسته بندی ها"><CheckList data={categories}/></InfoCard>
-          <InfoCard title=" سطح دوره"><CheckList data={courseLevel}/></InfoCard>
-          <InfoCard title="مربیان"><CheckList data={teachers} /></InfoCard>
+        <div className="flex  w-4/5 gap-[52px]">
+        <div className=" w-4/5 flex  flex-wrap justify-evenly gap-y-[20px]">
+        {productData.map((product, index) => (
+        <div key={index} className="flex  ">  
+          <CourseProductCard product={product} />
+        </div>
+      ))}
+        </div>
+          <div className="flex flex-col gap-5 w-1/5 ">
+            <InfoCard title="دسته بندی ها">
+              <CheckList data={categories} />
+            </InfoCard>
+            <InfoCard title=" سطح دوره">
+              <CheckList data={courseLevel} />
+            </InfoCard>
+            <InfoCard title="مربیان">
+              <CheckList data={teachers} />
+            </InfoCard>
           </div>
-         
-
-          <div>products</div>
         </div>
         <div>numbers</div>
       </div>
