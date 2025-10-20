@@ -20,13 +20,13 @@ const Slider = () => {
     itemsPerPage: itemsPerPage,
   });
 
-  if (isLoading) return <div>loading...</div>;
-  if (isError) return <div>Error</div>;
+  // if (isLoading) return <div>loading...</div>;
+  // if (isError) return <div>Error</div>;
 
   return (
     <div
       style={{ backgroundColor: "var(--color-light-gray)" }}
-      className="flex-center gap-4 md:w-3/4 p-4 rounded-full w-[400px]"
+      className="flex justify-evenly items-center  gap-2 md:gap-10 px-4 sm:px-8 p-4 rounded-full w-full max-w-[1410px] mx-auto"
     >
       <YellowButton
         onClick={prevSlide}
@@ -35,23 +35,23 @@ const Slider = () => {
         icon={<GoArrowLeft className="-m-1" />}
       />
 
-      <div className="overflow-hidden flex-1">
+      <div className="overflow-hidden flex-1  flex-center ">
         <div
-          className="flex w-fit transition-transform duration-500 ease-in-out"
+          className="flex flex-1 transition-transform duration-500 ease-in-out gap-[44px]  xl:w-[1120px]"
           style={{ transform: `translateX(-${slide * (100 / itemsPerPage)}%)` }}
         >
-          {/* {techData?.map((item, index) => (
+          {data?.map((item) => (
             <div
-              key={index}
-              className="flex flex-col items-center simple-border w-1/6 flex-shrink-0"
+              key={item.id}
+              className="flex flex-col items-center simple-border  flex-shrink-0 "
             >
-              <img src={item.pic} alt={item.title} className="w-2/3" />
-              <h3 className="font-medium text-responsive">{item.title}</h3>
+              <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px]"><img src={`/icons/${item.techName}.svg`} alt={item.techName}  /></div>
+              <h3 className="font-medium text-responsive">{item.techName}</h3>
               <span style={{ color: "var(--color-text-gray)" }}>
-                ({item.totalNumber})
+                ({item.id})
               </span>
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
 
