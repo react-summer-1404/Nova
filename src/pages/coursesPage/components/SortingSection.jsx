@@ -1,5 +1,5 @@
 import React from "react";
-import SortDropdown from "../../../components/section/shared/SortDropdown";
+import SortDropdown from "./SortDropdown";
 import "../../../assets/styles/global.css";
 
 const SortingSection = () => {

@@ -7,8 +7,7 @@ import { useSlider } from "../../../../../hooks/useSlider";
 import { useQuery } from "@tanstack/react-query";
 import { getTechs } from "../../../../../servises/api/landing/topCategories";
 const Slider = () => {
-
-  const { data, isLoading, isError } = useQuery({
+  const { data } = useQuery({
     queryKey: ["techs"],
     queryFn: getTechs,
   });
@@ -19,9 +18,6 @@ const Slider = () => {
     itemsLength: data ? data.length : 0,
     itemsPerPage: itemsPerPage,
   });
-
-  // if (isLoading) return <div>loading...</div>;
-  // if (isError) return <div>Error</div>;
 
   return (
     <div
@@ -45,7 +41,9 @@ const Slider = () => {
               key={item.id}
               className="flex flex-col items-center simple-border  flex-shrink-0 "
             >
-              <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px]"><img src={`/icons/${item.techName}.svg`} alt={item.techName}  /></div>
+              <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px]">
+                <img src={`/icons/${item.techName}.svg`} alt={item.techName} />
+              </div>
               <h3 className="font-medium text-responsive">{item.techName}</h3>
               <span style={{ color: "var(--color-text-gray)" }}>
                 ({item.id})

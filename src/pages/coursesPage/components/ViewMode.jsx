@@ -1,7 +1,9 @@
 import React from "react";
 import { BsGrid } from "react-icons/bs";
 import { TfiMenuAlt } from "react-icons/tfi";
+import useToggle from "../../../hooks/useToggle";
 const ViewMode = () => {
+  const [open, toggle , setOpen] = useToggle(false)
   return (
     <div className="flex gap-2">
       <div

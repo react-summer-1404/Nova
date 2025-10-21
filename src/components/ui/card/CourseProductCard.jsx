@@ -12,7 +12,7 @@ const CourseProductCard = ({ product }) => {
       className="flex flex-col p-5 rounded-[10px]   gap-6 w-[300px] h-[500px] "
     >
       <img
-        src={product.pic}
+        src={product.imageAddress}
         alt={product.title}
         className="w-[300px] rounded-[8px] shadow-[0px_5px_20px_0px_#00000040]"
       />
@@ -22,24 +22,24 @@ const CourseProductCard = ({ product }) => {
 
         <div className="flex items-center justify-between gap-5 md:gap-12">
           <div className="flex items-center">
-            <span>{product.star}</span>
+            {/* <span>{product.star}</span> */}
             <FaStar color="#F8BC24" />
           </div>
 
           <div className="flex gap-1 whitespace-nowrap">
-            <Tag bgColor={"var(--color-soft-gray)"} title={product.level} />
+            <Tag bgColor={"var(--color-soft-gray)"} title={product.googleTitle} />
             <Tag bgColor={"var(--color-soft-gray)"} title={product.field} />
           </div>
         </div>
 
         <div className="flex justify-between text-[#5F5F66]">
           <div className="flex items-center gap-1.5">
-            <span>{product.standard}</span>
+            <span>{product.levelName}</span>
             <img src="/public/level 1.svg" className="w-[19px] h-[17px]" />
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span>{product.people}</span>
+            <span>{product.capacity}</span>
             <img src="/public/Vector.svg" />
           </div>
         </div>
@@ -49,13 +49,13 @@ const CourseProductCard = ({ product }) => {
             <Tag
               icon={<AiOutlineLike size={"20px"} />}
               bgColor={"var(--color-soft-gray)"}
-              title={product.like}
+              title={product.likeCount}
               textColor={"#5F5F66"}
               width={"65px"}
               height={"34px"}
             />
             <Tag
-              title={product.dislike}
+              title={product.dissLikeCount}
               icon={<AiOutlineDislike size={"20px"} />}
               bgColor={"var(--color-soft-gray)"}
               textColor={"#5F5F66"}
@@ -65,7 +65,7 @@ const CourseProductCard = ({ product }) => {
           </div>
           <div className="flex gap-0.5 items-center  ">
             <div className="overflow-hidden text-ellipsis whitespace-nowrap w-[61px] rtl ">
-              {product.teacher}
+              {product.teacherName}
             </div>
             <img src="/public/coch 1.svg" className="w-[18px] h-[16px]" />
           </div>
@@ -77,7 +77,7 @@ const CourseProductCard = ({ product }) => {
           style={{ color: "var(--color-dark-purple)" , direction:"rtl"}}
           className="font-bold text-xl"
         >
-          {`${product.price}هزار تومان`}
+          {`${product.cost}هزار تومان`}
         </span>
         <div className="flex items-center">
           <div>{product.date}</div>
