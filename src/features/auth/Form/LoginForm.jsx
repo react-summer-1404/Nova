@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import instance from "../../../core/interceptor/interceptor";
+import { setToken } from "../../../hooks/localStorage";
+import { login } from "../../../servises/api/auth/login";
+import usePostLogin from "../hooks/usePostLogin";
 
 const validationSchema = yup.object({
-  email: yup
+  phoneOrGmail: yup
     .string()
     .email("ایمیل معتبر نیست")
     .required("فیلد ایمیل نمی تواند خالی باشد"),
@@ -16,27 +21,39 @@ const validationSchema = yup.object({
     .string()
     .min(4, "پسورد نمیتواند کمتر از 4 کاراکتر باشد")
     .max(15, "پسورد نمیتواند بیشتر از 15 کاراکتر باشد")
-    .matches(/["a-z"]+/, "حداقل شامل یک حرف کوچک باشد")
+    .matches(/[a-z]+/, "حداقل شامل یک حرف کوچک باشد")
     .matches(/[A-Z]+/, "حداقل شامل یک حرف بزرگ باشد")
     .matches(/\d+/, "پسورد باید شامل عدد باشد")
     .required("فیلدر پسورد نمیتواد خالی باشد"),
-  rememberme: yup.boolean(),
+  rememberMe: yup.boolean(),
 });
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const { mutateAsync: PostLoginData, isLoading, isError } = usePostLogin();
 
   return (
     <Formik
       className="w-full"
       initialValues={{
-        email: "",
+        phoneOrGmail: "",
         password: "",
-        rememberme: undefined,
+        rememberMe: false,
       }}
-      onSubmit={(values) => {
-        
-        console.log(values);
+      onSubmit={async (values) => {
+        try {
+          const data = await PostLoginData({
+            phoneOrGmail: values.phoneOrGmail,
+            password: values.password,
+            rememberMe: Boolean(values.rememberMe),
+          });
+          console.log("Login success:", data);
+        } catch (error) {
+          console.error("login failed:", error);
+          console.log("error.response?.data:", error?.response?.data);
+        }
       }}
       validationSchema={validationSchema}
     >
@@ -45,12 +62,12 @@ const LoginForm = () => {
           <div className="relative flex flex-col gap-[.5rem]">
             <FormField
               type={"email"}
-              name={"email"}
-              id={"email"}
+              name={"phoneOrGmail"}
+              id={"phoneOrGmail"}
               placeHolder={"ایمیل خود را وارد کنید"}
             />
             <ErrorMessage
-              name="email"
+              name="phoneOrGmail"
               className="text-red-500 text-right text-[14px] pr-[1rem]"
               component={"span"}
             />
@@ -86,8 +103,8 @@ const LoginForm = () => {
         </div>
 
         <div className="flex flex-row-reverse justify-between mt-2.5 sm:mt-6">
-          <label htmlFor="remeberme" className="flex flex-row-reverse">
-            <Field type="checkbox" name="remeberme" id="remeberme" />
+          <label htmlFor="rememberMe" className="flex flex-row-reverse">
+            <Field type="checkbox" name="rememberMe" id="rememberMe" />
             <span
               style={{ color: "var(--color-black)" }}
               className="mr-2 font-semibold text-[16px] sm:text-[20px]"
@@ -107,7 +124,7 @@ const LoginForm = () => {
         <YellowButton
           type={"submit"}
           width={"100%"}
-          text={"ورود به حساب کاربری"}
+          text={isLoading ? "در حال ورود..." : "ورود به حساب کاربری"}
         />
         <div className="my-3.5 sm:mt-6">
           <span
