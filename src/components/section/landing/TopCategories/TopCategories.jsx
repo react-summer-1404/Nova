@@ -1,10 +1,20 @@
 import React from 'react'
+import Tag from '../../../ui/Tag/Tag'
+import Slider from '../../landing/TopCategories/slider/Slider'
+import "../../../../assets/styles/global.css"
 
 const TopCategories = () => {
   return (
-    <div>
-      TopCategories
+   <div className='section-padding flex-center  w-screen'>
+     <div className='flex flex-col  items-center pt-16 gap-4  '>
+        <div className='flex flex-col gap-6  items-center'>
+      <Tag title={"دسته بندی های پرطرفدار"} textColor={"#5751E1"} bgColor={"#EFEEFE"}/>
+      <h2 className=' font-bold md:text-5xl text-3xl'>دسته بندی های برتر</h2>
+      <h3 style={{color:"var(--color-text-gray)"}} className=' text-responsive'> امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است</h3>
     </div>
+    <Slider/>
+    </div>
+   </div>
   )
 }
 
