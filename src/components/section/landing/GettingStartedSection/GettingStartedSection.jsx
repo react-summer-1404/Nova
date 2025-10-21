@@ -1,7 +1,9 @@
 import React from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+import {useNavigate } from 'react-router-dom'
 
 const GettingStartedSection = () => {
+  const navigate = useNavigate();
   return (
     <div className ='w-screen h-[850px] bg-[#282568]'>
       <div className ='h-[550px] flex justify-center items-center '>
@@ -49,7 +51,11 @@ const GettingStartedSection = () => {
               <button
                 type="submit"
                 className ="!bg-[#5751E1] shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] text-white rounded-full text-responsive flex gap-1 p-0.5 text-[12px] px-4 items-center"
+                onClick={() => {
+                  navigate();
+                }}
               >
+                
                 <FaArrowLeft />
                 <span> درخواست</span>
               </button>
