@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./assets/styles/variable.css";
 @import "./assets/styles/font.css";
+
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -8,7 +9,6 @@
 
 a {
   color: inherit;                
-  font-weight: 600;
   text-decoration: none;
   transition: color 0.25s ease;
 }

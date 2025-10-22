@@ -13,11 +13,14 @@
     --color-dark-purple: #5751E1;
     --color-light-purple: #EFEEFE;
     --color-soft-indigo: #D9D9F3;
+    --color-bg-light: #F7F7F9;
     --color-dark-blue : #06042E;
     --color-light-blue : #1C1A4A;
     --color-text-fot : #8C9AB4;
     --color-text2-fot : #B2BBCC;
     --color-blue-fot : #1C1B3C;
+    --color-border-gray : #B5B5C380;
+
 
 
     --gradient-main: radial-gradient(
@@ -35,12 +38,13 @@
     --font-base: 'Poppins', serif;
 }
 
-.dark{
-    --color-white: #000000;
-    --color-black : #ffffff;
-    --color-navy: #818093;
-    --color-dark-gray: #6D6C80;
-    --color-light-gray: #070709;
-    --color-light-blue: #c8c6eb;
-    --color-golden-yellow: #db9d00;
+.dark {
+  --color-white: #222020;
+  --color-black: #ffffff;
+  --color-navy: #818093;
+  --color-dark-gray: #6d6c80;
+  --color-light-gray: #070709;
+  --color-light-blue: #c8c6eb;
+  --color-golden-yellow: #db9d00;
 }
+

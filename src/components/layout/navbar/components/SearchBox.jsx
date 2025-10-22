@@ -1,5 +1,5 @@
 import React from "react";
-import { VscSearch } from "react-icons/vsc";
+import { BsSearch } from "react-icons/bs";
 import { GoChevronDown } from "react-icons/go";
 import "../../../../assets/styles/global.css";
 const SearchBox = () => {
@@ -10,9 +10,8 @@ const SearchBox = () => {
       <div className="flex justify-between">
         
       
-        <div style={{backgroundColor:"var(--color-dark-purple)"}} className="rounded-full  w-12 h-12 flex-center cursor-pointer">
-          <VscSearch style={{ color: "#fff", fontSize: "24px" }} />
-
+        <div style={{backgroundColor:"var(--color-dark-purple)"}} className="rounded-full  w-12 h-12 flex-center cursor-pointer p-1">
+          <BsSearch style={{ color: "var(--color-white)", fontSize: "22px" ,  transform: "scaleX(-1)"}} />
         </div>
         <input
           type="text"

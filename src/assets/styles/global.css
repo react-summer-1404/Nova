@@ -30,3 +30,8 @@ body {
 .shadow-2d-gray {
   box-shadow: 4px 3px 0 0 rgba(0, 0, 0, .25);
 }
+
+.error-message {
+  direction: rtl;
+  color: red;
+}
