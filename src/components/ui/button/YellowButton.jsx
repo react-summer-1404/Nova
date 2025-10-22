@@ -1,9 +1,10 @@
 import React from "react";
 
-const YellowButton = ({ width,height, text, icon ,onClick}) => {
+const YellowButton = ({ width,height, text, icon ,onClick ,type}) => {
+
   return (
     <button
-      type="submit"
+      type={type}
       style={{
         width,
         height,
@@ -12,6 +13,7 @@ const YellowButton = ({ width,height, text, icon ,onClick}) => {
       }}
       className="border border-black rounded-[50px] p-5 shadow-2d-yellow text-[20px] font-semibold leading-[18px] text-center cursor-pointer "
     onClick={onClick}
+
     >
       {text}
       {icon && <span >{icon}</span>}

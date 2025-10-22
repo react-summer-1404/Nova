@@ -7,7 +7,7 @@ const AccentText = ({beforeLabel,afterLabel ,title}) => {
     <div className="flex justify-end">
       
       <span className="w-40 relative ">
-        <svg
+      <svg
           width="160"
           height="44"
           viewBox="0 0 214 56"
@@ -34,9 +34,9 @@ const AccentText = ({beforeLabel,afterLabel ,title}) => {
       </span>
       <i style={{color: "var(--color-white)", }} className="w-40 absolute text-center mt-0.5 font-bold ">{ title }</i>
     </div>
-      <h2>{beforeLabel}</h2>
+      <h2 style={{color:"var(--color-black)"}} className="leading-[60px]">{beforeLabel}</h2>
     </div>
-    <h2 className="max-w-md">
+    <h2 style={{color:"var(--color-black)"}} className="max-w-md leading-[60px]">
     {afterLabel}   
     </h2>
     </div>

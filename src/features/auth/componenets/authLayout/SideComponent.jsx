@@ -1,14 +1,13 @@
 import React from "react";
-import SideHeader from "./SideHeader";
+import Header from "./Header";
 import SideContent from "./SideContent";
 
 
 const SideComponent = () => {
   return (
-    <div className="w-full   backdrop-blur-2xl flex flex-col section-padding rounded-[40px]">
-      <SideHeader />
+    <div className="hidden md:block w-[60%] backdrop-blur-2xl flex flex-col section-padding rounded-[40px]">
+      <Header />
       <SideContent />
-      
     </div>
   );
 };
