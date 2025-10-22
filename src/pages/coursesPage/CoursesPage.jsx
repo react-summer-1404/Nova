@@ -7,7 +7,6 @@ import ViewMode from "./components/ViewMode";
 import InfoCard from "./components/InfoCard";
 import CheckList from "./components/CheckList";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
-import productData from "../../components/ui/card/productData";
 import { categories, courseLevel, teachers } from "./components/categoriesData";
 import PaginationComponent from "./components/PaginationComponent";
 import { useQuery } from "@tanstack/react-query";

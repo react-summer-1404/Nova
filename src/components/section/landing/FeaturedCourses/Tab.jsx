@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getTechs } from "../../../../servises/api/landing/topCategories";
 
-const Tabs = () => {
+const Tabs = ({pointTab,setPointTab}) => {
   const { data } = useQuery({
-    queryKey: ["techs"],
+    queryKey: ["techs",pointTab],
     queryFn: getTechs,
   });
 
-  const [pointTab, setPointTab] = useState("همه دوره‌ها");
 
   return (
     <div className="flex flex-col items-start px-6" dir="rtl">
@@ -43,7 +42,6 @@ const Tabs = () => {
           </div>
         ))}
 
-        {/* خط پایین تب‌ها */}
         <div
           style={{ backgroundColor: "var(--color-soft-indigo)" }}
           className="h-[3px] w-full absolute bottom-0 left-0 rounded"
