@@ -2,11 +2,14 @@ import React from 'react'
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
 import { BiDislike } from "react-icons/bi";
-const Card1 = () => {
+
+
+const Card1 = ({title}) => {
     return (
         <div style={{ backgroundColor: "var(--color-white)" }} className='w-[25%] h-[375px] rounded-[10px] flex flex-col gap-2 items-center justify-center'>
             <img src="/public/2e915ad34de0b07db8fd026b2dd17808be79f286.jpg" className='w-[80%] h-[185px] object-cover rounded-[6px]' />
-            <p style={{ color: "var(--color-navy)" }} className='font-[600] text-[16px]'>توسعه خود را بسازید و به عنوان م ...
+            <p style={{ color: "var(--color-navy)" }} className ='font-[600] text-[16px]'> 
+            {title}
             </p>
             <div className='w-[78%] flex items-center justify-between'>
                 <h2 style={{ color: "var(--color-text-gray)" }} className='font-[400] text-[12px]'>20 جولای 2024</h2>
