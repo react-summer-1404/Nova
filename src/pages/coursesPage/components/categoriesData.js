@@ -10,8 +10,5 @@
     { id: "12", label: "پیشرفته" },
   ];
   
-  export const teachers = [
-    { id: "20", label: "فرانت‌اند" },
-    { id: "21", label: "بک‌اند" },
-  ];
+
   

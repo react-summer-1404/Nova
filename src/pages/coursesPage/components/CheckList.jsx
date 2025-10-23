@@ -11,7 +11,7 @@ export default function CheckList({ data,labelKey = "label"}) {
       setSelected(selected.filter((id) => id !== checkedId));
     }
   };
-
+console.log(selected)
 
   return (
     <div className="flex flex-col gap-4" style={{ direction: "rtl" }}>

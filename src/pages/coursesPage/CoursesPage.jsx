@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import NavigationSection from "./components/NavigationSection";
-import SearchSection from "./components/Search";
 import Result from "./components/Result";
+import SearchSection from "./components/SearchSection";
 import SortingSection from "./components/SortingSection";
 import ViewMode from "./components/ViewMode";
-import InfoCard from "./components/InfoCard";
-import CheckList from "./components/CheckList";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
 import PaginationComponent from "./components/PaginationComponent";
 import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses";
-import { getTechs } from "../../servises/api/landing/topCategories";
 import FiltersPanel from "./components/FiltersPanel";
 
 const CoursesPage = () => {
@@ -40,8 +37,8 @@ const CoursesPage = () => {
           </div>
 
           <div className="flex-center gap-8">
-            <SearchSection />
             <Result />
+            <SearchSection />
           </div>
         </div>
 
