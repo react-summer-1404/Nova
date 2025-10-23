@@ -27,7 +27,7 @@ const CourseBox = () => {
                 <img src="public/1.jpg" className ='w-[100%] md:h-[400px] h-[300px] rounded-[15px]'/>
                 <div className ='flex flex-col items-end gap-2.5 md:gap-4'>
                     <div className ='flex justify-between md:gap-3.5 gap-2'>
-                        <div className ='md:text-[14px] text-[11px] text-[#7F7E97] font-[400] flex items-center gap-1'>
+                        <div style={{color: "var(--color-text-gray)"}} className ='md:text-[14px] text-[11px] font-[400] flex items-center gap-1'>
                             (4.5 امتیاز)
                             <FaStar md:size={"16px"} color='#F8BC24'/>
                         </div>
@@ -43,7 +43,7 @@ const CourseBox = () => {
                             <PiStudentThin size={"15px"} md:size={"19px"}/>
                             2,250 دانش آموز
                         </div>              
-                        <div className ='text-[#7F7E97] font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>           
+                        <div style={{color: "var(--color-text-gray)"}} className ='font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>           
                             24/07/2024
                             <CiCalendar md:size={"19px"} />
                         </div>                  
