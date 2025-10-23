@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../componenets/authLayout/Header";
 
 const AuthLayout = () => {
-  useBackgroundColor("var(--color-light-blue)");
+  useBackgroundColor("var(--color-dark-purple)");
   return (
     <div className="w-full flex flex-col md:flex-row rounded-[50px] bg-white/50 select-none">
       <SideComponent />

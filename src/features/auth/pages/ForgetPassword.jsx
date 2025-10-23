@@ -1,5 +1,5 @@
 import React from "react";
-import { FormText} from "../componenets/authForm/Authform";
+import { FormText } from "../componenets/authForm/Authform";
 import ForgetPasswordForm from "../Form/ForgetPasswordForm";
 
 const ForgetPassword = () => {
@@ -12,6 +12,11 @@ const ForgetPassword = () => {
         />
       </div>
       <ForgetPasswordForm />
+      <ul className="steps">
+        <li className="step step-primary">شماره تماس</li>
+        <li className="step">دریافت کد</li>
+        <li className="step">تغییر رمز عبور</li>
+      </ul>
     </div>
   );
 };

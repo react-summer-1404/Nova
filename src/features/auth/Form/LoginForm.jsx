@@ -6,10 +6,7 @@ import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import instance from "../../../core/interceptor/interceptor";
 import { setToken } from "../../../hooks/localStorage";
-import { login } from "../../../servises/api/auth/login";
 import usePostLogin from "../hooks/usePostLogin";
 
 const validationSchema = yup.object({
@@ -49,10 +46,15 @@ const LoginForm = () => {
             password: values.password,
             rememberMe: Boolean(values.rememberMe),
           });
+          const token = data.token;
+          if (token) {
+            setToken(token);
+            navigate("/dashboard");
+          }
           console.log("Login success:", data);
         } catch (error) {
           console.error("login failed:", error);
-          console.log("error.response?.data:", error?.response?.data);
+          // console.log("error.response?.data:", error?.response?.data);
         }
       }}
       validationSchema={validationSchema}
@@ -88,9 +90,11 @@ const LoginForm = () => {
             >
               {" "}
               {showPassword ? (
-                <IoEyeOutline style={{ color: "var(--color-light-blue)" }} />
+                <IoEyeOutline style={{ color: "var(--color-dark-purple)" }} />
               ) : (
-                <IoEyeOffOutline style={{ color: "var(--color-light-blue)" }} />
+                <IoEyeOffOutline
+                  style={{ color: "var(--color-dark-purple)" }}
+                />
               )}{" "}
             </button>
 
@@ -114,7 +118,7 @@ const LoginForm = () => {
           </label>
           <Link
             to={"/auth/forgetpassword"}
-            style={{ color: "var(--color-dark-gray)" }}
+            style={{ color: "var( --color-text-gray)" }}
             className="text-[16px] sm:text-[20px] font-normal hover:underline cursor-pointer"
           >
             فراموشی رمز؟
@@ -135,7 +139,7 @@ const LoginForm = () => {
           </span>
           <Link to={"/auth/signup"}>
             <span
-              style={{ color: "var(--color-light-blue)" }}
+              style={{ color: "var(--color-dark-purple)" }}
               className="mr-2 font-semibold text-[16px] sm:text-[20px] underline cursor-pointer"
             >
               ثبت نام

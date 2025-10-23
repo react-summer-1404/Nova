@@ -2,6 +2,8 @@
 @import "./assets/styles/variable.css";
 @import "./assets/styles/font.css";
 
+@plugin "daisyui";
+
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;

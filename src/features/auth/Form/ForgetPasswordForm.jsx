@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form, ErrorMessage } from "formik";
-import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
+import useforgetPasswordEmail from "../hooks/useForgrtPaswordEmail";
 
 const validationSchema = yup.object({
   email: yup
@@ -13,13 +13,23 @@ const validationSchema = yup.object({
 });
 
 const ForgetPasswordForm = () => {
+  const { mutateAsync: PostEmail } = useforgetPasswordEmail();
+
   return (
     <Formik
       initialValues={{
         email: "",
       }}
-      onSubmit={(value) => {
-        console.log(value);
+      onSubmit={async (values) => {
+        try {
+          const data = await PostEmail({
+            email: values.email,
+          });
+          console.log("email sent successfully:", data);
+        } catch (error) {
+          console.error("there was an error:", error);
+          console.log("error.response?.data:", error?.response?.data);
+        }
       }}
       validationSchema={validationSchema}
     >

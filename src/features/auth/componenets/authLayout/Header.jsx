@@ -7,7 +7,7 @@ const Header = ({ className = "" }) => {
   return (
     <div className={"flex items-center justify-start p-8 gap-3"}>
       <IoHome
-        style={{ color: "var(--color-light-blue)" }}
+        style={{ color: "var(--color-dark-purple)" }}
         className="cursor-pointer"
       />
       <FaUserCog className="cursor-pointer" />
