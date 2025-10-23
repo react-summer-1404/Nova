@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function CheckList({ data }) {
+export default function CheckList({ data,labelKey = "label"}) {
   const [selected, setSelected] = useState([]);
 
   const handleChange = (event) => {
@@ -12,11 +12,10 @@ export default function CheckList({ data }) {
     }
   };
 
-  console.log(selected);
 
   return (
     <div className="flex flex-col gap-4" style={{ direction: "rtl" }}>
-      {data.map((item) => (
+      {data?.map((item) => (
         <label
           key={item.id}
           className="flex items-center gap-3 cursor-pointer"
@@ -29,7 +28,7 @@ export default function CheckList({ data }) {
             checked={selected.includes(item.id)}
             onChange={handleChange}
           />
-          {item.label}  ({item.amount})
+          {item[labelKey]} 
         </label>
       ))}
     </div>

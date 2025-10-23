@@ -10,12 +10,11 @@ import CourseProductCard from "../../../ui/card/CourseProductCard";
 import Tabs from "./Tab";
 import { useQuery } from "@tanstack/react-query";
 import { getTopCourses } from "../../../../servises/api/landing/topCourses";
-import SkeletonComponent from "./Skeleton";
 
 const FeaturedCourses = () => {
   const [pointTab, setPointTab] = useState("همه دوره‌ها");
 
-  const {data:topCourseData , isLoading} = useQuery({
+  const {data:topCourseData } = useQuery({
     queryKey:["topCourse"],
     queryFn:getTopCourses,
   })

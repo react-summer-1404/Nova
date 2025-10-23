@@ -1,10 +1,9 @@
-export const categories = [
-    { label: "توسعه", id: "1" },
-    { label: "گرافیک", id: "2" },
-    { label: "طراحی", id: "3" },
-    { label: "نمیدونم", id: "4" },
-  ];
+
   
+  export const courseState = [
+    { id: "0", label: "حضوری" },
+    { id: "online", label: "انلاین" },
+  ];
   export const courseLevel = [
     { id: "10", label: "مبتدی" },
     { id: "11", label: "متوسط" },

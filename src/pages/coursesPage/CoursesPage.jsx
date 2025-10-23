@@ -7,15 +7,16 @@ import ViewMode from "./components/ViewMode";
 import InfoCard from "./components/InfoCard";
 import CheckList from "./components/CheckList";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
-import { categories, courseLevel, teachers } from "./components/categoriesData";
 import PaginationComponent from "./components/PaginationComponent";
 import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses";
+import { getTechs } from "../../servises/api/landing/topCategories";
+import FiltersPanel from "./components/FiltersPanel";
 
 const CoursesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-
+ 
   const apiParams={
     pageNumber:currentPage,
     RowsOfPage:itemsPerPage
@@ -51,17 +52,7 @@ const CoursesPage = () => {
             ))}
           </div>
 
-          <div className="flex flex-col gap-5 w-[310px]">
-            <InfoCard title="دسته بندی ها">
-              <CheckList data={categories} />
-            </InfoCard>
-            <InfoCard title="سطح دوره">
-              <CheckList data={courseLevel} />
-            </InfoCard>
-            <InfoCard title="مربیان">
-              <CheckList data={teachers} />
-            </InfoCard>
-          </div>
+         <FiltersPanel/>
         </div>
 
         <PaginationComponent
