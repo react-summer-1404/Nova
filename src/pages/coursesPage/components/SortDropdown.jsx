@@ -1,5 +1,5 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@heroui/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 
 export default function SortDropdown({ options }) {
@@ -20,6 +20,7 @@ export default function SortDropdown({ options }) {
 
       <DropdownMenu
         aria-label="sort-option"
+        className="bg-white"
         onAction={(key) => {
           const selectedOption = options.find((op) => op.key === key);
           if (selectedOption) setSelected(selectedOption.label);

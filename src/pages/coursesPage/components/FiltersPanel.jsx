@@ -23,11 +23,11 @@ const FiltersPanel = () => {
         <CheckList data={topTech} labelKey="techName" />
       </InfoCard>
 
-      <InfoCard title="نحوه برگزاری">
+      <InfoCard add sliderrd title="نحوه برگزاری">
         <CheckList data={courseState} />
       </InfoCard>
 
-      <InfoCard title="سطح دوره">
+      <InfoCard title="سطح دوره" showMoreButton={courseLevel.length > 4}>
         <CheckList data={courseLevel} />
       </InfoCard>
 

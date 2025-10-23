@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "../../../assets/styles/global.css";
+import useToggle from "../../../hooks/useToggle";
 
 const InfoCard = ({ title, children, showMoreButton = false }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useToggle(false);
 
   return (
     <div

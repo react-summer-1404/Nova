@@ -44,8 +44,8 @@ const CoursesPage = () => {
 
         <div className="flex w-4/5 justify-between">
           <div className="flex flex-wrap justify-evenly gap-y-[20px]">
-            {currentItems?.map((product, index) => (
-              <CourseProductCard key={index} product={product} />
+            {currentItems?.map((product) => (
+              <CourseProductCard key={currentItems.id} product={product} />
             ))}
           </div>
 
