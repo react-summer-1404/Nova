@@ -3,11 +3,27 @@ import { FaStar } from "react-icons/fa";
 import { PiStudentThin } from "react-icons/pi";
 import { CiCalendar } from "react-icons/ci";
 import CourseExplanation from '../CourseExplanation/CourseExplanation';
+// import {useQuery} from "@tanstack/react-query";
+// import {getCourseDetail} from "../../../../servises/api/coursesDetail";
+import {IoTimeOutline, IoStatsChartOutline } from "react-icons/io5";
+import { BiBook } from "react-icons/bi";
+import { PiCertificateThin } from "react-icons/pi";
+import CommunicationApp from '../../landing/MasterMentors/CommunicationApp';
+import { FaArrowLeft,FaYoutube } from "react-icons/fa";
+import YellowButton from '../../../ui/button/YellowButton';
+import CourseComment from '../CourseComment/CourseComment';
+
 
 const CourseBox = () => {
+    // const {data} = useQuery({
+    //     queryFn : getCourseDetail,
+    // });
     return (
-        <div className ='border w-screen flex justify-center gap-8'>
-            <div className ='border w-[60%] h-[1600px] flex items-end flex-col gap-7'>
+        <div className =' w-screen flex justify-center gap-8'>
+            <div className ='w-[60%] h-[1600px] flex items-end flex-col gap-7'>
+                {/* {data?.map((item) => (
+
+                ))} */}
                 <img src="public/1.jpg" className ='w-[100%] md:h-[400px] h-[300px] rounded-[15px]'/>
                 <div className ='flex flex-col items-end gap-2.5 md:gap-4'>
                     <div className ='flex justify-between md:gap-3.5 gap-2'>
@@ -32,7 +48,7 @@ const CourseBox = () => {
                             <CiCalendar md:size={"19px"} />
                         </div>                  
                         <div className ='flex items-center md:gap-3 gap-1'>
-                            <h3 className ='text-[#161439] font-[400] text-[12px] md:text-[16px]'>محسن</h3>
+                            <h3 style={{color : "var(--color-navy)"}} className ='font-[400] text-[12px] md:text-[16px]'>محسن</h3>
                             <h2 className ='text-[#7F7E97] font-[400] text-[12px] md:text-[16px]'>توسط</h2>                                                
                             <img src="public/Profile.png" className='w-[30%] mr-[-17px] md:mr-[0]'/>
                         </div>                     
@@ -64,10 +80,64 @@ const CourseBox = () => {
                         </button>                    
                     </div>
                 </div>
-                <CourseExplanation/>
+                {/* <CourseExplanation/> */}
+                <CourseComment/>
             </div>        
-            <div className ='border w-[18%] h-[800px]'>
-
+            <div className ='border border-[#DFDFDF] w-[18%] h-[650px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]'>
+                <div className ='w-[82%] flex flex-col items-end gap-5 '>
+                    <div style={{backgroundColor: "var(--color-dark-purple)"}} className ='w-full h-[90px] text-right rounded-[8px]'>
+                        <h2 style={{color: "var(--color-white)"}} className ='font-[500] text-[15px]'>:هزینه این دوره</h2>
+                        <h3 style={{color: "var(--color-white)"}} className ='font-[600] text-[22px] mt-[10px] mr-[30px]'>180.000 تومان</h3>
+                    </div>
+                    <p className ='font-[600] text-[14px] text-[#161439]'> :دوره شامل</p>
+                    <div className ='flex border-b-[1px] border-[#D9D9D9] h-[30px] justify-between w-full '>                        
+                        <div className ='font-[400] text-[14px] text-[#7F7E97]'>کارشناس</div>
+                        <div className ='flex gap-1'>
+                        <div className ='font-[400] text-[14px] text-[#161439]'>مرحله</div>
+                        <IoStatsChartOutline color='#7F7E97' size={"15px"} />
+                        </div>
+                    </div>
+                    <div className ='flex border-b-[1px] border-[#D9D9D9] h-[30px] justify-between w-full '>                        
+                        <div className ='font-[400] text-[14px] text-[#7F7E97]'>11h 20m</div>
+                        <div className ='flex gap-1'>
+                        <div className ='font-[400] text-[14px] text-[#161439]'>مدت زمان</div>
+                        <IoTimeOutline color='#7F7E97' size={"15px"} className='mt-[4px]' />
+                        </div>
+                    </div>
+                    <div className ='flex border-b-[1px] border-[#D9D9D9] h-[30px] justify-between w-full '>                        
+                        <div className ='font-[400] text-[14px] text-[#7F7E97]'>12</div>
+                        <div className ='flex gap-1'>
+                        <div className ='font-[400] text-[14px] text-[#161439]'>درس ها</div>
+                        <BiBook color='#7F7E97' size={"15px"} className='mt-[4px]' />
+                        </div>
+                    </div>
+                    <div className ='flex border-b-[1px] border-[#D9D9D9] h-[30px] justify-between w-full '>                        
+                        <div className ='font-[400] text-[14px] text-[#7F7E97]'>بله</div>
+                        <div className ='flex gap-1'>
+                        <div className ='font-[400] text-[14px] text-[#161439]'>گواهینامه ها</div>
+                        <PiCertificateThin  size={"16px"} className='mt-[4px]' />
+                        </div>
+                    </div>
+                    <div className ='flex border-b-[1px] border-[#D9D9D9] flex-col gap-1.5 h-[70px] w-full '>                               
+                        <div className ='font-[400] text-[14px] text-right text-[#161439]'>:پرداخت امن</div>
+                        <div className ='flex gap-1'>
+                            <img src="src/assets/images/6cce14a6fef39893ffec7aceae284a74f5721102.png"/>               
+                        </div>                        
+                    </div>
+                    <div className ='flex border-b-[1px]  border-[#D9D9D9] flex-col gap-1.5 h-[80px] w-full '>                               
+                        <div className ='font-[400] text-[14px] text-right text-[#161439]'>: این دوره را به اشتراک بگذارید</div>
+                        <div className ='w-[70%] ml-[20px] flex gap-1.5 items-center'>
+                        <CommunicationApp /> <FaYoutube className ='border-[#9292B4] rounded-full w-[25px] h-[25px] shadow-[2px_3px_0px_0px_#00000040]'/>
+                        </div>                        
+                    </div>
+                    <div className ='w-full font-[600] text-[14px] flex justify-center'>                
+                        <button style={{backgroundColor: "var(--color-golden-yellow)"}} className = "border border-black rounded-[50px] shadow-2d-yellow text-[14px] p-2 font-semibold flex cursor-pointer  w-[85%]"> 
+                        <FaArrowLeft className =' mt-[5px]'/>
+                        <h2 className ='ml-[20px] font-[400] text-[14px] text-right text-[#161439]'>ثبت نام در دوره</h2>
+                        </button>  
+                    </div>
+                    
+                </div>
             </div>
         </div>
     )
