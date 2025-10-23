@@ -5,7 +5,7 @@ const SearchSection = () => {
 
   return (
     <div
-    style={{ background: "var(--color-bg-light)" }}
+    style={{ background: "var(--color-light-gray)" }}
     className="flex rounded-[6px] items-center w-[310px] h-[50px] text-base p-[15px] justify-between"
   >
     <BsSearch
