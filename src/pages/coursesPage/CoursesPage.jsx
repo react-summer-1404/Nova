@@ -15,18 +15,21 @@ const CoursesPage = () => {
   const [selectedLevels, setSelectedLevels] = useState([]);
   const [selectedTeachers, setSelectedTeachers] = useState([]);
 
+  // const [sortBy, setSortBy] = useState("cheap");
+  const [SortType, setSortType] = useState("DESC");
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-
   const apiParams = {
     pageNumber: currentPage,
     RowsOfPage: itemsPerPage,
     ListTech: selectedTechs.join(","),
     CourseLevelId: selectedLevels.join(","),
     TeacherId: selectedTeachers.join(","),
-    Query: searchQuery
+    Query: searchQuery,
+    SortType: SortType,
   };
 
   const { data } = useQuery({
@@ -36,7 +39,8 @@ const CoursesPage = () => {
       selectedTechs,
       selectedLevels,
       selectedTeachers,
-      searchQuery
+      searchQuery,
+      SortType,
     ],
     queryFn: () => getCourses(apiParams),
   });
@@ -51,16 +55,16 @@ const CoursesPage = () => {
         <div className="flex sm:flex-row justify-between pl-5 w-4/5 flex-col-reverse items-center gap-4">
           <div className="flex gap-6 items-center">
             <ViewMode />
-            <SortingSection />
+            <SortingSection setOrder={setSortType} sortOrder={SortType} />
           </div>
 
           <div className="flex-center gap-8">
             <Result />
-            
-<SearchSection
-  searched={searchQuery}
-  setSearched={setSearchQuery}
-/>
+
+            <SearchSection
+              searched={searchQuery}
+              setSearched={setSearchQuery}
+            />
           </div>
         </div>
 
@@ -79,7 +83,6 @@ const CoursesPage = () => {
             selectedTeachers={selectedTeachers}
             setSelectedTeachers={setSelectedTeachers}
           />
-
         </div>
 
         <PaginationComponent

@@ -1,30 +1,31 @@
+// ✅ SortDropdown.jsx
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@heroui/react";
-import { useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 
-export default function SortDropdown({ options }) {
-  const [selected, setSelected] = useState( options[0].label);
+export default function SortDropdown({ options, selectedKey, setSelectedKey }) {
+  const selectedLabel =
+    options.find((item) => item.key === selectedKey)?.label || options[0].label;
 
   return (
     <Dropdown>
       <DropdownTrigger>
         <Button
           variant="bordered"
-          className="flex rounded-sm  w-[120px] h-[40px] relative items-center"
+          className="flex items-center justify-between w-[127px] h-[40px] px-2 rounded-sm"
           style={{ border: "1px solid var(--color-border-gray)" }}
         >
-          <GoChevronDown color="var(--color-dark-purple)" style={{ borderRight: "1px solid var(--color-border-gray)" }} className="h-[20px] w-[40px] absolute left-0"/>
-          <span className="absolute right-2">{selected}</span>
+          <span>{selectedLabel}</span>
+          <GoChevronDown
+            className="h-5 w-5 border-r border-[#B5B5C380] pr-1"
+            style={{ color: "var(--color-dark-purple)" }}
+          />
         </Button>
       </DropdownTrigger>
 
       <DropdownMenu
         aria-label="sort-option"
-        className="bg-white"
-        onAction={(key) => {
-          const selectedOption = options.find((op) => op.key === key);
-          if (selectedOption) setSelected(selectedOption.label);
-        }}
+        className="rounded-sm w-[120px] bg-white"
+        onAction={(key) => setSelectedKey(key)}    
       >
         {options.map((option) => (
           <DropdownItem key={option.key}>{option.label}</DropdownItem>
@@ -33,6 +34,3 @@ export default function SortDropdown({ options }) {
     </Dropdown>
   );
 }
-
-
-
