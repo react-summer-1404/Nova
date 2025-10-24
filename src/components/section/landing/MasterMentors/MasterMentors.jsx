@@ -22,28 +22,23 @@ const MasterMentors = () => {
     return <ErrorMessage message={error?.message||"خطای ناشناخته ای رخ داده"}/>
   }
 
-  // if (!data || data.length == 0){
-  //   return (
-  //     <div className ='h-[320px] flex items-center justify-center'>
-  //       <p style={{color : "var(--color-text-gray)"}} className ='text-lg'>هیچ معلم برتری ثبت نشده است.</p>
-  //     </div>
-  //   );
-  // }
+  if (!data || data.length == 0){
+    return (
+      <div className ='h-[320px] flex items-center justify-center'>
+        <p style={{color : "var(--color-text-gray)"}} className ='text-lg'>هیچ معلم برتری ثبت نشده است.</p>
+      </div>
+    );
+  }
   return (
     <div className ='w-screen h-[320px] flex'>
       <div className ='w-4/6 flex justify-end px-6'>
         <div className ='w-[80%] grid grid-cols-2 gap-1 p-1.5'>
-          {data?.length> 0 ? (
-            data.map(item => (
+          {data?.map(item => (
               <TeacherCard
                 key={item.id}
-
               />
           ))
-        ) : (
-          <p style={{color : "var(--color-light-blue)"}} className =' ml-[220px] flex items-center w-[75%] text-lg'>.هیچ معلم برتری ثبت نشده است</p>
-
-          )}
+        }
           {/* {Dummy_teacher.map((item) => (
             <TeacherCard 
               key={item.id}

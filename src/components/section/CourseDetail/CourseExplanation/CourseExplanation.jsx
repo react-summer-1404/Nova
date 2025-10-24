@@ -2,15 +2,15 @@ import React from 'react'
 
 import SameText from './SameText';
 
-const CourseExplanation = () => {
+const CourseExplanation = ({describe}) => {
     return (
-        <div className ='border-[1px]  border-[#DFDFDF] flex justify-center items-center h-[550px] w-full shadow-[0_0_14px_0_rgba(0,0,0,0.08)]'>
-            <div className ='flex flex-col items-end w-[95%] gap-3'>
-                <p className ='font-[600] text-[22px]'>شرح دوره</p>
-                <h2 className ='font-[400] text-[14px] text-right text-[#6D6C80] '>
-                امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است، طراحی یک سایت به شکل مناسب و مورد پسند کاربران متفاوت، اهمیت بالایی یافته است. به همین جهت صاحبان سرمایه و کار، برای رونق کار خود به دنبال طراحان حرفه‌ای برای طراحی سایتی مناسب و کارآمد هستند؛لذا یادگیری روش‌های مناسب و به‌روز طراحی سایت، مورد توجه بسیاری از علاقه‌مندان و کارجویان قرار گرفته است.
+        <div className ='border-[1px]  border-[#DFDFDF] flex justify-center items-center w-full shadow-[0_0_14px_0_rgba(0,0,0,0.08)]'>
+            <div className =' flex flex-col items-end w-[95%] gap-3'>
+                <p className ='font-[600] text-[18px] md:text-[22px]'>شرح دوره</p>
+                <h2 className ='font-[400] text-[10px] md:text-[14px] text-right text-[#6D6C80] '>
+                {describe}
                 </h2>
-                <p className ='font-[600] text-[22px]'>در این دوره چه چیزی یاد خواهید گرفت؟</p>
+                {/* <p className ='font-[600] text-[22px]'>در این دوره چه چیزی یاد خواهید گرفت؟</p>
                 <h2 className ='font-[400] text-[14px] text-right text-[#6D6C80] '>
                 در حال حاضر جاوا اسکریپت یکی از محبوب‌ترین زبان‌های برنامه‌نویسی وب شناخته می‌شود و تقریبا توسط تمام مرورگرهای وب پشتیبانی می‌شود. این زبان به طور معمول با HTML و CSS برای ایجاد صفحات وب تعاملی و پویا به کار می‌رود.
                 </h2>
@@ -20,7 +20,7 @@ const CourseExplanation = () => {
                 <SameText title={"نحوه کار با تصاویر و متن"}/>   
                 <h2 className ='font-[400] text-[14px] text-right text-[#6D6C80] '>
                 امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است، طراحی یک سایت به شکل مناسب و مورد پسند کاربران متفاوت، اهمیت بالایی یافته است. به همین جهت صاحبان سرمایه و کار، برای رونق کار خود به دنبال طراحان حرفه‌ای برای طراحی سایتی مناسب و کارآمد هستند؛ لذا یادگیری روش‌های مناسب و به‌روز طراحی سایت، مورد توجه بسیاری از علاقه‌مندان و کارجویان قرار گرفته است.
-                </h2>             
+                </h2>              */}
             </div>
             
         </div>

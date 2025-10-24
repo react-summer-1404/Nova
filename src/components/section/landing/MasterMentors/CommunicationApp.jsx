@@ -10,7 +10,7 @@ const CommunicationApp = () => {
                 </div>
 
                 <div className ='flex justify-center w-6 h-6 rounded-[25px] border !border-[#9292B4] shadow-[2px_3px_0px_0px_#00000040] items-center'>
-                    <FaWhatsapp size={15}/>
+                    <FaWhatsapp  size={15}/>
                 </div>
 
                 <div className ='flex justify-center w-6 h-6 rounded-[25px] border !border-[#9292B4] shadow-[2px_3px_0px_0px_#00000040] items-center'>

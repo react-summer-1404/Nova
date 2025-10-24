@@ -1,10 +1,7 @@
-import instance from "../../../core/interceptor";
-const getCourseDetail = async (courseId) => {
-    const response = await instance.get("/Home/GetCourseDetails?",{
-        params:{
-            courseId: courseId,
-        },
+import instance from "../../../core/interceptor/interceptor";
+export const getCourseDetail = async (courseId) => {
+    const response = await instance.get("/Home/GetCourseDetails",{
+        params:{courseId},
     });
     return response.data;
 }
-export default getCourseDetail
