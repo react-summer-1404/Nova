@@ -1,41 +1,60 @@
-import React from "react";
-import InfoCard from "./InfoCard";
-import CheckList from "./CheckList";
-import { getTechs } from "../../../servises/api/landing/topCategories";
-import { getTeachers } from "../../../servises/api/teachers";
-import { courseLevel, courseState } from "./categoriesData";
 import { useQuery } from "@tanstack/react-query";
+import { getTechs } from "../../../servises/api/landing/topCategories";
+import { getCourseLevel } from "../../../servises/api/courseLevel";
+import { getTeachers } from "../../../servises/api/teachers";
+import InfoCard from "../components/InfoCard";
+import CheckList from "./CheckList";
 
-const FiltersPanel = () => {
+const FiltersPanel = ({
+  selectedTechs,
+  setSelectedTechs,
+  selectedLevels,
+  setSelectedLevels,
+  selectedTeachers,
+  setSelectedTeachers,
+}) => {
   const { data: topTech } = useQuery({
     queryKey: ["techs"],
     queryFn: getTechs,
   });
-
+  const { data: courseLevel } = useQuery({
+    queryKey: ["courseLevels"],
+    queryFn: getCourseLevel,
+  });
   const { data: teachersData } = useQuery({
     queryKey: ["teachers"],
     queryFn: getTeachers,
   });
 
   return (
-    <div className="flex flex-col gap-5 w-[310px]">
+    <div className="md:flex flex-col gap-5 w-[310px] hidden">
       <InfoCard title="دسته بندی ها" showMoreButton={topTech?.length > 7}>
-        <CheckList data={topTech} labelKey="techName" />
+        <CheckList
+          data={topTech}
+          labelKey="techName"
+          selected={selectedTechs}
+          setSelected={setSelectedTechs}
+        />
       </InfoCard>
 
-      <InfoCard add sliderrd title="نحوه برگزاری">
-        <CheckList data={courseState} />
-      </InfoCard>
-
-      <InfoCard title="سطح دوره" showMoreButton={courseLevel.length > 4}>
-        <CheckList data={courseLevel} />
+      <InfoCard title="سطح دوره" showMoreButton={courseLevel?.length > 4}>
+        <CheckList
+          data={courseLevel}
+          labelKey="levelName"
+          selected={selectedLevels}
+          setSelected={setSelectedLevels}
+        />
       </InfoCard>
 
       <InfoCard title="مربیان" showMoreButton={teachersData?.length > 7}>
-        <CheckList data={teachersData} labelKey="teacherName" />
+        <CheckList
+          data={teachersData}
+          labelKey="teacherName"
+          selected={selectedTeachers}
+          setSelected={setSelectedTeachers}
+        />
       </InfoCard>
     </div>
   );
 };
-
 export default FiltersPanel;

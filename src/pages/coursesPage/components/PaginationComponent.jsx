@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../assets/styles/variable.css";
-const Pagination = ({
+const PaginationComponent = ({
   totalItems,
   itemsPerPage,
   currentPage,
@@ -22,7 +22,7 @@ const Pagination = ({
           style={
             currentPage == page
               ? { backgroundColor: "var(--color-dark-purple)" ,color:"var(--color-white)" }
-              : { backgroundColor: "var(--color-light-gary)" }
+              : { backgroundColor: "var(--color-soft-gray)" }
           }
         >
           {page}
@@ -32,4 +32,4 @@ const Pagination = ({
   );
 };
 
-export default Pagination;
+export default PaginationComponent;

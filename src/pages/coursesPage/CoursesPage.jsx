@@ -11,18 +11,36 @@ import { getCourses } from "../../servises/api/courses";
 import FiltersPanel from "./components/FiltersPanel";
 
 const CoursesPage = () => {
+  const [selectedTechs, setSelectedTechs] = useState([]);
+  const [selectedLevels, setSelectedLevels] = useState([]);
+  const [selectedTeachers, setSelectedTeachers] = useState([]);
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
- 
-  const apiParams={
-    pageNumber:currentPage,
-    RowsOfPage:itemsPerPage
-  }
+
+  const apiParams = {
+    pageNumber: currentPage,
+    RowsOfPage: itemsPerPage,
+    ListTech: selectedTechs.join(","),
+    CourseLevelId: selectedLevels.join(","),
+    TeacherId: selectedTeachers.join(","),
+    Query: searchQuery
+  };
+
   const { data } = useQuery({
-    queryKey: ["product",currentPage],
-    queryFn:()=> getCourses(apiParams),
+    queryKey: [
+      "courses",
+      currentPage,
+      selectedTechs,
+      selectedLevels,
+      selectedTeachers,
+      searchQuery
+    ],
+    queryFn: () => getCourses(apiParams),
   });
-  
+
   const currentItems = data?.courseFilterDtos;
 
   return (
@@ -38,18 +56,30 @@ const CoursesPage = () => {
 
           <div className="flex-center gap-8">
             <Result />
-            <SearchSection />
+            
+<SearchSection
+  searched={searchQuery}
+  setSearched={setSearchQuery}
+/>
           </div>
         </div>
 
         <div className="flex w-4/5 justify-between">
-          <div className="flex flex-wrap justify-evenly gap-y-[20px]">
+          <div className="flex flex-wrap justify-baseline gap-[20px]">
             {currentItems?.map((product) => (
-              <CourseProductCard key={currentItems.id} product={product} />
+              <CourseProductCard key={product.courseId} product={product} />
             ))}
           </div>
 
-         <FiltersPanel/>
+          <FiltersPanel
+            selectedTechs={selectedTechs}
+            setSelectedTechs={setSelectedTechs}
+            selectedLevels={selectedLevels}
+            setSelectedLevels={setSelectedLevels}
+            selectedTeachers={selectedTeachers}
+            setSelectedTeachers={setSelectedTeachers}
+          />
+
         </div>
 
         <PaginationComponent

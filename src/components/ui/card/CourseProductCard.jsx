@@ -20,17 +20,12 @@ const CourseProductCard = ({ product }) => {
       <div className="flex flex-col gap-4">
         <h2 className="font-semibold text-responsive ">{product.title}</h2>
 
-        <div className="flex items-center justify-between gap-5 md:gap-12">
-          <div className="flex items-center">
-            {/* <span>{product.star}</span> */}
-            <FaStar color="#F8BC24" />
-          </div>
+     
 
-          <div className="flex gap-1 whitespace-nowrap">
-            <Tag bgColor={"var(--color-soft-gray)"} title={product.googleTitle} />
-            <Tag bgColor={"var(--color-soft-gray)"} title={product.field} />
+          <div className="flex items-center justify-end gap-2  whitespace-nowrap ">
+            <Tag bgColor={"var(--color-soft-gray)"} title={product.technologyList} />
+            <Tag bgColor={"var(--color-soft-gray)"} title={product.levelName} />
           </div>
-        </div>
 
         <div className="flex justify-between text-[#5F5F66]">
           <div className="flex items-center gap-1.5">
