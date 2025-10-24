@@ -6,7 +6,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../../hooks/useSlider";
 import { useQuery } from "@tanstack/react-query";
 import { getTechs } from "../../../../../servises/api/landing/topCategories";
-import { getCourses } from "../../../../../servises/api/courses";
+import { getCourses } from "../../../../../servises/api/courses/coursList";
 const Slider = () => {
   const { data } = useQuery({
     queryKey: ["techs"],
@@ -22,7 +22,6 @@ const Slider = () => {
     };
 
     for (let i = 0; i < data.length; i++) {
-      // console.log(data[i])
       const newTech = await getCourses({...apiParams, ListTech: data[i].id});
 
       data[i].count = newTech?.courseFilterDtos.length

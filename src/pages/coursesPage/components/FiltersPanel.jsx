@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTechs } from "../../../servises/api/landing/topCategories";
-import { getCourseLevel } from "../../../servises/api/courseLevel";
+import { getCourseLevel } from "../../../servises/api/courses/courseLevel";
 import { getTeachers } from "../../../servises/api/teachers";
 import InfoCard from "../components/InfoCard";
 import CheckList from "./CheckList";
+import PriceRangeComponent from "./PriceRangeComponent";
+import { courseState } from "./categoriesData";
+import { useState } from "react";
 
 const FiltersPanel = ({
   selectedTechs,
@@ -12,7 +15,11 @@ const FiltersPanel = ({
   setSelectedLevels,
   selectedTeachers,
   setSelectedTeachers,
+  value,
+  setValue,
 }) => {
+  const [selectedStates, setSelectedStates] = useState([]);
+
   const { data: topTech } = useQuery({
     queryKey: ["techs"],
     queryFn: getTechs,
@@ -46,6 +53,15 @@ const FiltersPanel = ({
         />
       </InfoCard>
 
+      <InfoCard title="نحوه برگزاری" showMoreButton={courseState?.length > 4}>
+        <CheckList
+          data={courseState}
+          labelKey="label"
+          selected={selectedStates}
+          setSelected={setSelectedStates}
+        />
+      </InfoCard>
+
       <InfoCard title="مربیان" showMoreButton={teachersData?.length > 7}>
         <CheckList
           data={teachersData}
@@ -53,6 +69,12 @@ const FiltersPanel = ({
           selected={selectedTeachers}
           setSelected={setSelectedTeachers}
         />
+      </InfoCard>
+
+      <InfoCard title="قیمت">
+        <div className="overflow-visible relative">
+          <PriceRangeComponent value={value} setValue={setValue} />
+        </div>
       </InfoCard>
     </div>
   );

@@ -7,7 +7,6 @@ export default function CheckList({ data, labelKey = "label", selected, setSelec
       setSelected(selected.filter((id) => id !== checkedId));
     }
   };
-console.log(selected)
   return (
     <div className="flex flex-col gap-4" style={{ direction: "rtl" }}>
       {data?.map((item) => (
@@ -16,7 +15,7 @@ console.log(selected)
             type="checkbox"
             value={item.id}
             className="w-4 h-4"
-            checked={selected.includes(String(item.id))}
+            checked={selected.includes((item.id))}
             onChange={handleChange}
           />
           {item[labelKey]}

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import { getCourses } from '../../../servises/api/courses';
+import { getCourses } from '../../../servises/api/courses/coursList';
 
 const Result = () => {
   const { data } = useQuery({

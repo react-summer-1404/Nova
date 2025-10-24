@@ -1,5 +1,4 @@
 import React from "react";
-import { FaStar } from "react-icons/fa6";
 import { MdOutlineDateRange } from "react-icons/md";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import Tag from "../Tag/Tag";
@@ -23,7 +22,7 @@ const CourseProductCard = ({ product }) => {
      
 
           <div className="flex items-center justify-end gap-2  whitespace-nowrap ">
-            <Tag bgColor={"var(--color-soft-gray)"} title={product.technologyList} />
+           {product.technologyList&& <Tag bgColor={"var(--color-soft-gray)"} title={product.technologyList} />}
             <Tag bgColor={"var(--color-soft-gray)"} title={product.levelName} />
           </div>
 

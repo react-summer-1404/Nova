@@ -7,7 +7,7 @@ import ViewMode from "./components/ViewMode";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
 import PaginationComponent from "./components/PaginationComponent";
 import { useQuery } from "@tanstack/react-query";
-import { getCourses } from "../../servises/api/courses";
+import { getCourses } from "../../servises/api/courses/coursList";
 import FiltersPanel from "./components/FiltersPanel";
 
 const CoursesPage = () => {
@@ -15,22 +15,28 @@ const CoursesPage = () => {
   const [selectedLevels, setSelectedLevels] = useState([]);
   const [selectedTeachers, setSelectedTeachers] = useState([]);
 
-  // const [sortBy, setSortBy] = useState("cheap");
-  const [SortType, setSortType] = useState("DESC");
+  const [value, setValue] = useState([0, 2000]);
+
+  const [sortType, setSortType] = useState("DESC");
+  const [sortingCol, setSortingCol] = useState("Active");
 
   const [searchQuery, setSearchQuery] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   const apiParams = {
-    pageNumber: currentPage,
+    PageNumber: currentPage,
     RowsOfPage: itemsPerPage,
-    ListTech: selectedTechs.join(","),
-    CourseLevelId: selectedLevels.join(","),
-    TeacherId: selectedTeachers.join(","),
+    ListTech: selectedTechs.length ? selectedTechs.join(",") : undefined,
+    courseLevelId: selectedLevels.length ? selectedLevels.join(",") : undefined,
+    TeacherId:  selectedTeachers.join(",") ,
     Query: searchQuery,
-    SortType: SortType,
+    SortType: sortType,
+    TechCount :1,
+    CostDown:value[0],
+    CostUp:value[1],
   };
+
 
   const { data } = useQuery({
     queryKey: [
@@ -40,7 +46,8 @@ const CoursesPage = () => {
       selectedLevels,
       selectedTeachers,
       searchQuery,
-      SortType,
+      sortType,
+      value
     ],
     queryFn: () => getCourses(apiParams),
   });
@@ -55,7 +62,7 @@ const CoursesPage = () => {
         <div className="flex sm:flex-row justify-between pl-5 w-4/5 flex-col-reverse items-center gap-4">
           <div className="flex gap-6 items-center">
             <ViewMode />
-            <SortingSection setOrder={setSortType} sortOrder={SortType} />
+            <SortingSection setSortType={setSortType} SortType={sortType} />
           </div>
 
           <div className="flex-center gap-8">
@@ -82,6 +89,8 @@ const CoursesPage = () => {
             setSelectedLevels={setSelectedLevels}
             selectedTeachers={selectedTeachers}
             setSelectedTeachers={setSelectedTeachers}
+            value={value}
+            setValue={setValue}
           />
         </div>
 

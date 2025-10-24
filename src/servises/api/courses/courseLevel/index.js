@@ -1,4 +1,4 @@
-import instance from "../../../core/interceptor/interceptor";
+import instance from "../../../../core/interceptor/interceptor";
 
 export const getCourseLevel = async () => {
   const response = await instance.get("/CourseLevel/GetAllCourseLevel");
