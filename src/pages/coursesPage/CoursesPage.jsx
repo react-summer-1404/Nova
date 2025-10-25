@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import NavigationSection from "./components/NavigationSection";
 import Result from "./components/Result";
-import SearchSection from "./components/SearchSection";
+import SearchSection from "../../components/ui/searchSection/SearchSection";
 import SortingSection from "./components/SortingSection";
-import ViewMode from "./components/ViewMode";
+import ViewMode from "../../components/ui/viewMode/ViewMode";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
-import PaginationComponent from "./components/PaginationComponent";
+import PaginationComponent from "../../components/ui/pagination/PaginationComponent";
 import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
 import FiltersPanel from "./components/FiltersPanel";
