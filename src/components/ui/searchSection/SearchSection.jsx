@@ -8,7 +8,7 @@ const SearchSection = ({ searched, setSearched }) => {
   return (
     <div
       style={{ background: "var(--color-light-gray)" }}
-      className="flex rounded-[6px] items-center w-[310px] h-[50px] text-base p-[15px] justify-between"
+      className="flex rounded-[6px] items-center w-[310px] h-[50px] text-base p-[15px] justify-between "
     >
       <BsSearch
         style={{
@@ -19,7 +19,7 @@ const SearchSection = ({ searched, setSearched }) => {
         }}
       />
       <input
-        className="text-right focus:outline-none w-[245px] h-[20px]"
+        className="text-right focus:outline-none w-[100px] h-[20px]"
         type="text"
         placeholder="جستجو"
         value={searched}

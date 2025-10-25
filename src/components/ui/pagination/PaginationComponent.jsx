@@ -7,13 +7,13 @@ const PaginationComponent = ({
   onPageChange,
 }) => {
   const pages = [];
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const totalPages = Math.ceil(5 / itemsPerPage);
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
 
   return (
-    <div className="flex gap-2 justify-center mt-4 p-[56px]">
+    <div className="flex gap-2 justify-center mt-4 p-[56px] ">
       {pages.map((page) => (
         <button
           key={page}

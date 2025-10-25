@@ -5,7 +5,6 @@ import Tag from "../../../ui/Tag/Tag";
 import BlueButton from "../../../ui/button/BlueButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../hooks/useSlider";
-import productData from "../../../ui/card/productData";
 import CourseProductCard from "../../../ui/card/CourseProductCard";
 import Tabs from "./Tab";
 import { useQuery } from "@tanstack/react-query";
