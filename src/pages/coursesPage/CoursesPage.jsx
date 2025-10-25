@@ -29,14 +29,14 @@ const CoursesPage = () => {
     RowsOfPage: itemsPerPage,
     ListTech: selectedTechs.length ? selectedTechs.join(",") : undefined,
     courseLevelId: selectedLevels.length ? selectedLevels.join(",") : undefined,
-    TeacherId:  selectedTeachers.join(",") ,
+    TeacherId: selectedTeachers.join(","),
+    sortingCol: sortingCol,
     Query: searchQuery,
     SortType: sortType,
-    TechCount :1,
-    CostDown:value[0],
-    CostUp:value[1],
+    TechCount: 1,
+    CostDown: value[0],
+    CostUp: value[1],
   };
-
 
   const { data } = useQuery({
     queryKey: [
@@ -47,7 +47,8 @@ const CoursesPage = () => {
       selectedTeachers,
       searchQuery,
       sortType,
-      value
+      value,
+      sortingCol,
     ],
     queryFn: () => getCourses(apiParams),
   });
@@ -62,7 +63,12 @@ const CoursesPage = () => {
         <div className="flex sm:flex-row justify-between pl-5 w-4/5 flex-col-reverse items-center gap-4">
           <div className="flex gap-6 items-center">
             <ViewMode />
-            <SortingSection setSortType={setSortType} SortType={sortType} />
+            <SortingSection
+              setSortType={setSortType}
+              sortType={sortType}
+              sortingCol={sortingCol}
+              setSortingCol={setSortingCol}
+            />
           </div>
 
           <div className="flex-center gap-8">

@@ -9,8 +9,8 @@ const SortingSection = ({ setSortType, sortType ,sortingCol,setSortingCol}) => {
   ];
 
   const sortOptions1 = [
-    { key: "cheap", label: "ارزان‌ترین" },
-    { key: "expensive", label: "گران‌ترین" },
+    { key: "Cost", label: "cost" },
+    { key: "Active", label: "active" },
   ];
 
   return (
