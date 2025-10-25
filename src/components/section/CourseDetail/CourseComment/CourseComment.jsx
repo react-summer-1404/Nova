@@ -4,8 +4,8 @@ import { BiDislike } from "react-icons/bi";
 import { FaArrowLeft} from "react-icons/fa";
 const CourseComment = ({teacherName}) => {
     return (
-        <div className =' border-[#DFDFDF] flex justify-center items-center w-full'>
-            <div className =' flex flex-col items-end w-[100%] gap-5'>
+        <div className =' border-[#DFDFDF] flex justify-center items-center'>
+            <div className =' flex flex-col items-end gap-5'>
                 <div className ='w-full h-[140px] flex items-center gap-5 bg-[#F7F7FA] rounded-[10px]'>
                     <div className ='flex flex-col items-end ml-[10px]'>
                         <h3 className ='font-[400] text-[10px] md:text-[14px] text-[#1C1A4A]'>نویسنده</h3>

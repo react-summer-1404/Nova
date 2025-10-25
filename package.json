@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@heroui/react": "^2.8.5",
+    "@heroui/tabs": "^2.2.24",
     "@hookform/resolvers": "^5.2.2",
     "@swc/helpers": "^0.5.17",
     "@tailwindcss/vite": "^4.1.14",

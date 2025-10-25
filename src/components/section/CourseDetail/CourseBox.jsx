@@ -43,12 +43,12 @@ const CourseBox = () => {
                         teacherName={data.teacherName}
                         
                         />
-                        <CourseExplanation
+                        {/* <CourseExplanation
                         describe={data.describe}
-                        />
-                        <CourseComment
+                        /> */}
+                        {/* <CourseComment
                         teacherName={data.teacherName}
-                        />                   
+                        />                    */}
                 </div>        
                 <div className ='border border-[#DFDFDF] w-[18%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]'>
                     <div className ='w-[82%] flex flex-col items-end gap-5 '>
