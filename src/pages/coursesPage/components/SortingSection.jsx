@@ -1,35 +1,41 @@
 import React from "react";
-import SortDropdown from "./SortDropdown";
+import SortDropdown from "../../../components/ui/sortDropDown/SortDropdown";
 import "../../../assets/styles/global.css";
+import useFilter from "../../../store/filterStore";
 
 const SortingSection = () => {
+  const { setSortType, sortType, sortingCol, setSortingCol } = useFilter();
+  
   const sortOptions2 = [
-    { key: "ascending", label: "صعودی" },
-    { key: "Descending", label: "نزولی" },
+    { key: "ASC", label: "صعودی" },
+    { key: "DESC", label: "نزولی" },
   ];
+
   const sortOptions1 = [
-    { key: "popular", label: "محبوب‌ترین" },
-    { key: "new", label: "جدیدترین" },
-    { key: "cheap", label: "ارزان‌ترین" },
-    { key: "expensive", label: "گران‌ترین" },
+    { key: "Cost", label: "cost" },
+    { key: "Active", label: "active" },
   ];
 
   return (
-    <div className="flex gap-2 items-center">
-      <SortDropdown
-        options={sortOptions1}
-        defaultLabel={sortOptions1[0].label}
-      />
-      <SortDropdown
-        options={sortOptions2}
-        defaultLabel={sortOptions2[0].label}
-      />
+    <div className="flex gap-2 items-center " dir="rtl">
       <span
         style={{ color: "var(--color-dark-purple)" }}
         className="hidden lg:block text-responsive whitespace-nowrap"
       >
-        : مرتب سازی بر اساس
+        مرتب سازی بر اساس :
       </span>
+
+      <SortDropdown
+        options={sortOptions1}
+        selectedKey={sortingCol}
+        setSelectedKey={setSortingCol}
+      />
+
+      <SortDropdown
+        options={sortOptions2}
+        selectedKey={sortType}
+        setSelectedKey={setSortType}
+      />
     </div>
   );
 };

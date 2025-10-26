@@ -1,17 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import "../../../../assets/styles/variable.css";
 import "../../../../assets/styles/global.css";
 import Tag from "../../../ui/Tag/Tag";
 import BlueButton from "../../../ui/button/BlueButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../hooks/useSlider";
-import productData from "../../../ui/card/productData";
 import CourseProductCard from "../../../ui/card/CourseProductCard";
-import Tab from "./Tab";
+import Tabs from "./Tab";
+import { useQuery } from "@tanstack/react-query";
+import { getTopCourses } from "../../../../servises/api/landing/topCourses";
 
 const FeaturedCourses = () => {
+  const [pointTab, setPointTab] = useState("همه دوره‌ها");
+
+  const {data:topCourseData } = useQuery({
+    queryKey:["topCourse"],
+    queryFn:getTopCourses,
+  })
+  const filteredCourses =
+  pointTab === "همه دوره‌ها"
+    ? topCourseData
+    : topCourseData.filter((tc) => tc.technologyList?.includes(pointTab)  );
+
   const { slide, nextSlide, prevSlide, slidesPerView } = useSlider({
-    itemsLength: productData.length,
+    itemsLength: filteredCourses?.length,
     itemsPerPage: 4,
     sm: 1,
     md: 2
@@ -35,7 +47,7 @@ const FeaturedCourses = () => {
           <h3 style={{color:"var(--color-text-gray)"}} className=" text-responsive">
             امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است
           </h3>
-          <Tab />
+          <Tabs pointTab={pointTab} setPointTab={setPointTab}/>
         </div>
 
         <div className="flex items-center justify-between w-[420px] md:w-full gap-2 ">
@@ -53,7 +65,7 @@ const FeaturedCourses = () => {
         transform: `translateX(-${slide * (100 / slidesPerView)}%)`,
       }}
     >
-      {productData.map((product, index) => (
+      {filteredCourses?.map((product, index) => (
         <div key={index} className="flex-shrink-0 ">  
           <CourseProductCard product={product} />
         </div>

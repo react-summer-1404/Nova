@@ -1,27 +1,21 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import { BsSearch } from "react-icons/bs";
+import { getCourses } from '../../../servises/api/courses/coursList';
 
-const SearchSection = () => {
+const Result = ({currentItems}) => {
+  const { data } = useQuery({
+    queryKey: ["product"],
+    queryFn:getCourses,
+  });
   return (
-    <div
-    style={{ background: "var(--color-bg-light)" }}
-    className="flex rounded-[6px] items-center w-[310px] h-[50px] text-base p-[15px] justify-between"
-  >
-    <BsSearch
-      style={{
-        color: "var(--color-dark-purple)",
-        fontSize: "18px",
-        transform: "scaleX(-1)",
-        cursor: "pointer",
-      }}
-    />
-    <input
-      className="text-right focus:outline-none w-[245px] h-[20px]"
-      type="text"
-      placeholder="جستجو"
-    />
-  </div>
+  
+      <div className="lg:flex gap-2 hidden whitespace-nowrap">
+      <span style={{ color: "var(--color-dark-purple)" }}>{data?.totalCount}</span>
+      <span>از</span>
+      <span style={{ color: "var(--color-dark-purple)" }}>{currentItems?.length}</span>
+      <span>نمایش نتیجه</span>
+    </div>
   )
 }
 
-export default SearchSection
+export default Result

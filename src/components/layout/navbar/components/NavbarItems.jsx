@@ -21,7 +21,7 @@ const NavbarItems = ({ isOpen }) => {
         className={`flex  ${
           isOpen
             ? "gap-3 sm:gap-16 sm:text-2xl"
-            : "md:flex-row md:items-center md:gap-4 sm:gap-1 lg:gap-3 w-full text-responsive"
+            : "md:flex-row md:items-center md:gap-2 sm:gap-1 lg:gap-3 xl:gap-6 w-full text-responsive"
         }`}
       >
         {items.map((item, index) => (

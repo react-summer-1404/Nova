@@ -100,6 +100,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName 
                     </Tabs>
                 </div>
             </div>
+            
         </div>
     )
 }

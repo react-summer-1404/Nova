@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../../../../assets/styles/global.css";
 import "../../../../../assets/styles/variable.css";
 import YellowButton from "../../../../ui/button/YellowButton";
@@ -6,18 +6,40 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../../hooks/useSlider";
 import { useQuery } from "@tanstack/react-query";
 import { getTechs } from "../../../../../servises/api/landing/topCategories";
+import { getCourses } from "../../../../../servises/api/courses/coursList";
 const Slider = () => {
   const { data } = useQuery({
     queryKey: ["techs"],
     queryFn: getTechs,
   });
+  const [newTechList, setNewTechList] = useState([])
 
   const itemsPerPage = 6;
+
+  async function setAmount() {
+    const apiParams = {
+      TechCount: 1,
+    };
+
+    for (let i = 0; i < data.length; i++) {
+      const newTech = await getCourses({...apiParams, ListTech: data[i].id});
+
+      data[i].count = newTech?.courseFilterDtos.length
+      console.log(data)
+      setNewTechList([...data])
+    }
+  }
 
   const { slide, nextSlide, prevSlide } = useSlider({
     itemsLength: data ? data.length : 0,
     itemsPerPage: itemsPerPage,
   });
+
+  useEffect(() => {
+    if (data) {
+      setAmount()
+    }
+  }, [data])
 
   return (
     <div
@@ -36,7 +58,7 @@ const Slider = () => {
           className="flex flex-1 transition-transform duration-500 ease-in-out gap-[44px]  xl:w-[1120px]"
           style={{ transform: `translateX(-${slide * (100 / itemsPerPage)}%)` }}
         >
-          {data?.map((item) => (
+          {newTechList?.map((item) => (
             <div
               key={item.id}
               className="flex flex-col items-center simple-border  flex-shrink-0 "
@@ -46,7 +68,7 @@ const Slider = () => {
               </div>
               <h3 className="font-medium text-responsive">{item.techName}</h3>
               <span style={{ color: "var(--color-text-gray)" }}>
-                ({item.id})
+                ({item.count})
               </span>
             </div>
           ))}
