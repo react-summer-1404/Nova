@@ -36,6 +36,8 @@ const MasterMentors = () => {
           {data?.map(item => (
               <TeacherCard
                 key={item.id}
+                fullName={item.fullName}
+                pictureAddress={item.pictureAddress}
               />
           ))
         }

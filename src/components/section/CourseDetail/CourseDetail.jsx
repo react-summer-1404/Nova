@@ -5,7 +5,7 @@ import { CiCalendar } from "react-icons/ci";
 import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import CourseExplanation from './CourseExplanation/CourseExplanation';
 import { useParams } from 'react-router-dom';
-import { getCourseDetail } from '../../../servises/api/coursesDetail';
+import { getCourseDetail } from '../../../servises/api/coursesDetail/getDetail';
 import { useQuery } from '@tanstack/react-query';
 import CourseComment from './CourseComment/CourseComment';
 import { useState } from 'react';
@@ -98,32 +98,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName 
                         </Tab>   
                         
                     </Tabs>
-                    {/* <button
-                        className ='md:px-7 px-2 rounded-full p-1.5 flex bg-[#E6E9EF]'
-                        type="submit"
-                    >
-                        <span className='font-[600] text-[12px] md:text-[16px] text-[#6D6C80]'>نظرات کاربران</span>
-                    </button>
-                    <button
-                        className='md:px-12 px-3 rounded-full p-1.5 bg-[#E6E9EF] flex'
-                        type="submit"
-                    >
-                        <span className='font-[600] text-[12px] md:text-[16px] text-[#6D6C80]'>مربیان</span>
-                    </button>
-                    <button
-                        className='md:px-5 px-2 rounded-full p-1.5 bg-[#E6E9EF] flex'
-                        type="submit"
-                    >
-                        <span className='font-[600] text-[12px] md:text-[16px] text-[#6D6C80]'>برنامه تحصیلی</span>
-                    </button>
-                    <button
-                        type="submit"
-                        className="bg-[#5751E1] shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] text-white rounded-full flex px-2 md:px-4 p-1 "
-                    >
-                        <span className='text-[12px] md:text-[16px] font-[600]'>بررسی اجمالی</span>
-                    </button> */}
                 </div>
-
             </div>
         </div>
     )
