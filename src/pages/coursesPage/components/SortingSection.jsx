@@ -1,8 +1,11 @@
 import React from "react";
 import SortDropdown from "../../../components/ui/sortDropDown/SortDropdown";
 import "../../../assets/styles/global.css";
+import useFilter from "../../../store/filterStore";
 
-const SortingSection = ({ setSortType, sortType ,sortingCol,setSortingCol}) => {
+const SortingSection = () => {
+  const { setSortType, sortType, sortingCol, setSortingCol } = useFilter();
+  
   const sortOptions2 = [
     { key: "ASC", label: "صعودی" },
     { key: "DESC", label: "نزولی" },
@@ -22,9 +25,11 @@ const SortingSection = ({ setSortType, sortType ,sortingCol,setSortingCol}) => {
         مرتب سازی بر اساس :
       </span>
 
-      <SortDropdown options={sortOptions1}
-      selectedKey={sortingCol}
-      setSelectedKey={setSortingCol} />
+      <SortDropdown
+        options={sortOptions1}
+        selectedKey={sortingCol}
+        setSelectedKey={setSortingCol}
+      />
 
       <SortDropdown
         options={sortOptions2}

@@ -6,18 +6,22 @@ import InfoCard from "../../../components/ui/infoCard/InfoCard";
 import CheckList from "../../../components/ui/checkList/CheckList";
 import PriceRangeComponent from "./PriceRangeComponent";
 import { courseState } from "./categoriesData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFilter from "../../../store/filterStore";
 
-const FiltersPanel = ({
-  selectedTechs,
-  setSelectedTechs,
-  selectedLevels,
-  setSelectedLevels,
-  selectedTeachers,
-  setSelectedTeachers,
-  value,
-  setValue,
-}) => {
+const FiltersPanel = () => {
+  const {
+    selectedTechs,
+    setSelectedTechs,
+    selectedLevels,
+    setSelectedLevels,
+    selectedTeachers,
+    setSelectedTeachers,
+    value,
+    setValue,
+  } =useFilter()
+
+  
   const [selectedStates, setSelectedStates] = useState([]);
 
   const { data: topTech } = useQuery({
@@ -63,12 +67,14 @@ const FiltersPanel = ({
       </InfoCard>
 
       <InfoCard title="مربیان" showMoreButton={teachersData?.length > 7}>
-        <CheckList
-          data={teachersData}
-          labelKey="teacherName"
-          selected={selectedTeachers}
-          setSelected={setSelectedTeachers}
-        />
+      <CheckList
+  data={teachersData}
+  labelKey="fullName"
+  idKey="teacherId"
+  selected={selectedTeachers}
+  setSelected={setSelectedTeachers}
+/>
+
       </InfoCard>
 
       <InfoCard title="قیمت">

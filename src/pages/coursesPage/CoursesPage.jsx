@@ -10,21 +10,22 @@ import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
 import FiltersPanel from "./components/FiltersPanel";
 import useToggle from "../../hooks/useToggle";
+import useFilter from "../../store/filterStore";
 
 const CoursesPage = () => {
-  const [selectedTechs, setSelectedTechs] = useState([]);
-  const [selectedLevels, setSelectedLevels] = useState([]);
-  const [selectedTeachers, setSelectedTeachers] = useState([]);
-
-  const [value, setValue] = useState([0, 2000]);
-
-  const [sortType, setSortType] = useState("DESC");
-  const [sortingCol, setSortingCol] = useState("Active");
-
-  const [searchQuery, setSearchQuery] = useState("");
+  const {
+    selectedTechs,
+    selectedLevels,
+    selectedTeachers,
+    value,
+    searchQuery,
+    sortType,
+    sortingCol,
+    currentPage,
+    setSearchQuery,
+  } = useFilter();
 
   const itemsPerPage = 12;
-  const [currentPage, setCurrentPage] = useState(1);
 
   const [isCol, setIsCol] = useToggle(false);
 
@@ -33,7 +34,7 @@ const CoursesPage = () => {
     RowsOfPage: itemsPerPage,
     ListTech: selectedTechs.length ? selectedTechs.join(",") : undefined,
     courseLevelId: selectedLevels.length ? selectedLevels.join(",") : undefined,
-    TeacherId: selectedTeachers.join(","),
+    TeacherId: selectedTeachers.length ? selectedTeachers.join(",") : undefined,
     sortingCol: sortingCol,
     Query: searchQuery,
     SortType: sortType,
@@ -56,7 +57,7 @@ const CoursesPage = () => {
     ],
     queryFn: () => getCourses(apiParams),
   });
- 
+
   const currentItems = data?.courseFilterDtos;
   const BreadcrumbsItems = [{ to: "/courses", label: "دوره های اموزشی" }];
 
@@ -72,12 +73,7 @@ const CoursesPage = () => {
           <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%]">
             <div className="flex gap-2">
               <ViewMode isCol={isCol} setIsCol={setIsCol} />
-              <SortingSection
-                setSortType={setSortType}
-                sortType={sortType}
-                sortingCol={sortingCol}
-                setSortingCol={setSortingCol}
-              />
+              <SortingSection />
             </div>
             <Result currentItems={currentItems} />
           </div>
@@ -114,24 +110,13 @@ const CoursesPage = () => {
           <SearchSection searched={searchQuery} setSearched={setSearchQuery} />
 
           <div className="hidden md:block">
-            <FiltersPanel
-              selectedTechs={selectedTechs}
-              setSelectedTechs={setSelectedTechs}
-              selectedLevels={selectedLevels}
-              setSelectedLevels={setSelectedLevels}
-              selectedTeachers={selectedTeachers}
-              setSelectedTeachers={setSelectedTeachers}
-              value={value}
-              setValue={setValue}
-            />
+            <FiltersPanel />
           </div>
         </div>
       </div>
       <PaginationComponent
         totalItems={data?.totalCount}
         itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
       />
     </div>
   );
