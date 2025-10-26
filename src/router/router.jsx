@@ -31,10 +31,11 @@ const router = createBrowserRouter([
       { path: "/contactUs", element: <ContactUsPage /> },
       { path: "/courses/courseDetail:id", element: <CourseDetailPage /> },
       { path: "/courses", element: <CoursesPage /> },
+  { path: "*", element: <NotFoundingPage /> },
+
     ],
   },
   ...AuthRoutes,
-  { path: "*", element: <NotFoundingPage /> },
 ]);
 
 export default router;

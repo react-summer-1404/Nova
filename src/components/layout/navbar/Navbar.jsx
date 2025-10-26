@@ -12,6 +12,7 @@ import useToggle from "../../../hooks/useToggle";
 
 const Navbar = () => {
   const [isOpen, toggle, setIsOpen] = useToggle(false);
+  const [isSearch, setsSearch] = useToggle(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,9 +24,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex-center w-screen  pb-4 gap-6  ">
+    <div className="flex-center w-screen  p-4 gap-6  ">
       <div className=" relative flex  md:gap-2 justify-between items-center p-4   w-full  ">
-        <div className="flex-center md:flex-start  items-center  md:gap-2 ">
+        <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
           <AccountBtn isOpen={isOpen} />
           <UserCartFavorites isOpen={isOpen} />
           <IoIosMenu
