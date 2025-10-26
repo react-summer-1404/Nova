@@ -6,7 +6,7 @@ const UserCartFavorites = ({isOpen}) => {
   return (
     <>
       <div className={`${isOpen ? "flex gap-6 z-20" : "hidden"} md:flex md:gap-3`}>
-        <div className="relative flex items-end  min-w-[40px]">
+        <div className="relative flex items-end  xl:w-[40px] md:w-[35px]">
           <img src={shopIcon}></img>
           <div
             style={{ backgroundColor: "var(--color-golden-yellow)" }}
@@ -16,7 +16,7 @@ const UserCartFavorites = ({isOpen}) => {
           </div>
         </div>
 
-        <div className=" relative flex items-end min-w-[40px] ">
+        <div className=" relative flex items-end xl:w-[40px] md:w-[35px] ">
           <img src={faveIcon}></img>
           <div
             style={{ backgroundColor: "var(--color-golden-yellow)" }}

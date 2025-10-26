@@ -9,7 +9,7 @@
   @apply p-[1.25rem]
 }
 .text-responsive{
-  @apply text-sm md:text-base lg:text-lg
+  @apply text-sm lg:text-base xl:text-lg 
  }
 
 body {

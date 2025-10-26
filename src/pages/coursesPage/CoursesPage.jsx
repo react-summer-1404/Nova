@@ -11,6 +11,7 @@ import { getCourses } from "../../servises/api/courses/coursList";
 import FiltersPanel from "./components/FiltersPanel";
 import useToggle from "../../hooks/useToggle";
 import useFilter from "../../store/filterStore";
+import { Spinner } from "@heroui/react";
 
 const CoursesPage = () => {
   const {
@@ -79,19 +80,29 @@ const CoursesPage = () => {
           </div>
 
           <div
-            className={`flex flex-wrap gap-y-5 gap-2  ${
+            className={`flex flex-wrap gap-y-5 gap-2 items-center  ${
               isCol ? "flex-col w-full items-end" : " justify-evenly "
             }`}
           >
             {isLoading && (
-              <h2 className="text-gray-500 text-center w-full">
-                در حال بارگزاری محصولات...
-              </h2>
+              <div className="flex items-end min-h-[50vh]  min-w-[80vh] ">
+                <Spinner
+                  size="lg"
+                  labelColor="primary"
+                  label="درحال بارگزاری محصولاتیم"
+                  variant="wave"
+                />
+              </div>
             )}
 
             {isError && (
-              <h2 className="text-red-500 text-center w-full">
+              <h2 className="text-red-500 text-left text-2xl font-semibold flex items-end min-h-[50vh]  min-w-[100vh] ">
                 مشکلی در دریافت اطلاعات پیش آمد. لطفاً دوباره تلاش کنید.
+              </h2>
+            )}
+            {!isLoading && !isError && currentItems?.length === 0 && (
+              <h2 className="text-[#6D6C80] text-left text-2xl font-semibold flex items-end min-h-[50vh]  min-w-[100vh]">
+                محصول یافت نشد
               </h2>
             )}
             {!isLoading &&

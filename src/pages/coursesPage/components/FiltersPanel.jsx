@@ -19,9 +19,8 @@ const FiltersPanel = () => {
     setSelectedTeachers,
     value,
     setValue,
-  } =useFilter()
+  } = useFilter();
 
-  
   const [selectedStates, setSelectedStates] = useState([]);
 
   const { data: topTech } = useQuery({
@@ -67,14 +66,13 @@ const FiltersPanel = () => {
       </InfoCard>
 
       <InfoCard title="مربیان" showMoreButton={teachersData?.length > 7}>
-      <CheckList
-  data={teachersData}
-  labelKey="fullName"
-  idKey="teacherId"
-  selected={selectedTeachers}
-  setSelected={setSelectedTeachers}
-/>
-
+        <CheckList
+          data={teachersData}
+          labelKey="fullName"
+          idKey="teacherId"
+          selected={selectedTeachers}
+          setSelected={setSelectedTeachers}
+        />
       </InfoCard>
 
       <InfoCard title="قیمت">
