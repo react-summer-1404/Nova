@@ -1,11 +1,14 @@
 import React from "react";
 import shopIcon from "../../../../assets/images/shop.svg";
 import faveIcon from "../../../../assets/images/favorite.svg";
-const UserCartFavorites = ({isOpen}) => {
-
+import useFavorite from "../../../../store/favpriteStore";
+const UserCartFavorites = ({ isOpen }) => {
+  const { addedToFavorite } = useFavorite();
   return (
     <>
-      <div className={`${isOpen ? "flex gap-6 z-20" : "hidden"} md:flex md:gap-3`}>
+      <div
+        className={`${isOpen ? "flex gap-6 z-20" : "hidden"} md:flex md:gap-3`}
+      >
         <div className="relative flex items-end  xl:w-[40px] md:w-[35px]">
           <img src={shopIcon}></img>
           <div
@@ -22,11 +25,10 @@ const UserCartFavorites = ({isOpen}) => {
             style={{ backgroundColor: "var(--color-golden-yellow)" }}
             className=" min-w-[22px] min-h-[22px] rounded-full absolute -top-2 -right-1 leading-none text-center"
           >
-            0
+            {addedToFavorite.length}
           </div>
         </div>
       </div>
-     
     </>
   );
 };

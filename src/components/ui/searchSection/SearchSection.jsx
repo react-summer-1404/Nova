@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { getCourses } from "../../../servises/api/courses/coursList";
 
 const SearchSection = ({ searched, setSearched }) => {
 

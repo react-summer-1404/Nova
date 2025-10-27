@@ -60,6 +60,8 @@ const CoursesPage = () => {
   });
 
   const currentItems = data?.courseFilterDtos;
+
+  
   const BreadcrumbsItems = [{ to: "/courses", label: "دوره های اموزشی" }];
 
   return (

@@ -25,7 +25,7 @@ const Slider = () => {
       const newTech = await getCourses({...apiParams, ListTech: data[i].id});
 
       data[i].count = newTech?.courseFilterDtos.length
-      console.log(data)
+      // console.log(data)
       setNewTechList([...data])
     }
   }
