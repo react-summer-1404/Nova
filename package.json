@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@formatjs/fast-memoize": "^2.2.7",
+    "@heroui/autocomplete": "^2.3.29",
     "@heroui/button": "^2.2.27",
     "@heroui/react": "^2.8.5",
     "@heroui/system": "^2.4.23",
