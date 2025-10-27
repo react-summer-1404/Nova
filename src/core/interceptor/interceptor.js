@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getToken, removeToken } from "../../hooks/localStorage";
-const BASE_URL =import.meta.env.VITE_API_URL
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const instance = axios.create({
   baseURL: BASE_URL,

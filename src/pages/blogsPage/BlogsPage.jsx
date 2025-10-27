@@ -3,23 +3,23 @@ import {
   NavigationSection,
   Header,
   SideContent,
-  MainContent
+  BlogsList
 } from "./components/index";
 
 const BlogsPage = () => {
   return (
     <div className="flex flex-col gap-32 items-center">
         <NavigationSection />
-        <div className="w-[76%] flex justify-between  border border-amber-200"> 
+        <div className="w-[76%] flex justify-between "> 
           
           {/* main content */}
-          <div className="w-[75%] flex flex-col border border-amber-800">
+          <div className="w-[75%] flex flex-col border">
             <Header />
-            <MainContent />
+            <BlogsList />
           </div>
 
           {/* side content */}
-          <div className="w-[22%] border border-amber-600">
+          <div className="w-[22%] border">
             <SideContent />
           </div>
         </div>
