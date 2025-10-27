@@ -1,10 +1,17 @@
-// import axios from "axios";
-// import instance from "../../../../core/interceptor/interceptor";
+import axios from "axios";
+import instance from "../../../../../core/interceptor/interceptor";
 
-// export const login = async ({password}) => {
-//   const response = await instance.post("/Sign/Reset/:ConfigValue", {
-//     password,
-//   });
-//   return response.data;
-// };
+export const verifyCode = async ({gmail,verifyCode}) => {
+   try {
+    console.log({ gmail, verifyCode });
+    const response = await instance.post("/Sign/VerifyMessage", {
+      gmail,
+      verifyCode,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Verify Code Error:", error.response?.data || error.message);
+    throw error;
+  }
+};
 

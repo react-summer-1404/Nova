@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import { IoEyeOffOutline } from "react-icons/io5";
-import { IoEyeOutline } from "react-icons/io5";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
 import { setToken } from "../../../hooks/localStorage";
 import usePostLogin from "../hooks/usePostLogin";
+import PasswordField from "../componenets/authForm/PasswordField";
 
 const validationSchema = yup.object({
   phoneOrGmail: yup
@@ -26,7 +25,6 @@ const validationSchema = yup.object({
 });
 
 const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const { mutateAsync: PostLoginData, isLoading, isError } = usePostLogin();
@@ -49,7 +47,6 @@ const LoginForm = () => {
           const token = data.token;
           if (token) {
             setToken(token);
-            navigate("/dashboard");
           }
           console.log("Login success:", data);
         } catch (error) {
@@ -59,14 +56,14 @@ const LoginForm = () => {
       }}
       validationSchema={validationSchema}
     >
-      <Form className=" flex flex-col justify-end mt-7 sm:mt-8">
+      <Form className=" flex flex-col justify-end mt-7 sm:mt-8 gap-4">
         <div className="flex flex-col gap-3 sm:gap-8">
           <div className="relative flex flex-col gap-[.5rem]">
             <FormField
               type={"email"}
               name={"phoneOrGmail"}
               id={"phoneOrGmail"}
-              placeHolder={"ایمیل خود را وارد کنید"}
+              label={"ایمیل"}
             />
             <ErrorMessage
               name="phoneOrGmail"
@@ -75,28 +72,7 @@ const LoginForm = () => {
             />
           </div>
           <div className="relative flex flex-col gap-[.5rem]">
-            <FormField
-              type={showPassword ? "text" : "password"}
-              name={"password"}
-              id={"password"}
-              placeHolder={"رمز عبور خود را وارد کنید"}
-            />
-
-            <button
-              className="absolute top-[37%] left-[7%]"
-              onClick={() => {
-                setShowPassword(!showPassword);
-              }}
-            >
-              {" "}
-              {showPassword ? (
-                <IoEyeOutline style={{ color: "var(--color-dark-purple)" }} />
-              ) : (
-                <IoEyeOffOutline
-                  style={{ color: "var(--color-dark-purple)" }}
-                />
-              )}{" "}
-            </button>
+            <PasswordField name="password" label={"پسورد"} />
 
             <ErrorMessage
               name="password"

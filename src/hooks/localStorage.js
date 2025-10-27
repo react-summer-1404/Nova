@@ -1,10 +1,6 @@
-export const setToken = (key, token) => {
-  try {
-    localStorage.setItem(key, token);
-  } catch (e) {
-    console.error("Could not save token to localStorage", e);
-  }
-};
+export const setToken = (token) => {
+  return localStorage.setItem("token", token)
+}
 export const getToken = () => {
   return localStorage.getItem("token");
 };

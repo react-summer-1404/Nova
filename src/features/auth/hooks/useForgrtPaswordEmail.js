@@ -1,10 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
 import { forgetPasswordEmail } from "../../../servises/api/auth/resetpassword/forgetpassword/index";
+import { usePostData } from "./usePostData";
 
 const useforgetPasswordEmail = () => {
-  return useMutation({
-    mutationFn: (email) => forgetPasswordEmail(email),
-  });
+  return usePostData(forgetPasswordEmail, {
+    
+  })
 };
 
 export default useforgetPasswordEmail;

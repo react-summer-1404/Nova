@@ -1,7 +1,6 @@
 import React from 'react'
-import Header from "../componenets/authLayout/Header";
 import { FormText } from "../componenets/authForm/Authform";
-import VarifyCodeForm from "../Form/VarifyCodeForm";
+import VarifyCodeForm from "../Form/VerifyCodeForm";
 
 const VarifyCodePage = () => {
   return (
