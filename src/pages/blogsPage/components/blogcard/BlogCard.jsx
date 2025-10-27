@@ -1,5 +1,6 @@
 import React from "react";
 import { BlogcardMainContent, BlogCardFooter } from "./blogcardItems/index";
+import blogimg from "../../../../assets/images/blog_post03.jpg.png"
 
 const BlogCard = () => {
   return (
@@ -10,6 +11,7 @@ const BlogCard = () => {
           description={
             "این خبر برای این است که توسعه خود را بسازید و عنوان محتوای خود میتوانیذ قرار دهید این خبر برای....  "
           }
+          img={blogimg}
         />
         <div
           style={{ background: "var(--color-text2-fot)" }}
