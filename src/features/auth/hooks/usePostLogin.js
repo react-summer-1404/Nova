@@ -1,14 +1,14 @@
-import { useMutation } from "@tanstack/react-query";
 import { login } from "../../../servises/api/auth/login";
 import { usePostData } from "./usePostData";
+import { useNavigate } from "react-router-dom";
 
 const usePostLogin = () => {
-    return usePostData(login, {
-        onSuccess: () => {
-        navigate("/dashboard")
+  const navigate = useNavigate();
+  return usePostData(login, {
+    onSuccess: () => {
+      navigate("/dashboard");
     },
-    })
-}
-
+  });
+};
 
 export default usePostLogin;

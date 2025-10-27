@@ -1,12 +1,12 @@
-import React, { useState } from "react";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
 import { setToken } from "../../../hooks/localStorage";
 import usePostLogin from "../hooks/usePostLogin";
 import PasswordField from "../componenets/authForm/PasswordField";
+import { useRequestState } from "../hooks/useRequestState";
 
 const validationSchema = yup.object({
   phoneOrGmail: yup
@@ -25,9 +25,37 @@ const validationSchema = yup.object({
 });
 
 const LoginForm = () => {
-  const navigate = useNavigate();
+  const {
+    mutateAsync: PostLoginData,
+    isPending,
+    isError,
+    isSuccess,
+  } = usePostLogin();
 
-  const { mutateAsync: PostLoginData, isLoading, isError } = usePostLogin();
+  const buttonText = useRequestState({
+    isError,
+    isPending,
+    isSuccess,
+    errorMessage: "درخواست موفقیت آمیز نبود",
+    successMessage: "ورود با موفقیت صورت گرفت",
+    defaultText: "ورود به حساب کاربری",
+  });
+  const handleSubmit = async (values) => {
+    try {
+      const data = await PostLoginData({
+        phoneOrGmail: values.phoneOrGmail,
+        password: values.password,
+        rememberMe: Boolean(values.rememberMe),
+      });
+      const token = data.token;
+      if (token) {
+        setToken(token);
+      }
+    } catch (error) {
+      console.error("login failed:", error);
+      // console.log("error.response?.data:", error?.response?.data);
+    }
+  };
 
   return (
     <Formik
@@ -37,23 +65,7 @@ const LoginForm = () => {
         password: "",
         rememberMe: false,
       }}
-      onSubmit={async (values) => {
-        try {
-          const data = await PostLoginData({
-            phoneOrGmail: values.phoneOrGmail,
-            password: values.password,
-            rememberMe: Boolean(values.rememberMe),
-          });
-          const token = data.token;
-          if (token) {
-            setToken(token);
-          }
-          console.log("Login success:", data);
-        } catch (error) {
-          console.error("login failed:", error);
-          // console.log("error.response?.data:", error?.response?.data);
-        }
-      }}
+      onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
       <Form className=" flex flex-col justify-end mt-7 sm:mt-8 gap-4">
@@ -101,11 +113,7 @@ const LoginForm = () => {
           </Link>
         </div>
 
-        <YellowButton
-          type={"submit"}
-          width={"100%"}
-          text={isLoading ? "در حال ورود..." : "ورود به حساب کاربری"}
-        />
+        <YellowButton type={"submit"} width={"100%"} text={buttonText} />
         <div className="my-3.5 sm:mt-6">
           <span
             style={{ color: "var(--color-black)" }}
