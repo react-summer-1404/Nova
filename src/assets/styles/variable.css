@@ -20,31 +20,27 @@
     --color-pure-blue : #0000FF;
     --color-disable-heart : #CCCCCC;
     --color-base-gray : #555555;
+  --gradient-main: radial-gradient(
+      circle at 20% 50%,
+      rgba(189, 175, 255, 0.32),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(255, 190, 255, 0.28),
+      transparent 45%
+    ),
+    #ffffff;
 
-
-
-    --gradient-main: radial-gradient(
-        circle at 20% 50%,
-        rgba(189, 175, 255, 0.32),
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 80% 50%,
-        rgba(255, 190, 255, 0.28),
-        transparent 45%
-      ),
-      #ffffff;
-      
-    --font-base: 'Poppins', serif;
+  --font-base: "Poppins", serif;
 }
 
 .dark {
   --color-white: #222020;
   --color-black: #ffffff;
   --color-navy: #818093;
-  --color-dark-gray: #6d6c80;
+  --color-text-gray: #6d6c80;
   --color-light-gray: #070709;
-  --color-light-blue: #c8c6eb;
+  --color-dark-purple: #c8c6eb;
   --color-golden-yellow: #db9d00;
 }
-
