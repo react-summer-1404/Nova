@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   NavigationSection,
   Header,
   SideContent,
   BlogsList
 } from "./components/index";
+import CustomPagination from "./components/CustomPagination";
 
 const BlogsPage = () => {
+
+  const[pageNumber,setPageNumber] = useState(1)
+  const[rowsOfthePage, setRowsOfthePage] = useState(10)
+  const[sortingCol, setSortingCol] = useState("InsertDate")
+  const[sortType, setSortType] = useState("InsertDate")
+
   return (
-    <div className="flex flex-col gap-32 items-center">
+    <div className="flex flex-col gap-28 items-center">
         <NavigationSection />
-        <div className="w-[76%] flex justify-between "> 
+        <div className="w-[80%] flex justify-between "> 
           
           {/* main content */}
-          <div className="w-[75%] flex flex-col border">
+          <div className="w-[75%] flex flex-col items-center border">
             <Header />
-            <BlogsList />
+            <BlogsList pageNumber={pageNumber} rowsOfthePage={rowsOfthePage} sortingCol={sortingCol} sortType={sortType} />
+            <CustomPagination pageNumber={pageNumber} setPageNumber={setPageNumber} total={10}/>
           </div>
 
           {/* side content */}
-          <div className="w-[22%] border">
+          <div className="w-[24%] border">
             <SideContent />
           </div>
         </div>

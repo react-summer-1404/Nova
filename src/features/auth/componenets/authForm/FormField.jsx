@@ -1,17 +1,12 @@
 import React from "react";
-import { Field } from "formik";
+import { useField } from "formik";
+import { Input } from "@heroui/input";
 
-const FormField = ({ placeHolder, type, name, id}) => {
+const FormField = ({ label, type, name }) => {
+  const [field, meta] = useField({name:name})
   return (
-    <Field
-      type={type}
-      name={name}
-      id={id}
-      placeholder={placeHolder}
-      style={{ background: "var(--color-light-gray)", color: "var(--color-black)" }}
-      className={"text-right rounded-[50px] px-3 sm:px-8 py-3 sm:py-4 shadow-[inset_0_1px_2px_rgba(0,0,0,.2)] relative dark:placeholder:text-white"}
-    />
+      <Input {...field} label={label} type={type} />
   );
 };
 
-export default FormField;
+export default FormField

@@ -1,11 +1,12 @@
 import NavigationSection from "./NavigationSection";
 import Result from './Result'
 import Search from "./Search"
-import SortingSection from "./SortingSection";
+import CustomAutocomplete from "./CustomAutocomplete";
 import Header from "./MainContentHeader";
 import SideContent from "./SideContent";
 import BlogsList from "./BlogsList";
 import BlogCard from "./blogcard/BlogCard";
+import QueryState from "./QueryState";
 
 
 
@@ -17,5 +18,6 @@ export {
     BlogCard,
     Result,
     Search,
-    SortingSection
+    CustomAutocomplete,
+    QueryState
 }
