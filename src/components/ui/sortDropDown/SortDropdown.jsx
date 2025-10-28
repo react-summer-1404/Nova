@@ -1,20 +1,18 @@
-import Select, { components } from "react-select";
+import Select from "react-select";
 
 export default function SortDropdown({ options, selectedKey, setSelectedKey }) {
-  
+  const optionsContent = options.map(option => ({
+    value: option.key,
+    label: option.label,
+  }));
 
-  const selectedOption = options.find((op)=>op.key===selectedKey)
+  const selectedOption = optionsContent.find(op => op.value === selectedKey);
 
   return (
-    <div>
-      <div >
-        <Select
-            options={options.map(option => ({ value: option.key, label: option.label }))}
-          value={selectedOption ? { value: selectedOption.key, label: selectedOption.label } : null}
-          onChange={(option) => setSelectedKey(option.value)}
-          
-        />
-      </div>
-    </div>
+    <Select
+      options={optionsContent}
+      value={selectedOption || null}
+      onChange={(option) => setSelectedKey(option.value)}
+    />
   );
 }

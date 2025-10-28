@@ -1,14 +1,12 @@
 import React from "react";
 import SortDropdown from "../../../components/ui/sortDropDown/SortDropdown";
 import "../../../assets/styles/global.css";
-import useFilter from "../../../store/filterStore";
 
-const SortingSection = () => {
-  const { setSortType, sortType, sortingCol, setSortingCol } = useFilter();
+const SortingSection = ({SortingCol,SortType,onChangeParams}) => {
   
   const sortOptions2 = [
-    { key: "ASC", label: "صعودی" },
-    { key: "DESC", label: "نزولی" },
+    { key: "ASC", label: "Ascending" },
+    { key: "DESC", label: "Descending" },
   ];
 
   const sortOptions1 = [
@@ -27,14 +25,14 @@ const SortingSection = () => {
 
       <SortDropdown
         options={sortOptions1}
-        selectedKey={sortingCol}
-        setSelectedKey={setSortingCol}
+        selectedKey={SortingCol}
+        setSelectedKey={(valCol)=>onChangeParams("SortingCol",valCol)}
       />
 
       <SortDropdown
         options={sortOptions2}
-        selectedKey={sortType}
-        setSelectedKey={setSortType}
+        selectedKey={SortType}
+        setSelectedKey={(valType)=>onChangeParams("SortType",valType)}
       />
     </div>
   );

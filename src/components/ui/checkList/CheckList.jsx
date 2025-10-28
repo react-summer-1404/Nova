@@ -5,26 +5,33 @@ export default function CheckList({
   labelKey = "label",
   idKey = "id",
   selected,
-  setSelected,
+  onChangeParams
+  
 }) {
-  const handleChange = (values) => {
-    if (idKey === "teacherId") {
-      setSelected(values.map((v) => Number(v)));
+  const handleId = (values) => {
+    if (idKey === "TeacherId") {
+      onChangeParams(values.map((v) => Number(v)));
     } else {
-      setSelected(values);
+      onChangeParams(values);
     }
   };
+
+  const normalizedSelected = Array.isArray(selected)
+  ? selected
+  : typeof selected === "string"
+  ? selected.split(",")
+  : [];
 
   return (
     <div className="flex flex-col gap-3" style={{ direction: "rtl" }}>
       <CheckboxGroup
-        value={selected.map((v) => String(v))}
-        onChange={handleChange}
+        value={normalizedSelected.map(String)}
+        onChange={handleId}
         orientation="vertical"
         className="gap-2"
       >
         {data?.map((item) => {
-          const itemId = idKey === "teacherId" ? Number(item[idKey]) : item[idKey];
+          const itemId = idKey === "TeacherId" ? Number(item[idKey]) : item[idKey];
           return (
             <Checkbox
               key={itemId}

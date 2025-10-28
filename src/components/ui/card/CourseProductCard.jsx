@@ -56,6 +56,7 @@ const CourseProductCard = ({ product, isCol }) => {
     addFavorite(product.courseId);
     addToFavoriteMutation.mutate(product.courseId);
   };
+  
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
 
   return (

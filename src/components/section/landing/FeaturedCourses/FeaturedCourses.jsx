@@ -65,8 +65,8 @@ const FeaturedCourses = () => {
         transform: `translateX(-${slide * (100 / slidesPerView)}%)`,
       }}
     >
-      {filteredCourses?.map((product, index) => (
-        <div key={product.id} className="flex-shrink-0 ">  
+      {filteredCourses?.map((product) => (
+        <div key={product.courseId} className="flex-shrink-0 ">  
           <CourseProductCard product={product} />
         </div>
       ))}

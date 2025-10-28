@@ -1,11 +1,9 @@
 import React from "react";
 import "../../../assets/styles/variable.css";
-import useFilter from "../../../store/filterStore";
-const PaginationComponent = ({totalItems,itemsPerPage}) => {
-  const{currentPage,
-    setCurrentPage} =useFilter
+const PaginationComponent = ({totalItems,RowsOfPage,PageNumber,onChangeParams}) => {
+ 
   const pages = [];
-  const totalPages = Math.ceil(totalItems/ itemsPerPage);
+  const totalPages = Math.ceil(totalItems/ RowsOfPage);
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
@@ -15,10 +13,10 @@ const PaginationComponent = ({totalItems,itemsPerPage}) => {
       {pages.map((page) => (
         <button
           key={page}
-          onClick={() => setCurrentPage(page)}
+          onClick={() => onChangeParams}
           className=" rounded-full w-[50px] h-[50px] cursor-pointer"
           style={
-            currentPage == page
+            PageNumber == page
               ? { backgroundColor: "var(--color-dark-purple)" ,color:"var(--color-white)" }
               : { backgroundColor: "var(--color-soft-gray)" }
           }

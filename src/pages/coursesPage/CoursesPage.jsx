@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import NavigationSection from "../../components/ui/navigation/NavigationSection";
 import Result from "./components/Result";
 import SearchSection from "../../components/ui/searchSection/SearchSection";
@@ -10,58 +10,52 @@ import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
 import FiltersPanel from "./components/FiltersPanel";
 import useToggle from "../../hooks/useToggle";
-import useFilter from "../../store/filterStore";
 import { Spinner } from "@heroui/react";
+import { useDebounce } from "use-debounce";
+import { useSearchParams } from "react-router-dom";
 
 const CoursesPage = () => {
-  const {
-    selectedTechs,
-    selectedLevels,
-    selectedTeachers,
-    value,
-    searchQuery,
-    sortType,
-    sortingCol,
-    currentPage,
-    setSearchQuery,
-  } = useFilter();
+  const [searchParam, setSearchParam] = useSearchParams();
+  const paramsObject = Object.fromEntries(searchParam.entries());
 
-  const itemsPerPage = 12;
+  const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
+  const [debounceSearch] = useDebounce(searchQuery, 500);
+
+  useEffect(() => {
+    handleChange("Query", debounceSearch);
+  }, [debounceSearch]);
+
+  const handleChange = (key, value) => {
+    setSearchParam((searchParams) => {
+      if (value) {
+        searchParams.set(key, value);
+      } else {
+        searchParams.delete(key);
+      }
+      return searchParams;
+    }, { replace: true });
+  };
+
+  const RowsOfPage = 12;
 
   const [isCol, setIsCol] = useToggle(false);
 
   const apiParams = {
-    PageNumber: currentPage,
-    RowsOfPage: itemsPerPage,
-    ListTech: selectedTechs.length ? selectedTechs.join(",") : undefined,
-    courseLevelId: selectedLevels.length ? selectedLevels.join(",") : undefined,
-    TeacherId: selectedTeachers.length ? selectedTeachers.join(",") : undefined,
-    sortingCol: sortingCol,
-    Query: searchQuery,
-    SortType: sortType,
+    ...paramsObject,
     TechCount: 1,
-    CostDown: value[0],
-    CostUp: value[1],
+    RowsOfPage,
   };
 
   const { data, isError, isLoading } = useQuery({
-    queryKey: [
-      "courses",
-      currentPage,
-      selectedTechs,
-      selectedLevels,
-      selectedTeachers,
-      searchQuery,
-      sortType,
-      value,
-      sortingCol,
-    ],
+    queryKey: ["courses", paramsObject],
     queryFn: () => getCourses(apiParams),
+    refetchOnWindowFocus: false,
   });
 
-  const currentItems = data?.courseFilterDtos;
+  const currentItems = useMemo(() => {
+    return data?.courseFilterDtos || [];
+  }, [data]);
 
-  
   const BreadcrumbsItems = [{ to: "/courses", label: "دوره های اموزشی" }];
 
   return (
@@ -76,7 +70,11 @@ const CoursesPage = () => {
           <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%]">
             <div className="flex gap-2">
               <ViewMode isCol={isCol} setIsCol={setIsCol} />
-              <SortingSection />
+              <SortingSection
+                onChangeParams={handleChange}
+                SortingCol={paramsObject.sortingCol}
+                SortType={paramsObject.SortType}
+              />
             </div>
             <Result currentItems={currentItems} />
           </div>
@@ -120,16 +118,24 @@ const CoursesPage = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <SearchSection searched={searchQuery} setSearched={setSearchQuery} />
+          <SearchSection
+            Query={searchQuery}
+            setQuery={setSearchQuery}
+          />
 
           <div className="hidden md:block">
-            <FiltersPanel />
+            <FiltersPanel
+              paramsObject={paramsObject}
+              onChangeParams={handleChange}
+            />
           </div>
         </div>
       </div>
       <PaginationComponent
         totalItems={data?.totalCount}
-        itemsPerPage={itemsPerPage}
+        RowsOfPage={paramsObject.RowsOfPage}
+        PageNumber={paramsObject.PageNumber}
+        onChangeParams={(newPage) => handleChange("PageNumber", newPage)}
       />
     </div>
   );
