@@ -3,15 +3,11 @@ import { Button } from "@heroui/button";
 
 const SocialButton = ({ icon, number }) => {
   return (
-    <div>
-      <Button
-        style={{ background: "var(--color-soft-gray)" }}
-        className="flex justify-around items-center"
-        radius="full"
-      >
-        <span style={{ color: "var(--color-dark-gray)" }}>{number}</span>
+    <div className="w-[56px] ">
+      <div style={{ background: "var(--color-soft-gray)" }} className="rounded-4xl flex justify-center items-center gap-1 p-0.5">
+        <span style={{ color: "var(--color-dark-gray)" }}>{number}</span> 
         {icon}
-      </Button>
+      </div>
     </div>
   );
 };

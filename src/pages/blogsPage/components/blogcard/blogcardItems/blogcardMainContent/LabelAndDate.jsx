@@ -9,9 +9,9 @@ const LabelAndDate = ({ label, date }) => {
         <span className="text-responsive">{date}</span>
         <CiCalendar />
       </div>
-      <Button type="button" style={{ background: "var(--color-dark-purple)", color: "var(--color-white)",}}radius="full">
+      <div style={{ background: "var(--color-dark-purple)", color: "var(--color-white)",}}radius="full">
         {label}
-      </Button>
+      </div>
     </div>
   );
 };
