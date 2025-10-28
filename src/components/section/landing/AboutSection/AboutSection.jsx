@@ -27,7 +27,7 @@ const AboutSection = () => {
             title={"دوره"}
           />
           <h3
-            style={{ color: "var(--color-text-gray)" }}
+            style={{ color: "var(--color-text-gray2)" }}
             className="text-right max-w-md text-responsive"
           >
             صندوق ورودی مشترک بصری Groove این کار را برای اعضای تیم آسان می کند

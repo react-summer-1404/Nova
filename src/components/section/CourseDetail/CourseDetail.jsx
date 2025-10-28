@@ -9,7 +9,7 @@ import { getCourseDetail } from '../../../servises/api/coursesDetail/getDetail';
 import { useQuery } from '@tanstack/react-query';
 import CourseComment from './CourseComment/CourseComment';
 import { useState } from 'react';
-const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName }) => {
+const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName}) => {
     const [selected, setSelected] = useState("بررسی اجمالی");
     const {id} = useParams();
     const {data,isError,isLoading,error} = useQuery({
@@ -30,7 +30,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName 
             <img src={imageAddress} className=' md:h-[400px] h-[300px] rounded-[15px]' />
             <div className='flex flex-col items-end gap-2.5 md:gap-4'>
                 <div className='flex justify-between md:gap-3.5 gap-2'>
-                    <div style={{ color: "var(--color-text-gray)" }} className='md:text-[14px] text-[11px] font-[400] flex items-center gap-1'>
+                    <div style={{ color: "var(--color-text-gray2)" }} className='md:text-[14px] text-[11px] font-[400] flex items-center gap-1'>
                         ({courseRate} امتیاز)
                         <FaStar md:size={"16px"} color='#F8BC24' />
                     </div>
@@ -46,7 +46,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName 
                         <PiStudentThin size={"15px"} md:size={"19px"} />
                         دانش آموز
                     </div>
-                    <div style={{ color: "var(--color-text-gray)" }} className='font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
+                    <div style={{ color: "var(--color-text-gray2)" }} className='font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
                         {startTime}
                         <CiCalendar md:size={"19px"} />
                     </div>
@@ -58,7 +58,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName 
                 </div>
 
 
-                <div className =' flex mt-[15px] flex-col w-[820px] mr-[4px] gap-2 md:gap-3'>
+                <div className =' flex mt-[15px] flex-col w-[870px] mr-[4px] gap-2 md:gap-3'>
                     <Tabs aria-label="Options" selectedKey={selected} onSelectionChange={setSelected} classNames={{
                         tabList: "flex gap-0 ml-[212px] w-[75%]",
                         tab : "",

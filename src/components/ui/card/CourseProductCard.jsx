@@ -20,7 +20,7 @@ const CourseProductCard = ({ product, isCol }) => {
     },
   });
 
-  const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
+  const courseDate = product.startTime? product.startTime.slice(0, 10) : "";
 
   return (
     <div

@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getLandingNews } from '../../../../servises/api/landing/news';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
+import { Spinner } from '@heroui/react';
 
 
 const BlogSection = () => {
@@ -23,7 +24,16 @@ const apiParams = {
   console.log(apiParams)
 
   if (isLoading){
-    return <Loader/>
+    return(
+      <div className="flex items-end min-h-[50vh]  min-w-[80vh] ">
+        <Spinner
+          size="lg"
+          labelColor="primary"
+          label="درحال بارگزاری محصولاتیم"
+          variant="wave"
+        />
+      </div>
+    )
   }
 
   if (isError){

@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getMasterTeacher } from '../../../../servises/api/landing/masterteacher';
 import Loader from '../BlogSection/Loader';
 import ErrorMessage from '../BlogSection/ErrorMessage';
+import { Spinner } from '@heroui/react';
 
 const MasterMentors = () => {
   const {data,isError,isLoading,error} = useQuery({
@@ -14,9 +15,20 @@ const MasterMentors = () => {
     queryFn : getMasterTeacher
   })
   
+  
   if (isLoading){
-    return <Loader/>
+    return(
+      <div className="flex items-end min-h-[50vh]  min-w-[80vh] ">
+        <Spinner
+          size="lg"
+          labelColor="primary"
+          label="درحال بارگزاری محصولاتیم"
+          variant="wave"
+        />
+      </div>
+    )
   }
+  
 
   if (isError){
     return <ErrorMessage message={error?.message||"خطای ناشناخته ای رخ داده"}/>
@@ -25,7 +37,7 @@ const MasterMentors = () => {
   if (!data || data.length == 0){
     return (
       <div className ='h-[320px] flex items-center justify-center'>
-        <p style={{color : "var(--color-text-gray)"}} className ='text-lg'>هیچ معلم برتری ثبت نشده است.</p>
+        <p style={{color : "var(--color-text-gray2)"}} className ='text-lg'>هیچ معلم برتری ثبت نشده است.</p>
       </div>
     );
   }

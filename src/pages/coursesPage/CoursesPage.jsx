@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import NavigationSection from "../../components/ui/navigation/NavigationSection";
 import Result from "./components/Result";
 import SearchSection from "../../components/ui/searchSection/SearchSection";
@@ -105,6 +105,7 @@ const CoursesPage = () => {
                 محصول یافت نشد
               </h2>
             )}
+            
             {!isLoading &&
               !isError &&
               currentItems?.map((product) => (

@@ -1,0 +1,97 @@
+import React from 'react';
+import CourseProductCard from '../../ui/card/CourseProductCard';
+import { useQuery } from '@tanstack/react-query';
+import { getCourses } from '../../../servises/api/courses/coursList';
+import ErrorMessage from '../landing/BlogSection/ErrorMessage';
+import { Spinner } from "@heroui/react";
+import useFilter from '../../../store/filterStore';
+import {Swiper, SwiperSlide} from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import {Navigation} from "swiper/modules";
+import { useRef } from 'react';
+import { FaArrowLeft,FaArrowRight } from "react-icons/fa6";
+
+const AnotherCourse = () => { 
+  const {selectedLevels, currentPage } = useFilter();
+  const itemsPerPage = 3;
+  const apiParam = {
+    PageNumber: currentPage,
+    RowsOfPage: itemsPerPage,
+    courseLevelId: selectedLevels.length ? selectedLevels.join(",") : undefined,
+  }
+  const {data, isError, isLoading, error} = useQuery({
+    queryKey: [
+      "filCourses",
+      currentPage,
+      selectedLevels
+    ],
+    
+    queryFn: () => getCourses(apiParam),
+  });
+  const swiperRef = useRef(null);
+
+  const currentItems = data?.courseFilterDtos;
+  
+  if (isLoading){
+    return(
+      <div className="flex items-end min-h-[50vh]  min-w-[80vh] ">
+        <Spinner
+          size="lg"
+          labelColor="primary"
+          label="درحال بارگزاری محصولاتیم"
+          variant="wave"
+        />
+      </div>
+    )
+  }
+  if (isError){
+    return <ErrorMessage message={error?.message||"خطای ناشناخته ای رخ داده"}/>
+  }
+  
+  return (
+    
+    <div className ='flex flex-wrap gap-y-5 gap-2 items-center'>
+            {!isLoading && !isError && currentItems?.length === 0 && (
+              <h2 className="text-[#6D6C80] text-left text-2xl font-semibold flex items-end min-h-[50vh]  min-w-[100vh]">
+                دوره مرتبط یافت نشد
+              </h2>
+            )}
+
+            <div className='relative'>
+              <button onClick={() => swiperRef.current?.slidePrev()}
+                className ='w-[50px] h-[50px] rounded-full border-[#1C1A4A] absolute bottom-[40px]'
+                style={{backgroundColor: "var(--color-dark-purple)", boxShadow: "-3.6px 2.4px 0px 0px #23232B"}}
+              >
+                <FaArrowLeft size={25} className='mt-[5px] ml-[10px]'/>
+              </button>
+              <button onClick={() => swiperRef.current?.slideNext()}
+                className ='w-[50px] h-[50px] rounded-full border-[#1C1A4A] absolute bottom-[40px] left-[60px]'
+                style={{backgroundColor: "var(--color-dark-purple)", boxShadow: "-3.6px 2.4px 0px 0px #23232B"}}
+              >
+                <FaArrowRight size={25} className='mt-[5px] ml-[10px]'/>
+              </button>
+            </div>
+
+            <Swiper
+              modules={[Navigation]}
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              spaceBetween={20}
+              slidesPerView={3}
+            >
+
+            {currentItems?.map((product) => (
+              <SwiperSlide key={product?.courseId}>                
+                <CourseProductCard product={product}/>                
+              </SwiperSlide>
+            ))}
+            </Swiper>
+            
+            
+              
+          </div>
+
+    
+  )
+}
+export default AnotherCourse;

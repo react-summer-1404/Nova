@@ -60,9 +60,9 @@ const CourseComment = ({teacherName}) => {
                 <div className =' w-full h-[270px] md:h-[390px] bg-[#F7F7FA] rounded-[10px] flex justify-center items-center'>
                     <div className ='w-11/12 h-5/6 flex flex-col items-end gap-2 md:gap-4'>
                         <p style={{color : "var(--color-navy)"}} className ='font-[600] text-[18px] md:text-[22px] '>ارسال نظر</p>
-                        <h2 style={{color : "var(--color-text-gray)"}} className ='font-[400] text-[10px] md:text-[14px]'>عنوان پیام</h2>
+                        <h2 style={{color : "var(--color-text-gray2)"}} className ='font-[400] text-[10px] md:text-[14px]'>عنوان پیام</h2>
                         <input type="text" style={{direction: "rtl", backgroundColor : "var(--color-white)"}} className ='bg-[#FFFFFF] indent-5 focus:outline-none border mt-[-7px] border-[#E1E4E7] w-[100%] h-[40px] rounded-[5px]'/>
-                        <h3 style={{color : "var(--color-text-gray)"}} className ='font-[400] text-[10px] md:text-[14px]'>توضیحات بیشتر </h3>
+                        <h3 style={{color : "var(--color-text-gray2)"}} className ='font-[400] text-[10px] md:text-[14px]'>توضیحات بیشتر </h3>
                         <input type="text" style={{direction: "rtl", backgroundColor : "var(--color-white)"}} className ='border indent-5 focus:outline-none border-[#E1E4E7] mt-[-7px] w-[100%] h-[85px] rounded-[5px]'/>
                         <h4 className ='font-[400] text-[#6D6C80] text-[10px] md:text-[14px]'>نظر شما پس از تایید توسط ادمین ثبت خواهد شد!</h4>
                         <button style={{backgroundColor: "var(--color-golden-yellow)"}} className = "border border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]"> 

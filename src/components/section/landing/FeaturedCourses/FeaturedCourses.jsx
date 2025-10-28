@@ -60,7 +60,7 @@ const FeaturedCourses = () => {
   
   <div className="overflow-hidden w-[90%] ">  
     <div
-      className="flex  transition-transform duration-500 ease-in-out gap-4   "       
+      className="flex transition-transform duration-500 ease-in-out gap-4 "       
       style={{
         transform: `translateX(-${slide * (100 / slidesPerView)}%)`,
       }}
