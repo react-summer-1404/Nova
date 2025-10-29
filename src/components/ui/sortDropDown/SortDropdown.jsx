@@ -7,7 +7,9 @@ export default function SortDropdown({ options, selectedKey, setSelectedKey }) {
   }));
 
   const selectedOption = optionsContent.find(op => op.value === selectedKey);
-
+if (!selectedKey) {
+  setSelectedKey(optionsContent[0].value);
+}
   return (
     <Select
       options={optionsContent}
