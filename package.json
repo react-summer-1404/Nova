@@ -10,9 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroui/accordion": "^2.2.24",
+    "@heroui/autocomplete": "^2.3.29",
+    "@heroui/checkbox": "^2.3.27",
     "@heroui/input": "^2.4.28",
     "@heroui/input-otp": "^2.1.27",
+    "@heroui/pagination": "^2.2.24",
     "@heroui/react": "^2.8.5",
+    "@heroui/spinner": "^2.2.24",
     "@heroui/system": "^2.4.23",
     "@heroui/theme": "^2.4.23",
     "@hookform/resolvers": "^5.2.2",

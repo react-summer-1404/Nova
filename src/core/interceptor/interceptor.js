@@ -1,6 +1,5 @@
    import axios from "axios";
 import { getToken, removeToken } from "../../hooks/localStorage";
-
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 const instance = axios.create({
@@ -32,5 +31,4 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
 export default instance;

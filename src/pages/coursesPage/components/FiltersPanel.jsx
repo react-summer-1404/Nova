@@ -5,7 +5,7 @@ import { getTeachers } from "../../../servises/api/teachers";
 import InfoCard from "../../../components/ui/infoCard/InfoCard";
 import CheckList from "../../../components/ui/checkList/CheckList";
 import PriceRangeComponent from "./PriceRangeComponent";
-import { courseState } from "./categoriesData";
+import { courseState } from "../../blogsPage/components/categoriesData";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 

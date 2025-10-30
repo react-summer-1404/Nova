@@ -6,7 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postDisLike, postLike } from "../../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../../servises/api/addToFavortie";
 import { Link } from "react-router-dom";
-import useFavorite from "../../../store/favpriteStore";
+import useFavorite from "../../../core/store/favpriteStore";
 
 const CourseProductCard = ({ product, isCol }) => {
   const queryClient = useQueryClient();

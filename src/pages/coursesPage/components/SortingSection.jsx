@@ -10,7 +10,7 @@ const SortingSection = ({SortingCol,SortType,onChangeParams}) => {
   ];
 
   const sortOptions1 = [
-    { key: "Cost", label: "cost" },
+    {key: "Cost", label: "cost" },
     { key: "Active", label: "active" },
   ];
 
@@ -24,16 +24,17 @@ const SortingSection = ({SortingCol,SortType,onChangeParams}) => {
       </span>
 
       <SortDropdown
-        options={sortOptions1}
-        selectedKey={SortingCol}
-        setSelectedKey={(valCol)=>onChangeParams("SortingCol",valCol)}
-      />
+  options={sortOptions1}
+  selectedKey={SortingCol}
+  setSelectedKey={(valCol)=>onChangeParams("SortingCol", valCol)}
+/>
 
-      <SortDropdown
-        options={sortOptions2}
-        selectedKey={SortType}
-        setSelectedKey={(valType)=>onChangeParams("SortType",valType)}
-      />
+<SortDropdown
+  options={sortOptions2}
+  selectedKey={SortType}
+  setSelectedKey={(valType)=>onChangeParams("SortType", valType)}
+/>
+
     </div>
   );
 };

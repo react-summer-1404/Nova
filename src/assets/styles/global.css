@@ -13,6 +13,7 @@
   @apply text-sm lg:text-base xl:text-lg 
  }
 
+
 body {
   /* background: var(--color-dark-purple); */
   font-family: var(--font-base);

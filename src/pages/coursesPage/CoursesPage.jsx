@@ -1,15 +1,16 @@
 import React, { useEffect, useMemo, useState } from "react";
-import NavigationSection from "../../components/ui/navigation/NavigationSection";
-import Result from "./components/Result";
-import SearchSection from "../../components/ui/searchSection/SearchSection";
-import SortingSection from "./components/SortingSection";
+import "../../assets/styles/global.css";
+import Result from "../../components/ui/result/Result";
+import SearchSection from "../../components/ui/pagesSearchSection/SearchSection";
+import SortingSection from "../../components/ui/sortDropDown/SortDropdown";
 import ViewMode from "../../components/ui/viewMode/ViewMode";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
-import PaginationComponent from "../../components/ui/pagination/PaginationComponent";
+import CustomPagination from "../../components/ui/pagination/CustomPagination";
+import useToggle from "../../hooks/useToggle";
+import FiltersPanel from "./components/FiltersPanel";
+import NavigationSection from "../../components/ui/navigation/NavigationSection";
 import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
-import FiltersPanel from "./components/FiltersPanel";
-import useToggle from "../../hooks/useToggle";
 import { Spinner } from "@heroui/react";
 import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router-dom";
@@ -26,28 +27,28 @@ const CoursesPage = () => {
   }, [debounceSearch]);
 
   const handleChange = (key, value) => {
-    setSearchParam((searchParam) => {
-      if (value) {
-        searchParam.set(key, value);
-      } else {
-        searchParam.delete(key);
-      }
-      return searchParam;
-    }, { replace: true });
+    setSearchParam(
+      (searchParam) => {
+        if (value) {
+          searchParam.set(key, value);
+        } else {
+          searchParam.delete(key);
+        }
+        return searchParam;
+      },
+      { replace: true }
+    );
   };
-
 
   const [isCol, setIsCol] = useToggle(false);
 
   const apiParams = {
     ...paramsObject,
     TechCount: 1,
-    RowsOfPage:1,
-    RowsOfPage:12,
+    PageNumber: 1,
+    RowsOfPage: 12,
   };
-  const RowsOfPage= 12;
 
-  
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", paramsObject],
     queryFn: () => getCourses(apiParams),
@@ -74,7 +75,7 @@ const CoursesPage = () => {
               <ViewMode isCol={isCol} setIsCol={setIsCol} />
               <SortingSection
                 onChangeParams={handleChange}
-                SortingCol={paramsObject.sortingCol}
+                SortingCol={paramsObject.SortingCol}
                 SortType={paramsObject.SortType}
               />
             </div>
@@ -120,10 +121,7 @@ const CoursesPage = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <SearchSection
-            Query={searchQuery}
-            setQuery={setSearchQuery}
-          />
+          <SearchSection Query={searchQuery} setQuery={setSearchQuery} />
 
           <div className="hidden md:block">
             <FiltersPanel
@@ -133,12 +131,7 @@ const CoursesPage = () => {
           </div>
         </div>
       </div>
-      <PaginationComponent
-        totalItems={data?.totalCount}
-        itemsPerPage
-        PageNumber={paramsObject.PageNumber}
-        onChangeParams={(newPage) => handleChange("PageNumber", newPage)}
-      />
+      <CustomPagination />
     </div>
   );
 };
