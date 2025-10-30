@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 const NavbarItems = ({ isOpen }) => {
   const items = [
     { title: "مربیان", path: "/coaches" },
-    { title: "وبلاگ", path: "/blogsPage" },
-    { title: "فروشگاه", path: "/" },
-    { title: "ایونت ها", path: "/" },
+    { title: "وبلاگ", path: "/blogs" },
     { title: "دوره های اموزشی", path: "/courses" },
     { title: "  صفحه اصلی", path: "/" },
   ];

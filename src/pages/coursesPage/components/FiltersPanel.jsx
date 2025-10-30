@@ -39,9 +39,8 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   <CheckList
     data={topTech}
     labelKey="techName"
-    idKey="id"
-    selected={paramsObject.ListTech || ""}
-    onChangeParams={(techVal) => onChangeParams("ListTech", techVal)}
+    selected={paramsObject.ListTech?.split(",") || []}
+    setSelected={(techVal) => onChangeParams("ListTech", techVal)}
   />
 </InfoCard>
 
@@ -49,9 +48,8 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   <CheckList
     data={courseLevel}
     labelKey="levelName"
-    idKey="id"
-    selected={paramsObject.courseLvlId || ""}
-    onChangeParams={(levelVal) =>
+    selected={paramsObject.courseLvlId?.split(",") || [] }
+    setSelected={(levelVal) =>
       onChangeParams("courseLvlId", levelVal)
     }
   />
@@ -61,21 +59,18 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   <CheckList
     data={courseState}
     labelKey="label"
-    idKey="id"
-    selected={paramsObject.courseState || ""}
-    onChangeParams={(val) => onChangeParams("courseState", val)}
+    selected={paramsObject.courseState?.split(",") || []}
+    setSelected={(val) => onChangeParams("courseState", val)}
   />
 </InfoCard>
 
 <InfoCard title="مربیان" showMoreButton={teachersData?.length > 7}>
   <CheckList
-    data={teachersData}
-    labelKey="fullName"
-    idKey="teacherId"
-    selected={paramsObject.teacherId || ""}
-    onChangeParams={(teacherVal) =>
-      onChangeParams("teacherId", teacherVal)
-    }
+      data={teachersData}
+      labelKey="fullName"
+      idKey="teacherId"
+      selected={paramsObject.teacherId ? [String(paramsObject.teacherId)] : []} 
+      setSelected={(val) => onChangeParams("teacherId", val)}
   />
 </InfoCard>
 

@@ -73,11 +73,11 @@ const CoursesPage = () => {
           <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%]">
             <div className="flex gap-2">
               <ViewMode isCol={isCol} setIsCol={setIsCol} />
-              {/* <SortingSection
+              <SortingSection
                 onChangeParams={handleChange}
                 SortingCol={paramsObject.SortingCol}
                 SortType={paramsObject.SortType}
-              /> */}
+              />
             </div>
             <Result currentItems={currentItems} />
           </div>
@@ -131,7 +131,7 @@ const CoursesPage = () => {
           </div>
         </div>
       </div>
-      <CustomPagination />
+      {/* <CustomPagination /> */}
     </div>
   );
 };
