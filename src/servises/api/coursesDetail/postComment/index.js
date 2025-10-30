@@ -1,6 +1,6 @@
 import instance from "../../../../core/interceptor/interceptor"
 
-export const putCommentCourse = async() => {
+export const postCommentCourse = async() => {
     const response = await instance.post("/Course/AddCommentCourse");
-    return response
+    return response.data;
 }

@@ -8,13 +8,13 @@ import useFilter from '../../../store/filterStore';
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import {Navigation} from "swiper/modules";
+import {Autoplay, Navigation} from "swiper/modules";
 import { useRef } from 'react';
 import { FaArrowLeft,FaArrowRight } from "react-icons/fa6";
 
 const AnotherCourse = () => { 
   const {selectedLevels, currentPage } = useFilter();
-  const itemsPerPage = 3;
+  const itemsPerPage = 10;
   const apiParam = {
     PageNumber: currentPage,
     RowsOfPage: itemsPerPage,
@@ -74,10 +74,11 @@ const AnotherCourse = () => {
             </div>
 
             <Swiper
-              modules={[Navigation]}
+              modules={[Navigation, Autoplay]}
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               spaceBetween={20}
               slidesPerView={3}
+              autoplay={true}
             >
 
             {currentItems?.map((product) => (
@@ -85,6 +86,7 @@ const AnotherCourse = () => {
                 <CourseProductCard product={product}/>                
               </SwiperSlide>
             ))}
+            
             </Swiper>
             
             

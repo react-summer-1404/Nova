@@ -3,6 +3,7 @@ import { BiLike } from "react-icons/bi";
 import { BiDislike } from "react-icons/bi";
 import { FaArrowLeft} from "react-icons/fa";
 const CourseComment = ({teacherName}) => {
+    
     return (
         <div className =' border-[#DFDFDF] flex justify-center items-center'>
             <div className =' flex flex-col items-end gap-5'>
@@ -14,7 +15,9 @@ const CourseComment = ({teacherName}) => {
                     </div>
                     <img src="public/Profile.png" className ='mr-[15px] w-[25%]'/>                   
                 </div>
-                <p className ='font-[600] text-[15px] md:text-[19px]'>02 نظر</p>
+                <p className ='font-[600] text-[15px] md:text-[19px]'>نظر
+                    
+                </p>
                 <div className ='w-full border-b-[#E8E8E8] h-[140px] flex items-center gap-5'>    
                     <div className ='flex flex-col items-end gap-2'>                       
                         <div className='w-full flex justify-between'>
