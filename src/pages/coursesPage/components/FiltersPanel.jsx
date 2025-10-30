@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 const FiltersPanel = ({ paramsObject, onChangeParams }) => {
-  // const [selectedStates, setSelectedStates] = useState([]);
   const [priceRange, setPriceRange] = useState([
     Number(paramsObject.CostDown) || 0,
     Number(paramsObject.CostUp) || 2000,

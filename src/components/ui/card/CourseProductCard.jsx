@@ -19,7 +19,6 @@ const CourseProductCard = ({ product, isCol }) => {
     onSuccess: () => {
       console.log("لایک شد ");
       queryClient.invalidateQueries(["courses", product.courseId]);
-
     },
     onError: (error) => {
       console.log("خطا در لایک:", error);

@@ -21,7 +21,7 @@ export default function CheckList({
   : typeof selected === "string"
   ? selected.split(",")
   : [];
-
+console.log(selected)
   return (
     <div className="flex flex-col gap-3" style={{ direction: "rtl" }}>
       <CheckboxGroup

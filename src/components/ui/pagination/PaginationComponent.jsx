@@ -1,9 +1,9 @@
 import React from "react";
 import "../../../assets/styles/variable.css";
-const PaginationComponent = ({totalItems,RowsOfPage,PageNumber,onChangeParams}) => {
+const PaginationComponent = ({totalItems,itemsPerPage,PageNumber,onChangeParams}) => {
  
   const pages = [];
-  const totalPages = Math.ceil(totalItems/ RowsOfPage);
+  const totalPages = Math.ceil(totalItems/ itemsPerPage);
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }

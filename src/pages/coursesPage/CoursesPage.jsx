@@ -26,26 +26,28 @@ const CoursesPage = () => {
   }, [debounceSearch]);
 
   const handleChange = (key, value) => {
-    setSearchParam((searchParams) => {
+    setSearchParam((searchParam) => {
       if (value) {
-        searchParams.set(key, value);
+        searchParam.set(key, value);
       } else {
-        searchParams.delete(key);
+        searchParam.delete(key);
       }
-      return searchParams;
+      return searchParam;
     }, { replace: true });
   };
 
-  const RowsOfPage = 12;
 
   const [isCol, setIsCol] = useToggle(false);
 
   const apiParams = {
     ...paramsObject,
     TechCount: 1,
-    RowsOfPage,
+    RowsOfPage:1,
+    RowsOfPage:12,
   };
+  const RowsOfPage= 12;
 
+  
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", paramsObject],
     queryFn: () => getCourses(apiParams),
@@ -133,7 +135,7 @@ const CoursesPage = () => {
       </div>
       <PaginationComponent
         totalItems={data?.totalCount}
-        RowsOfPage={paramsObject.RowsOfPage}
+        itemsPerPage
         PageNumber={paramsObject.PageNumber}
         onChangeParams={(newPage) => handleChange("PageNumber", newPage)}
       />
