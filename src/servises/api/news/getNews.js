@@ -1,14 +1,9 @@
 import axios from "axios";
 import instance from "./../../../core/interceptor/interceptor";
 
-export const getBlogs = async ({PageNumber=1,RowsOfPage=10,SortingCol="InsertDate",SortType="DESC"}) => {
+export const getBlogs = async (apiParams) => {
   const response = await instance.get("/News", {
-    params: {
-      PageNumber:PageNumber,
-      RowsOfPage:RowsOfPage,
-      SortingCol:SortingCol,
-      SortType:SortType
-    }
+    params: apiParams
   });
   return response.data;
 };
