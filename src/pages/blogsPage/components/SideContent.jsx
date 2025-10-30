@@ -1,10 +1,11 @@
 import React from 'react'
-import { Result } from "./index"
+import { Result,CategoryFiltering } from "./index"
 
 const SideContent = () => {
   return (
-    <div className='flex flex-col justify-start'>
+    <div className='flex flex-col justify-start gap-8'>
       <Result />
+      <CategoryFiltering />
     </div>
   )
 }

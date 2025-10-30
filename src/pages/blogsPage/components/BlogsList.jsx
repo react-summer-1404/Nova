@@ -9,7 +9,7 @@ const BlogsList = ({ pageNumber, rowsOfthePage, sortingCol, sortType }) => {
     queryFn: getBlogs,
   });
   return (
-    <div className="w-full flex flex-col md:flex-row justify-end items-center flex-wrap gap-3 py-16">
+    <div className="w-full flex flex-col md:flex-row justify-end items-center flex-wrap gap-3 px-3 py-16">
       <QueryState
         isError={isError}
         isLoading={isLoading}

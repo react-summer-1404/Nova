@@ -9,7 +9,7 @@ export const sortOption = [
 
 export default function CustomAutocomplete() {
   return (
-    <div className="flex w-full items-center flex-nowrap md:flex-nowrap gap-4">
+    <div className="flex w-[280px] p-0 items-center flex-nowrap md:flex-nowrap gap-4">
       <Autocomplete className="max-w-xs" label="مرتب سازی بر اساس">
         {sortOption.map((option) => (
           <AutocompleteItem key={option.key}>{option.label}</AutocompleteItem>

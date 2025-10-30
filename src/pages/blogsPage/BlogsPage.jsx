@@ -17,17 +17,17 @@ const BlogsPage = () => {
   return (
     <div className="flex flex-col gap-28 items-center">
         <NavigationSection />
-        <div className="w-[80%] flex justify-between "> 
+        <div className="w-[80%] flex justify-between gap-6"> 
           
           {/* main content */}
-          <div className="w-[75%] flex flex-col items-center border">
+          <div className="w-[75%] flex flex-col items-center pb-16">
             <Header />
             <BlogsList pageNumber={pageNumber} rowsOfthePage={rowsOfthePage} sortingCol={sortingCol} sortType={sortType} />
             <CustomPagination pageNumber={pageNumber} setPageNumber={setPageNumber} total={10}/>
           </div>
 
           {/* side content */}
-          <div className="w-[24%] border">
+          <div className="w-[24%]">
             <SideContent />
           </div>
         </div>

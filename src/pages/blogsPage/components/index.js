@@ -7,6 +7,7 @@ import SideContent from "./SideContent";
 import BlogsList from "./BlogsList";
 import BlogCard from "./blogcard/BlogCard";
 import QueryState from "./QueryState";
+import CategoryFiltering from "./CategoryFiltering";
 
 
 
@@ -19,5 +20,6 @@ export {
     Result,
     Search,
     CustomAutocomplete,
-    QueryState
+    QueryState,
+    CategoryFiltering
 }
