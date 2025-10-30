@@ -3,21 +3,21 @@ const JoinTheClub = () => {
   return (
     <div  style={{backgroundColor: "var(--color-dark-purple)"}} className ='w-screen md:h-[321px] flex h-[280px]'>
         <div className ='w-[28%] flex'>
-          <button  style={{backgroundColor: "var(--color-golden-yellow)"}} className =' w-[30%] h-[48px] rounded-[50px] border border-[#141109] shadow-[4px_6px_0px_0px_#3D3D3D]'>
-            <p className =' text-[11px] '> اکنون مشترک شوید </p>
-          </button>
+          
           <div><img src="src/assets/images/line.png" className='h-full'/></div>
           
         </div>
         
-      <div className =' w-[35%] flex flex-col justify-center items-end gap-4'>
-          <p style={{color: "var(--color-white)"}} className ='text-right text-[18px] text-[#FFFFFF] w-[80%] md:text-[24px] md:w-[70%]'>می خواهید از دوره های جدید در جریان باشید؟</p>
+      <div className =' w-[35%] flex flex-col justify-center relative items-end gap-4'>
+          <p style={{color: "var(--color-white)"}} className ='text-right text-[22px] text-[#FFFFFF] w-[100%] md:text-[34px] md:w-[70%]'>می خواهید از دوره های جدید در جریان باشید؟</p>
           <input
             type="text"
             placeholder='ایمیل خود را تایپ کنید'
-            className ='md:w-[80%] md:h-[51px] h-[33px] w-[77%] bg-[#4A44D1] border border-[#433EC2] rounded-[50px] placeholder: text-[14px] md:indent-60 indent-14 text-[#fff]'
+            className ='md:w-[80%] md:h-[51px] h-[33px] w-[77%] bg-[#4A44D1] border border-[#433EC2] rounded-[50px] placeholder: md:text-[14px] text-[10px] md:indent-60 indent-16 text-[#fff]'
           />
-          
+          <button  style={{backgroundColor: "var(--color-golden-yellow)"}} className =' md:w-[35%] md:h-[48px] absolute md:bottom-[80px] bottom-[81px] h-[35px] w-[47%] md:right-[500px] right-[210px] rounded-[50px] border border-[#141109] shadow-[4px_6px_0px_0px_#3D3D3D]'>
+            <p style={{color: "var(--color-blue-fot)"}}className ='text-[10px] md:text-[14px] font-[600]'> اکنون مشترک شوید </p>
+          </button>
         </div>
       <div className =' w-[22%] h-full'>
           <div className ='relative h-[280px] md:h-[300px]'>

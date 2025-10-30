@@ -5,10 +5,10 @@ import IconWrapper from './IconWrapper'
 const CommunicationApp = () => {
     return (
         <div className ='flex gap-1' >
-            <IconWrapper><FaInstagram style={{color : "var(--color-dark-gray)"}} size={9}/></IconWrapper>
-            <IconWrapper><FaWhatsapp style={{color : "var(--color-dark-gray)"}} size={9}/></IconWrapper>   
-            <IconWrapper><FaTwitter style={{color : "var(--color-dark-gray)"}} size={9}/></IconWrapper>        
-            <IconWrapper><FaFacebook style={{color : "var(--color-dark-gray)"}} size={9}/></IconWrapper>
+            <IconWrapper><FaInstagram style={{color : "var(--color-dark-gray)"}} size={18}/></IconWrapper>
+            <IconWrapper><FaWhatsapp style={{color : "var(--color-dark-gray)"}} size={18}/></IconWrapper>   
+            <IconWrapper><FaTwitter style={{color : "var(--color-dark-gray)"}} size={18}/></IconWrapper>        
+            <IconWrapper><FaFacebook style={{color : "var(--color-dark-gray)"}} size={18}/></IconWrapper>
         </div>
     )
 }
