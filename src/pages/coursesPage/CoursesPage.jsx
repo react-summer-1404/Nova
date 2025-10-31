@@ -2,12 +2,12 @@ import React, { useEffect, useMemo, useState } from "react";
 import "../../assets/styles/global.css";
 import Result from "../../components/ui/result/Result";
 import SearchSection from "../../components/ui/pagesSearchSection/SearchSection";
-import SortingSection from "../../components/ui/sortDropDown/SortDropdown";
+import SortingSection from "../../components/section/coursePage/SortingSection";
 import ViewMode from "../../components/ui/viewMode/ViewMode";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
-import CustomPagination from "../../components/ui/pagination/CustomPagination";
+// import CustomPagination from "../../components/ui/pagination/CustomPagination";
 import useToggle from "../../hooks/useToggle";
-import FiltersPanel from "./components/FiltersPanel";
+import FiltersPanel from "../../components/section/coursePage/FiltersPanel";
 import NavigationSection from "../../components/ui/navigation/NavigationSection";
 import { useQuery } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
@@ -67,17 +67,12 @@ const CoursesPage = () => {
         title={"همه دوره ها"}
         BreadcrumbsItems={BreadcrumbsItems}
       />
-
       <div className="md:w-[97%] flex justify-between gap-[20px] flex-col-reverse md:flex-row md:items-stretch  items-center ">
         <div className="flex flex-col gap-5 items-end  w-full">
-          <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%]">
-            <div className="flex gap-2">
+          <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%] md:mr-0 mr-9">
+            <div className="flex gap-2 ">
               <ViewMode isCol={isCol} setIsCol={setIsCol} />
-              <SortingSection
-                onChangeParams={handleChange}
-                SortingCol={paramsObject.SortingCol}
-                SortType={paramsObject.SortType}
-              />
+              <SortingSection/>
             </div>
             <Result currentItems={currentItems} />
           </div>

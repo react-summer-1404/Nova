@@ -1,36 +1,23 @@
-import {Select, SelectItem} from "@heroui/react";
-
-
-export default function SortDropdown() {
-
- const animals = [
-  {key: "cat", label: "Cat"},
-  {key: "dog", label: "Dog"},
-  {key: "elephant", label: "Elephant"},
-  {key: "lion", label: "Lion"},
-  {key: "tiger", label: "Tiger"},
-  {key: "giraffe", label: "Giraffe"},
-  {key: "dolphin", label: "Dolphin"},
-  {key: "penguin", label: "Penguin"},
-  {key: "zebra", label: "Zebra"},
-  {key: "shark", label: "Shark"},
-  {key: "whale", label: "Whale"},
-  {key: "otter", label: "Otter"},
-  {key: "crocodile", label: "Crocodile"},
-];
+import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import { useState } from "react";
+import "../../../assets/styles/variable.css";
+export default function SortDropdown({ options }) {
+  const [showItem, setShowItem] = useState(options[0]?.key);
 
   return (
-    <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-    <Select className="max-w-xs" label="Select an animal">
-      {animals.map((animal) => (
-        <SelectItem key={animal.key}>{animal.label}</SelectItem>
+    <Autocomplete
+      className="w-[127px] h-[40px]"
+      selectedKey={showItem}
+      onSelectionChange={setShowItem}
+      isClearable={false}
+      variant="bordered"
+      classNames={{
+        selectorButton: "text-[#5751E1] -m-3",
+      }}
+    >
+      {options?.map((option) => (
+        <AutocompleteItem key={option.key}>{option.label}</AutocompleteItem>
       ))}
-    </Select>
-    <Select className="max-w-xs" label="Favorite Animal" placeholder="Select an animal">
-      {animals.map((animal) => (
-        <SelectItem key={animal.key}>{animal.label}</SelectItem>
-      ))}
-    </Select>
-  </div>
+    </Autocomplete>
   );
 }

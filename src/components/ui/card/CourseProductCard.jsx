@@ -6,7 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postDisLike, postLike } from "../../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../../servises/api/addToFavortie";
 import { Link } from "react-router-dom";
-import useFavorite from "../../../core/store/favpriteStore";
+import useFavorite from "../../../core/store/favoriteStore";
 
 const CourseProductCard = ({ product, isCol }) => {
   const queryClient = useQueryClient();
@@ -16,11 +16,22 @@ const CourseProductCard = ({ product, isCol }) => {
   // --- Mutations ---
   const likeMutation = useMutation({
     mutationFn: (courseId) => postLike(courseId),
-    onSuccess: () => {
-      console.log("لایک شد ");
-      queryClient.invalidateQueries(["courses", product.courseId]);
+    onMutate:async (courseId)=>{
+      await queryClient.cancelQueries(["courses"])
+      const optimisticCorses = queryClient.getQueriesData(["courses"])
+      queryClient.setQueryData(["courses"],(old)=>[...old , optimisticCorses])
+      return {optimisticCorses}
     },
-    onError: (error) => {
+    onSuccess:(context) => {
+      // Replace optimistic todo in the todos list with the result
+      queryClient.setQueryData(['courses'], (old) =>
+        old.map((course) =>
+        course.id === context.optimisticCorses.id ? {...course ,likeCount:course.likeCount+1} : course,
+        ),
+      )
+    },
+    onError: (error,context) => {
+      queryClient.setQueryData(["courses"],(old)=>old.filter((course)=>course.id!==context.optimisticCorses.id))
       console.log("خطا در لایک:", error);
     },
   });
@@ -29,7 +40,6 @@ const CourseProductCard = ({ product, isCol }) => {
     mutationFn: (courseId) => postDisLike(courseId),
     onSuccess: () => {
       console.log("دیسلایک شد ");
-      queryClient.invalidateQueries(["courses", product.courseId]);
     },
     onError: (error) => {
       console.log("خطا در دیسلایک:", error);
@@ -40,7 +50,6 @@ const CourseProductCard = ({ product, isCol }) => {
     mutationFn: (courseId) => postAddToFavorite(courseId),
     onSuccess: () => {
       console.log("به علاقه‌مندی‌ها اضافه شد ");
-      queryClient.invalidateQueries(["courses", product.courseId]);
     },
     onError: (error) => {
       console.log("خطا در افزودن به علاقه‌مندی‌ها:", error);

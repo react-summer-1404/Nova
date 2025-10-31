@@ -1,7 +1,7 @@
 import React from "react";
 import shopIcon from "../../../../assets/images/shop.svg";
 import faveIcon from "../../../../assets/images/favorite.svg";
-import useFavorite from "../../../../core/store/favpriteStore";
+import useFavorite from "../../../../core/store/favoriteStore";
 const UserCartFavorites = ({ isOpen }) => {
   const { addedToFavorite } = useFavorite();
   return (
