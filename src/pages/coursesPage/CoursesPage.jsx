@@ -9,15 +9,18 @@ import CourseProductCard from "../../components/ui/card/CourseProductCard";
 import useToggle from "../../hooks/useToggle";
 import FiltersPanel from "../../components/section/coursePage/FiltersPanel";
 import NavigationSection from "../../components/ui/navigation/NavigationSection";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
 import { Spinner } from "@heroui/react";
 import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router-dom";
+import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
+import { postAddToFavorite } from "../../servises/api/addToFavortie";
 
 const CoursesPage = () => {
   const [searchParam, setSearchParam] = useSearchParams();
   const paramsObject = Object.fromEntries(searchParam.entries());
+  const queryClient = useQueryClient();
 
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
@@ -41,8 +44,69 @@ const CoursesPage = () => {
   };
 
   const [isCol, setIsCol] = useToggle(false);
+  // mutation
+  const likeMutation = useMutation({
+    mutationFn: postLike,
+    onMutate: async (courseId) => {
+      const queryKey = ["courses", filterKey];
 
-  const apiParams = {
+      await queryClient.cancelQueries({ queryKey});
+
+      const previousData = queryClient.getQueryData(queryKey);
+
+      queryClient.setQueryData(queryKey, (old) => ({
+        ...old,
+        courseFilterDtos: old?.courseFilterDtos?.map((course) =>
+          course.courseId === courseId
+            ? { ...course, likeCount: course.likeCount + 1, userIsLiked: true }
+            : course
+        ),
+      }));
+
+      return { previousData, queryKey };
+    },
+    onError: (err, courseId, context) => {
+      queryClient.setQueryData(context.queryKey, context.previousData);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["courses"] });
+    },
+  });
+
+  const disLikeMutation = useMutation({
+    mutationFn: postDisLike,
+    onMutate: async (courseId) => {
+      const queryKey = ["courses", filterKey];
+      await queryClient.cancelQueries({ queryKey });
+      const previousData = queryClient.getQueryData(queryKey);
+
+      queryClient.setQueryData(queryKey, (old) => ({
+        ...old,
+        courseFilterDtos: old?.courseFilterDtos?.map((course) =>
+          course.courseId === courseId
+            ? { ...course, dissLikeCount: course.dissLikeCount + 1, currentUserDissLike: true }
+            : course
+        ),
+      }));
+
+      return { previousData, queryKey };
+    },
+    onError: (err, courseId, context) => {
+      queryClient.setQueryData(context.queryKey, context.previousData);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["courses"] });
+    },
+  });
+
+  const addToFavoriteMutation = useMutation({
+    mutationFn: postAddToFavorite,
+    onSuccess: () => {
+    },
+  });
+
+  // === بقیه کد ===
+  const filterKey = {
     ...paramsObject,
     TechCount: 1,
     PageNumber: 1,
@@ -50,14 +114,14 @@ const CoursesPage = () => {
   };
 
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["courses", paramsObject],
-    queryFn: () => getCourses(apiParams),
+    queryKey: ["courses", filterKey],
+    queryFn: () => getCourses(filterKey),
     refetchOnWindowFocus: false,
+    staleTime: 5 * 1000,  
+    cacheTime: 1000 * 60 * 5,
   });
 
-  const currentItems = useMemo(() => {
-    return data?.courseFilterDtos || [];
-  }, [data]);
+  const currentItems =  data?.courseFilterDtos || [];
 
   const BreadcrumbsItems = [{ to: "/courses", label: "دوره های اموزشی" }];
 
@@ -110,6 +174,9 @@ const CoursesPage = () => {
                   key={product.courseId}
                   product={product}
                   isCol={isCol}
+                  likeMutation={likeMutation}
+            disLikeMutation={disLikeMutation}
+            addToFavoriteMutation={addToFavoriteMutation}
                 />
               ))}
           </div>

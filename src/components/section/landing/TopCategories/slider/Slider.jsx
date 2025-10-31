@@ -12,34 +12,34 @@ const Slider = () => {
     queryKey: ["techs"],
     queryFn: getTechs,
   });
-  const [newTechList, setNewTechList] = useState([])
+  // const [newTechList, setNewTechList] = useState([])
 
   const itemsPerPage = 6;
 
-  async function setAmount() {
-    const apiParams = {
-      TechCount: 1,
-    };
+  // async function setAmount() {
+  //   const apiParams = {
+  //     TechCount: 1,
+  //   };
 
-    for (let i = 0; i < data.length; i++) {
-      const newTech = await getCourses({...apiParams, ListTech: data[i].id});
+  //   for (let i = 0; i < data.length; i++) {
+  //     const newTech = await getCourses({...apiParams, ListTech: data[i].id});
 
-      data[i].count = newTech?.courseFilterDtos.length
-      // console.log(data)
-      setNewTechList([...data])
-    }
-  }
+  //     data[i].count = newTech?.courseFilterDtos.length
+  //     // console.log(data)
+  //     setNewTechList([...data])
+  //   }
+  // }
 
   const { slide, nextSlide, prevSlide } = useSlider({
     itemsLength: data ? data.length : 0,
     itemsPerPage: itemsPerPage,
   });
 
-  useEffect(() => {
-    if (data) {
-      setAmount()
-    }
-  }, [data])
+  // useEffect(() => {
+  //   if (data) {
+  //     setAmount()
+  //   }
+  // }, [data])
 
   return (
     <div
@@ -58,7 +58,7 @@ const Slider = () => {
           className="flex flex-1 transition-transform duration-500 ease-in-out gap-[44px]  xl:w-[1120px]"
           style={{ transform: `translateX(-${slide * (100 / itemsPerPage)}%)` }}
         >
-          {newTechList?.map((item) => (
+          {data?.map((item) => (
             <div
               key={item.id}
               className="flex flex-col items-center simple-border  flex-shrink-0 "
@@ -68,7 +68,7 @@ const Slider = () => {
               </div>
               <h3 className="font-medium text-responsive">{item.techName}</h3>
               <span style={{ color: "var(--color-text-gray)" }}>
-                ({item.count})
+                ({item.id})
               </span>
             </div>
           ))}

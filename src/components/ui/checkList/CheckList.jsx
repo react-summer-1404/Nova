@@ -3,7 +3,8 @@ import { CheckboxGroup, Checkbox } from "@heroui/react";
 export default function CheckList({ data, labelKey,selected,setSelected,idKey = "id",}) {
   console.log(selected);
   return (
-    <CheckboxGroup value={selected} onValueChange={setSelected}>
+   <div style={{direction:"rtl"}}>
+     <CheckboxGroup value={selected} onValueChange={setSelected}>
       
       {data?.map((item) => (
   <Checkbox
@@ -15,5 +16,6 @@ export default function CheckList({ data, labelKey,selected,setSelected,idKey = 
 ))}
 
     </CheckboxGroup>
+   </div>
   );
 }

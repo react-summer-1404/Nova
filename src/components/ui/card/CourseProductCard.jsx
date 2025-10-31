@@ -3,58 +3,20 @@ import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postDisLike, postLike } from "../../../servises/api/Like and Dislike";
-import { postAddToFavorite } from "../../../servises/api/addToFavortie";
+// import { postDisLike, postLike } from "../../../servises/api/Like and Dislike";
+// import { postAddToFavorite } from "../../../servises/api/addToFavortie";
 import { Link } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
 
-const CourseProductCard = ({ product, isCol }) => {
-  const queryClient = useQueryClient();
+const CourseProductCard = ({ product, 
+  isCol, 
+  likeMutation, 
+  disLikeMutation, 
+  addToFavoriteMutation}) => {
   const { addedToFavorite, addFavorite } = useFavorite();
   const isFav = addedToFavorite.includes(product.courseId);
 
-  // --- Mutations ---
-  const likeMutation = useMutation({
-    mutationFn: (courseId) => postLike(courseId),
-    onMutate:async (courseId)=>{
-      await queryClient.cancelQueries(["courses"])
-      const optimisticCorses = queryClient.getQueriesData(["courses"])
-      queryClient.setQueryData(["courses"],(old)=>[...old , optimisticCorses])
-      return {optimisticCorses}
-    },
-    onSuccess:(context) => {
-      // Replace optimistic todo in the todos list with the result
-      queryClient.setQueryData(['courses'], (old) =>
-        old.map((course) =>
-        course.id === context.optimisticCorses.id ? {...course ,likeCount:course.likeCount+1} : course,
-        ),
-      )
-    },
-    onError: (error,context) => {
-      queryClient.setQueryData(["courses"],(old)=>old.filter((course)=>course.id!==context.optimisticCorses.id))
-      console.log("خطا در لایک:", error);
-    },
-  });
-
-  const disLikeMutation = useMutation({
-    mutationFn: (courseId) => postDisLike(courseId),
-    onSuccess: () => {
-      console.log("دیسلایک شد ");
-    },
-    onError: (error) => {
-      console.log("خطا در دیسلایک:", error);
-    },
-  });
-
-  const addToFavoriteMutation = useMutation({
-    mutationFn: (courseId) => postAddToFavorite(courseId),
-    onSuccess: () => {
-      console.log("به علاقه‌مندی‌ها اضافه شد ");
-    },
-    onError: (error) => {
-      console.log("خطا در افزودن به علاقه‌مندی‌ها:", error);
-    },
-  });
+ 
 
   // --- Handle Mutations ---
   const handleLike = () => likeMutation.mutate(product.courseId);
@@ -64,7 +26,7 @@ const CourseProductCard = ({ product, isCol }) => {
     addFavorite(product.courseId);
     addToFavoriteMutation.mutate(product.courseId);
   };
-  
+
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
 
   return (

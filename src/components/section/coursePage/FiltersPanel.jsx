@@ -17,8 +17,10 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
 
   const [debouncePrice] = useDebounce(priceRange, 500);
   useEffect(() => {
-    onChangeParams("CostDown", debouncePrice[0]);
-    onChangeParams("CostUp", debouncePrice[1]);
+    useEffect(() => {
+      onChangeParams("CostDown", String(debouncePrice[0]));    
+      onChangeParams("CostUp", String(debouncePrice[1]));     
+    }, [debouncePrice]);
   }, [debouncePrice]);
 
   const { data: topTech } = useQuery({
@@ -32,11 +34,14 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   const { data: teachersData } = useQuery({
     queryKey: ["teachers"],
     queryFn: getTeachers,
+    staleTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
   return (
     <div className="md:flex flex-col gap-5 w-[310px] hidden">
-      <InfoCard title="دسته بندی ها" showMoreButton={topTech?.length > 7}>
+      <InfoCard title="دسته بندی ها" >
         <CheckList
           data={topTech}
           labelKey="techName"
@@ -45,7 +50,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
         />
       </InfoCard>
 
-      <InfoCard title="سطح دوره" showMoreButton={courseLevel?.length > 4}>
+      <InfoCard title="سطح دوره" >
         <CheckList
           data={courseLevel}
           labelKey="levelName"
@@ -54,7 +59,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
         />
       </InfoCard>
 
-      <InfoCard title="نحوه برگزاری" showMoreButton={courseState?.length > 4}>
+      <InfoCard title="نحوه برگزاری" >
         <CheckList
           data={courseState}
           labelKey="label"
@@ -65,7 +70,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
         />
       </InfoCard>
 
-      <InfoCard title="مربیان" showMoreButton={teachersData?.length > 7}>
+      <InfoCard title="مربیان" >
         <CheckList
           data={teachersData}
           labelKey="fullName"
