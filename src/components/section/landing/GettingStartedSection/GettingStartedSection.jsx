@@ -41,9 +41,9 @@ const GettingStartedSection = () => {
       </div >
         <div className ='flex justify-center gap-2 md:gap-6 mt-[-10px] md:mt-[100px]'>
           <div className ='flex items-center h-[140px] md:h-[220px] w-[45%] md:w-[39%] border bg-[#FFFFFF] border-[#BDBDBD] rounded-[15px] relative'>
-            <img src="src/assets/images/SVG (5).png" className ='absolute md:top-[80px] top-[51px] md:left-[335px] left-[154px] w-[45%] md:w-[37%]'/>
-            <img src="src/assets/images/7fe7f1624b741e2591310cbf55fa4c6afcf4b877.png" className ='absolute top-[19px] md:top-[17px] left-[160px] md:left-[325px] w-[42%] md:w-[37%]'/>
-            <img src="src/assets/images/SVG-6.png" className ='absolute top-[13px] md:top-[5px] left-[245px] md:left-[469px] w-[5%] md:w-[6%]'/>
+            <img src="src/assets/images/SVG (5).png" className ='absolute md:top-[80px] top-[48px] md:left-[335px] left-[158px] w-[45%] md:w-[37%]'/>
+            <img src="src/assets/images/7fe7f1624b741e2591310cbf55fa4c6afcf4b877.png" className ='absolute top-[15px] md:top-[17px] left-[160px] md:left-[325px] w-[42%] md:w-[37%]'/>
+            <img src="src/assets/images/SVG-6.png" className ='absolute top-[9px] md:top-[5px] left-[245px] md:left-[469px] w-[5%] md:w-[6%]'/>
             <div className ='w-[53%] md:w-[57%] h-[110px] md:h-[170px] text-right flex flex-col gap-1 md:gap-5 items-end'>
               <p className ='font-[600] text-[18px] md:text-[28px] text-[#161439]'>دانشجو شوید</p>
               <h2 className ='font-[400] text-[10px] md:text-[16px] text-[#6D6C80] w-[100%] md:w-[85%]'>به میلیون ها نفر از سراسر جهان بپیوندید
@@ -63,8 +63,8 @@ const GettingStartedSection = () => {
           </div>
           
           <div className ='items-center flex h-[140px] md:h-[220px] w-[45%] md:w-[39%] border bg-[#FFFFFF] border-[#BDBDBD] rounded-[15px] relative'>
-            <img src="src/assets/images/SVG (5).png" className ='absolute top-[51px] left-[154px] w-[45%] md:top-[80px] md:left-[336px] md:w-[37%]'/>
-            <img src="src/assets/images/3da9724bd304df2f0f944c30163217afe198a0b6.png" className ='absolute top-[14px] md:top-[13px] left-[165px] md:left-[347px] w-[37%] md:w-[32%]'/>
+            <img src="src/assets/images/SVG (5).png" className ='absolute top-[48px] left-[158px] w-[45%] md:top-[80px] md:left-[336px] md:w-[37%]'/>
+            <img src="src/assets/images/3da9724bd304df2f0f944c30163217afe198a0b6.png" className ='absolute top-[11px] md:top-[13px] left-[165px] md:left-[347px] w-[37%] md:w-[32%]'/>
             
             <div className ='w-[53%] md:w-[61%] h-[130px] md:h-[150px] text-right flex flex-col justify-center gap-1 p-1 md:gap-5 items-end'>
               <p className ='font-[600] text-[18px] md:text-[28px] text-[#161439]'>مربی شوید </p>
