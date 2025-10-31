@@ -60,16 +60,16 @@ const AnotherCourse = () => {
 
             <div className='relative'>
               <button onClick={() => swiperRef.current?.slidePrev()}
-                className ='w-[50px] h-[50px] rounded-full border-[#1C1A4A] absolute bottom-[40px]'
+                className ='md:w-[50px] md:h-[50px] w-[43px] h-[40px] rounded-full border-[#1C1A4A] left-[295px] md:left-0  absolute bottom-[40px]'
                 style={{backgroundColor: "var(--color-dark-purple)", boxShadow: "-3.6px 2.4px 0px 0px #23232B"}}
               >
-                <FaArrowLeft size={25} className='mt-[5px] ml-[10px]'/>
+                <FaArrowLeft size={20} md:size={25} className='mt-[5px] ml-[10px]'/>
               </button>
               <button onClick={() => swiperRef.current?.slideNext()}
-                className ='w-[50px] h-[50px] rounded-full border-[#1C1A4A] absolute bottom-[40px] left-[60px]'
+                className ='md:w-[50px] md:h-[50px] w-[43px] h-[40px] rounded-full border-[#1C1A4A] left-[350px] absolute bottom-[40px]  md:left-[60px]'
                 style={{backgroundColor: "var(--color-dark-purple)", boxShadow: "-3.6px 2.4px 0px 0px #23232B"}}
               >
-                <FaArrowRight size={25} className='mt-[5px] ml-[10px]'/>
+                <FaArrowRight size={20} md:size={25} className='mt-[5px] ml-[10px]'/>
               </button>
             </div>
 

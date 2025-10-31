@@ -4,10 +4,10 @@ import SameText from './SameText';
 
 const CourseExplanation = ({describe}) => {
     return (
-        <div className ='border-[1px]  border-[#DFDFDF] flex justify-center items-center w-full shadow-[0_0_14px_0_rgba(0,0,0,0.08)]'>
+        <div className ='  flex justify-center items-center w-full'>
             <div className =' flex flex-col items-end w-[95%] gap-3'>
-                <p className ='font-[600] text-[18px] md:text-[22px]'>شرح دوره</p>
-                <h2 className ='font-[400] text-[10px] md:text-[14px] text-right text-[#6D6C80] '>
+                <p className ='font-[600] text-[20px] md:text-[24px]'>شرح دوره</p>
+                <h2 className ='font-[400] text-[12px] md:text-[16px] text-right text-[#6D6C80] '>
                 {describe}
                 </h2>
                 {/* <p className ='font-[600] text-[22px]'>در این دوره چه چیزی یاد خواهید گرفت؟</p>
