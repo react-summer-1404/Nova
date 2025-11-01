@@ -117,11 +117,10 @@ const CoursesPage = () => {
     mutationFn: postAddToFavorite,
     onSuccess: () => {},
   });
-
+// 
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", filterKey],
     queryFn: () => getCourses(filterKey),
-    // enabled: !!Object.keys(paramsObject).length,
   });
 
   const currentItems = data?.courseFilterDtos || [];
