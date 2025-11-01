@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CourseProductCard from '../../ui/card/CourseProductCard';
 import { useQuery } from '@tanstack/react-query';
 import { getCourses } from '../../../servises/api/courses/coursList';
 import ErrorMessage from '../landing/BlogSection/ErrorMessage';
 import { Spinner } from "@heroui/react";
-import useFilter from '../../../store/filterStore';
+// import useFilter from '../../../store/filterStore';
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -12,8 +12,8 @@ import {Autoplay, Navigation} from "swiper/modules";
 import { useRef } from 'react';
 import { FaArrowLeft,FaArrowRight } from "react-icons/fa6";
 
-const AnotherCourse = () => { 
-  const {selectedLevels, currentPage } = useFilter();
+const FilterCourse = () => { 
+  const {selectedLevels, currentPage } = useState();
   const itemsPerPage = 10;
   const apiParam = {
     PageNumber: currentPage,
@@ -96,4 +96,4 @@ const AnotherCourse = () => {
     
   )
 }
-export default AnotherCourse;
+export default FilterCourse;

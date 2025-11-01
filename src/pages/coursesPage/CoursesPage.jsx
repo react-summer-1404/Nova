@@ -1,82 +1,147 @@
-// import React, { useState } from "react";
-import NavigationSection from "../../components/ui/navigation/NavigationSection";
-import Result from "./components/Result";
-import SearchSection from "../../components/ui/searchSection/SearchSection";
-import SortingSection from "./components/SortingSection";
+import React, { useEffect, useMemo, useState } from "react";
+import "../../assets/styles/global.css";
+import Result from "../../components/ui/result/Result";
+import SearchSection from "../../components/ui/pagesSearchSection/SearchSection";
+import SortingSection from "../../components/section/coursePage/SortingSection";
 import ViewMode from "../../components/ui/viewMode/ViewMode";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
-import PaginationComponent from "../../components/ui/pagination/PaginationComponent";
-import { useQuery } from "@tanstack/react-query";
-import { getCourses } from "../../servises/api/courses/coursList";
-import FiltersPanel from "./components/FiltersPanel";
+import CustomPagination from "../../components/ui/pagination/CustomPagination";
 import useToggle from "../../hooks/useToggle";
-import useFilter from "../../store/filterStore";
+import FiltersPanel from "../../components/section/coursePage/FiltersPanel";
+import NavigationSection from "../../components/ui/navigation/NavigationSection";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getCourses } from "../../servises/api/courses/coursList";
 import { Spinner } from "@heroui/react";
+import { useDebounce } from "use-debounce";
+import { useSearchParams } from "react-router-dom";
+import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
+import { postAddToFavorite } from "../../servises/api/addToFavortie";
 
 const CoursesPage = () => {
-  const {
-    selectedTechs,
-    selectedLevels,
-    selectedTeachers,
-    value,
-    searchQuery,
-    sortType,
-    sortingCol,
-    currentPage,
-    setSearchQuery,
-  } = useFilter();
-
-  const itemsPerPage = 12;
-
+  const [searchParam, setSearchParam] = useSearchParams();
+  const paramsObject = Object.fromEntries(searchParam.entries());
+  const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [rowsOfThePage] = useState(10);
+  const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
+  const [debounceSearch] = useDebounce(searchQuery, 500);
 
-  const apiParams = {
-    PageNumber: currentPage,
-    RowsOfPage: itemsPerPage,
-    ListTech: selectedTechs.length ? selectedTechs.join(",") : undefined,
-    courseLevelId: selectedLevels.length ? selectedLevels.join(",") : undefined,
-    TeacherId: selectedTeachers.length ? selectedTeachers.join(",") : undefined,
-    sortingCol: sortingCol,
-    Query: searchQuery,
-    SortType: sortType,
-    TechCount: 1,
-    CostDown: value[0],
-    CostUp: value[1],
+  useEffect(() => {
+    handleChange("Query", debounceSearch || "");
+  }, [debounceSearch]);
+
+  const handleChange = (key, value) => {
+    setSearchParam(
+      (prev) => {
+        if (value) {
+          prev.set(key, value);
+        } else {
+          prev.delete(key);
+        }
+        return prev;
+      },
+      { replace: true }
+    );
   };
+  const filterKey = useMemo(
+    () => ({
+      ...paramsObject,
+      TechCount: 1,
+      PageNumber: 1,
+      RowsOfPage: 12,
+    }),
+    [paramsObject]
+  );
 
-  const { data, isError, isLoading } = useQuery({
-    queryKey: [
-      "courses",
-      currentPage,
-      selectedTechs,
-      selectedLevels,
-      selectedTeachers,
-      searchQuery,
-      sortType,
-      value,
-      sortingCol,
-    ],
-    queryFn: () => getCourses(apiParams),
+  // mutation
+  const queryKey = ["courses", filterKey];
+
+  const likeMutation = useMutation({
+    mutationFn: postLike,
+    onMutate: async (courseId) => {
+      await queryClient.cancelQueries({ queryKey });
+
+      const previousData = queryClient.getQueryData(queryKey);
+
+      queryClient.setQueryData(queryKey, (old) => ({
+        ...old,
+        courseFilterDtos: old?.courseFilterDtos?.map((course) =>
+          course.courseId === courseId
+            ? { ...course, likeCount: course.likeCount + 1, userIsLiked: true }
+            : course
+        ),
+      }));
+
+      return { previousData, queryKey };
+    },
+    onError: (error, courseId, context) => {
+      queryClient.setQueryData(context.queryKey, context.previousData);
+      console.log(error);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey });
+    },
   });
 
-  const currentItems = data?.courseFilterDtos;
-  const BreadcrumbsItems = [{ to: "/courses", label: "دوره های اموزشی" }];
+  const disLikeMutation = useMutation({
+    mutationFn: postDisLike,
+    onMutate: async (courseId) => {
+      await queryClient.cancelQueries({ queryKey });
+      const previousData = queryClient.getQueryData(queryKey);
+
+      queryClient.setQueryData(queryKey, (old) => ({
+        ...old,
+        courseFilterDtos: old?.courseFilterDtos?.map((course) =>
+          course.courseId === courseId
+            ? {
+                ...course,
+                dissLikeCount: course.dissLikeCount + 1,
+                currentUserDissLike: true,
+              }
+            : course
+        ),
+      }));
+
+      return { previousData, queryKey };
+    },
+    onError: (error, courseId, context) => {
+      queryClient.setQueryData(context.queryKey, context.previousData);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey });
+    },
+  });
+
+  const addToFavoriteMutation = useMutation({
+    mutationFn: postAddToFavorite,
+    onSuccess: () => {},
+  });
+// 
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["courses", filterKey],
+    queryFn: () => getCourses(filterKey),
+  });
+
+  const currentItems = data?.courseFilterDtos || [];
 
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
       <NavigationSection
         title={"همه دوره ها"}
-        BreadcrumbsItems={BreadcrumbsItems}
+        // BreadcrumbsItems={BreadcrumbsItems}
       />
-
       <div className="md:w-[97%] flex justify-between gap-[20px] flex-col-reverse md:flex-row md:items-stretch  items-center ">
         <div className="flex flex-col gap-5 items-end  w-full">
-          <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%]">
-            <div className="flex gap-2">
+          <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%] md:mr-0 mr-9">
+            <div className="flex gap-2 ">
               <ViewMode isCol={isCol} setIsCol={setIsCol} />
-              <SortingSection />
+              <SortingSection
+                paramsObject={paramsObject}
+                onChangeParams={handleChange}
+              />
             </div>
-            <Result currentItems={currentItems} />
+            <Result currentItems={currentItems} totalCount={data?.totalCount} />
           </div>
 
           <div
@@ -113,23 +178,33 @@ const CoursesPage = () => {
                   key={product.courseId}
                   product={product}
                   isCol={isCol}
+                  likeMutation={likeMutation}
+                  disLikeMutation={disLikeMutation}
+                  addToFavoriteMutation={addToFavoriteMutation}
                 />
               ))}
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <SearchSection searched={searchQuery} setSearched={setSearchQuery} />
+          <SearchSection Query={searchQuery} setQuery={setSearchQuery} />
 
           <div className="hidden md:block">
-            <FiltersPanel />
+            <FiltersPanel
+              paramsObject={paramsObject}
+              onChangeParams={handleChange}
+            />
           </div>
         </div>
       </div>
-      <PaginationComponent
-        totalItems={data?.totalCount}
-        itemsPerPage={itemsPerPage}
+      <div className="flex-center p-8">
+      <CustomPagination
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        RowsOfPage={rowsOfThePage}
+        totalCount={data?.totalCount}
       />
+      </div>
     </div>
   );
 };

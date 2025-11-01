@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 const NavbarItems = ({ isOpen }) => {
   const items = [
     { title: "مربیان", path: "/coaches" },
-    { title: "وبلاگ", path: "/blogsPage" },
-    { title: "فروشگاه", path: "/" },
-    { title: "ایونت ها", path: "/" },
+    { title: "وبلاگ", path: "/blogs" },
     { title: "دوره های اموزشی", path: "/courses" },
     { title: "  صفحه اصلی", path: "/" },
   ];
@@ -21,7 +19,7 @@ const NavbarItems = ({ isOpen }) => {
         className={`flex  ${
           isOpen
             ? "gap-3 sm:gap-16 sm:text-2xl"
-            : "md:flex-row md:items-center md:gap-2 sm:gap-1 lg:gap-3 xl:gap-6 w-full text-responsive"
+            : "md:flex-row md:items-center md:gap-2 sm:gap-1 lg:gap-3  w-full text-responsive"
         }`}
       >
         {items.map((item, index) => (

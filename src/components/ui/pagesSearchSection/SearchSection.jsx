@@ -1,9 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React from "react";
 import { BsSearch } from "react-icons/bs";
-import { getCourses } from "../../../servises/api/courses/coursList";
 
-const SearchSection = ({ searched, setSearched }) => {
+const SearchSection = ({ Query,setQuery }) => {
 
   return (
     <div
@@ -22,9 +20,8 @@ const SearchSection = ({ searched, setSearched }) => {
         className="text-right focus:outline-none w-[100px] h-[20px]"
         type="text"
         placeholder="جستجو"
-        value={searched}
-        onChange={(e) => setSearched(e.target.value)}
-      />
+        value={Query}
+        onChange={(e)=>{setQuery(e.target.value)}}      />
     </div>
   );
 };

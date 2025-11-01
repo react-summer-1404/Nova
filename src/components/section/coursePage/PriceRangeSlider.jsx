@@ -1,7 +1,9 @@
 import React from "react";
 import { Slider } from "@heroui/react";
 
+
 export default function PriceRangeSlider({ value, setValue }) {
+
   return (
     <div className="flex flex-col gap-4 p-4 w-[240px]">
       <Slider

@@ -3,7 +3,7 @@ import React from 'react'
 const CompareCoursePage = () => {
   return (
     <div>
-      CompairCoursePage
+      CompareCoursePage
     </div>
   )
 }

@@ -20,7 +20,7 @@ const FeaturedCourses = () => {
   const filteredCourses =
   pointTab === "همه دوره‌ها"
     ? topCourseData
-    : topCourseData.filter((tc) => tc.technologyList?.includes(pointTab)  );
+    : topCourseData.filter((tc) => tc.technologyList?.includes(pointTab) );
 
   const { slide, nextSlide, prevSlide, slidesPerView } = useSlider({
     itemsLength: filteredCourses?.length,
@@ -65,8 +65,8 @@ const FeaturedCourses = () => {
         transform: `translateX(-${slide * (100 / slidesPerView)}%)`,
       }}
     >
-      {filteredCourses?.map((product, index) => (
-        <div key={index} className="flex-shrink-0 ">  
+      {filteredCourses?.map((product) => (
+        <div key={product.courseId} className="flex-shrink-0 ">  
           <CourseProductCard product={product} />
         </div>
       ))}

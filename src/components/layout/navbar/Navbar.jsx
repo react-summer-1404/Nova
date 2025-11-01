@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../../../assets/styles/global.css";
 import "../../../assets/styles/nav.css";
 import Logo from "../../ui/Logo/Logo";
@@ -12,7 +12,7 @@ import useToggle from "../../../hooks/useToggle";
 
 const Navbar = () => {
   const [isOpen, toggle, setIsOpen] = useToggle(false);
-  const [isSearch, setsSearch] = useToggle(false);
+  
 
   useEffect(() => {
     const handleResize = () => {

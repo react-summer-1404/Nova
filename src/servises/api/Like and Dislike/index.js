@@ -6,3 +6,9 @@ export const postLike = async (courseId) => {
   );
   return response.data;
 };
+export const postDisLike = async (courseId) => {
+  const response = await instance.post(
+    `/Course/AddCourseDissLike?CourseId=${courseId}`
+  );
+  return response.data;
+};
