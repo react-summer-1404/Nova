@@ -186,5 +186,5 @@ const CourseProductCard = ({ product,
   );
 };
 
-export default React.memo(CourseProductCard);
+export default CourseProductCard;
 

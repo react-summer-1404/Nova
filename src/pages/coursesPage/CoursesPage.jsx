@@ -5,7 +5,7 @@ import SearchSection from "../../components/ui/pagesSearchSection/SearchSection"
 import SortingSection from "../../components/section/coursePage/SortingSection";
 import ViewMode from "../../components/ui/viewMode/ViewMode";
 import CourseProductCard from "../../components/ui/card/CourseProductCard";
-// import CustomPagination from "../../components/ui/pagination/CustomPagination";
+import CustomPagination from "../../components/ui/pagination/CustomPagination";
 import useToggle from "../../hooks/useToggle";
 import FiltersPanel from "../../components/section/coursePage/FiltersPanel";
 import NavigationSection from "../../components/ui/navigation/NavigationSection";
@@ -21,7 +21,9 @@ const CoursesPage = () => {
   const [searchParam, setSearchParam] = useSearchParams();
   const paramsObject = Object.fromEntries(searchParam.entries());
   const queryClient = useQueryClient();
-
+  const [isCol, setIsCol] = useToggle(false);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [rowsOfThePage, setRowsOfThePage] = useState(10);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
 
@@ -52,7 +54,6 @@ const CoursesPage = () => {
     [paramsObject]
   );
 
-  const [isCol, setIsCol] = useToggle(false);
   // mutation
   const queryKey = ["courses", filterKey];
 
@@ -120,7 +121,7 @@ const CoursesPage = () => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", filterKey],
     queryFn: () => getCourses(filterKey),
-    enabled: !!Object.keys(paramsObject).length,
+    // enabled: !!Object.keys(paramsObject).length,
   });
 
   const currentItems = data?.courseFilterDtos || [];
@@ -129,7 +130,7 @@ const CoursesPage = () => {
     <div className="flex flex-col gap-8  w-screen  justify-center ">
       <NavigationSection
         title={"همه دوره ها"}
-        BreadcrumbsItems={BreadcrumbsItems}
+        // BreadcrumbsItems={BreadcrumbsItems}
       />
       <div className="md:w-[97%] flex justify-between gap-[20px] flex-col-reverse md:flex-row md:items-stretch  items-center ">
         <div className="flex flex-col gap-5 items-end  w-full">
@@ -196,7 +197,14 @@ const CoursesPage = () => {
           </div>
         </div>
       </div>
-      {/* <CustomPagination /> */}
+      <div className="flex-center p-8">
+      <CustomPagination
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        RowsOfPage={rowsOfThePage}
+        totalCount={data?.totalCount}
+      />
+      </div>
     </div>
   );
 };

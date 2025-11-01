@@ -8,8 +8,8 @@ const SortingSection = ({ paramsObject, onChangeParams }) => {
   ];
 
   const sortCol = [
-    { key: "Cost", label: "cost" },
-    { key: "Active", label: "active" },
+    { key: "cost", label: "cost" },
+    { key: "active", label: "active" },
   ];
 
   return (
@@ -23,14 +23,14 @@ const SortingSection = ({ paramsObject, onChangeParams }) => {
 
       <SortDropdown
         options={sortType}
-        selected={paramsObject.SortType || "ASC"}
+        selected={paramsObject.SortType || "asc"}
         onChange={onChangeParams}
         paramKey="SortType"
       />
 
       <SortDropdown
         options={sortCol}
-        selected={paramsObject.SortingCol || "Cost"}
+        selected={paramsObject.SortingCol || "cost"}
         onChange={onChangeParams}
         paramKey="SortingCol"
       />
