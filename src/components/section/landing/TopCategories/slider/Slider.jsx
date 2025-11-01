@@ -4,14 +4,13 @@ import "../../../../../assets/styles/variable.css";
 import YellowButton from "../../../../ui/button/YellowButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../../hooks/useSlider";
-import { useQuery } from "@tanstack/react-query";
-import { getTechs } from "../../../../../servises/api/landing/topCategories";
 import { getCourses } from "../../../../../servises/api/courses/coursList";
+import useTechs from "../../../../../hooks/useTech"
+
+
 const Slider = () => {
-  const { data } = useQuery({
-    queryKey: ["techs"],
-    queryFn: getTechs,
-  });
+  const { data } = useTechs();
+
   const [newTechList, setNewTechList] = useState([])
 
   const itemsPerPage = 6;
@@ -19,13 +18,14 @@ const Slider = () => {
   async function setAmount() {
     const apiParams = {
       TechCount: 1,
+      PageNumber :1,
+      RowsOfPage:12
     };
 
     for (let i = 0; i < data.length; i++) {
       const newTech = await getCourses({...apiParams, ListTech: data[i].id});
 
       data[i].count = newTech?.courseFilterDtos.length
-      console.log(data)
       setNewTechList([...data])
     }
   }
@@ -86,3 +86,4 @@ const Slider = () => {
 };
 
 export default Slider;
+

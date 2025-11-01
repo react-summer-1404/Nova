@@ -2,7 +2,7 @@ import React from "react";
 
 const AccentText = ({beforeLabel,afterLabel ,title}) => {
   return (
-    <div className="text-right font-bold  text-4xl flex flex-col items-end">
+    <div className="text-right font-bold font-display text-4xl flex flex-col items-end">
     <div className="flex">
     <div className="flex justify-end">
       

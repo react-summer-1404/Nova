@@ -14,11 +14,12 @@ import {
   CoursesPage,
 } from "../pages/index";
 import { AuthRoutes } from "../features/auth/routes/routes";
+import Dashboard from "../features/dashboard/layouts/Dashboard";
 import PageLayout from "../components/layout/PageLayout/PageLayout";
 
 const router = createBrowserRouter([
   {
-    element: <PageLayout />, 
+    element: <PageLayout />,
     children: [
       { path: "/", element: <LandingPage /> },
       { path: "/aboutUs", element: <AboutUsPage /> },
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: "/courses", element: <CoursesPage /> },
   { path: "*", element: <NotFoundingPage /> },
 
+      { path: "/dashboard", element: <Dashboard /> },
     ],
   },
   ...AuthRoutes,

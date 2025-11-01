@@ -1,6 +1,14 @@
-import React from 'react'
-import Logo from '../../ui/Logo/Logo'
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp, FaYoutube ,FaGooglePlay,FaApple} from 'react-icons/fa'
+import React from "react";
+import Logo from "../../ui/Logo/Logo";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaWhatsapp,
+  FaYoutube,
+  FaGooglePlay,
+  FaApple,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -100,7 +108,7 @@ const Footer = () => {
         <p style={{color : "var(--color-text-fot)" }} className ='font-[400] text-[14px] md:text-[16px] '>© تمامی حقوق این سایت متعلق به تیم نامبر وان می باشد.</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

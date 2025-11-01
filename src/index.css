@@ -1,9 +1,11 @@
 @import "tailwindcss";
 @import "./assets/styles/variable.css";
 @import "./assets/styles/font.css";
-@plugin './hero.ts';
+@plugin '../hero.ts';
+@plugin "daisyui";
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
+
 
 * {
   box-sizing: border-box;
@@ -26,4 +28,8 @@ body {
   /* font-family: var(--font-base); */
   background: var(--color-white);
   overflow-x: hidden;
+  padding: 0; margin: 0;
+  /* display: flex;
+  justify-content: center; */
+  font-family: "iranSans";
 }

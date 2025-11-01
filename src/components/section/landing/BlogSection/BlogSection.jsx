@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
 import { BiDislike } from "react-icons/bi";
@@ -72,7 +72,7 @@ const apiParams = {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlogSection
+export default BlogSection;
