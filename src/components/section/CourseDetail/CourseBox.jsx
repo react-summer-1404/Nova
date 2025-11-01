@@ -127,7 +127,9 @@ console.log(data)
                     
                 />
 
-                <FilterCourse />
+                <FilterCourse 
+                    courseLevelId={data?.courseLevelId}
+                />
             </div>
         </div>
     )

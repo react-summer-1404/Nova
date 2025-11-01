@@ -30,8 +30,8 @@ const router = createBrowserRouter([
       { path: "/coachesDetail", element: <CoachesDetailPage /> },
       { path: "/compareCourse", element: <CompareCoursePage /> },
       { path: "/contactUs", element: <ContactUsPage /> },
-      { path: "/courseDetail:id", element: <CourseDetailPage /> },
       { path: "/courses", element: <CoursesPage /> },
+      { path: "/courseDetail:id", element: <CourseDetailPage /> },
   { path: "*", element: <NotFoundingPage /> },
 
       { path: "/dashboard", element: <Dashboard /> },

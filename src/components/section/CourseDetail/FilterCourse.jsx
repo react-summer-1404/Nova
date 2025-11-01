@@ -12,19 +12,16 @@ import {Autoplay, Navigation} from "swiper/modules";
 import { useRef } from 'react';
 import { FaArrowLeft,FaArrowRight } from "react-icons/fa6";
 
-const FilterCourse = () => { 
-  const {selectedLevels, currentPage } = useState();
+const FilterCourse = ({courseLevelId}) => { 
   const itemsPerPage = 10;
   const apiParam = {
-    PageNumber: currentPage,
+    PageNumber: 1,
     RowsOfPage: itemsPerPage,
-    courseLevelId: selectedLevels.length ? selectedLevels.join(",") : undefined,
+    courseLvlId: courseLevelId
   }
   const {data, isError, isLoading, error} = useQuery({
     queryKey: [
       "filCourses",
-      currentPage,
-      selectedLevels
     ],
     
     queryFn: () => getCourses(apiParam),
