@@ -3,8 +3,8 @@ import SortDropdown from "../../ui/sortDropDown/SortDropdown";
 
 const SortingSection = ({ paramsObject, onChangeParams }) => {
   const sortType = [
-    { label: "ascending", key: "asc" },
-    { label: "Descending", key: "desc" },
+    { label: "ascending", key:"asc" },
+    { label: "Descending", key:"desc" },
   ];
 
   const sortCol = [

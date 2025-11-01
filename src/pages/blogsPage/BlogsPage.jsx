@@ -12,14 +12,14 @@ import {BlogCard} from "./components/index";
 
 const BlogsPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfthePage, setRowsOfthePage] = useState(10);
-  const [sortingCol, setSortingCol] = useState("InsertDate");
-  const [sortType, setSortType] = useState("InsertDate");
+  const [rowsOfthePage] = useState(10);
+  const [sortingCol] = useState("InsertDate");
+  const [sortType ] = useState("InsertDate");
   const apiParams = {
     RowsOfPage: rowsOfthePage,
     PageNumber: pageNumber,
-    SortingCol: sortingCol,
-    SortType: sortType,
+    // SortingCol: sortingCol,
+    // SortType: sortType,
   };
   
   const { data, isError, isLoading } = useQuery({

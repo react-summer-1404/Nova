@@ -19,15 +19,16 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   const [debouncePrice] = useDebounce(priceRange, 500);
 
   useEffect(() => {
-    onChangeParams("CostDown", String(debouncePrice[0]));
-    onChangeParams("CostUp", String(debouncePrice[1]));
+    console.log("debouncePrice:", debouncePrice);
+    onChangeParams("CostDown", debouncePrice[0]);
+    onChangeParams("CostUp", debouncePrice[1]);
   }, [debouncePrice]);
 
   // Techs 
   const [selectedTech, setSelectedTech] = useState(
     paramsObject.ListTech?.split(",") || []
   );
-  const [debounceTech] = useDebounce(selectedTech, 500);
+  const [debounceTech] = useDebounce(selectedTech, 1000);
 
   useEffect(() => {
     onChangeParams("ListTech", debounceTech);
