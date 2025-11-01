@@ -1,24 +1,42 @@
 import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getTechs } from "../../../../servises/api/landing/topCategories";
 
-const Tabs = () => {
-  const tabs = ["توسعه", "تجارت", "طراحی", "همه دوره ها"];
-  const [pointTab, setPointTab] = useState("همه دوره ها");
+const Tabs = ({pointTab,setPointTab}) => {
+  const { data } = useQuery({
+    queryKey: ["techs",pointTab],
+    queryFn: getTechs,
+  });
+
 
   return (
-    <div className="flex flex-col items-start px-6">
-      <div className="flex gap-8 relative pb-1 px-10 ">
-        {tabs.map((tab, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center cursor-pointer relative "
-            onClick={() => setPointTab(tab)}
-          >
-            <span>{tab}</span>
+    <div className="flex flex-col items-start px-6" dir="rtl">
+      <div className="flex gap-8 relative pb-1 px-10">
+        <div
+          className="flex flex-col items-center cursor-pointer relative"
+          onClick={() => setPointTab("همه دوره‌ها")}
+        >
+          <span>همه دوره‌ها</span>
+          {pointTab === "همه دوره‌ها" && (
+            <div
+              style={{ backgroundColor: "var(--color-dark-purple)" }}
+              className="h-[3px] w-full rounded absolute -bottom-0.5 left-0 z-10 duration-300 transition-all"
+            ></div>
+          )}
+        </div>
 
-            {pointTab === tab && (
+        {data?.map((tab) => (
+          <div
+            key={tab.id}
+            className="flex flex-col items-center cursor-pointer relative"
+            onClick={() => setPointTab(tab.techName)}
+          >
+            <span>{tab.techName}</span>
+
+            {pointTab === tab.techName && (
               <div
                 style={{ backgroundColor: "var(--color-dark-purple)" }}
-                className="h-[3px] w-full rounded absolute -bottom-0.5 left-0 z-10  duration-300 transition-all"
+                className="h-[3px] w-full rounded absolute -bottom-0.5 left-0 z-10 duration-300 transition-all"
               ></div>
             )}
           </div>
@@ -26,7 +44,7 @@ const Tabs = () => {
 
         <div
           style={{ backgroundColor: "var(--color-soft-indigo)" }}
-          className="h-[3px] w-full absolute bottom-0 left-0 rounded "
+          className="h-[3px] w-full absolute bottom-0 left-0 rounded"
         ></div>
       </div>
     </div>

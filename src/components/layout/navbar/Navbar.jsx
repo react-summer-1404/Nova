@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../../../assets/styles/global.css";
 import "../../../assets/styles/nav.css";
 import Logo from "../../ui/Logo/Logo";
@@ -12,6 +12,7 @@ import useToggle from "../../../hooks/useToggle";
 
 const Navbar = () => {
   const [isOpen, toggle, setIsOpen] = useToggle(false);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,9 +24,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex-center w-screen lg:p-5 pb-4 gap-6 ">
-      <div className=" relative flex md:flex-wrap md:justify-center md:gap-7 justify-between items-center p-4  lg:gap-16  w-full lg:flex-nowrap">
-        <div className="flex-center md:flex-start  items-center lg:gap-8 md:gap-2 flex-wrap-reverse ">
+    <div className="flex-center w-screen  p-4 gap-6  ">
+      <div className=" relative flex  md:gap-2 justify-between items-center p-4   w-full  ">
+        <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
           <AccountBtn isOpen={isOpen} />
           <UserCartFavorites isOpen={isOpen} />
           <IoIosMenu
@@ -42,7 +43,7 @@ const Navbar = () => {
             <GoX onClick={toggle} fontSize={"40px"} />
           </div>
         )}
-        <div className="flex justify-start items-center sm:gap-1 md:pb-4 md:gap-6 lg:gap-8">
+        <div className="flex justify-start items-center sm:gap-1  md:gap-4 lg:gap-6  ">
           <NavbarItems isOpen={isOpen} />
           <Logo />
         </div>

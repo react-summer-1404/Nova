@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-const useToggle = () => {
-  const [open, setOpen] = useState(false); 
+const useToggle = (initialValue= false) => {
+  const [state, setState] = useState(initialValue); 
   const toggle = () => {
-    setOpen(prev => !prev);
+    setState(prev => !prev);
   };
 
-  return [open, toggle , setOpen];
+  return [state, toggle , setState ,initialValue];
 };
 
 export default useToggle;

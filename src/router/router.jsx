@@ -14,27 +14,30 @@ import {
   CoursesPage,
 } from "../pages/index";
 import { AuthRoutes } from "../features/auth/routes/routes";
+import Dashboard from "../features/dashboard/layouts/Dashboard";
 import PageLayout from "../components/layout/PageLayout/PageLayout";
 
 const router = createBrowserRouter([
   {
-    element: <PageLayout />, 
+    element: <PageLayout />,
     children: [
       { path: "/", element: <LandingPage /> },
       { path: "/aboutUs", element: <AboutUsPage /> },
       { path: "/blogDetail", element: <BlogDetailPage /> },
-      { path: "/blogsPage", element: <BlogsPage /> },
+      { path: "/blogs", element: <BlogsPage /> },
       { path: "/cart", element: <CartPage /> },
       { path: "/coaches", element: <CoachesPage /> },
       { path: "/coachesDetail", element: <CoachesDetailPage /> },
       { path: "/compareCourse", element: <CompareCoursePage /> },
       { path: "/contactUs", element: <ContactUsPage /> },
-      { path: "/courseDetail", element: <CourseDetailPage /> },
+      { path: "/courseDetail:id", element: <CourseDetailPage /> },
       { path: "/courses", element: <CoursesPage /> },
+  { path: "*", element: <NotFoundingPage /> },
+
+      { path: "/dashboard", element: <Dashboard /> },
     ],
   },
   ...AuthRoutes,
-  { path: "*", element: <NotFoundingPage /> },
 ]);
 
 export default router;

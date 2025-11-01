@@ -1,0 +1,17 @@
+.rangeInput .range-slider {
+    width: 240px;  
+    direction: rtl;
+  }
+  
+  .rangeInput .range-slider__range {
+    height: 3px; 
+    background-color: #5751E1;
+  }
+  
+  .rangeInput .range-slider__thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #5751E1;
+    /* border-radius: 50%; */
+  }
+  

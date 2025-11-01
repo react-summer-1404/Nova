@@ -21,7 +21,7 @@ export const AuthRoutes = [
       { path: "setnewpassword", element: <SetNewPasswordPage /> },
       { path: "signup", element: <SignUpPage /> },
       { path: "signupcomplete", element: <SignUpComplete /> },
-      { path: "varifycode", element: <VarifyCodePage /> },
+      { path: "verifycode", element: <VarifyCodePage /> },
     ],
   },
 ];
