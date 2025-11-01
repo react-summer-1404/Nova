@@ -16,6 +16,14 @@
 /* 
 body {
 } */
+@theme { 
+  --font-display: "iranSans"
+}
+
+body {
+  /* background: var(--color-dark-purple); */
+  /* font-family: var(--font-base); */
+}
 
 /* ====== BOX SHADOWS =========== */
 

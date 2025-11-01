@@ -40,6 +40,15 @@ const LoginForm = () => {
     successMessage: "ورود با موفقیت صورت گرفت",
     defaultText: "ورود به حساب کاربری",
   });
+
+  let userToken = null;
+  try {
+    const storedUserData = localStorage.getItem("storedUserData");
+    if (storedUserData) userToken = JSON.parse(storedUserData);
+  } catch (error) {
+    userToken = null;
+  }
+
   const handleSubmit = async (values) => {
     try {
       const data = await PostLoginData({
@@ -50,6 +59,18 @@ const LoginForm = () => {
       const token = data.token;
       if (token) {
         setToken(token);
+        if (values.rememberMe) {
+          try {
+            localStorage.setItem(
+              "storedUserData",
+              JSON.stringify({ phoneOrGmail: values.phoneOrGmail })
+            );
+          } catch (error) {}
+        } else {
+          try {
+            localStorage.removeItem("savedCredentials");
+          } catch (e) {}
+        }
       }
     } catch (error) {
       console.error("login failed:", error);
@@ -61,21 +82,25 @@ const LoginForm = () => {
     <Formik
       className="w-full"
       initialValues={{
-        phoneOrGmail: "",
+        phoneOrGmail: userToken?.phoneOrGmail || "",
         password: "",
-        rememberMe: false,
+        rememberMe: !!userToken?.phoneOrGmail,
       }}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form className=" flex flex-col justify-end mt-7 sm:mt-8 gap-4">
-        <div className="flex flex-col gap-3 sm:gap-8">
-          <div className="relative flex flex-col gap-[.5rem]">
+      <Form
+        style={{ direction: "rtl" }}
+        className="flex h-full flex-col justify-end mt-7 sm:mt-8 gap-4"
+      >
+        <div className="flex flex-col gap-4 sm:gap-6">
+          <div className="relative flex flex-col gap-[.4rem]">
             <FormField
               type={"email"}
               name={"phoneOrGmail"}
               id={"phoneOrGmail"}
               label={"ایمیل"}
+              placeholder={"ایمیل خود را وارد کنید"}
             />
             <ErrorMessage
               name="phoneOrGmail"
@@ -83,8 +108,12 @@ const LoginForm = () => {
               component={"span"}
             />
           </div>
-          <div className="relative flex flex-col gap-[.5rem]">
-            <PasswordField name="password" label={"پسورد"} />
+          <div className="flex flex-col gap-[.4rem]">
+            <PasswordField
+              name="password"
+              label={"پسورد"}
+              placeholder={"پسورد خود را وارد کنید"}
+            />
 
             <ErrorMessage
               name="password"
@@ -94,16 +123,7 @@ const LoginForm = () => {
           </div>
         </div>
 
-        <div className="flex flex-row-reverse justify-between mt-2.5 sm:mt-6">
-          <label htmlFor="rememberMe" className="flex flex-row-reverse">
-            <Field type="checkbox" name="rememberMe" id="rememberMe" />
-            <span
-              style={{ color: "var(--color-black)" }}
-              className="mr-2 font-semibold text-[16px] sm:text-[20px]"
-            >
-              مرا به خاطر بسپار
-            </span>
-          </label>
+        <div className="flex flex-row-reverse justify-between mt-4">
           <Link
             to={"/auth/forgetpassword"}
             style={{ color: "var( --color-text-gray)" }}
@@ -111,10 +131,19 @@ const LoginForm = () => {
           >
             فراموشی رمز؟
           </Link>
+          <label htmlFor="rememberMe" className="flex flex-row-reverse">
+            <span
+              style={{ color: "var(--color-black)" }}
+              className="mr-2 font-semibold text-[16px] sm:text-[20px]"
+            >
+              مرا به خاطر بسپار
+            </span>
+            <Field type="checkbox" name="rememberMe" id="rememberMe" />
+          </label>
         </div>
 
         <YellowButton type={"submit"} width={"100%"} text={buttonText} />
-        <div className="my-3.5 sm:mt-6">
+        <div>
           <span
             style={{ color: "var(--color-black)" }}
             className="mr-2 font-semibold text-[16px] sm:text-[20px]"
@@ -132,6 +161,7 @@ const LoginForm = () => {
         </div>
       </Form>
     </Formik>
+    
   );
 };
 

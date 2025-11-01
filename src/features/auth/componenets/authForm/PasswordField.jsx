@@ -4,7 +4,7 @@ import { useField } from "formik";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 
-const PasswordField = ({ label, name }) => {
+const PasswordField = ({ label, name, placeholder }) => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [field, meta] = useField({ name: name });
 
@@ -13,7 +13,6 @@ const PasswordField = ({ label, name }) => {
   return (
     <Input
       {...field}
-      className="max-w-xs"
       endContent={
         <button
           aria-label="toggle password visibility"
@@ -29,9 +28,11 @@ const PasswordField = ({ label, name }) => {
         </button>
       }
       label={label}
+      placeholder={placeholder}
       type={isVisible ? "text" : "password"}
       variant="bordered"
       color="default"
+      className="font-extrabold text-2xl"
     />
   );
 };
