@@ -10,7 +10,7 @@
 }
 
 .text-responsive{
-  @apply text-sm lg:text-base xl:text-lg 
+  @apply text-sm lg:text-base  
  }
 
 /* 
