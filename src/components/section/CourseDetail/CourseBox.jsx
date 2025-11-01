@@ -20,6 +20,13 @@ const CourseBox = () => {
     const { data, isError, isLoading, error } = useQuery({
         queryKey: ['detail', id],
         queryFn: () => getCourseDetail(id),
+        retry : (failureCount, error) => {
+            if (error?.response?.status == 429 && failureCount<3) return true;
+            return false
+        },
+        retryDelay : attemptIndex => Math.min(1000*2** attemptIndex,10000),
+        staleTime : 1000*60*5,
+        cacheTime:1000*60*10
         
     });
 
@@ -35,6 +42,7 @@ console.log(data)
     return (
         <div className='flex flex-col w-screen items-center'>
             <div className=' w-screen flex justify-center gap-8 mr-[20px] mb-[30px]'>
+                
                 <div className='w-[65%] flex items-end flex-col gap-7'>
                     <CourseDetail
                         key={data.id}

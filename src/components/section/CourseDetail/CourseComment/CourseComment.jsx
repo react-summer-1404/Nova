@@ -1,9 +1,23 @@
+import { Formik } from 'formik';
 import React from 'react'
 import { BiLike } from "react-icons/bi";
 import { BiDislike } from "react-icons/bi";
-import { FaArrowLeft} from "react-icons/fa";
+import { getCourseDetailComment } from '../../../../servises/api/coursesDetail/getComment';
+
+import CommentForm from './Form/CommentForm';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
 const CourseComment = ({teacherName, imageAddress}) => {
+    const { id } = useParams();
+        
+        
+        const { data} = useQuery({
+            queryKey: ['comment',id],
+            queryFn: () => getCourseDetailComment(id),
     
+        })
+
+        console.log(data)
     return (
         <div className =' border-[#DFDFDF] flex justify-center items-center'>
             <div className =' flex flex-col items-end gap-5'>
@@ -22,7 +36,7 @@ const CourseComment = ({teacherName, imageAddress}) => {
                     <div className ='flex flex-col items-end gap-2'>                       
                         <div className='w-full flex justify-between'>
                             <h1 className =' text-right font-[400] text-[9px] md:text-[12px] text-[#6D6C80]'>21 تیر 1386</h1>
-                            <h4 className ='font-[600] text-[16px] md:text-[18px] text-[#1C1A4A]'>مریم</h4>
+                            <h4 className ='font-[600] text-[16px] md:text-[18px] text-[#1C1A4A]'>{data?.author}</h4>
                         </div>
                         <h2 className =' text-right font-[400] text-[10px] md:text-[14px] text-[#6D6C80]'>البته در اکثر سایت‌های حرفه‌ای، از چند زبان برنامه‌نویسی استفاده می‌شود که هر کدام وظیفه خاصی را انجام می‌دهند. زبان HTML از جمله پرکاربردترین زبان‌ها است، که در اکثر سایت‌ها به شکل مستقل یا ترکیبی با سایر زبان‌ها استفاده شده است.</h2>
                         <div className='flex w-full justify-between'>                                                     
@@ -60,20 +74,15 @@ const CourseComment = ({teacherName, imageAddress}) => {
                     </div>
                     <img src="src/assets/images/profile3.png" className ='mr-[15px] w-[20%]'/>                   
                 </div>
+                
                 <div className =' w-full h-[270px] md:h-[390px] bg-[#F7F7FA] rounded-[10px] flex justify-center items-center'>
-                    <div className ='w-11/12 h-5/6 flex flex-col items-end gap-2 md:gap-4'>
-                        <p style={{color : "var(--color-navy)"}} className ='font-[600] text-[22px] md:text-[26px] '>ارسال نظر</p>
-                        <h2 style={{color : "var(--color-text-gray2)"}} className ='font-[400] text-[10px] md:text-[14px]'>عنوان پیام</h2>
-                        <input type="text" style={{direction: "rtl", backgroundColor : "var(--color-white)"}} className ='bg-[#FFFFFF] indent-5 focus:outline-none border mt-[-7px] border-[#E1E4E7] w-[100%] h-[40px] rounded-[5px]'/>
-                        <h3 style={{color : "var(--color-text-gray2)"}} className ='font-[400] text-[10px] md:text-[14px]'>توضیحات بیشتر </h3>
-                        <input type="text" style={{direction: "rtl", backgroundColor : "var(--color-white)"}} className ='border indent-5 focus:outline-none border-[#E1E4E7] mt-[-7px] w-[100%] h-[85px] rounded-[5px]'/>
-                        <h4 className ='font-[400] text-[#6D6C80] text-[10px] md:text-[14px]'>نظر شما پس از تایید توسط ادمین ثبت خواهد شد!</h4>
-                        <button style={{backgroundColor: "var(--color-golden-yellow)"}} className = "border border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]"> 
-                            <FaArrowLeft className ='ml-[6px] mt-[5px]'/>
-                            <h2 className =' font-[400] text-[10px] md:text-[14px] ml-[10px] text-right text-[#161439]'>ارسال نظر </h2>
-                        </button>
-                    </div>
+                    
+                    <CommentForm
+                        
+                    />                   
+                    
                 </div>
+                
             </div>
         </div>
     )

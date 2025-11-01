@@ -12,7 +12,14 @@ import { Spinner } from '@heroui/react';
 const MasterMentors = () => {
   const {data,isError,isLoading,error} = useQuery({
     queryKey : ["topMentor"],
-    queryFn : getMasterTeacher
+    queryFn : getMasterTeacher,
+    retry : (failureCount, error) => {
+      if (error?.response?.status == 429 && failureCount<3) return true;
+      return false
+    },
+    retryDelay : attemptIndex => Math.min(1000*2** attemptIndex,10000),
+    staleTime : 1000*60*5,
+    cacheTime:1000*60*10
   })
   
   
