@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import CourseProductCard from '../../ui/card/CourseProductCard';
 import { useQuery } from '@tanstack/react-query';
 import { getCourses } from '../../../servises/api/courses/coursList';

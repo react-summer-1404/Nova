@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       { path: "/compareCourse", element: <CompareCoursePage /> },
       { path: "/contactUs", element: <ContactUsPage /> },
       { path: "/courses", element: <CoursesPage /> },
-      { path: "/courseDetail:id", element: <CourseDetailPage /> },
+      { path: "/courseDetail/:id", element: <CourseDetailPage /> },
   { path: "*", element: <NotFoundingPage /> },
 
       { path: "/dashboard", element: <Dashboard /> },
