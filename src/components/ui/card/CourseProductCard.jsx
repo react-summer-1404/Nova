@@ -2,9 +2,6 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-// import { postDisLike, postLike } from "../../../servises/api/Like and Dislike";
-// import { postAddToFavorite } from "../../../servises/api/addToFavortie";
 import { Link } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
 
@@ -34,6 +31,7 @@ const CourseProductCard = ({ product,
       style={{
         backgroundColor: "var(--color-white)",
         border: "1px solid var(--color-border-gray)",
+        direction:"rtl"
       }}
       className={`flex p-5 rounded-[10px] gap-6 ${
         isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[500px] flex-col"
@@ -188,4 +186,5 @@ const CourseProductCard = ({ product,
   );
 };
 
-export default CourseProductCard;
+export default React.memo(CourseProductCard);
+

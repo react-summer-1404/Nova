@@ -1,93 +1,132 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTechs } from "../../../servises/api/landing/topCategories";
 import { getCourseLevel } from "../../../servises/api/courses/courseLevel";
 import { getTeachers } from "../../../servises/api/teachers";
 import InfoCard from "../../ui/infoCard/InfoCard";
 import CheckList from "../../ui/checkList/CheckList";
-import PriceRangeComponent from "./PriceRangeComponent";
+import PriceRangeSlider from "./PriceRangeSlider";
 import { courseState } from "./categoriesData";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
+import useTechs from "../../../hooks/useTech";
 
 const FiltersPanel = ({ paramsObject, onChangeParams }) => {
+  //  Price Range 
   const [priceRange, setPriceRange] = useState([
     Number(paramsObject.CostDown) || 0,
     Number(paramsObject.CostUp) || 2000,
   ]);
 
   const [debouncePrice] = useDebounce(priceRange, 500);
+
   useEffect(() => {
-    useEffect(() => {
-      onChangeParams("CostDown", String(debouncePrice[0]));    
-      onChangeParams("CostUp", String(debouncePrice[1]));     
-    }, [debouncePrice]);
+    onChangeParams("CostDown", String(debouncePrice[0]));
+    onChangeParams("CostUp", String(debouncePrice[1]));
   }, [debouncePrice]);
 
-  const { data: topTech } = useQuery({
-    queryKey: ["techs"],
-    queryFn: getTechs,
-  });
+  // Techs 
+  const [selectedTech, setSelectedTech] = useState(
+    paramsObject.ListTech?.split(",") || []
+  );
+  const [debounceTech] = useDebounce(selectedTech, 500);
+
+  useEffect(() => {
+    onChangeParams("ListTech", debounceTech);
+  }, [debounceTech]);
+
+  //Course Levels 
+  const [selectedLevel, setSelectedLevel] = useState(
+    paramsObject.courseLvlId?.split(",") || []
+  );
+  const [debounceLevel] = useDebounce(selectedLevel, 500);
+
+  useEffect(() => {
+    onChangeParams("courseLvlId", debounceLevel);
+  }, [debounceLevel]);
+
+  //  Course State 
+  const [selectedState, setSelectedState] = useState(
+    paramsObject.courseState?.split(",") || []
+  );
+  const [debounceState] = useDebounce(selectedState, 500);
+
+  useEffect(() => {
+    onChangeParams("courseState", debounceState);
+  }, [debounceState]);
+
+  // Teachers 
+  const [selectedTeacher, setSelectedTeacher] = useState(
+    paramsObject.teacherId ? [String(paramsObject.teacherId)] : []
+  );
+  const [debounceTeacher] = useDebounce(selectedTeacher, 500);
+
+  useEffect(() => {
+    onChangeParams("teacherId", debounceTeacher);
+  }, [debounceTeacher]);
+
+  //  Queries 
+  const { data: topTech } = useTechs()
+
   const { data: courseLevel } = useQuery({
     queryKey: ["courseLevels"],
     queryFn: getCourseLevel,
+    staleTime: 1000 * 60 * 10,    
+  refetchOnMount: false,
   });
+
   const { data: teachersData } = useQuery({
     queryKey: ["teachers"],
     queryFn: getTeachers,
-    staleTime: 1000 * 60 * 5,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
+    staleTime: 1000 * 60 * 10,    
+  refetchOnMount: false,
   });
 
+  //  Render 
   return (
     <div className="md:flex flex-col gap-5 w-[310px] hidden">
-      <InfoCard title="دسته بندی ها" >
+      <InfoCard title="دسته بندی ها">
         <CheckList
           data={topTech}
           labelKey="techName"
-          selected={paramsObject.ListTech?.split(",") || []}
-          setSelected={(techVal) => onChangeParams("ListTech", techVal)}
+          selected={selectedTech}
+          setSelected={setSelectedTech}
         />
       </InfoCard>
 
-      <InfoCard title="سطح دوره" >
+      <InfoCard title="سطح دوره">
         <CheckList
           data={courseLevel}
           labelKey="levelName"
-          selected={paramsObject.courseLvlId?.split(",") || []}
-          setSelected={(levelVal) => onChangeParams("courseLvlId", levelVal)}
+          selected={selectedLevel}
+          setSelected={setSelectedLevel}
         />
       </InfoCard>
 
-      <InfoCard title="نحوه برگزاری" >
+      <InfoCard title="نحوه برگزاری">
         <CheckList
           data={courseState}
           labelKey="label"
-          selected={paramsObject.courseState?.split(",") || []}
-          setSelected={(val) => {
-            onChangeParams("courseState", val);
-          }}
+          selected={selectedState}
+          setSelected={setSelectedState}
         />
       </InfoCard>
 
-      <InfoCard title="مربیان" >
+      <InfoCard title="مربیان">
         <CheckList
           data={teachersData}
           labelKey="fullName"
           idKey="teacherId"
-          selected={
-            paramsObject.teacherId ? [String(paramsObject.teacherId)] : []
-          }
-          setSelected={(val) => onChangeParams("teacherId", val)}
+          selected={selectedTeacher}
+          setSelected={setSelectedTeacher}
         />
       </InfoCard>
 
       <InfoCard title="قیمت">
         <div className="overflow-visible relative">
-          <PriceRangeComponent value={priceRange} setValue={setPriceRange} />
+          <PriceRangeSlider value={priceRange} setValue={setPriceRange} />
         </div>
       </InfoCard>
     </div>
   );
 };
+
 export default FiltersPanel;

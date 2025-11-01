@@ -12,7 +12,7 @@ import useToggle from "../../../hooks/useToggle";
 
 const Navbar = () => {
   const [isOpen, toggle, setIsOpen] = useToggle(false);
-  // const [isSearch, setsSearch] = useToggle(false);
+  
 
   useEffect(() => {
     const handleResize = () => {

@@ -26,31 +26,40 @@ const CoursesPage = () => {
   const [debounceSearch] = useDebounce(searchQuery, 500);
 
   useEffect(() => {
-    handleChange("Query", debounceSearch);
+    handleChange("Query", debounceSearch || "");
   }, [debounceSearch]);
 
   const handleChange = (key, value) => {
     setSearchParam(
-      (searchParam) => {
+      (prev) => {
         if (value) {
-          searchParam.set(key, value);
+          prev.set(key, value);
         } else {
-          searchParam.delete(key);
+          prev.delete(key);
         }
-        return searchParam;
+        return prev;
       },
       { replace: true }
     );
   };
+  const filterKey = useMemo(
+    () => ({
+      ...paramsObject,
+      TechCount: 1,
+      PageNumber: 1,
+      RowsOfPage: 12,
+    }),
+    [paramsObject]
+  );
 
   const [isCol, setIsCol] = useToggle(false);
   // mutation
+  const queryKey = ["courses", filterKey];
+
   const likeMutation = useMutation({
     mutationFn: postLike,
     onMutate: async (courseId) => {
-      const queryKey = ["courses", filterKey];
-
-      await queryClient.cancelQueries({ queryKey});
+      await queryClient.cancelQueries({ queryKey });
 
       const previousData = queryClient.getQueryData(queryKey);
 
@@ -65,18 +74,18 @@ const CoursesPage = () => {
 
       return { previousData, queryKey };
     },
-    onError: (err, courseId, context) => {
+    onError: (error, courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
+      console.log(error);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["courses"] });
+      queryClient.invalidateQueries({ queryKey });
     },
   });
 
   const disLikeMutation = useMutation({
     mutationFn: postDisLike,
     onMutate: async (courseId) => {
-      const queryKey = ["courses", filterKey];
       await queryClient.cancelQueries({ queryKey });
       const previousData = queryClient.getQueryData(queryKey);
 
@@ -84,46 +93,37 @@ const CoursesPage = () => {
         ...old,
         courseFilterDtos: old?.courseFilterDtos?.map((course) =>
           course.courseId === courseId
-            ? { ...course, dissLikeCount: course.dissLikeCount + 1, currentUserDissLike: true }
+            ? {
+                ...course,
+                dissLikeCount: course.dissLikeCount + 1,
+                currentUserDissLike: true,
+              }
             : course
         ),
       }));
 
       return { previousData, queryKey };
     },
-    onError: (err, courseId, context) => {
+    onError: (error, courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["courses"] });
+      queryClient.invalidateQueries({ queryKey });
     },
   });
 
   const addToFavoriteMutation = useMutation({
     mutationFn: postAddToFavorite,
-    onSuccess: () => {
-    },
+    onSuccess: () => {},
   });
-
-  // === بقیه کد ===
-  const filterKey = {
-    ...paramsObject,
-    TechCount: 1,
-    PageNumber: 1,
-    RowsOfPage: 12,
-  };
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", filterKey],
     queryFn: () => getCourses(filterKey),
-    refetchOnWindowFocus: false,
-    staleTime: 5 * 1000,  
-    cacheTime: 1000 * 60 * 5,
+    enabled: !!Object.keys(paramsObject).length,
   });
 
-  const currentItems =  data?.courseFilterDtos || [];
-
-  const BreadcrumbsItems = [{ to: "/courses", label: "دوره های اموزشی" }];
+  const currentItems = data?.courseFilterDtos || [];
 
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
@@ -136,9 +136,12 @@ const CoursesPage = () => {
           <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%] md:mr-0 mr-9">
             <div className="flex gap-2 ">
               <ViewMode isCol={isCol} setIsCol={setIsCol} />
-              <SortingSection/>
+              <SortingSection
+                paramsObject={paramsObject}
+                onChangeParams={handleChange}
+              />
             </div>
-            <Result currentItems={currentItems} />
+            <Result currentItems={currentItems} totalCount={data?.totalCount} />
           </div>
 
           <div
@@ -175,8 +178,8 @@ const CoursesPage = () => {
                   product={product}
                   isCol={isCol}
                   likeMutation={likeMutation}
-            disLikeMutation={disLikeMutation}
-            addToFavoriteMutation={addToFavoriteMutation}
+                  disLikeMutation={disLikeMutation}
+                  addToFavoriteMutation={addToFavoriteMutation}
                 />
               ))}
           </div>
