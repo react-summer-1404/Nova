@@ -4,27 +4,12 @@ import { PiStudentThin } from "react-icons/pi";
 import { CiCalendar } from "react-icons/ci";
 import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import CourseExplanation from './CourseExplanation/CourseExplanation';
-import { useParams } from 'react-router-dom';
-import { getCourseDetail } from '../../../servises/api/coursesDetail/getDetail';
-import { useQuery } from '@tanstack/react-query';
+
 import CourseComment from './CourseComment/CourseComment';
 import { useState } from 'react';
-const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName, capacity}) => {
+const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName, capacity,describe}) => {
     const [selected, setSelected] = useState("بررسی اجمالی");
-    const { id } = useParams();
-    const { data, isError, isLoading, error } = useQuery({
-        queryKey: ['detail', id],
-        queryFn: () => getCourseDetail(id),
-
-    })
-    console.log(id)
-    if (isLoading) {
-        return <Loader />
-    }
-
-    if (isError) {
-        return <ErrorMessage message={error?.message || "خطای ناشناخته ای رخ داده"} />
-    }
+    
     return (
         <div className ='flex flex-col gap-7'>
             <img src={imageAddress} className ='md:h-[400px] h-[300px] w-[85%] ml-[70px] md:w-[900px] md:ml-[0px] rounded-[15px]' />
@@ -53,7 +38,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                     <div className='flex items-center md:gap-3 gap-1'>
                         <h3 style={{ color: "var(--color-navy)" }} className='font-[400] text-[12px] md:text-[16px] whitespace-nowrap'>{teacherName}</h3>
                         <h2 className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px]'>توسط</h2> 
-                        <img src={data.tumbImageAddress} className =' rounded-full w-[45px] h-[44px]'/>
+                        <img src={imageAddress} className =' rounded-full w-[45px] h-[44px]'/>
                     </div>
                 </div>
 
@@ -68,7 +53,8 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                             <Card>
                                 <CardBody>
                                     <CourseComment
-                                        teacherName={data.teacherName}
+                                        teacherName={teacherName}
+                                        imageAddress = {imageAddress}
                                     />
                                 </CardBody>
                             </Card>
@@ -90,7 +76,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                             <Card>
                                 <CardBody className='bg-transparent'>
                                     <CourseExplanation
-                                        describe={data.describe}
+                                        describe ={describe}
                                     />
                                 </CardBody>
                             </Card>

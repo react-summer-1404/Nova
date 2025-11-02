@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import React from 'react';
 import { BiBook } from "react-icons/bi";
 import { FaArrowLeft, FaYoutube } from "react-icons/fa";
 import { IoStatsChartOutline, IoTimeOutline } from "react-icons/io5";
@@ -16,20 +15,14 @@ import FilterCourse from "./FilterCourse";
 
 const CourseBox = () => {
     const { id } = useParams();
+    
 
-    const { data, isError, isLoading, error } = useQuery({
+    const { data, isError, isLoading, error} = useQuery({
         queryKey: ['detail', id],
         queryFn: () => getCourseDetail(id),
-        retry : (failureCount, error) => {
-            if (error?.response?.status == 429 && failureCount<3) return true;
-            return false
-        },
-        retryDelay : attemptIndex => Math.min(1000*2** attemptIndex,10000),
-        staleTime : 1000*60*5,
-        cacheTime:1000*60*10
-        
-    });
+    });  
 
+console.log(id)
 console.log(data)
 
     if (isLoading) {
@@ -52,6 +45,7 @@ console.log(data)
                         startTime={data.startTime.slice(0, 10)}
                         teacherName={data.teacherName}
                         capacity={data.capacity}
+                        describe = {data.describe}
                     />
                 </div>
                 <div className ='border border-[#DFDFDF] md:w-[18%] w-[24%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]'>

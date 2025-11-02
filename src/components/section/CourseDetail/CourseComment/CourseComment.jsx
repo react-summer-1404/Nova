@@ -2,85 +2,46 @@ import { Formik } from 'formik';
 import React from 'react'
 import { BiLike } from "react-icons/bi";
 import { BiDislike } from "react-icons/bi";
-import { getCourseDetailComment } from '../../../../servises/api/coursesDetail/getComment';
-
 import CommentForm from './Form/CommentForm';
-import { useQuery } from '@tanstack/react-query';
+import UserComment from './UserComment';
 import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getCourseDetailComment } from '../../../../servises/api/coursesDetail/getComment';
 const CourseComment = ({teacherName, imageAddress}) => {
-    const { id } = useParams();
-        
-        
+    const { id } = useParams();                
         const { data} = useQuery({
             queryKey: ['comment',id],
-            queryFn: () => getCourseDetailComment(id),
-    
+            queryFn: () => getCourseDetailComment(id),    
         })
 
         console.log(data)
     return (
         <div className =' border-[#DFDFDF] flex justify-center items-center'>
             <div className =' flex flex-col items-end gap-5'>
-                <div className ='w-full h-[140px] flex items-center gap-5 bg-[#F7F7FA] rounded-[10px]'>
-                    <div className ='flex flex-col items-end ml-[10px]'>
+                <div className ='w-full h-[140px] flex items-center gap-4 bg-[#F7F7FA] rounded-[10px]'>
+                    <div className ='flex flex-col items-end mr-[10px]'>
                         <h3 className ='font-[400] text-[12px] md:text-[16px] text-[#1C1A4A]'>نویسنده</h3>
                         <h4 className ='font-[500] text-[18px] md:text-[22px] text-[#1C1A4A]'>{teacherName}</h4>
                         <h2 className =' text-right font-[400] text-[10px] md:text-[14px]'>مهندس حسین نوری کادیجانی دارای مدرک کارشناسی مهندسی کامپیوتر – نرم‌افزار از دانشگاه تربیت دبیر شهید رجایی هستند. ایشان شش سال سابقه برنامه‌نویسی اندروید دارند و تاکنون برنامه‌های موفق و باکیفیتی را در مارکت‌های مطرح ایرانی منتشر کرده‌اند و پیوسته به دنبال یادگیری و کسب دانش بیشتر در این زمینه هستند.</h2>
                     </div>
-                    <img src={imageAddress} className =''/>                   
+                    <img src={imageAddress} className ='w-[20%] mr-[25px]'/>                   
                 </div>
-                <p className ='font-[600] text-[18px] md:text-[22px]'>نظر
-                    
-                </p>
-                <div className ='w-full border-b-[#E8E8E8] h-[140px] flex items-center gap-5'>    
-                    <div className ='flex flex-col items-end gap-2'>                       
-                        <div className='w-full flex justify-between'>
-                            <h1 className =' text-right font-[400] text-[9px] md:text-[12px] text-[#6D6C80]'>21 تیر 1386</h1>
-                            <h4 className ='font-[600] text-[16px] md:text-[18px] text-[#1C1A4A]'>{data?.author}</h4>
-                        </div>
-                        <h2 className =' text-right font-[400] text-[10px] md:text-[14px] text-[#6D6C80]'>البته در اکثر سایت‌های حرفه‌ای، از چند زبان برنامه‌نویسی استفاده می‌شود که هر کدام وظیفه خاصی را انجام می‌دهند. زبان HTML از جمله پرکاربردترین زبان‌ها است، که در اکثر سایت‌ها به شکل مستقل یا ترکیبی با سایر زبان‌ها استفاده شده است.</h2>
-                        <div className='flex w-full justify-between'>                                                     
-                            <div className='w-[85px] h-[25px] flex flex-row gap-0.5'>
-                                <button style={{ backgroundColor: "var(--color-soft-gray)" }} className ='w-[45%] md:w-[50%] h-full rounded-[15px] font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]'>169 <BiLike /></button>
-                                <button style={{ backgroundColor: "var(--color-soft-gray)" }} className ='w-[45%] md:w-[50%] h-full rounded-[15px] font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]'>71 <BiDislike /></button>
-                            </div>
-                            <button style={{backgroundColor: "var(--color-light-purple)"}} className ='md:px-3 p-0.5 px-3 rounded-[30px] flex items-center'
-                                type="submit"
-                            >                        
-                                <span className ='font-[500] text-[10px] md:text-[12px] text-[#5751E1]'>پاسخ</span>
-                            </button>
-                        </div>
-                    </div>
-                    <img src="src/assets/images/profile2.png" className ='mr-[15px] w-[20%]'/>                   
-                </div>
-                <div className ='w-full border-b-[#E8E8E8] h-[140px] flex items-center gap-5'>    
-                    <div className ='flex flex-col items-end gap-2'>                       
-                        <div className='w-full flex justify-between'>
-                            <h1 className =' text-right font-[400] text-[9px] md:text-[12px] text-[#6D6C80]'>21 تیر 1386</h1>
-                            <h4 className ='font-[600] text-[16px] md:text-[18px] text-[#1C1A4A]'>امیر</h4>
-                        </div>
-                        <h2 className =' text-right font-[400] text-[10px] md:text-[14px] text-[#6D6C80]'> البته در اکثر سایت‌های حرفه‌ای، از چند زبان برنامه‌نویسی استفاده می‌شود که هر کدام وظیفه خاصی را انجام می‌دهند. زبان HTML از جمله پرکاربردترین زبان‌ها است، که در اکثر سایت‌ها به شکل مستقل یا ترکیبی با سایر زبان‌ها استفاده شده است.</h2>
-                        <div className='flex w-full justify-between'>                                                     
-                            <div className='w-[85px] h-[25px] flex flex-row gap-0.5'>
-                                <button style={{ backgroundColor: "var(--color-soft-gray)" }} className ='w-[45%] md:w-[50%] h-full rounded-[15px] font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]'>169 <BiLike /></button>
-                                <button style={{ backgroundColor: "var(--color-soft-gray)" }} className ='w-[45%] md:w-[50%] h-full rounded-[15px] font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]'>71 <BiDislike /></button>
-                            </div>
-                            <button style={{backgroundColor: "var(--color-light-purple)"}} className ='md:px-3 p-0.5 px-3 rounded-[30px] flex items-center'
-                                type="submit"
-                            >                        
-                                <span className ='font-[500] text-[10px] md:text-[12px] text-[#5751E1]'>پاسخ</span>
-                            </button>
-                        </div>
-                    </div>
-                    <img src="src/assets/images/profile3.png" className ='mr-[15px] w-[20%]'/>                   
-                </div>
+                <p className ='font-[600] text-[18px] md:text-[22px]'>نظر </p>
+                {data?.map(item =>
+                    <UserComment
+                        key={item.id}
+                        insertDate={item.insertDate}
+                        author={item.author}
+                        disslikeCount={item.disslikeCount}
+                        likeCount={item.likeCount}
+                        describe={item.describe}
+                        title={item.title}
+                        pictureAddress={item.pictureAddress}
+                    />
+                    )}
                 
-                <div className =' w-full h-[270px] md:h-[390px] bg-[#F7F7FA] rounded-[10px] flex justify-center items-center'>
-                    
-                    <CommentForm
-                        
-                    />                   
-                    
+                <div className =' w-full h-[270px] md:h-[390px] bg-[#F7F7FA] rounded-[10px] flex justify-center items-center'>                   
+                    <CommentForm/>                                       
                 </div>
                 
             </div>
