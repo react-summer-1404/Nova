@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const AboutOption = () => {
   return (
-    <div className="items-end flex flex-col gap-4">
+    <div className="items-end flex flex-col gap-4 pb-4">
       <div className="flex items-center gap-4">
         <Link className="font-bold text-responsive">
           برنامه دوره‌ای انعطاف‌پذیر

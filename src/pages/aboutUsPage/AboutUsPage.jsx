@@ -2,42 +2,35 @@ import React from 'react'
 import NavigationSection from '../../components/ui/navigation/NavigationSection'
 import JoinTheClub from '../../components/section/landing/JoinTheClub/JoinTheClub'
 import GettingStartedSection from '../../components/section/landing/GettingStartedSection/GettingStartedSection'
-import aboutPic from "../../assets/images/Section → inner_about_img.svg"
-import svg from "../../assets/icons/Section → SVG.svg"
-import Tag from '../../components/ui/Tag/Tag'
-import { AccentText } from '../../components/ui'
-import AboutOption from '../../components/section/landing/AboutSection/AboutOption'
-import BlueButton from "../../components/ui/button/BlueButton"
-import { GoArrowLeft } from "react-icons/go";
 import "../../assets/styles/variable.css"
+import "../../assets/styles/global.css"
+import icon from "../../assets/icons/icon.svg"
+import "../../assets/styles/variable.css"
+import AboutMore from '../../components/section/aboutUs/AboutMore'
+import Tag from '../../components/ui/Tag/Tag'
 
 
 const AboutUsPage = () => {
   return (
     <>
       <NavigationSection title={"ما کی هستیم"}/>
-     <div className="flex flex-col gap-8  w-screen  items-center">
-     <div className='flex border w-fit p-[132px] gap-[70px]'>
-     <div className='flex flex-col items-end gap-5 w-[650px] border'>
-      <Tag title={"دسته بندی های پرطرفدار"} textColor={"#5751E1"} bgColor={"#EFEEFE"} width={"177px"} height={"31px"}/>
-      <AccentText beforeLabel={"توانسازی دانش اموزان برای رسیدن به "} afterLabel={"انها برای چالش سطح بعدی"} title={"هدف"}/>
-      <span style={{color:"var(--color-text-gray)"}} className='text-right'>سلام! این یک پیام تستی است سلام! این یک پیام تستی است سلام! این یک پیام تستی است سلام! این یک پیام تستی است سلام! این یک پیام تستی است سلام! این یک پیام تستی است سلام! این یک پیام تستی است </span>
-      <AboutOption/>
-      <BlueButton content={"درباره ما"} BtnIcon={<GoArrowLeft />} />
-      </div>
-
-     <div className='flex  w-fit relative'>
-        <img src={aboutPic}/>
-        <img src={svg} className='absolute top-0 right-0'/>
-      </div>
-
-     
-     </div>
-     </div>
+    <AboutMore/>
+    <div style={{backgroundColor:"var(--color-light-gray)"}} className='w-screen flex flex-col items-center justify-center gap-5 lg:p-[120px] p-8'>
+    <Tag title={"آنچه ما ارائه می دهیم"} textColor={"#5751E1"} bgColor={"#EFEEFE"} width={"177px"} height={"31px"}/>
+<h2 className='font-bold lg:text-4xl text-base lg:w-[500px] w-[350px] '>یادگیری مهارت های جدید در زمان و جایی که تو دوست داری</h2>
+<span style={{color:"var(--color-text-gray)"}} className='text-responsive lg:w-[430px] w-[300px]'>سلام! این یک پیام تستی است سلام! این یک پیام تستی است سلام! این یک پیام تستی است</span>
+    <div className='w-[450px] h-[226px] bg-[#F1FDFF] rounded-[20px] shadow-[8px_8px_0px_0px_rgba(201,228,233,1)]'>
+  <div className='rounded-full bg-[#1BCBE3] w-[70px] h-[70px] flex-center'>
+    <img src={icon} />
+  </div>
+<div></div>
+    </div>
+    </div>
       <JoinTheClub/>
       <GettingStartedSection/>
       <div></div>
     </>
+
   )
 }
 
