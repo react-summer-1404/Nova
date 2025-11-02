@@ -17,6 +17,7 @@ import { AuthRoutes } from "../features/auth/routes/routes";
 import Dashboard from "../features/dashboard/layouts/Dashboard";
 import PageLayout from "../components/layout/PageLayout/PageLayout";
 
+
 const router = createBrowserRouter([
   {
     element: <PageLayout />,
