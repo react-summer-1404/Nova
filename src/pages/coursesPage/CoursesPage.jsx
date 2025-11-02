@@ -31,7 +31,7 @@ const CoursesPage = () => {
       (searchParam) => {
         if (value) {
           searchParam.set(key, value);
-        } else {
+        } else { 
           searchParam.delete(key);
         }
         return searchParam;

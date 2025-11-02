@@ -1,4 +1,3 @@
-import axios from "axios";
 import instance from "./../../../core/interceptor/interceptor";
 
 export const getBlogs = async (apiParams) => {

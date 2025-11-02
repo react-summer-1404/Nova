@@ -1,12 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { getCourses } from "../../../servises/api/courses/coursList";
+import { getBlogs } from "../../../servises/api/news/getNews";
 
-const Result = ({ currentItems }) => {
-  const { data } = useQuery({
-    queryKey: ["product"],
-    queryFn: getCourses,
-  });
+const Result = () => {
+ 
   return (
     <div className="lg:flex gap-2 hidden whitespace-nowrap text-[16px] leading-7 font-normal">
       <span style={{ color: "var(--color-dark-purple)" }}>
@@ -14,7 +10,7 @@ const Result = ({ currentItems }) => {
       </span>
       <span>از</span>
       <span style={{ color: "var(--color-dark-purple)" }}>
-        {currentItems?.length}
+        {/* {currentItems?.length} */}
       </span>
       <span>نمایش نتیجه</span>
     </div>
