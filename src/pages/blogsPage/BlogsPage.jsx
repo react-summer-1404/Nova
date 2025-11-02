@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { getBlogs } from "../../servises/api/news/getNews";
 import { useQuery } from "@tanstack/react-query";
-import {
-  NavigationSection,
-  Header,
-  SideContent,
-} from "./components/index";
+import { NavigationSection, Header, SideContent } from "./components/index";
 import CustomPagination from "../../components/ui/pagination/CustomPagination";
-import QueryState from './components/QueryState';
-import {BlogCard} from "./components/index";
+import QueryState from "./components/QueryState";
+import { BlogCard } from "./components/index";
 
 const BlogsPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -18,23 +14,23 @@ const BlogsPage = () => {
   const apiParams = {
     RowsOfPage: rowsOfthePage,
     PageNumber: pageNumber,
-    SortingCol: sortingCol,
-    SortType: sortType,
   };
-  
+
   const { data, isError, isLoading } = useQuery({
     queryKey: ["blogs", pageNumber, rowsOfthePage, sortingCol, sortType],
     queryFn: () => getBlogs(apiParams),
   });
 
   return (
-    <div className="flex flex-col gap-28 items-center">
+    <div className="w-screen flex flex-col justify-center items-center gap-8 p-5">
       <NavigationSection />
-      <div className="w-[80%] flex justify-between gap-6">
+      <div className="w-[97%] flex justify-center gap-5 ">
         {/* main content */}
-        <div className="w-[75%] flex flex-col items-center pb-16">
-          <Header />
-          <div className="w-full flex flex-col md:flex-row justify-end items-center flex-wrap gap-3 px-3 py-16">
+        <div className=" flex flex-col justify-center items-center pb-16">
+          <div className="w-full flex justify-between">
+            <Header />
+          </div>
+          <div className="flex justify-evenly gap-y-5 flex-wrap p-1">
             <QueryState
               isError={isError}
               isLoading={isLoading}
@@ -54,7 +50,7 @@ const BlogsPage = () => {
         </div>
 
         {/* side content */}
-        <div className="w-[24%]">
+        <div className="hidden sm:flex w-0 sm:w-[24%]">
           <SideContent />
         </div>
       </div>

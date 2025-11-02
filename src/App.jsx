@@ -16,7 +16,7 @@ const App = () => {
         <RouterProvider router={router} />
       </HeroUIProvider>
       <Toaster />
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 };

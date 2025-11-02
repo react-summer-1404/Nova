@@ -1,13 +1,19 @@
-import React from 'react'
-import { CustomAutocomplete, Search } from './index';
+import React from "react";
+import { CustomAutocomplete, Result, Search } from "./index";
+import { CiFilter } from "react-icons/ci";
 
 const Header = () => {
   return (
-    <div className='w-full flex justify-between items-center gap-2.5'>
-        <div className='flex justify-start items-center gap-2.5'><CustomAutocomplete /></div>
-        <div> <Search /> </div>
+    <div className="w-full flex justify-between">
+      <div className="hidden sm:flex">
+        <CustomAutocomplete />
+      </div>
+      <div className="sm:hidden w-full flex items-center justify-center p-0.5 gap-1">
+        <Search />
+      </div>
+      <Result />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
