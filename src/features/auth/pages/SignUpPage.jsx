@@ -1,6 +1,7 @@
 import React from "react";
 import { FormText } from "../componenets/authForm/Authform";
 import SignUpForm from "../Form/SignUpForm";
+import Stepper from "../componenets/authForm/Stepper";
 
 const SignUpPage = () => {
   return (

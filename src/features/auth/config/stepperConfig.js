@@ -1,5 +1,5 @@
-export const forgetPasswordStepperConfigs = [
+export const signUpStepperConfigs = [
    { name: "ایمیل"},
-   { name: "تغییر رمز عبور"},
-   { name: "ایمیل"},
+   { name: "دریافت کد"},
+   { name: "مشخصات کاربری"},
 ]

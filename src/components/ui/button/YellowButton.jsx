@@ -1,23 +1,10 @@
 import React from "react";
+import {Button} from "@heroui/react";
 
-const YellowButton = ({ width,height, text, icon ,onClick ,type}) => {
+const YellowButton = ({  text, icon ,onClick ,type}) => {
 
   return (
-    <button
-      type={type}
-      style={{
-        width,
-        height,
-        backgroundColor: "var(--color-golden-yellow)",
-        fontFamily: "var(--font-base)",
-      }}
-      className="border border-black rounded-[50px] p-5 shadow-2d-yellow text-[20px] font-semibold leading-[18px] text-center cursor-pointer "
-    onClick={onClick}
-
-    >
-      {text}
-      {icon && <span >{icon}</span>}
-    </button>
+   <Button className="yellow-button">{text}</Button>
   );
 };
 

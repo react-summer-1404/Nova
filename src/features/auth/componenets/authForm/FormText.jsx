@@ -2,7 +2,7 @@ import React from "react";
 
 const FormText = ({ title, subtitle }) => {
   return (
-    <div className="mt-6">
+    <div className="">
       <h4
         style={{ color: "var(--color-navy)" }}
         className="text-[28px] font-semibold"

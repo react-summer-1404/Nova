@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { signUpStepperConfigs } from "../../config/stepperConfig";
+import { Button } from "@heroui/react";
+import { useNavigate } from "react-router-dom";
 
-const Stepper = () => {
+const Stepper = ({ buttonText,navigatePage }) => {
+  const [currentStep, setcurrentStep] = useState(1);
+  const [isComplete, setIsComplete] = useState(false);
+  const navigate = useNavigate()
+
+  const signUpStep = signUpStepperConfigs;
+
+  const handleNext = () => {}
+
   return (
-    <ul style={{ direction: "rtl" }} class="steps mt-18">
-      <li class="step step-accent">ایمیل</li>
-      <li class="step step-primary">Choose plan</li>
-      <li class="step">Purchase</li>
-      <li class="step">Receive Product</li>
-    </ul>
+    <>
+      <Button className="yellow-button" onPress ={handleNext}>{buttonText}
+      </Button>
+      <div className="stepper">
+        {signUpStep.map((step, index) => {
+          return (
+            <div className={`step ${currentStep>index+length || isComplete ? "complete" : "" } ${
+              currentStep === index + 1 ? "active" : ""}`}>
+              <div className="step-number">{index + 1}</div>
+              <div className="step-name"> {step.name} </div>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
