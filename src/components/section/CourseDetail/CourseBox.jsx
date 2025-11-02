@@ -15,8 +15,6 @@ import FilterCourse from "./FilterCourse";
 
 const CourseBox = () => {
     const { id } = useParams();
-    
-
     const { data, isError, isLoading, error} = useQuery({
         queryKey: ['detail', id],
         queryFn: () => getCourseDetail(id),

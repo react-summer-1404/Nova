@@ -11,7 +11,6 @@ import "swiper/css/navigation";
 import {Autoplay, Navigation} from "swiper/modules";
 import { useRef } from 'react';
 import { FaArrowLeft,FaArrowRight } from "react-icons/fa6";
-
 const FilterCourse = ({courseLevelId}) => { 
   const itemsPerPage = 10;
   const apiParam = {
@@ -74,8 +73,12 @@ const FilterCourse = ({courseLevelId}) => {
               modules={[Navigation, Autoplay]}
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               spaceBetween={20}
-              slidesPerView={3}
               autoplay={true}
+              breakpoints={{
+                320: {slidesPerView:1},
+                640: {slidesPerView:2},                
+                1024:{slidesPerView:3}
+              }}
             >
 
             {currentItems?.map((product) => (

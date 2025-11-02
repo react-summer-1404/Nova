@@ -1,7 +1,4 @@
-import { Formik } from 'formik';
 import React from 'react'
-import { BiLike } from "react-icons/bi";
-import { BiDislike } from "react-icons/bi";
 import CommentForm from './Form/CommentForm';
 import UserComment from './UserComment';
 import { useParams } from 'react-router-dom';
@@ -12,9 +9,9 @@ const CourseComment = ({teacherName, imageAddress}) => {
         const { data} = useQuery({
             queryKey: ['comment',id],
             queryFn: () => getCourseDetailComment(id),    
-        })
+        });
 
-        console.log(data)
+        console.log("comment:",data)
     return (
         <div className =' border-[#DFDFDF] flex justify-center items-center'>
             <div className =' flex flex-col items-end gap-5'>
@@ -46,7 +43,7 @@ const CourseComment = ({teacherName, imageAddress}) => {
                 
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default CourseComment
