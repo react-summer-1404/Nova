@@ -2,9 +2,10 @@ import React from "react";
 
 const AccentText = ({beforeLabel,afterLabel ,title}) => {
   return (
-    <div className="text-right font-bold font-display text-4xl flex flex-col items-end">
-    <div className="flex">
-    <div className="flex justify-end">
+    <div className="text-right font-bold font-display text-4xl flex  items-end flex-wrap justify-end" >
+
+    <div className="flex  border whitespace-nowrap " >
+    <div className="flex justify-end  border">
       
       <span className="w-40 relative ">
       <svg
@@ -34,9 +35,10 @@ const AccentText = ({beforeLabel,afterLabel ,title}) => {
       </span>
       <i style={{color: "var(--color-white)", }} className="w-40 absolute text-center mt-0.5 font-bold ">{ title }</i>
     </div>
-      <h2 style={{color:"var(--color-black)"}} className="leading-[60px]">{beforeLabel}</h2>
+    <h2 style={{color:"var(--color-black)"}} className="leading-[60px] ">{beforeLabel}</h2>
+
     </div>
-    <h2 style={{color:"var(--color-black)"}} className="max-w-md leading-[60px]">
+    <h2 style={{color:"var(--color-black)"}} className=" leading-[60px] ">
     {afterLabel}   
     </h2>
     </div>
