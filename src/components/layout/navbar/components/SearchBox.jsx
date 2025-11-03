@@ -8,14 +8,13 @@ const SearchBox = () => {
       <div className="flex justify-between  w-full ">
         <div
           style={{ backgroundColor: "var(--color-dark-purple)" }}
-          className="rounded-full  xl:w-[44px] xl:h-[44px] md:w-[30px] md:h-[30px] sm:w-[44px] sm:h-[44px] flex-center cursor-pointer p-1"
+          className="rounded-full  xl:w-[44px] xl:h-[44px] md:w-[30px] md:h-[30px] sm:w-[44px] sm:h-[44px] w-8 h-8 flex-center cursor-pointer p-1"
         >
           <BsSearch
             style={{
               color: "var(--color-white)",
-              fontSize: "22px",
-              transform: "scaleX(-1)",
             }}
+            className="w-4 h-4  lg:w-6 lg:h-6 text-white -scale-x-100"
           />
         </div>
         <input
@@ -25,7 +24,7 @@ const SearchBox = () => {
         />
       </div>
       <div className="hidden xl:flex gap-2 md:border-l md:border-[#BDBABB]  md:items-center md:p-1">
-        <GoChevronDown size={"12px"} />
+        <GoChevronDown size={12}  />
         <span className="whitespace-nowrap text-base  font-medium">
           دسته بندی ها
         </span>
