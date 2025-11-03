@@ -1,4 +1,3 @@
-// useTechs.js
 import { useQuery } from "@tanstack/react-query";
 import { getTechs } from "../servises/api/landing/topCategories";
 

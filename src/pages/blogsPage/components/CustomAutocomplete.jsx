@@ -9,16 +9,17 @@ export const sortOption = [
 
 export default function CustomAutocomplete() {
   return (
-    <div className="flex w-[280px] p-0 items-center flex-nowrap md:flex-nowrap gap-4">
-      <Autocomplete className="max-w-xs" label="مرتب سازی بر اساس">
-        {sortOption.map((option) => (
-          <AutocompleteItem key={option.key}>{option.label}</AutocompleteItem>
-        ))}
-      </Autocomplete>
-      <span
-        style={{ color: "var( --color-text-gray)" }}
-        className="whitespace-nowrap"
-      >
+    <div className="w-[60%] flex items-center gap-0.5">
+      <div style={{ direction: "rtl" }} className="h-10 flex justify-between">
+        <Autocomplete className="whitespace-nowrap" label="محبوبترین">
+          {sortOption.map((option) => (
+            <AutocompleteItem className="" key={option.key}>
+              {option.label}
+            </AutocompleteItem>
+          ))}
+        </Autocomplete>
+      </div>
+      <span style={{ color: "var( --color-text-gray)" }} className="whitespace-nowrap">
         :مرتب سازی بر اساس
       </span>
     </div>

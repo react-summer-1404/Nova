@@ -5,7 +5,7 @@ import router from "./router/router";
 import { HeroUIProvider } from "@heroui/system";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./ReactQueryConfig";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
         <RouterProvider router={router} />
       </HeroUIProvider>
       <Toaster />
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 };
