@@ -17,7 +17,6 @@ import { AuthRoutes } from "../features/auth/routes/routes";
 import Dashboard from "../features/dashboard/layouts/Dashboard";
 import PageLayout from "../components/layout/PageLayout/PageLayout";
 
-
 const router = createBrowserRouter([
   {
     element: <PageLayout />,
@@ -31,9 +30,9 @@ const router = createBrowserRouter([
       { path: "/coachesDetail", element: <CoachesDetailPage /> },
       { path: "/compareCourse", element: <CompareCoursePage /> },
       { path: "/contactUs", element: <ContactUsPage /> },
-      { path: "/courseDetail:id", element: <CourseDetailPage /> },
+      { path: "/courseDetail/:id", element: <CourseDetailPage /> },
       { path: "/courses", element: <CoursesPage /> },
-  { path: "*", element: <NotFoundingPage /> },
+      { path: "*", element: <NotFoundingPage /> },
 
       { path: "/dashboard", element: <Dashboard /> },
     ],

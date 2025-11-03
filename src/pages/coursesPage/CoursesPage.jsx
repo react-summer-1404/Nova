@@ -44,15 +44,14 @@ const CoursesPage = () => {
       { replace: true }
     );
   };
-  const filterKey = useMemo(
-    () => ({
-      ...paramsObject,
-      TechCount: 1,
-      PageNumber: 1,
-      RowsOfPage: 12,
-    }),
-    [paramsObject]
-  );
+  const filterKey = {
+    ...paramsObject,
+    TechCount: 1,
+    PageNumber: 1,
+    RowsOfPage: 12,
+  };
+  
+   
 
   // mutation
   const queryKey = ["courses", filterKey];
@@ -117,7 +116,7 @@ const CoursesPage = () => {
     mutationFn: postAddToFavorite,
     onSuccess: () => {},
   });
-// 
+// Query
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", filterKey],
     queryFn: () => getCourses(filterKey),
