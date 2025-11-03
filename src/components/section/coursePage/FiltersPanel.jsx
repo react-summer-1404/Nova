@@ -81,7 +81,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   refetchOnMount: false,
   });
 
-  //  Render 
+   
   return (
     <div className="md:flex flex-col gap-5 w-[310px] hidden">
       <InfoCard title="دسته بندی ها">
