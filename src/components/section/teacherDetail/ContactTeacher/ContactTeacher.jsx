@@ -6,7 +6,7 @@ import TextArea from '../../../ui/TextArea/TextArea';
 
 function ContactTeacher() {
   return (
-    <div className="w-[280px] h-[600px]  lg:flex flex-col gap-5 hidden p-6 shadow-[0_0_14px_0_rgba(0,0,0,0.08)] rounded-[10px] border border-[#DFDFDF]">
+    <div className="lg:w-[280px] h-[600px] w-full flex flex-col gap-5  p-6 shadow-[0_0_14px_0_rgba(0,0,0,0.08)] rounded-[10px] border border-[#DFDFDF]">
     <div className=" text-right flex flex-col gap-3">
       <h2 className="font-semibold text-[20px]">تماس سریع</h2>
       <h3 style={{color:"var(--color-text-gray)"}} className="text-base">
@@ -20,7 +20,10 @@ function ContactTeacher() {
       <SimpleInput type={"number"} label={"تلفن"}/>
       <TextArea/>
     </div>
+    <div className='hidden lg:block'>
     <BlueButton height={"50px"} content={"پیام فرستادن"} BtnIcon={<FaArrowLeftLong color="var(---color-white)"/>} />
+
+    </div>
   </div>
   )
 }
