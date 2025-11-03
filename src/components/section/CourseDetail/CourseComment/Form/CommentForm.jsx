@@ -1,8 +1,9 @@
-import { Form, Formik } from 'formik';
+import { Form, Formik, Field } from 'formik';
 import React from 'react';
 import * as Yup from "yup";
 import FormGroup from '../component/FormGroup';
 import { FaArrowLeft} from "react-icons/fa";
+
 
 const validationSchema = Yup.object({
     title: Yup.string().required("وارد کردن عنوان اجباری است"),

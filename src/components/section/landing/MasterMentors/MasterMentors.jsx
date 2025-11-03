@@ -58,6 +58,7 @@ const MasterMentors = () => {
                 key={item.id}
                 fullName={item.fullName}
                 pictureAddress={item.pictureAddress}
+                courseCounts={item.courseCounts}
               />
           ))
         }
