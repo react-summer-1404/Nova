@@ -2,6 +2,7 @@ import React from 'react'
 import TeacherCard from '../../components/section/landing/MasterMentors/TeacherCArd'
 import {getTeachers} from "../../servises/api/teachers"
 import { useQuery } from '@tanstack/react-query'
+import NavigationSection from "../../components/ui/navigation/NavigationSection"
 
 const CoachesPage = () => {
   const {data} = useQuery({
@@ -10,7 +11,9 @@ const CoachesPage = () => {
   })
   
   return (
-    <div className ='w-screen flex  md:px-6  justify-center pb-8 '>
+   <div className='w-screen flex flex-col'>
+    <NavigationSection title={"مربیان"}/>
+     <div className ='w-screen flex  md:px-6  justify-center py-8 '>
         <div className ='w-fit md:w-[80%] flex justify-end p-4  '>
           {data?.map(item => (
               <TeacherCard
@@ -26,6 +29,7 @@ const CoachesPage = () => {
           
         </div>
       </div>
+   </div>
   )
 }
 
