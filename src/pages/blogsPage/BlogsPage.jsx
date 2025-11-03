@@ -54,7 +54,7 @@ const BlogsPage = () => {
         {/* main content */}
         <div className=" flex flex-col justify-center items-center pb-16">
           <div className="w-full flex justify-between">
-            <Header />
+            <Header paramItems={paramItems} handleChange={handleChange}/>
           </div>
           <div className="flex justify-evenly gap-y-5 flex-wrap p-1">
             <QueryState

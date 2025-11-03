@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Accordion, AccordionItem } from "@heroui/accordion";
-import { CheckboxGroup, Checkbox } from "@heroui/react";
 import InfoCard from "../../../components/ui/infoCard/InfoCard";
 import CheckList from "../../../components/ui/checkList/CheckList";
 import { useDebounce } from "use-debounce";

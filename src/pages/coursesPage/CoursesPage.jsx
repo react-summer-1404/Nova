@@ -121,7 +121,6 @@ const CoursesPage = () => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", filterKey],
     queryFn: () => getCourses(filterKey),
-    // enabled: !!Object.keys(paramsObject).length,
   });
 
   const currentItems = data?.courseFilterDtos || [];
@@ -130,7 +129,6 @@ const CoursesPage = () => {
     <div className="flex flex-col gap-8  w-screen  justify-center ">
       <NavigationSection
         title={"همه دوره ها"}
-        // BreadcrumbsItems={BreadcrumbsItems}
       />
       <div className="md:w-[97%] flex justify-between gap-[20px] flex-col-reverse md:flex-row md:items-stretch  items-center ">
         <div className="flex flex-col gap-5 items-end  w-full">
