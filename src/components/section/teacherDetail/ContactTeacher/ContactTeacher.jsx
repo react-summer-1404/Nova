@@ -21,8 +21,7 @@ function ContactTeacher() {
       <TextArea/>
     </div>
     <div className='hidden lg:block'>
-    <BlueButton height={"50px"} content={"پیام فرستادن"} BtnIcon={<FaArrowLeftLong color="var(---color-white)"/>} />
-
+    <BlueButton width={"100%"} height={"50px"} content={"پیام فرستادن"} BtnIcon={<FaArrowLeftLong color="var(---color-white)"/>} />
     </div>
   </div>
   )
