@@ -3,26 +3,30 @@ import { Accordion, AccordionItem } from "@heroui/accordion";
 import { CheckboxGroup, Checkbox } from "@heroui/react";
 import InfoCard from "../../../components/ui/infoCard/InfoCard";
 import CheckList from "../../../components/ui/checkList/CheckList";
-import useTechs from "../../../hooks/useTech";
 import { useDebounce } from "use-debounce";
+import { useQuery } from "@tanstack/react-query";
+import { getNewsCategory } from "../../../servises/api/newsCategory/categoryList";
 
 const CategoryFiltering = ({ paramItems, handleChange }) => {
-  const [selectTech, setSelectTech] = useState(
-    paramItems.ListTech?.split(",") || []
+  const [selectNewsTech, setSelectNewsTech] = useState(
+    paramItems.NewsCategoryId?.split(",") || []
   );
-  const { data } = useTechs();
-  const [selectTechDebounce] = useDebounce(selectTech, 1000);
+const {data}=useQuery({
+  queryKey:["newsTech"],
+  queryFn:()=>getNewsCategory()
+})
+  const [selectNewsTechDebounce] = useDebounce(selectNewsTech, 500);
   useEffect(() => {
-    handleChange("courseLvlId", selectTechDebounce);
-  }, [selectTechDebounce]);
+    handleChange("id", selectNewsTechDebounce);
+  }, [selectNewsTechDebounce]);
   return (
     <div>
       <InfoCard title={"دسته بندی ها"}>
         <CheckList
           data={data}
-          labelKey="techName"
-          selected={selectTech}
-          setSelected={setSelectTech}
+          labelKey="categoryName"
+          selected={selectNewsTech}
+          setSelected={setSelectNewsTech}
         />
       </InfoCard>
     </div>
