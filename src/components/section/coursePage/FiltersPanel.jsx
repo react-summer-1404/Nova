@@ -28,7 +28,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   const [selectedTech, setSelectedTech] = useState(
     paramsObject.ListTech?.split(",") || []
   );
-  const [debounceTech] = useDebounce(selectedTech, 1000);
+  const [debounceTech] = useDebounce(selectedTech, 500);
 
   useEffect(() => {
     onChangeParams("ListTech", debounceTech);

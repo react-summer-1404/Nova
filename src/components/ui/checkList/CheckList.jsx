@@ -1,7 +1,6 @@
 import { CheckboxGroup, Checkbox } from "@heroui/react";
 
 export default function CheckList({ data, labelKey,selected,setSelected,idKey = "id",}) {
-  console.log(selected);
   return (
    <div style={{direction:"rtl"}}>
      <CheckboxGroup value={selected} onValueChange={setSelected}>
