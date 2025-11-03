@@ -26,10 +26,9 @@ const FilterTeacherCourses = ({ TeacherId }) => {
   const currentItems = data?.courseFilterDtos;
 
   return (
-    <div className="w-full">
-      <div className="border flex justify-between">
-       <div className="flex gap-2
-       ">
+    <div className="w-full ">
+      <div className=" flex justify-between items-center pb-7 ">
+       <div className=" gap-2 hidden md:flex">
        <BlueButton
           width={"50px"}
           height={"50px"}
@@ -43,9 +42,9 @@ const FilterTeacherCourses = ({ TeacherId }) => {
           BtnIcon={<FaArrowRight size={20} md:size={25} className="mt-[5px]" />}
         />
        </div>
-       <div className="flex flex-col items-end">
+       <div className="flex flex-col sm:items-end items-center gap-2">
        <h2 className="font-semibold text-3xl">دوره های من</h2>
-<h3 style={{color:"var(--color-text-gray)"}} className="text-base">سلام! این یک پیام تستی است  سلام! این یک پیام تستی است  </h3>
+<h3 style={{color:"var(--color-text-gray)"}} className="text-base sm:text-right">سلام! این یک پیام تستی است  سلام! این یک پیام تستی است  </h3>
        </div>
       </div>
 

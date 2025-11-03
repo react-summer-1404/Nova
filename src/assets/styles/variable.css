@@ -21,6 +21,8 @@
   --color-base-gray: #555555;
   --color-bg-purple: #282568;
   --color-text-gray2: #7f7e97;
+  --color-box-gray: #F4F3F8;
+
 
   --gradient-main: radial-gradient(
       circle at 20% 50%,
