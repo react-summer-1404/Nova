@@ -4,6 +4,7 @@ import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
 import { Link } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
+import "../../../assets/styles/variable.css"
 
 const CourseProductCard = ({ product, 
   isCol, 
@@ -24,7 +25,7 @@ const CourseProductCard = ({ product,
     addToFavoriteMutation.mutate(product.courseId);
   };
 
-  const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
+  const courseDate = product.startTime? product.startTime.slice(0, 10) : "";
 
   return (
     <div

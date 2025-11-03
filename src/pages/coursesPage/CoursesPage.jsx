@@ -168,6 +168,7 @@ const CoursesPage = () => {
                 محصول یافت نشد
               </h2>
             )}
+            
             {!isLoading &&
               !isError &&
               currentItems?.map((product) => (

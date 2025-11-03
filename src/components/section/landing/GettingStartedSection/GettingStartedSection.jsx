@@ -5,7 +5,7 @@ import {useNavigate } from 'react-router-dom'
 const GettingStartedSection = () => {
   const navigate = useNavigate();
   return (
-    <div className ='w-screen  bg-[#282568]'>
+    <div className ='w-screen md:h-[1000px] h-[750px] bg-[#282568]'>
       <div className ='h-[550px] flex justify-center items-center '>
         <div className ='md:h-[360px] md:mb-[0px] mb-[120px] h-[300px] w-[77%] flex flex-col items-center gap-3'>
           <button className =' p-1.5 px-5 md:px-7 rounded-[30px] font-[500] bg-[#5751E1] text-[12px] md:text-[16px] text-[#FFFFFF] '>
