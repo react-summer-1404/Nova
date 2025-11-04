@@ -1,7 +1,6 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
 import { GoChevronDown } from "react-icons/go";
-import "../../../../assets/styles/global.css";
 const SearchBox = () => {
   return (
     <div className="flex-center md:border md:border-[#D3D2DF] rounded-full md:gap-1 p-1 xl:w-[400px] md:w-[300px]">

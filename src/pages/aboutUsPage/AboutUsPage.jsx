@@ -2,10 +2,6 @@ import React from "react";
 import NavigationSection from "../../components/ui/navigation/NavigationSection";
 import JoinTheClub from "../../components/section/landing/JoinTheClub/JoinTheClub";
 import GettingStartedSection from "../../components/section/landing/GettingStartedSection/GettingStartedSection";
-import "../../assets/styles/variable.css";
-import "../../assets/styles/global.css";
-
-import "../../assets/styles/variable.css";
 import AboutMore from "../../components/section/aboutUs/AboutMore";
 import Tag from "../../components/ui/Tag/Tag";
 import ServicesList from "../../components/section/aboutUs/ServicesList";

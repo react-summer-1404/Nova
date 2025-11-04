@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { getBlogsDetail } from '../../servises/api/newsDetail'
-import Tag from '../../components/ui/Tag/Tag';
-import "../../assets/styles/"
+import GeneralInfo from '../../components/section/BlogDetail/GeneralInfo';
+
 
 const BlogDetailPage = () => {
  const id=1;
@@ -10,21 +10,17 @@ const BlogDetailPage = () => {
     queryKey:["newsDetail",id],
     queryFn: ()=> getBlogsDetail(id)
   })
-  console.log(data)
   const detailItems = data?.detailsNewsDto;
   return (
 <div className='flex w-screen justify-center'>
 <div className='flex w-[80%]'>
-     <div className='flex flex-col w-4/5 border '>
-      <img src={detailItems?.currentImageAddress} className='w-full h-[500px] '/>
-      <div>
-        <div><Tag bgColor={"var()"}/></div>
-        <div></div>
-      </div>
+     <div className='flex flex-col w-4/5 '>
+      <img src={detailItems?.currentImageAddress} className='w-full h-[500px]'/>
+     <GeneralInfo detailItems={detailItems}/>
       <div>details</div>
       <div>comment</div>
      </div>
-     <div className='w-[300px] border'>related news</div>
+     <div className='w-[300px]'>related news</div>
     </div>
 </div>
   )

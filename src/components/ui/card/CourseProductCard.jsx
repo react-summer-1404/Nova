@@ -4,7 +4,6 @@ import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
 import { Link } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
-import "../../../assets/styles/variable.css"
 
 const CourseProductCard = ({ product, 
   isCol, 

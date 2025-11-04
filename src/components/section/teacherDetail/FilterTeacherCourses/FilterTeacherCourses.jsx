@@ -8,7 +8,6 @@ import BlueButton from "../../../ui/button/BlueButton";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { getCourses } from "../../../../servises/api/courses/coursList";
 import { useQuery } from "@tanstack/react-query";
-import "../../../../assets/styles/variable.css"
 const FilterTeacherCourses = ({ TeacherId }) => {
   const itemsPerPage = 10;
 

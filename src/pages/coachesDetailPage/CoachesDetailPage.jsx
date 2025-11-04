@@ -1,6 +1,4 @@
 import React from "react";
-import "../../assets/styles/variable.css";
-import "../../assets/styles/global.css";
 import { useQuery } from "@tanstack/react-query";
 import { getTeachersDetail } from "../../servises/api/teacherDetail";
 import TeacherInformation from "../../components/section/teacherDetail/TeacherInformation/TeacherInformation";

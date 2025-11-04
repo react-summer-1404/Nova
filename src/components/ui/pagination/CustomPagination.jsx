@@ -6,7 +6,7 @@ export default function CustomPagination({
   totalCount,
   RowsOfPage,
 }) {
-  const totalPagination = Math.max(1,Math.ceil(totalCount / RowsOfPage)||1)
+  const totalPagination = Math.max(1,Math.ceil(totalCount / RowsOfPage))
 
   return (
     <Pagination

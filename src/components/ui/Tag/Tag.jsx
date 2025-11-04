@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../assets/styles/global.css"
 
 const Tag = ({ title, textColor, bgColor, icon, width, height, onClick }) => {
   return (

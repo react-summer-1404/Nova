@@ -1,6 +1,4 @@
-import React, { useState, useEffect, use } from "react";
-import "../../../../assets/styles/variable.css";
-import "../../../../assets/styles/global.css";
+import React, { useState } from "react";
 import Tag from "../../../ui/Tag/Tag";
 import BlueButton from "../../../ui/button/BlueButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
