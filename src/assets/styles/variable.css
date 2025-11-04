@@ -1,0 +1,50 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-navy: #161439;
+  --color-golden-yellow: #ffc124;
+  --color-light-gray: #f7f7f9;
+  --color-text-gray: #6d6c80;
+  --color-soft-gray: #efeff1;
+  --color-dark-purple: #5751e1;
+  --color-light-purple: #efeefe;
+  --color-soft-indigo: #d9d9f3;
+  --color-dark-blue: #06042e;
+  --color-light-blue: #1c1a4a;
+  --color-text-fot: #8c9ab4;
+  --color-text2-fot: #b2bbcc;
+  --color-blue-fot: #1c1b3c;
+  --color-border-gray: #b5b5c380;
+  --color-border-blue: #6196ea;
+  --color-pure-blue: #0000ff;
+  --color-disable-heart: #cccccc;
+  --color-base-gray: #555555;
+  --color-bg-purple: #282568;
+  --color-text-gray2: #7f7e97;
+  --color-box-gray: #F4F3F8;
+
+
+  --gradient-main: radial-gradient(
+      circle at 20% 50%,
+      rgba(189, 175, 255, 0.32),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(255, 190, 255, 0.28),
+      transparent 45%
+    ),
+    #ffffff;
+
+  --font-base: "Poppins", serif;
+}
+
+.dark {
+  --color-white: #222020;
+  --color-black: #ffffff;
+  --color-navy: #818093;
+  --color-text-gray: #6d6c80;
+  --color-light-gray: #070709;
+  --color-dark-purple: #c8c6eb;
+  --color-golden-yellow: #db9d00;
+}

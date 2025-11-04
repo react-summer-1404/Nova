@@ -16,7 +16,6 @@ export default function PriceRangeSlider({ value, setValue }) {
         color="primary"
         aria-label="price-range"
         className="rtl max-w-[240px]"
-        showTooltip
         classNames={{
           track: "bg-gray-300",         
           filler: "bg-[#5751E1]",       

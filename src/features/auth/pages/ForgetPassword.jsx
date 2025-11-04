@@ -1,6 +1,7 @@
 import React from "react";
 import { FormText } from "../componenets/authForm/Authform";
 import ForgetPasswordForm from "../Form/ForgetPasswordForm";
+import Stepper from "../componenets/authForm/Stepper";
 
 const ForgetPassword = () => {
   return (
@@ -8,7 +9,7 @@ const ForgetPassword = () => {
       <div className=" text-right ">
         <FormText title={"تغییر رمزعبور"} subtitle={"جهت دریافت کد یک بار مصرف شماره تماس خود را وارد کنید"}/>
         <ForgetPasswordForm />
-        {/* <ُStepper /> */}
+        <Stepper />
       </div>
     </div>
   );

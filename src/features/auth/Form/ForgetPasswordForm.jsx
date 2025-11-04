@@ -42,13 +42,13 @@ const ForgetPasswordForm = () => {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form className=" flex flex-col justify-end mt-7 sm:mt-8 gap-4">
+      <Form style={{ direction: "rtl" }} className=" flex flex-col justify-end mt-7 sm:mt-8 gap-4">
         <div className="relative flex flex-col gap-[.5rem]">
           <FormField
             type={"email"}
             name={"email"}
             id={"email"}
-            placeHolder={"ایمیل خود را وارد کنید"}
+            placeholder={"ایمیل خود را وارد کنید"}
           />
           <ErrorMessage
             name="email"
