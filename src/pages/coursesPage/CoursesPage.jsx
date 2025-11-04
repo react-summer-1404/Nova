@@ -23,7 +23,7 @@ const CoursesPage = () => {
   const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfThePage] = useState(10);
+  const [rowsOfThePage, setRowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
 
