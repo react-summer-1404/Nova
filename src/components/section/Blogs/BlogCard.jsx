@@ -1,5 +1,5 @@
 import React from "react";
-import { BlogcardMainContent, BlogCardFooter } from "./blogcardItems/index";
+import { BlogcardMainContent, BlogCardFooter } from "./index";
 
 const BlogCard = ({ blogData }) => {
   return (

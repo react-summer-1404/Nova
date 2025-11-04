@@ -1,7 +1,7 @@
 import React from "react";
-import { CustomAutocomplete, Result, Search } from "./index";
+import { CustomAutocomplete, Result, Search } from "../../../pages/blogsPage/components/index";
 import { CiFilter } from "react-icons/ci";
-import SortDropdown from "../../../components/ui/sortDropDown/SortDropdown";
+import SortDropdown from "../../ui/sortDropDown/SortDropdown";
 
 const Header = ({paramItems,handleChange}) => {
   return (

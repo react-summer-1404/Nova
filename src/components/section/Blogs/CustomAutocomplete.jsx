@@ -1,5 +1,5 @@
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
-import SortDropdown from "../../../components/ui/sortDropDown/SortDropdown";
+import SortDropdown from "../../ui/sortDropDown/SortDropdown";
 
 // export const sortOption = [
 //   { key: "popular", label: "محبوب‌ترین" },

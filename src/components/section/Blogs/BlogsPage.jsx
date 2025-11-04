@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { getBlogs } from "../../servises/api/news/getNews";
+import { getBlogs } from "../../../servises/api/news/getNews";
 import { useQuery } from "@tanstack/react-query";
-import { NavigationSection, Header, SideContent } from "./components/index";
-import CustomPagination from "../../components/ui/pagination/CustomPagination";
-import QueryState from "./components/QueryState";
-import { BlogCard } from "./components/index";
+import { NavigationSection, Header, SideContent } from "../../../pages/blogsPage/components/index";
+import CustomPagination from "../../ui/pagination/CustomPagination";
+import QueryState from "./QueryState";
+import { BlogCard } from "../../../pages/blogsPage/components/index";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 
