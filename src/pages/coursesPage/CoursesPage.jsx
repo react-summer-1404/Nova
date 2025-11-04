@@ -16,7 +16,6 @@ import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router-dom";
 import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
-import BreadcrumbCustom from "../../components/ui/navigation/BreadcrumbsComponent";
 
 const CoursesPage = () => {
   const [searchParam, setSearchParam] = useSearchParams();
@@ -24,7 +23,7 @@ const CoursesPage = () => {
   const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfThePage, setRowsOfThePage] = useState(10);
+  const [rowsOfThePage, setRowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
 
@@ -49,8 +48,8 @@ const CoursesPage = () => {
     () => ({
       ...paramsObject,
       TechCount: 1,
-      PageNumber: 1,
-      RowsOfPage: 12,
+      PageNumber: pageNumber,
+      RowsOfPage: rowsOfThePage,
     }),
     [paramsObject]
   );
