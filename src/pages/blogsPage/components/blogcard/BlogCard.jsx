@@ -15,8 +15,9 @@ const BlogCard = ({ blogData }) => {
           title={blogData.title}
           miniDescribe={blogData.miniDescribe}
           img={blogData.addUserProfileImage}
-          label={blogData.keyword}
+          label={blogData.newsCatregoryName}
           date={blogData.updateDate}
+          id={blogData.id}
         />
         <div
           style={{ background: "var(--color-text2-fot)" }}

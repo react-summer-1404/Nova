@@ -1,5 +1,7 @@
    import axios from "axios";
 import { getToken, removeToken } from "../../hooks/localStorage";
+import useFavorite from "../store/favoriteStore";
+
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 const instance = axios.create({
@@ -23,6 +25,7 @@ instance.interceptors.response.use(
 
     if (status === 401) {
       removeToken("token");
+      useFavorite().getState().clearFavorite();
       
     } else if (status >= 404 && status < 500) {
       console.log("Client Error:", status);

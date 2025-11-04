@@ -70,7 +70,7 @@ const CoursesPage = () => {
 
       return { previousData, queryKey };
     },
-    onError: (error, courseId, context) => {
+    onError: (error, _courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
       console.log(error);
     },

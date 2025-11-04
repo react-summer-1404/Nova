@@ -19,7 +19,6 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   const [debouncePrice] = useDebounce(priceRange, 500);
 
   useEffect(() => {
-    console.log("debouncePrice:", debouncePrice);
     onChangeParams("CostDown", debouncePrice[0]);
     onChangeParams("CostUp", debouncePrice[1]);
   }, [debouncePrice]);
