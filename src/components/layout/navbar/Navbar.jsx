@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "../../../assets/styles/global.css";
 import "../../../assets/styles/nav.css";
 import Logo from "../../ui/Logo/Logo";
 import NavbarItems from "./components/NavbarItems";

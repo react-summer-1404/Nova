@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../../../../../assets/styles/global.css";
 import "../../../../../assets/styles/variable.css";
 import YellowButton from "../../../../ui/button/YellowButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";

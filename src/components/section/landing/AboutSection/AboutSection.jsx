@@ -2,7 +2,6 @@ import React from "react";
 import AboutPic from "../../../../assets/images/aboutUsHome.svg";
 import Tag from "../../../ui/Tag/Tag";
 import "../../../../assets/styles/variable.css";
-import "../../../../assets/styles/global.css";
 import BlueButton from "../../../ui/button/BlueButton";
 import { GoArrowLeft, GoChevronLeft } from "react-icons/go";
 import AccentText from "../../../ui/accentText/AccentText";

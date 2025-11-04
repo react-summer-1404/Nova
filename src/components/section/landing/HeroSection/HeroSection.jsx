@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../../assets/styles/global.css";
 import "../../../../assets/styles/variable.css";
 import heroPic from "../../../../assets/images/herosectionPic.svg";
 import BlueButton from "../../../ui/button/BlueButton";

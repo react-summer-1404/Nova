@@ -1,6 +1,5 @@
 import React, { useState, useEffect, use } from "react";
 import "../../../../assets/styles/variable.css";
-import "../../../../assets/styles/global.css";
 import Tag from "../../../ui/Tag/Tag";
 import BlueButton from "../../../ui/button/BlueButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";

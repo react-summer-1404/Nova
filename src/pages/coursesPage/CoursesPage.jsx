@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from "react";
-import "../../assets/styles/global.css";
 import Result from "../../components/ui/result/Result";
 import SearchSection from "../../components/ui/pagesSearchSection/SearchSection";
 import SortingSection from "../../components/section/coursePage/SortingSection";

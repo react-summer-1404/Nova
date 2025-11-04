@@ -1,20 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import {
-  LandingPage,
-  AboutUsPage,
-  NotFoundingPage,
-  BlogDetailPage,
-  BlogsPage,
-  CartPage,
-  CoachesPage,
-  CoachesDetailPage,
-  CompareCoursePage,
-  ContactUsPage,
-  CourseDetailPage,
-  CoursesPage,
-} from "../pages/index";
+import {LandingPage,AboutUsPage,NotFoundingPage,BlogDetailPage,BlogsPage,CartPage,CoachesPage,CoachesDetailPage,CompareCoursePage,ContactUsPage,CourseDetailPage,CoursesPage,} from "../pages/index";
 import { AuthRoutes } from "../features/auth/routes/routes";
-import Dashboard from "../features/dashboard/layouts/Dashboard";
+import { DashboardRoutes } from "./dashboardRouter";
 import PageLayout from "../components/layout/PageLayout/PageLayout";
 
 const router = createBrowserRouter([
@@ -32,12 +19,11 @@ const router = createBrowserRouter([
       { path: "/contactUs", element: <ContactUsPage /> },
       { path: "/courseDetail:id", element: <CourseDetailPage /> },
       { path: "/courses", element: <CoursesPage /> },
-  { path: "*", element: <NotFoundingPage /> },
-
-      { path: "/dashboard", element: <Dashboard /> },
+      { path: "*", element: <NotFoundingPage /> },
     ],
   },
   ...AuthRoutes,
+  ...DashboardRoutes,
 ]);
 
 export default router;

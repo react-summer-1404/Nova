@@ -10,7 +10,6 @@ const Header = () => {
         style={{ color: "var(--color-dark-purple)" }}
         className="cursor-pointer"
       />
-      <FaUserCog className="cursor-pointer" />
       <ThemeToggle />
     </div>
   );

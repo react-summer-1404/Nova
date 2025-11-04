@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../assets/styles/global.css"
 
 const PurpleBtn = ({ content, BtnIcon, width, height, onClick}) => {
   return (

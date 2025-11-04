@@ -10,6 +10,7 @@ import CompareCoursePage from './CompareCoursePage/CompareCoursePage';
 import ContactUsPage from './contactUSPage/ContactUsPage';
 import CourseDetailPage from './courseDetailPage/CourseDetailPage';
 import CoursesPage from './coursesPage/CoursesPage';
+import Dashboard from "./dashboard/Dashboard";
 
 export {
     NotFoundingPage,
@@ -24,4 +25,5 @@ export {
     ContactUsPage,
     CourseDetailPage,
     CoursesPage,
+    Dashboard
 }
