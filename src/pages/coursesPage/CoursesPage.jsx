@@ -44,16 +44,12 @@ const CoursesPage = () => {
       { replace: true }
     );
   };
-  const filterKey = useMemo(
-    () => ({
+  const filterKey = {
       ...paramsObject,
       TechCount: 1,
       PageNumber: 1,
       RowsOfPage: 12,
-    }),
-    [paramsObject]
-  );
-
+  }
   // mutation
   const queryKey = ["courses", filterKey];
 
