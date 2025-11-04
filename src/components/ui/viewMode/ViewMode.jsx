@@ -1,7 +1,6 @@
 import React from "react";
 import { BsGrid } from "react-icons/bs";
 import { TfiMenuAlt } from "react-icons/tfi";
-import "../../../assets/styles/global.css";
 const ViewMode = ({ isCol, setIsCol }) => {
   return (
     <div className="md:flex gap-2 hidden ">

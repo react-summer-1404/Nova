@@ -1,5 +1,4 @@
 import React from 'react'
-import "../../../assets/styles/global.css"
 import BreadcrumbCustom from './BreadcrumbsComponent';
 
 const NavigationSection = ({title}) => {

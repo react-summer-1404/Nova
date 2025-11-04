@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from "react";
-import "../../assets/styles/global.css";
 import Result from "../../components/ui/result/Result";
 import SearchSection from "../../components/ui/pagesSearchSection/SearchSection";
 import SortingSection from "../../components/section/coursePage/SortingSection";
@@ -45,14 +44,11 @@ const CoursesPage = () => {
     );
   };
   const filterKey = {
-    ...paramsObject,
-    TechCount: 1,
-    PageNumber: 1,
-    RowsOfPage: 12,
-  };
-  
-   
-
+      ...paramsObject,
+      TechCount: 1,
+      PageNumber: 1,
+      RowsOfPage: 12,
+  }
   // mutation
   const queryKey = ["courses", filterKey];
 
@@ -74,7 +70,7 @@ const CoursesPage = () => {
 
       return { previousData, queryKey };
     },
-    onError: (error, courseId, context) => {
+    onError: (error, _courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
       console.log(error);
     },

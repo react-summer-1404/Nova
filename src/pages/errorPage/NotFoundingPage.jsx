@@ -1,7 +1,6 @@
 import React from 'react'
 import NavigationSection from '../../components/ui/navigation/NavigationSection'
 import ErrorSection from "../../assets/images/ErrorSection.svg"
-import "../../assets/styles/global.css"
 import PurpleBtn from '../../components/ui/button/BlueButton'
 import { GoArrowLeft } from "react-icons/go";
 import { Link } from 'react-router-dom'

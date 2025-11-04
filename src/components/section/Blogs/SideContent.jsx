@@ -1,5 +1,5 @@
 import React from 'react'
-import { CategoryFiltering, Search } from "./index"
+import { CategoryFiltering, Search } from "../../../pages/blogsPage/components/index"
 
 const SideContent = ({ Query, setQuery, paramItems, handleChange}) => {
   return (

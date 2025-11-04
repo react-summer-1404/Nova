@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 import IconWrapper from './IconWrapper'
-import "../../../../assets/styles/variable.css"
 
 const CommunicationApp = () => {
     return (

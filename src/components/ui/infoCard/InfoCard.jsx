@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../../assets/styles/global.css";
 import useToggle from "../../../hooks/useToggle";
 
 const InfoCard = ({ title, children, showMoreButton = false }) => {
@@ -14,8 +13,8 @@ const InfoCard = ({ title, children, showMoreButton = false }) => {
         <h2 className="font-semibold text-xl">{title}</h2>
 
         <div
-          className={`transition-all duration-500 overflow-hidden ${
-            isExpanded ? "max-h-[1000px]" : "max-h-[280px]"
+          className={`transition-all duration-500 overflow-hidden w-[90%] ${
+            isExpanded ? "max-h-[1000px]" : "max-h-[500px] "
           }`}
         >
           {children}

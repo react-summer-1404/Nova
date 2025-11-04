@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getCourses } from '../../../servises/api/courses/coursList';
 import ErrorMessage from '../landing/BlogSection/ErrorMessage';
 import { Spinner } from "@heroui/react";
-// import useFilter from '../../../store/filterStore';
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";

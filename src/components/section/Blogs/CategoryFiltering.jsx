@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import InfoCard from "../../../components/ui/infoCard/InfoCard";
-import CheckList from "../../../components/ui/checkList/CheckList";
+import InfoCard from "../../ui/infoCard/InfoCard";
+import CheckList from "../../ui/checkList/CheckList";
 import { useDebounce } from "use-debounce";
 import { useQuery } from "@tanstack/react-query";
-import { getNewsCategory } from "../../../servises/api/newsCategory/categoryList";
+import { getNewsCategory } from "../../../servises/api/newsCategory";
 
 const CategoryFiltering = ({ paramItems, handleChange }) => {
   const [selectNewsTech, setSelectNewsTech] = useState(
