@@ -16,6 +16,7 @@ import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router-dom";
 import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
+import BreadcrumbCustom from "../../components/ui/navigation/BreadcrumbsComponent";
 
 const CoursesPage = () => {
   const [searchParam, setSearchParam] = useSearchParams();
