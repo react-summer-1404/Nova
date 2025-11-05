@@ -19,7 +19,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                         ({courseRate} امتیاز)
                         <FaStar md:size={"16px"} color='#F8BC24' />
                     </div>
-                    <button style={{ backgroundColor: "var(--color-light-purple)" }} className='md:px-9 p-1 px-2 rounded-[30px] flex items-center'
+                    <button style={{ backgroundColor: "var(--color-light-purple)" }} className='md:px-9 p-1 px-3 rounded-[30px] flex items-center'
                         type="submit"
                     >
                         <span className='font-[500] text-[10px] md:text-[13px] text-[#161439]'>{title}</span>

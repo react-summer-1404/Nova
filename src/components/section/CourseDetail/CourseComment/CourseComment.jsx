@@ -19,9 +19,9 @@ const CourseComment = ({ teacherName, imageAddress, CourseId }) => {
                     <div className='flex flex-col items-end mr-[10px]'>
                         <h3 className='font-[400] text-[12px] md:text-[16px] text-[#1C1A4A]'>نویسنده</h3>
                         <h4 className='font-[500] text-[18px] md:text-[22px] text-[#1C1A4A]'>{teacherName}</h4>
-                        <h2 className=' text-right font-[400] text-[10px] md:text-[14px]'>مهندس حسین نوری کادیجانی دارای مدرک کارشناسی مهندسی کامپیوتر – نرم‌افزار از دانشگاه تربیت دبیر شهید رجایی هستند. ایشان شش سال سابقه برنامه‌نویسی اندروید دارند و تاکنون برنامه‌های موفق و باکیفیتی را در مارکت‌های مطرح ایرانی منتشر کرده‌اند و پیوسته به دنبال یادگیری و کسب دانش بیشتر در این زمینه هستند.</h2>
+                        <h2 className=' text-right font-[400] text-[9px] md:text-[14px]'>مهندس حسین نوری کادیجانی دارای مدرک کارشناسی مهندسی کامپیوتر – نرم‌افزار از دانشگاه تربیت دبیر شهید رجایی هستند. ایشان شش سال سابقه برنامه‌نویسی اندروید دارند و تاکنون برنامه‌های موفق و باکیفیتی را در مارکت‌های مطرح ایرانی منتشر کرده‌اند و پیوسته به دنبال یادگیری و کسب دانش بیشتر در این زمینه هستند.</h2>
                     </div>
-                    <img src={imageAddress} className='w-[20%] mr-[25px]' />
+                    <img src={imageAddress} className='lg:w-[20%] w-[75%] mr-[25px]' />
                 </div>
                 <p className='font-[600] text-[18px] md:text-[22px]'>نظر </p>
                 {data?.map(item =>
