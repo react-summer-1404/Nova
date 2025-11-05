@@ -11,6 +11,7 @@ import Loader from '../landing/BlogSection/Loader';
 import CommunicationApp from '../landing/MasterMentors/CommunicationApp';
 import CourseDetail from './CourseDetail';
 import FilterCourse from "./FilterCourse";
+import NavigationSection from "../../ui/navigation/NavigationSection";
 
 
 const CourseBox = () => {
@@ -31,7 +32,8 @@ console.log(data)
         return <ErrorMessage message={error?.message || "خطای ناشناخته ای رخ داده"} />
     }
     return (
-        <div className='flex flex-col w-screen items-center'>
+        <div className='flex flex-col w-screen gap-20 items-center'>
+            <NavigationSection title={"حل تعارضات بین طراحان و مهندسان"}/>
             <div className=' w-screen flex justify-center gap-8 mr-[20px] mb-[30px]'>
                 
                 <div className='w-[65%] flex items-end flex-col gap-7'>

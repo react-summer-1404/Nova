@@ -1,7 +1,5 @@
 import React from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { BiLike } from "react-icons/bi";
-import { BiDislike } from "react-icons/bi";
 import Card1 from './Card1';
 import { useQuery } from '@tanstack/react-query';
 import { getLandingNews } from '../../../../servises/api/landing/news';
