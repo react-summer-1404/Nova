@@ -1,4 +1,3 @@
-import DashboardLayout from "../components/layout/dashboardLayout/DashboardLayout";
 import {UserDashboard,Favorites,MyComments,MyCourses,ReservedCourses,SecuritySetting,UserInformation,} from "../components/section/dashboard/index";
 import { Navigate } from "react-router-dom";
 import Dashboard from "../pages/dashboard/Dashboard";
