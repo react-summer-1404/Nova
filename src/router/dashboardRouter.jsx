@@ -19,5 +19,6 @@ export const DashboardRoutes = [
       { path: "userinformation/editProfile", element: <EditUserInformation /> },
       
     ],
+    
   },
 ];

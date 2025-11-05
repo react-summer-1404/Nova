@@ -31,7 +31,7 @@ const UserInformation = () => {
         </div>
       </div>
       <div className="w-full h-[12%]">
-       <Link to={"/userinformation/editProfile"}> <Button className="w-[128px] h-[40px] rounded-full px-1 py-0.5 text-navy bg-golden-yellow">
+       <Link to={"editProfile"}> <Button className="w-[128px] h-[40px] rounded-full px-1 py-0.5 text-navy bg-golden-yellow">
           <span className="text-[16px]">
             <CiEdit />
           </span>
