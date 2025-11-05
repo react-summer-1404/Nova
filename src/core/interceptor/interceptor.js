@@ -1,4 +1,4 @@
-   import axios from "axios";
+import axios from "axios";
 import { getToken, removeToken } from "../../hooks/localStorage";
 import useFavorite from "../store/favoriteStore";
 
@@ -24,10 +24,9 @@ instance.interceptors.response.use(
     const status = error.response?.status;
 
     if (status === 401) {
+      console.log("لاگین نیستی");
       removeToken("token");
       useFavorite().getState().clearFavorite();
-      alert("لاگین نیستی")
-      
     } else if (status >= 404 && status < 500) {
       console.log("Client Error:", status);
     }

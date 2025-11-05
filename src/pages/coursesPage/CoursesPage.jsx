@@ -22,7 +22,7 @@ const CoursesPage = () => {
   const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfThePage, setRowsOfThePage] = useState(12);
+  const [rowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
 
@@ -46,8 +46,8 @@ const CoursesPage = () => {
   const filterKey = {
       ...paramsObject,
       TechCount: 1,
-      PageNumber: 1,
-      RowsOfPage: 12,
+      PageNumber: pageNumber,
+      RowsOfPage: rowsOfThePage,
   }
   // mutation
   const queryKey = ["courses", filterKey];
@@ -63,7 +63,7 @@ const CoursesPage = () => {
         ...old,
         courseFilterDtos: old?.courseFilterDtos?.map((course) =>
           course.courseId === courseId
-            ? { ...course, likeCount: course.likeCount + 1, userIsLiked: true }
+            ? { ...course, likeCount: course.likeCount + 1, userIsLiked: true ,currentUserDissLike:false}
             : course
         ),
       }));
@@ -93,6 +93,7 @@ const CoursesPage = () => {
                 ...course,
                 dissLikeCount: course.dissLikeCount + 1,
                 currentUserDissLike: true,
+                userIsLiked:false
               }
             : course
         ),
