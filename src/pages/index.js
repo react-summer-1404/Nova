@@ -2,7 +2,7 @@ import NotFoundingPage from "./errorPage/NotFoundingPage";
 import LandingPage from "./landingPage/LandingPage";
 import AboutUsPage from './aboutUsPage/AboutUsPage';
 import BlogDetailPage from './blogDetailPage/BlogDetailPage';
-import BlogsPage from '../components/section/Blogs/BlogsPage';
+import BlogsPage from './blogsPage/BlogsPage';
 import CartPage from './cartPage/CartPage';
 import CoachesPage from './coaches/CoachesPage';
 import CoachesDetailPage from './coachesDetailPage/CoachesDetailPage';

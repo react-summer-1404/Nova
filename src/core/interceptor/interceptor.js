@@ -26,6 +26,7 @@ instance.interceptors.response.use(
     if (status === 401) {
       removeToken("token");
       useFavorite().getState().clearFavorite();
+      alert("لاگین نیستی")
       
     } else if (status >= 404 && status < 500) {
       console.log("Client Error:", status);

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { getBlogs } from "../../../servises/api/news/getNews";
+import { getBlogs } from "../../servises/api/news/getNews";
 import { useQuery } from "@tanstack/react-query";
-import { NavigationSection, Header, SideContent } from "../../../pages/blogsPage/components/index";
-import CustomPagination from "../../ui/pagination/CustomPagination";
-import QueryState from "./QueryState";
-import { BlogCard } from "../../../pages/blogsPage/components/index";
+import { NavigationSection, Header, SideContent } from "./components/index";
+import CustomPagination from "../../components/ui/pagination/CustomPagination";
+import QueryState from "../../components/section/Blogs/QueryState";
+import { BlogCard } from "./components/index";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 
@@ -46,15 +46,16 @@ const BlogsPage = () => {
     queryKey: ["blogs", paramItems],
     queryFn: () => getBlogs(apiParams),
   });
-
+  const currentItems =data?.news;
+  console.log("currentItems",currentItems)
   return (
     <div className="w-screen flex flex-col justify-center items-center gap-8 p-5">
-      <NavigationSection />
+      <NavigationSection title={"وبلاگ ها"}/>
       <div className="w-[97%] flex justify-center gap-5 ">
         {/* main content */}
         <div className=" flex flex-col justify-center items-center pb-16">
           <div className="w-full flex justify-between">
-            <Header paramItems={paramItems} handleChange={handleChange}/>
+            <Header totalCount={data?.totalCount} currentItems={currentItems} paramItems={paramItems} handleChange={handleChange}/>
           </div>
           <div className="flex justify-evenly gap-y-5 flex-wrap p-1">
             <QueryState
