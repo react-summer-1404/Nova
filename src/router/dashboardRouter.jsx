@@ -2,6 +2,7 @@ import DashboardLayout from "../components/layout/dashboardLayout/DashboardLayou
 import {UserDashboard,Favorites,MyComments,MyCourses,ReservedCourses,SecuritySetting,UserInformation,} from "../components/section/dashboard/index";
 import { Navigate } from "react-router-dom";
 import Dashboard from "../pages/dashboard/Dashboard";
+import EditUserInformation from "../components/section/dashboard/UserInformation/EditUserInformation/EditUserInformation";
 
 export const DashboardRoutes = [
   {
@@ -16,6 +17,8 @@ export const DashboardRoutes = [
       { path: "reservedcourses", element: <ReservedCourses /> },
       { path: "securitysetting", element: <SecuritySetting /> },
       { path: "userinformation", element: <UserInformation /> },
+      { path: "userinformation/editProfile", element: <EditUserInformation /> },
+      
     ],
   },
 ];
