@@ -43,14 +43,14 @@ const CoursesPage = () => {
       { replace: true }
     );
   };
-  const filterKey = {
+  const apiParams = {
       ...paramsObject,
       TechCount: 1,
       PageNumber: pageNumber,
       RowsOfPage: rowsOfThePage,
   }
   // mutation
-  const queryKey = ["courses", filterKey];
+  const queryKey = ["courses", apiParams];
 
   const likeMutation = useMutation({
     mutationFn: postLike,
@@ -115,8 +115,8 @@ const CoursesPage = () => {
   });
 // Query
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["courses", filterKey],
-    queryFn: () => getCourses(filterKey),
+    queryKey: ["courses", apiParams],
+    queryFn: () => getCourses(apiParams),
   });
 
   const currentItems = data?.courseFilterDtos || [];
