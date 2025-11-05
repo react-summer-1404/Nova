@@ -1,5 +1,4 @@
-import React, { useState, useEffect, use } from "react";
-import "../../../../assets/styles/variable.css";
+import React, { useState } from "react";
 import Tag from "../../../ui/Tag/Tag";
 import BlueButton from "../../../ui/button/BlueButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
@@ -59,7 +58,7 @@ const FeaturedCourses = () => {
   
   <div className="overflow-hidden w-[90%] ">  
     <div
-      className="flex  transition-transform duration-500 ease-in-out gap-4   "       
+      className="flex transition-transform duration-500 ease-in-out gap-4 "       
       style={{
         transform: `translateX(-${slide * (100 / slidesPerView)}%)`,
       }}

@@ -1,23 +1,18 @@
 import React from "react";
 import AboutPic from "../../../../assets/images/aboutUsHome.svg";
 import Tag from "../../../ui/Tag/Tag";
-import "../../../../assets/styles/variable.css";
 import BlueButton from "../../../ui/button/BlueButton";
-import { GoArrowLeft, GoChevronLeft } from "react-icons/go";
+import { GoArrowLeft } from "react-icons/go";
 import AccentText from "../../../ui/accentText/AccentText";
-import YellowButton from "../../../ui/button/YellowButton";
 import { Link } from "react-router-dom";
+import AboutOption from "./AboutOption";
 
 const AboutSection = () => {
-  const options = [
-    "برنامه دوره ای انعطاف پذیر",
-    "از هر کجا به کلاس خود دسترسی داشته باشید",
-    "بهترین مربیان",
-  ];
+ 
   return (
-    <div className="w-screen flex-center pb-20 pt-20">
-      <div className="flex justify-between  w-3/4 md:w-full lg:w-full xl:w-3/4 g-16">
-        <div className="  md:w-1/2 justify-end  flex-center">
+    <div className="w-screen flex-center pb-20 pt-20 ">
+      <div className="flex justify-between  w-3/4 md:w-full lg:w-full xl:w-3/4 g-16 ">
+        <div className="  md:w-[500px] justify-end  flex-center ">
           <div className="items-center md:items-end flex flex-col  gap-6">
             <Tag
               title={"درباره ما بیشتر بدانید"}
@@ -25,8 +20,8 @@ const AboutSection = () => {
               bgColor={"var(--color-light-purple)"}
             />
             <AccentText
-              beforeLabel={"هزاران"}
               afterLabel={"برتر اکنون در یک مکان"}
+              beforeLabel={"هزاران"}
               title={"دوره"}
             />
             <h3
@@ -37,14 +32,7 @@ const AboutSection = () => {
               کند سازماندهی، اولویت بندی و. در این قسمت از Smashing Pod ما هستیم
               صحبت در مورد پایه پلتفرم وب.
             </h3>
-            <div className="items-end flex flex-col gap-4">
-              {options.map((option, index) => (
-                <div key={index} className="flex items-center gap-4">
-                  <Link className="font-bold text-responsive">{option}</Link>
-                  <YellowButton icon={<GoChevronLeft className="-m-2.5" />} />
-                </div>
-              ))}
-            </div>
+            <AboutOption/>
             <Link to={"/aboutUs"}>
               <BlueButton content={"درباره ما"} BtnIcon={<GoArrowLeft />} />
             </Link>

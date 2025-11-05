@@ -38,7 +38,7 @@ const Navbar = () => {
         </div>
         {isOpen && (
           <div className="w-full h-[150%] bg-white Rel absolute top-5 left-0 z-10 transition-opacity duration-300 ease-in-out">
-            {" "}
+            
             <GoX onClick={toggle} fontSize={"40px"} />
           </div>
         )}

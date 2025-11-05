@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../../../../../assets/styles/variable.css";
 import YellowButton from "../../../../ui/button/YellowButton";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../../hooks/useSlider";
@@ -43,7 +42,7 @@ const Slider = () => {
   return (
     <div
       style={{ backgroundColor: "var(--color-light-gray)" }}
-      className="flex justify-evenly items-center  gap-2 md:gap-10 px-4 sm:px-8 p-4 rounded-full w-full max-w-[1410px] mx-auto"
+      className="flex justify-evenly items-center  gap-2 md:gap-10 px-4 sm:px-8 p-4 rounded-full w-full max-w-[1300px] mx-auto "
     >
       <YellowButton
         onClick={prevSlide}
@@ -85,3 +84,4 @@ const Slider = () => {
 };
 
 export default Slider;
+

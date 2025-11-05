@@ -19,7 +19,6 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   const [debouncePrice] = useDebounce(priceRange, 500);
 
   useEffect(() => {
-    console.log("debouncePrice:", debouncePrice);
     onChangeParams("CostDown", debouncePrice[0]);
     onChangeParams("CostUp", debouncePrice[1]);
   }, [debouncePrice]);
@@ -28,7 +27,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   const [selectedTech, setSelectedTech] = useState(
     paramsObject.ListTech?.split(",") || []
   );
-  const [debounceTech] = useDebounce(selectedTech, 1000);
+  const [debounceTech] = useDebounce(selectedTech, 500);
 
   useEffect(() => {
     onChangeParams("ListTech", debounceTech);
@@ -81,7 +80,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   refetchOnMount: false,
   });
 
-  //  Render 
+   
   return (
     <div className="md:flex flex-col gap-5 w-[310px] hidden">
       <InfoCard title="دسته بندی ها">

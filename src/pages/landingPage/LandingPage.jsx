@@ -10,11 +10,16 @@ import HeroSection from '../../components/section/landing/HeroSection/HeroSectio
 import TopCategories from '../../components/section/landing/TopCategories/TopCategories'
 import AboutSection from '../../components/section/landing/AboutSection/AboutSection'
 import FeaturedCourses from '../../components/section/landing/FeaturedCourses/FeaturedCourses'
+import { useLocation } from 'react-router-dom'
 
 
 
 
 const LandingPage = () => {
+  
+  const location = useLocation();
+   console.log(location)
+
   return (
     <>
       <HeroSection/>

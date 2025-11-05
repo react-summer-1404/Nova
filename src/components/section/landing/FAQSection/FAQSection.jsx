@@ -3,8 +3,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaChevronLeft } from "react-icons/fa6";
 const FAQSection = () => {
   return (
-    <div style={{backgroundColor : "var(--color-light-gray)"}} className ='w-screen h-[500px] md:h-[750px] flex items-center'>      
-      <div className ='mt-[100px] md:mt-[0px] h-[480px] md:w-2/4 flex flex-col items-end text-right gap-1 md:gap-3 md:pr-10'>
+    <div style={{backgroundColor : "var(--color-light-gray)"}} className ='w-screen h-[500px] md:h-[750px] flex items-center justify-center'>      
+      <div className =' md:h-[450px] md:w-2/4 flex flex-col items-center md:items-end text-right gap-1 md:gap-3 md:pr-10'>
         <button style={{color: "var(--color-dark-purple)",backgroundColor : "var(--color-light-purple)"}} className ='px-4 h-[25px] rounded-[30px] text-[9px] '>
           سوالات متداول
         </button>
@@ -29,8 +29,8 @@ const FAQSection = () => {
           <FaChevronLeft  className ='size-3 mt-[5px]'/>
         </div>
       </div>
-      <div className ='hidden md:block w-2/4 h-[480px]'>
-        <img src="src/assets/images/div.faq__img.png" className ='h-[350px] md:h-[410px] ml-[40px] md:ml-[68px]'/>
+      <div className ='hidden md:block w-2/4 h-[450px]'>
+        <img src="src/assets/images/div.faq__img.png" className ='h-[450px] ml-[40px] md:ml-[68px]'/>
       </div>      
     </div>
   )
