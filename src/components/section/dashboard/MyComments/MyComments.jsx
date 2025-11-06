@@ -20,12 +20,11 @@ const MyComments = () => {
         />
       </div>
       <div className ='h-1 w-full bg-gradient-to-r from-transparent via-golden-yellow to-transparent'></div>
-      <div className ='w-full mt-[12px] gap-3 flex flex-col'>
-
+      <div className ='w-full mt-[12px] gap-1.5 lg:gap-3 flex flex-col'>
         <CourseStatusList1
           items1={[
             {
-              icon : <div className ='flex gap-2 text-dark-purple'><HiOutlineTrash size={18}/> <IoEyeOutline size={18} /></div>
+              icon : <div className ='mt-[10px] lg:mt-0 flex gap-1 lg:gap-2 text-dark-purple'><HiOutlineTrash  className ='w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]'/> <IoEyeOutline className ='w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]' /></div>
             },
             {
               text : "۱۴۰۴/۰۳/۰۲ , ۱۶:۲۷",
@@ -41,14 +40,15 @@ const MyComments = () => {
               text: "آموزش Tailwind css"
             },
             {
-              text: "#۱"
+              text: "#۱",
+              className : "mt-[10px] lg:mt-0"
             }
           ]}
         />
         <CourseStatusList2
           items2={[
             {
-              icon : <div className ='flex gap-2 text-dark-purple'><HiOutlineTrash size={18}/> <IoEyeOutline size={18} /></div>
+              icon : <div className ='mt-[10px] lg:mt-0 flex gap-1 lg:gap-2 text-dark-purple'><HiOutlineTrash className='w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]'/> <IoEyeOutline className='w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]'/></div>
             },
             {
               text : "۱۴۰۴/۰۲/۰۸ , ۱۵:۲۸",
@@ -62,16 +62,18 @@ const MyComments = () => {
             },
             {
               text : "آموزش کامل کار با Figma",
+            
             },
             {
               text : "#۲",
+              className : "mt-[10px] lg:mt-0"
             }
           ]}
         />
         <CourseStatusList1
           items1={[
             {
-              icon : <div className ='flex gap-2 text-dark-purple'><HiOutlineTrash size={18}/> <IoEyeOutline size={18} /></div>
+              icon : <div className ='mt-[10px] lg:mt-0 flex gap-1 lg:gap-2 text-dark-purple'><HiOutlineTrash className='w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]'/> <IoEyeOutline className='w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]' /></div>
             },
             {
               text : "۱۴۰۴/۰۳/۰۲ , ۱۶:۲۷",
@@ -87,7 +89,8 @@ const MyComments = () => {
               text: "آموزش NextJs"
             },
             {
-              text: "#۳"
+              text: "#۳",
+              className : "mt-[10px] lg:mt-0"
             }
           ]}
         />
