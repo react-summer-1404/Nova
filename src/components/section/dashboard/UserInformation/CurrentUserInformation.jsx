@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Divider } from "@heroui/divider";
 import { Button } from "@heroui/react";
 import UserInfoBox from "./UserInfoBox";
@@ -6,11 +6,11 @@ import { CiUser } from "react-icons/ci";
 import { CiEdit } from "react-icons/ci";
 import { getCurrentUserProfile } from "./../../../../servises/api/userPanel/getProfileInfo/index";
 import { useQuery } from "@tanstack/react-query";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CurrentUserInformation = () => {
-    const navigate = useNavigate()
-const { data } = useQuery({
+  const navigate = useNavigate();
+  const { data } = useQuery({
     queryKey: "usercurrentinfo",
     queryFn: () => getCurrentUserProfile(),
   });
@@ -23,32 +23,34 @@ const { data } = useQuery({
           <UserInfoBox label={"تلگرام"} value={data?.telegramLink} />
           <UserInfoBox label={"لینکداین"} value={data?.linkdinProfile} />
           <UserInfoBox label={"آدرس"} value={data?.homeAdderess} />
-          <UserInfoBox label={"طول جغرافیایی"} value={data?.linkdinProfile} />
-          <UserInfoBox label={"عرض جغرافیایی"} value={data?.linkdinProfile} />
+          <UserInfoBox label={"طول جغرافیایی"} value={"--"} />
+          <UserInfoBox label={"عرض جغرافیایی"} value={"--"} />
         </div>
         <Divider orientation="vertical" />
         <div className="w-[50%] flex-col-right gap-8">
-          <UserInfoBox
-            label={"نام و نام خانوادگی"}
-            value={data?.lName}
-          />
-          <UserInfoBox label={"کد ملی"} value={data?.linkdinProfile} />
-          <UserInfoBox label={"ایمیل"} value={data?.linkdinProfile} />
-          <UserInfoBox label={"تاریخ تولد"} value={data?.linkdinProfile} />
-          <UserInfoBox label={"جنسیت"} value={data?.linkdinProfile} />
-          <UserInfoBox label={"درباره من"} value={data?.linkdinProfile} />
+          <UserInfoBox label={"نام و نام خانوادگی"} value={data?.fName} />
+          <UserInfoBox label={"کد ملی"} value={data?.nationalCode} />
+          <UserInfoBox label={"ایمیل"} value={data?.email} />
+          <UserInfoBox label={"تاریخ تولد"} value={data?.birthDay} />
+          <UserInfoBox label={"جنسیت"} value={data?.gender} />
+          <UserInfoBox label={"درباره من"} value={data?.userAbout} />
         </div>
       </div>
       <div className="w-full h-[12%]">
-          <Button className="w-[128px] h-[40px] rounded-full px-1 py-0.5 text-navy bg-golden-yellow" onPress={() => {navigate("/dashboard/userinformation/edituserprofile")}}>
-            <span className="text-[16px]">
-              <CiEdit />
-            </span>
-            <span className="text-[15px] font-semibold">ویرایش</span>
-          </Button>
+        <Button
+          className="w-[128px] h-[40px] rounded-full px-1 py-0.5 text-navy bg-golden-yellow"
+          onPress={() => {
+            navigate("/dashboard/userinformation/edituserprofile");
+          }}
+        >
+          <span className="text-[16px]">
+            <CiEdit />
+          </span>
+          <span className="text-[15px] font-semibold">ویرایش</span>
+        </Button>
       </div>
     </div>
   );
-}
+};
 
-export default CurrentUserInformation
+export default CurrentUserInformation;
