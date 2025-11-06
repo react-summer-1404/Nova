@@ -55,6 +55,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                                     <CourseComment
                                         teacherName={teacherName}
                                         imageAddress = {imageAddress}
+                                        
                                     />
                                 </CardBody>
                             </Card>

@@ -6,6 +6,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { postCommentCourse } from '../../../../../servises/api/coursesDetail/postComment';
+import { useMutation } from '@tanstack/react-query';
 
 
 
@@ -24,28 +25,38 @@ const CommentForm = ({ initialValues = initialData }) => {
     console.log("url CourseId: ", id)
     const token = localStorage.getItem("token");
 
+    const { mutate } = useMutation({
+        mutationFn: postCommentCourse,
+        onSuccess: (data) => {
+            if (data.success) {
+                toast.success("نظر با موفقیت ثبت شد در انتظار تایید مدیران ...")
+            } else {
+                toast.error("ارسال نظر با خطا مواجه شد")
+            }
+        },
+        onError: (error) => {
+            const message = 
+                error?.response?.data?.message || error?.message ||"خطای ناشناخته ای رخ داد";
+            toast.error(message)
+        },
+    });
+
     const handleSubmit = async (values, { resetForm }) => {
         if (!token) {
             toast.error("برای ارسال نظر ابتدا وارد شوید")
             return;
         }
-        try {
-            const response = await postCommentCourse({
+        mutate(
+            {
                 CourseId: id,
-                Title: values.Title,
-                Describe: values.Describe,
-            });
-            if (response.success) {
-                toast.success(response.massage || " نظر با موفقیت ثبت شد در انتظار تایید مدیران ...");
-                resetForm();
-            } else {
-                toast.error("ارسال نظر ناموفق بود");
+                Title: values.title,
+                Describe: values.describe,
+            },
+            {
+                onSuccess: () => resetForm(),
             }
-        } catch (error) {
-            toast.error("خطا در ارسال نظر");
-            console.error(error)
-        }
-    }
+        );
+    };
     return (
         <Formik
             initialValues={initialValues}

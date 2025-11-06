@@ -4,14 +4,14 @@ import UserComment from './UserComment';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getCourseDetailComment } from '../../../../servises/api/coursesDetail/getComment';
-const CourseComment = ({ teacherName, imageAddress, CourseId }) => {
+const CourseComment = ({ teacherName, imageAddress}) => {
     const { id } = useParams();
     const { data } = useQuery({
         queryKey: ['comment', id],
         queryFn: () => getCourseDetailComment(id),
     });
 
-    console.log("comment:", data)
+    // console.log("id:", CourseId)
     return (
         <div className=' border-[#DFDFDF] flex justify-center items-center'>
             <div className=' flex flex-col items-end gap-5'>
@@ -34,13 +34,15 @@ const CourseComment = ({ teacherName, imageAddress, CourseId }) => {
                         describe={item.describe}
                         title={item.title}
                         pictureAddress={item.pictureAddress}
+                        id={item.id}
+                        CourseId={id}
                     />
                 )}
+                
 
                 <div className=' w-full h-[270px] md:h-[390px] bg-[#F7F7FA] rounded-[10px] flex justify-center items-center'>
-                    <CommentForm CourseId={CourseId} />
+                    <CommentForm/>
                 </div>
-
             </div>
         </div>
     );
