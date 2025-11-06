@@ -47,7 +47,6 @@ const EditUserInformation = () => {
       console.log("خطا در ارسال فرم:", error);
     }
   };
-
   return (
     <div className="flex flex-col w-full gap-5" style={{ direction: "rtl" }}>
       <Subject />
@@ -117,14 +116,7 @@ const EditUserInformation = () => {
                     inputClass="h-[35px]"
                     labelClass="indent-2 -mb-2"
                   />
-                  {/* <Field
-                    name="LName"
-                    style={{
-                      direction: "rtl",
-                      backgroundColor: "var(--color-white)",
-                    }}
-                    className={`border indent-5 focus:outline-none border-[#E1E4E7] mt-[-7px] w-[100%] rounded-[5px]`}
-                  /> */}
+               
                   <FormGroup
                     name={"gender"}
                     label={"جنسیت"}
