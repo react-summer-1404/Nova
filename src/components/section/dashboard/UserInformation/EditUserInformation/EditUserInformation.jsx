@@ -1,20 +1,21 @@
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-// import editIcon from "../../../../../assets/icons/userEdit.svg"
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
-// import ImageContainer from "./ImageContainer/ImageContainer";
 import { HiOutlineCamera } from "react-icons/hi2";
 import profPic from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg";
+import profPicccccccc from "../../../../../assets/images/prof.png";
 import { postUserImage } from "../../../../../servises/api/userPanel/addProfileImage";
 import ModalSection from "../../../../ui/Modal/ModalSection";
+import { FaCheck } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import useToggle from "../../../../../hooks/useToggle";
 
 const EditUserInformation = () => {
-  const [initialValues, setInitialValues] = useState(null);
-
+  const [] = useToggle
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: async () => await getCurrentUserProfile(),
@@ -38,7 +39,7 @@ const EditUserInformation = () => {
       console.log("خطا رخ داد", error);
     },
     onSuccess: () => {
-      console.log("ویرایش شد");
+      console.log("اپلود شد");
     },
   });
 
@@ -53,9 +54,9 @@ const EditUserInformation = () => {
       formData.append("LinkdinProfile", values.LinkdinProfile);
       formData.append("UserAbout", values.UserAbout);
       formData.append("HomeAdderess", values.HomeAdderess);
-      formData.append("NationalCode", values.NationalCode);
       formData.append("Gender", values.Gender);
-      formData.append("formFile");
+      formData.append("formFile",values.formFile);
+
       // formData.append("Latitude", values.Latitude);
       // formData.append("Longitude", values.Longitude);
 
@@ -75,12 +76,13 @@ const EditUserInformation = () => {
             NationalCode: currentProf?.nationalCode || "",
             BirthDay: currentProf?.birthDay || "",
             TelegramLink: currentProf?.telegramLink || "",
-            BirthDay: currentProf?.birthDay || "",
+            HomeAdderess: currentProf?.homeAdderess || "",
             LinkdinProfile: currentProf?.linkdinProfile || "",
             UserAbout: currentProf?.userAbout || "",
             Gender: currentProf?.gender || "",
           }}
           onSubmit={submitHandling}
+          enableReinitialize
         >
           <Form className="flex  gap-5 justify-between w-full">
             <div className="flex flex-col border">
@@ -133,7 +135,7 @@ const EditUserInformation = () => {
                   />
 
                   <FormGroup
-                    name={"gender"}
+                    name={"Gender"}
                     label={"جنسیت"}
                     as={"select"}
                     inputClass="h-[35px]"
@@ -187,16 +189,56 @@ const EditUserInformation = () => {
             </div>
             <div className=" flex flex-col border-1">
               <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
-                <img src={profPic} />
+                <img src={currentProf?.userPicture || "" }  alt="profile" />
 
                 <ModalSection
                   StyleModal={
                     "h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"
                   }
-                  Icon={<HiOutlineCamera />}
-                >
-                  <div>shdiskjlk</div>
-                </ModalSection>
+                  isOpen={true}
+                  Icon={<HiOutlineCamera color="white" size={30} onClick={}/>}
+                  size="4xl"
+                  content={
+                    <div className="border  border-red-500 flex flex-col justify-between items-center h-[400px]">
+                      <div className="w-[200px] h-[200px] relative border ">
+                        <img src={profPic} className="border w-full h-full" />
+                        <button className="w-[50px] h-[50px] bg-dark-purple absolute -right-2 -bottom-2 rounded-full flex-center cursor-pointer">
+                          <FaCheck size={25} className="text-white" />
+                        </button>
+                      </div>
+                      <div className="w-full border border-amber-900">
+                        <div className="flex gap-5 items-center">
+                          <div className="flex gap-5">
+                            <img
+                              src={profPicccccccc}
+                              className="border w-[100px] h-[100px]"
+                            />
+                            <img
+                              src={profPicccccccc}
+                              className="w-[100px] h-[100px]"
+                            />
+                            <img
+                              src={profPicccccccc}
+                              className="w-[100px] h-[100px]"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="formFile">
+                              <FaPlus size={30} cursor={"pointer"} className="text-dark-purple"/>
+                            </label>
+                            <Field
+                              type="file"
+                              id="formFile"
+                              name="formFile"
+                              accept="image/png, image/jpeg"
+                              className="hidden"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                />
               </div>
 
               <FormGroup
