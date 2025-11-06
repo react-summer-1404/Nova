@@ -9,6 +9,8 @@ import { putEditProfile } from "../../../../../servises/api/userPanel/updateProf
 import ImageContainer from "./ImageContainer/ImageContainer";
 import { HiOutlineCamera } from "react-icons/hi2";
 import profPic from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg";
+import { usePostData } from "../../../../../features/auth/hooks/usePostData";
+import { postUserImage } from "../../../../../servises/api/userPanel/addProfileImage";
 
 const EditUserInformation = () => {
   const { data:currentProf } = useQuery({
@@ -16,6 +18,7 @@ const EditUserInformation = () => {
     queryFn:  getCurrentUserProfile,
   });
   console.log("currentProf ==>", currentProf);
+
   const mutation = useMutation({
     mutationFn: (formData) => putEditProfile(formData),
     onError: (error) => {
@@ -25,6 +28,17 @@ const EditUserInformation = () => {
       console.log("ویرایش شد");
     },
   });
+  const mutationImage = useMutation({
+    mutationFn: (formData) => postUserImage(formData),
+    onError: (error) => {
+      console.log("خطا رخ داد", error);
+    },
+    onSuccess: () => {
+      console.log("ویرایش شد");
+    },
+  });
+ 
+
 
   const submitHandling = async (values) => {
     try {
@@ -39,6 +53,7 @@ const EditUserInformation = () => {
       formData.append("HomeAdderess", values.HomeAdderess);
       formData.append("NationalCode", values.NationalCode);
       formData.append("Gender", values.Gender);
+      formData.append("formFile", );
       // formData.append("Latitude", values.Latitude);
       // formData.append("Longitude", values.Longitude);
 
@@ -65,8 +80,8 @@ const EditUserInformation = () => {
           }}
           onSubmit={submitHandling}
         >
-          <Form className="flex  gap-5 ">
-            <div className="flex flex-col">
+          <Form className="flex  gap-5 justify-between w-full">
+            <div className="flex flex-col border">
               <div className="flex gap-10  w-fit ">
                 <div className="flex flex-col w-[200px] gap-5 ">
                   <FormGroup
@@ -168,11 +183,12 @@ const EditUserInformation = () => {
                 ذخیره
               </button>
             </div>
-            <div className=" flex  flex-col">
+            <div className=" flex flex-col border-1">
               <ImageContainer
                 Icon={<HiOutlineCamera size={30} className="text-white" />}
                 profPic={profPic}
               />
+             
               <FormGroup
                 name={"UserAbout"}
                 id={"UserAbout"}
