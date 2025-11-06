@@ -8,7 +8,7 @@ import {
   Button,
   useDisclosure,
 } from "@heroui/react";
-export default function ModalSection({ content, modalTitle ,ButtonText,Icon}) {
+export default function ModalSection({ content, modalTitle ,ButtonText,Icon,StyleModal}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [backdrop, setBackdrop] = useState("opaque");
 
@@ -25,7 +25,7 @@ export default function ModalSection({ content, modalTitle ,ButtonText,Icon}) {
         {backdrops.map((b) => (
           <Button
             key={b}
-            className=" rounded-3xl w-[70px] h-[70px] bg-[#5751E1]"
+            className={StyleModal}
             variant="flat"
             onPress={() => handleOpen(b)}
           >

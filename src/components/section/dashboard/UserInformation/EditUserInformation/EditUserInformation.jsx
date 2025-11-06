@@ -6,10 +6,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
-import ImageContainer from "./ImageContainer/ImageContainer";
+// import ImageContainer from "./ImageContainer/ImageContainer";
 import { HiOutlineCamera } from "react-icons/hi2";
 import profPic from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg";
-import { usePostData } from "../../../../../features/auth/hooks/usePostData";
 import { postUserImage } from "../../../../../servises/api/userPanel/addProfileImage";
 
 const EditUserInformation = () => {
@@ -184,10 +183,17 @@ const EditUserInformation = () => {
               </button>
             </div>
             <div className=" flex flex-col border-1">
-              <ImageContainer
-                Icon={<HiOutlineCamera size={30} className="text-white" />}
-                profPic={profPic}
-              />
+            <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
+    <img src={profPic}/>
+ 
+
+   <ModalSection StyleModal={"h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"} Icon={<HiOutlineCamera/>}>
+<FormGroup type='text'
+name={"formFile"}
+label={"ax"}
+/>
+   </ModalSection>
+  </div>
              
               <FormGroup
                 name={"UserAbout"}

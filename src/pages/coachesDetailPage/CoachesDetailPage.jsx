@@ -28,7 +28,7 @@ const CoachesDetailPage = () => {
      <ContactTeacher/>
      </div>
      <div className="fixed z-50 right-4 bottom-8 lg:hidden block">
-     <ModalSection content={<ContactTeacher/>} Icon={<IoCallOutline size={34} color="white"/>} />
+     <ModalSection content={<ContactTeacher/>} Icon={<IoCallOutline size={34} color="white"/>}  StyleModal={" rounded-3xl w-[70px] h-[70px] bg-[#5751E1]"}/>
      </div>
     </div>
    </div>
