@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
@@ -15,7 +15,8 @@ import { FaPlus } from "react-icons/fa";
 import useToggle from "../../../../../hooks/useToggle";
 
 const EditUserInformation = () => {
-  const [isModalOpen , toggleModal] = useToggle(false)
+  const [isModalOpen , toggleModal,setIsModalOpen] = useToggle(false);
+  console.log(isModalOpen)
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: async () => await getCurrentUserProfile(),
@@ -189,7 +190,7 @@ const EditUserInformation = () => {
             </div>
             <div className=" flex flex-col border-1">
               <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
-                <img src={currentProf?.userPicture || "" }  alt="profile" />
+                <img src={currentProf?.userPicture ||profPicccccccc }  alt="profile" />
 
                 <ModalSection
                   StyleModal={
@@ -198,14 +199,14 @@ const EditUserInformation = () => {
                   isOpen={isModalOpen}
                   onClose={toggleModal}
                   onOpen={toggleModal}
-                  Icon={<HiOutlineCamera color="white" size={30} onClick={toggleModal}/>}
+                  Icon={<HiOutlineCamera color="white" size={30} onClick={()=>toggleModal}/>}
                   size="4xl"
                   content={
                     <div className="border  border-red-500 flex flex-col justify-between items-center h-[400px]">
                       <div className="w-[200px] h-[200px] relative border ">
                         <img src={profPic} className="border w-full h-full" />
                         <button className="w-[50px] h-[50px] bg-dark-purple absolute -right-2 -bottom-2 rounded-full flex-center cursor-pointer" >
-                          <FaCheck size={25} className="text-white" onClick={toggleModal} />
+                          <FaCheck size={25} className="text-white" onClick={()=>setIsModalOpen(false)} />
 
                         </button>
                       </div>
