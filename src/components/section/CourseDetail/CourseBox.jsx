@@ -11,6 +11,7 @@ import Loader from '../landing/BlogSection/Loader';
 import CommunicationApp from '../landing/MasterMentors/CommunicationApp';
 import CourseDetail from './CourseDetail';
 import FilterCourse from "./FilterCourse";
+import NavigationSection from "../../ui/navigation/NavigationSection";
 
 
 const CourseBox = () => {
@@ -31,7 +32,8 @@ console.log(data)
         return <ErrorMessage message={error?.message || "خطای ناشناخته ای رخ داده"} />
     }
     return (
-        <div className='flex flex-col w-screen items-center'>
+        <div className='flex flex-col w-screen gap-20 items-center'>
+            <NavigationSection title={"حل تعارضات بین طراحان و مهندسان"}/>
             <div className=' w-screen flex justify-center gap-8 mr-[20px] mb-[30px]'>
                 
                 <div className='w-[65%] flex items-end flex-col gap-7'>
@@ -48,9 +50,9 @@ console.log(data)
                 </div>
                 <div className ='border border-[#DFDFDF] md:w-[18%] w-[24%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]'>
                     <div className='w-[82%] flex flex-col items-end gap-5 '>
-                        <div style={{ backgroundColor: "var(--color-dark-purple)" }} className='w-full h-[90px] text-right rounded-[8px]'>
-                            <h2 style={{ color: "var(--color-white)" }} className='font-[500] text-[11px] md:text-[15px]'>:هزینه این دوره</h2>
-                            <h3 style={{ color: "var(--color-white)" }} className='font-[600] text-[18px] md:text-[22px] mt-[10px] mr-[30px]'>{data.cost} تومان</h3>
+                        <div style={{ backgroundColor: "var(--color-dark-purple)" }} className='w-full h-[90px] flex flex-col justify-center text-right rounded-[8px]'>
+                            <h2 style={{ color: "var(--color-white)" }} className='font-[500] mr-[14px] text-[11px]  md:text-[15px]'>:هزینه این دوره</h2>
+                            <h3 style={{ color: "var(--color-white)" }} className='font-[600] text-[16px] md:text-[22px] mt-[10px] mr-[25px] lg:mr-[40px]'>{data.cost} تومان</h3>
                         </div>
                         <p className='font-[600] text-[12px] md:text-[16px] text-[#161439]'> :دوره شامل</p>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
@@ -95,9 +97,9 @@ console.log(data)
                             </div>
                         </div>
                         <div className='flex border-b-[1px]  border-[#D9D9D9] flex-col gap-1.5 h-[80px] w-full '>
-                            <div className ='font-[400]  text-[12px] md:text-[16px] text-right text-[#161439]'>: این دوره را به اشتراک بگذارید</div>
-                            <div className='w-[100%] md:w-[70%] md:ml-[20px] flex gap-1.5 md:gap-1.5 items-center'>
-                                <CommunicationApp /> <FaYoutube className='border-[#9292B4] rounded-full w-[30px] md:w-[25px] h-[25px] md:h-[25px] shadow-[2px_3px_0px_0px_#00000040]' />
+                            <div className ='font-[400] text-[12px] md:text-[16px] text-right text-[#161439]'>: این دوره را به اشتراک بگذارید</div>
+                            <div className='w-[100%] md:w-[70%] md:ml-[40px] md:mt-[10px] flex gap-1.5 md:gap-1.5 items-center'>
+                                <CommunicationApp /> <FaYoutube style={{color:"#9292B4" }} className ='border-[#9292B4] w-[18px] md:w-[20px] h-[16px] md:h-[18px] rounded-full shadow-[2px_3px_0px_0px_#00000040]' />
                             </div>
                         </div>
                         <div className='w-full font-[600] text-[14px] flex justify-center'>
@@ -112,12 +114,13 @@ console.log(data)
                 </div>
             </div>
             <div className='w-[920px] h-[700px] flex-col flex mr-[260px]' >
-
-                <AccentText
+                <div className="mr-[30px] lg:mr-0">
+                <AccentText 
                     title={"دوره های "}
                     afterLabel={"مرتبط"}
                     
                 />
+                </div>
 
                 <FilterCourse 
                     courseLevelId={data?.courseLevelId}

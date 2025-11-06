@@ -1,8 +1,13 @@
-import { Form, Formik } from 'formik';
+import { Form, Formik, Field } from 'formik';
 import React from 'react';
 import * as Yup from "yup";
 import FormGroup from '../component/FormGroup';
-import { FaArrowLeft} from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
+import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { postCommentCourse } from '../../../../../servises/api/coursesDetail/postComment';
+
+
 
 const validationSchema = Yup.object({
     title: Yup.string().required("وارد کردن عنوان اجباری است"),
@@ -15,12 +20,37 @@ const initialData = {
 }
 
 const CommentForm = ({ initialValues = initialData }) => {
+    const { id } = useParams();
+    console.log("url CourseId: ", id)
+    const token = localStorage.getItem("token");
+
+    const handleSubmit = async (values, { resetForm }) => {
+        if (!token) {
+            toast.error("برای ارسال نظر ابتدا وارد شوید")
+            return;
+        }
+        try {
+            const response = await postCommentCourse({
+                CourseId: id,
+                Title: values.Title,
+                Describe: values.Describe,
+            });
+            if (response.success) {
+                toast.success(response.massage || " نظر با موفقیت ثبت شد در انتظار تایید مدیران ...");
+                resetForm();
+            } else {
+                toast.error("ارسال نظر ناموفق بود");
+            }
+        } catch (error) {
+            toast.error("خطا در ارسال نظر");
+            console.error(error)
+        }
+    }
     return (
-
-
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
+            onSubmit={handleSubmit}
         >
 
             <Form className='w-11/12 h-5/6 flex flex-col items-end gap-2 md:gap-4'>
@@ -36,7 +66,7 @@ const CommentForm = ({ initialValues = initialData }) => {
                     inputClass="h-[85px]"
                 />
                 <h4 className='font-[400] text-[#6D6C80] text-[10px] md:text-[14px]'>نظر شما پس از تایید توسط ادمین ثبت خواهد شد!</h4>
-                <button style={{ backgroundColor: "var(--color-golden-yellow)" }} className="border border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]">
+                <button style={{ backgroundColor: "var(--color-golden-yellow)" }} type='submit' className="border border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]">
                     <FaArrowLeft className='ml-[6px] mt-[5px]' />
                     <h2 className=' font-[400] text-[10px] md:text-[14px] ml-[10px] text-right text-[#161439]'>ارسال نظر </h2>
                 </button>
