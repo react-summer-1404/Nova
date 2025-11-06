@@ -8,8 +8,7 @@ const CourseStatusList1 = ({items1}) => {
                 <div key={index} className ={`text-center mr-[10px]  flex flex-col items-center gap-1 ${item.className || ""}`}>
                     {item.image && (
                     <img
-                        src={item.image}
-                        alt=''
+                        src={item.image}                        
                         className ='w-8 h-8 rounded-full object-cover'
                     />
                     )}
