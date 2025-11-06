@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 // import editIcon from "../../../../../assets/icons/userEdit.svg"
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
@@ -6,22 +6,23 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
-
+import icon from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg"
+import { HiOutlineCamera } from "react-icons/hi2";
 const EditUserInformation = () => {
-  const {data:currentProf}=useQuery({
-    queryKey:["currentProfileUser"],
-    queryFn:getCurrentUserProfile
-  })
-  
+  const { data: currentProf } = useQuery({
+    queryKey: ["currentProfileUser"],
+    queryFn: getCurrentUserProfile,
+  });
+
   const mutation = useMutation({
-    mutationFn:(formData)=>putEditProfile(formData),
+    mutationFn: (formData) => putEditProfile(formData),
     onError: (error) => {
-      console.log("خطا رخ داد",error);
+      console.log("خطا رخ داد", error);
     },
     onSuccess: () => {
-      console.log("ویرایش شد",);
-    }
-  })
+      console.log("ویرایش شد");
+    },
+  });
 
   const submitHandling = async (values) => {
     try {
@@ -31,105 +32,145 @@ const EditUserInformation = () => {
       formData.append("NationalCode", values.NationalCode);
       formData.append("BirthDay", values.BirthDay);
       formData.append("TelegramLink", values.TelegramLink);
-  
+      formData.append("LinkdinProfile", values.LinkdinProfile);
+      formData.append("UserAbout", values.UserAbout);
+      formData.append("HomeAdderess", values.HomeAdderess);
+      formData.append("NationalCode", values.NationalCode);
+      formData.append("Gender", values.Gender);
+      // formData.append("Latitude", values.Latitude);
+      // formData.append("Longitude", values.Longitude);
+
       await mutation.mutateAsync(formData);
     } catch (error) {
       console.log("خطا در ارسال فرم:", error);
     }
   };
-  
+
   return (
-    <div className="flex flex-col w-full gap-5"  style={{ direction: "rtl" }}>
-      <Subject/>
+    <div className="flex flex-col w-full gap-5" style={{ direction: "rtl" }}>
+      <Subject />
       <div className=" flex gap-4  ">
-        <div className="flex w-1/2  justify-between">
+        <div className="flex w-1/2  ">
           <Formik
-          initialValues={{
-            FName:currentProf?.fName || "",
-            LName:currentProf?.lName || "",
-            NationalCode:currentProf?.nationalCode || "",
-            BirthDay:currentProf?.birthDay || "",
-            TelegramLink:currentProf?.telegramLink || "",
-          }}
-          onSubmit={submitHandling}
+            initialValues={{
+              FName: currentProf?.fName || "",
+              LName: currentProf?.lName || "",
+              NationalCode: currentProf?.nationalCode || "",
+              BirthDay: currentProf?.birthDay || "",
+              TelegramLink: currentProf?.telegramLink || "",
+            }}
+            onSubmit={submitHandling}
           >
-            <Form >
+            <Form className="flex flex-col gap-5">
               <div className="flex gap-10  w-fit ">
                 <div className="flex flex-col w-[200px] gap-5 ">
                   <FormGroup
-                   type={"text"}
-                   name={"FName"}
-                   id={"FName"}
-                   label={"نام"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
+                    type={"text"}
+                    name={"FName"}
+                    id={"FName"}
+                    label={"نام"}
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  />
 
                   <FormGroup
-                   type={"number"}
-                   name={"NationalCode"}
-                   id={"NationalCode"}
-                   label={"کد ملی"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
+                    type={"number"}
+                    name={"NationalCode"}
+                    id={"NationalCode"}
+                    label={"کد ملی"}
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  />
 
                   <FormGroup
-                   type={"text"}
-                   name={"BirthDay"}
-                   id={"BirthDay"}
-                   label={"تاریخ تولد"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
+                    type={"text"}
+                    name={"BirthDay"}
+                    id={"BirthDay"}
+                    label={"تاریخ تولد"}
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  />
 
                   <FormGroup
-                   type={"email"}
-                   name={"gmail"}
-                   id={"gmail"}
-                   label={"ایمیل"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
-                  
+                    type={"email"}
+                    name={"gmail"}
+                    id={"gmail"}
+                    label={"ایمیل"}
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  />
                 </div>
                 <div className="flex flex-col w-[200px]  gap-5">
-                <FormGroup
-                   type={"text"}
-                   name={"LName"}
-                   id={"LName"}
-                   label={"نام خانوادگی"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
+                  <FormGroup
+                    type={"text"}
+                    name={"LName"}
+                    id={"LName"}
+                    label={"نام خانوادگی"}
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  />
+                  <FormGroup
+                    name="gender"
+                    label="جنسیت"
+                    as="select"
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  >
+                    <option value="true">مرد</option>
+                    <option value="false">زن</option>
+                  </FormGroup>
 
                   <FormGroup
-                   type={"text"}
-                   name={"gender"}
-                   id={"gender"}
-                   label={"جنسیت"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
+                    type={"number"}
+                    name={"phoneNumber"}
+                    id={"phoneNumber"}
+                    label={"شماره همراه"}
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  />
 
                   <FormGroup
-                   type={"number"}
-                   name={"phoneNumber"}
-                   id={"phoneNumber"}
-                   label={"شماره همراه"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
-
-                  <FormGroup
-                   type={"text"}
-                   name={"TelegramLink"}
-                   id={"TelegramLink"}
-                   label={"تلگرام"}
-                   inputClass="h-[35px]"
-                   labelClass="indent-2 -mb-2"/>
+                    type={"text"}
+                    name={"TelegramLink"}
+                    id={"TelegramLink"}
+                    label={"تلگرام"}
+                    inputClass="h-[35px]"
+                    labelClass="indent-2 -mb-2"
+                  />
                 </div>
               </div>
-        <button type="submit" className="btn btn-primary">ذخیره</button>
+              <div className="flex flex-col gap-5">
+                <FormGroup
+                  type={"text"}
+                  name={"LinkdinProfile"}
+                  id={"LinkdinProfile"}
+                  label={"لینکدین"}
+                  inputClass="h-[35px]"
+                  labelClass="indent-2 -mb-2"
+                />
 
+                <FormGroup
+                  type={"text"}
+                  name={"HomeAdderess"}
+                  id={"HomeAdderess"}
+                  label={"ادرس"}
+                  inputClass="h-[35px]"
+                  labelClass="indent-2 -mb-2"
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                ذخیره
+              </button>
             </Form>
           </Formik>
         </div>
 
-        <div>prof</div>
+        <div>
+            <div className=" relative overflow-hidden border rounded-full">
+              <img src={icon}/>
+            <div className="h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"><HiOutlineCamera size={30} className="text-white"/></div>
+            </div>
+        </div>
       </div>
     </div>
   );
