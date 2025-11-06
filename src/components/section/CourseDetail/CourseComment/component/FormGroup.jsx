@@ -2,7 +2,6 @@ import React from "react";
 import { Field, ErrorMessage } from "formik";
 const FormGroup = ({
   name,
-  value,
   label,
   children,
   as = "input",
@@ -21,7 +20,6 @@ const FormGroup = ({
       </label>
       <Field
         
-        value={value}
         as={as}
         type={type}
         name={name}
@@ -29,7 +27,6 @@ const FormGroup = ({
         style={{ direction: "rtl", backgroundColor: "var(--color-white)" }}
         className={`border indent-5 focus:outline-none border-[#E1E4E7] mt-[-7px] w-[100%] rounded-[5px] ${inputClass}`}
       >
-  
         {children}
       </Field>
       <ErrorMessage name={name} component={"span"} className="text-[#df0f0f]" />

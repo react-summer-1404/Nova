@@ -50,7 +50,6 @@ const EditUserInformation = () => {
   return (
     <div className="flex flex-col w-full gap-5" style={{ direction: "rtl" }}>
       <Subject />
-      {/* <div className=" flex gap-4  border"> */}
       <div className="flex w-full  border justify-between ">
         <Formik
           initialValues={{
@@ -80,7 +79,6 @@ const EditUserInformation = () => {
                   />
 
                   <FormGroup
-                    // value={}
                     type={"number"}
                     name={"NationalCode"}
                     id={"NationalCode"}
@@ -170,7 +168,7 @@ const EditUserInformation = () => {
                 ذخیره
               </button>
             </div>
-            <div className="border flex  flex-col">
+            <div className=" flex  flex-col">
               <ImageContainer
                 Icon={<HiOutlineCamera size={30} className="text-white" />}
                 profPic={profPic}
@@ -178,8 +176,7 @@ const EditUserInformation = () => {
               <FormGroup
                 name={"UserAbout"}
                 id={"UserAbout"}
-                label="جنسیت"
-                as="textarea"
+                label={"درباره ما"}
                 inputClass="h-[135px]"
                 labelClass="indent-2 -mb-2"
               ></FormGroup>
@@ -187,7 +184,6 @@ const EditUserInformation = () => {
           </Form>
         </Formik>
       </div>
-      {/* </div> */}
     </div>
   );
 };
