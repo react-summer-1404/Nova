@@ -30,7 +30,7 @@ const { data } = useQuery({
         <div className="w-[50%] flex-col-right gap-8">
           <UserInfoBox
             label={"نام و نام خانوادگی"}
-            value={data?.linkdinProfile}
+            value={data?.lName}
           />
           <UserInfoBox label={"کد ملی"} value={data?.linkdinProfile} />
           <UserInfoBox label={"ایمیل"} value={data?.linkdinProfile} />

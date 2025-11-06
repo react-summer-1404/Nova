@@ -2,6 +2,7 @@ import React from "react";
 import { Field, ErrorMessage } from "formik";
 const FormGroup = ({
   name,
+  value,
   label,
   children,
   as = "input",
@@ -19,6 +20,8 @@ const FormGroup = ({
         {label}
       </label>
       <Field
+        
+        value={value}
         as={as}
         type={type}
         name={name}

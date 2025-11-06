@@ -6,14 +6,16 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
-import icon from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg"
+import ImageContainer from "./ImageContainer/ImageContainer";
 import { HiOutlineCamera } from "react-icons/hi2";
-const EditUserInformation = () => {
-  const { data: currentProf } = useQuery({
-    queryKey: ["currentProfileUser"],
-    queryFn: getCurrentUserProfile,
-  });
+import profPic from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg";
 
+const EditUserInformation = () => {
+  const { data:currentProf } = useQuery({
+    queryKey: ["currentProfUser"],
+    queryFn:  getCurrentUserProfile,
+  });
+  console.log("currentProf ==>", currentProf);
   const mutation = useMutation({
     mutationFn: (formData) => putEditProfile(formData),
     onError: (error) => {
@@ -49,19 +51,24 @@ const EditUserInformation = () => {
   return (
     <div className="flex flex-col w-full gap-5" style={{ direction: "rtl" }}>
       <Subject />
-      <div className=" flex gap-4  ">
-        <div className="flex w-1/2  ">
-          <Formik
-            initialValues={{
-              FName: currentProf?.fName || "",
-              LName: currentProf?.lName || "",
-              NationalCode: currentProf?.nationalCode || "",
-              BirthDay: currentProf?.birthDay || "",
-              TelegramLink: currentProf?.telegramLink || "",
-            }}
-            onSubmit={submitHandling}
-          >
-            <Form className="flex flex-col gap-5">
+      {/* <div className=" flex gap-4  border"> */}
+      <div className="flex w-full  border justify-between ">
+        <Formik
+          initialValues={{
+            FName: currentProf?.fName || "",
+            LName: currentProf?.lName || "",
+            NationalCode: currentProf?.nationalCode || "",
+            BirthDay: currentProf?.birthDay || "",
+            TelegramLink: currentProf?.telegramLink || "",
+            BirthDay: currentProf?.birthDay || "",
+            LinkdinProfile: currentProf?.linkdinProfile || "",
+            UserAbout: currentProf?.userAbout || "",
+            Gender: currentProf?.gender || "",
+          }}
+          onSubmit={submitHandling}
+        >
+          <Form className="flex  gap-5 ">
+            <div className="flex flex-col">
               <div className="flex gap-10  w-fit ">
                 <div className="flex flex-col w-[200px] gap-5 ">
                   <FormGroup
@@ -74,6 +81,7 @@ const EditUserInformation = () => {
                   />
 
                   <FormGroup
+                    // value={}
                     type={"number"}
                     name={"NationalCode"}
                     id={"NationalCode"}
@@ -109,10 +117,18 @@ const EditUserInformation = () => {
                     inputClass="h-[35px]"
                     labelClass="indent-2 -mb-2"
                   />
+                  {/* <Field
+                    name="LName"
+                    style={{
+                      direction: "rtl",
+                      backgroundColor: "var(--color-white)",
+                    }}
+                    className={`border indent-5 focus:outline-none border-[#E1E4E7] mt-[-7px] w-[100%] rounded-[5px]`}
+                  /> */}
                   <FormGroup
-                    name="gender"
-                    label="جنسیت"
-                    as="select"
+                    name={"gender"}
+                    label={"جنسیت"}
+                    as={"select"}
                     inputClass="h-[35px]"
                     labelClass="indent-2 -mb-2"
                   >
@@ -161,17 +177,25 @@ const EditUserInformation = () => {
               <button type="submit" className="btn btn-primary">
                 ذخیره
               </button>
-            </Form>
-          </Formik>
-        </div>
-
-        <div>
-            <div className=" relative overflow-hidden border rounded-full">
-              <img src={icon}/>
-            <div className="h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"><HiOutlineCamera size={30} className="text-white"/></div>
             </div>
-        </div>
+            <div className="border flex  flex-col">
+              <ImageContainer
+                Icon={<HiOutlineCamera size={30} className="text-white" />}
+                profPic={profPic}
+              />
+              <FormGroup
+                name={"UserAbout"}
+                id={"UserAbout"}
+                label="جنسیت"
+                as="textarea"
+                inputClass="h-[135px]"
+                labelClass="indent-2 -mb-2"
+              ></FormGroup>
+            </div>
+          </Form>
+        </Formik>
       </div>
+      {/* </div> */}
     </div>
   );
 };
