@@ -15,7 +15,7 @@ import { FaPlus } from "react-icons/fa";
 import useToggle from "../../../../../hooks/useToggle";
 
 const EditUserInformation = () => {
-  const [] = useToggle
+  const [isModalOpen , toggleModal] = useToggle(false)
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: async () => await getCurrentUserProfile(),
@@ -195,15 +195,18 @@ const EditUserInformation = () => {
                   StyleModal={
                     "h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"
                   }
-                  isOpen={true}
-                  Icon={<HiOutlineCamera color="white" size={30} onClick={}/>}
+                  isOpen={isModalOpen}
+                  onClose={toggleModal}
+                  onOpen={toggleModal}
+                  Icon={<HiOutlineCamera color="white" size={30} onClick={toggleModal}/>}
                   size="4xl"
                   content={
                     <div className="border  border-red-500 flex flex-col justify-between items-center h-[400px]">
                       <div className="w-[200px] h-[200px] relative border ">
                         <img src={profPic} className="border w-full h-full" />
-                        <button className="w-[50px] h-[50px] bg-dark-purple absolute -right-2 -bottom-2 rounded-full flex-center cursor-pointer">
-                          <FaCheck size={25} className="text-white" />
+                        <button className="w-[50px] h-[50px] bg-dark-purple absolute -right-2 -bottom-2 rounded-full flex-center cursor-pointer" >
+                          <FaCheck size={25} className="text-white" onClick={toggleModal} />
+
                         </button>
                       </div>
                       <div className="w-full border border-amber-900">

@@ -6,10 +6,10 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
+
 } from "@heroui/react";
-export default function ModalSection({ content, modalTitle ,ButtonText,Icon,StyleModal,Btn,size = "md",isOpen}) {
-  const {  onOpen, onClose } = useDisclosure();
+export default function ModalSection({ content, modalTitle ,ButtonText,Icon,StyleModal,Btn,size = "md",isOpen,onClose,onOpen}) {
+  // const {  onOpen, onClose } = useDisclosure();
   const [backdrop, setBackdrop] = useState("opaque");
 
   const backdrops = ["blur"];
