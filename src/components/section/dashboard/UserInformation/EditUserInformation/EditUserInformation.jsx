@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 // import editIcon from "../../../../../assets/icons/userEdit.svg"
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -10,12 +10,16 @@ import { putEditProfile } from "../../../../../servises/api/userPanel/updateProf
 import { HiOutlineCamera } from "react-icons/hi2";
 import profPic from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg";
 import { postUserImage } from "../../../../../servises/api/userPanel/addProfileImage";
+import ModalSection from "../../../../ui/Modal/ModalSection";
 
 const EditUserInformation = () => {
-  const { data:currentProf } = useQuery({
+  const [initialValues, setInitialValues] = useState(null);
+
+  const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
-    queryFn:  getCurrentUserProfile,
+    queryFn: async () => await getCurrentUserProfile(),
   });
+
   console.log("currentProf ==>", currentProf);
 
   const mutation = useMutation({
@@ -27,6 +31,7 @@ const EditUserInformation = () => {
       console.log("ویرایش شد");
     },
   });
+
   const mutationImage = useMutation({
     mutationFn: (formData) => postUserImage(formData),
     onError: (error) => {
@@ -36,8 +41,6 @@ const EditUserInformation = () => {
       console.log("ویرایش شد");
     },
   });
- 
-
 
   const submitHandling = async (values) => {
     try {
@@ -52,7 +55,7 @@ const EditUserInformation = () => {
       formData.append("HomeAdderess", values.HomeAdderess);
       formData.append("NationalCode", values.NationalCode);
       formData.append("Gender", values.Gender);
-      formData.append("formFile", );
+      formData.append("formFile");
       // formData.append("Latitude", values.Latitude);
       // formData.append("Longitude", values.Longitude);
 
@@ -128,7 +131,7 @@ const EditUserInformation = () => {
                     inputClass="h-[35px]"
                     labelClass="indent-2 -mb-2"
                   />
-               
+
                   <FormGroup
                     name={"gender"}
                     label={"جنسیت"}
@@ -183,18 +186,19 @@ const EditUserInformation = () => {
               </button>
             </div>
             <div className=" flex flex-col border-1">
-            <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
-    <img src={profPic}/>
- 
+              <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
+                <img src={profPic} />
 
-   <ModalSection StyleModal={"h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"} Icon={<HiOutlineCamera/>}>
-<FormGroup type='text'
-name={"formFile"}
-label={"ax"}
-/>
-   </ModalSection>
-  </div>
-             
+                <ModalSection
+                  StyleModal={
+                    "h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"
+                  }
+                  Icon={<HiOutlineCamera />}
+                >
+                  <div>shdiskjlk</div>
+                </ModalSection>
+              </div>
+
               <FormGroup
                 name={"UserAbout"}
                 id={"UserAbout"}
