@@ -6,7 +6,7 @@ import {
   ReservedCourses,
   SecuritySetting,
   UserInformation,
-  EditUserProfile,
+  EditUserInformation,
   CurrentUserInformation,
 } from "../components/section/dashboard/index";
 import { Navigate } from "react-router-dom";
@@ -30,7 +30,7 @@ export const DashboardRoutes = [
         children: [
           { index: true, element: <Navigate to="usercurrentprofile" /> },
           { path: "usercurrentprofile", element: <CurrentUserInformation /> },
-          { path: "edituserprofile", element: <EditUserProfile /> },
+          { path: "edituserprofile", element: <EditUserInformation /> },
         ],
       },
     ],

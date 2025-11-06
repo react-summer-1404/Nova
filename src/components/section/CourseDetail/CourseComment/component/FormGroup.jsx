@@ -1,9 +1,9 @@
 import React from 'react'
 import { Field, ErrorMessage } from 'formik'
-const FormGroup = ({ name, label, type = "text", inputClass='' }) => {
+const FormGroup = ({ name, label, type = "text", inputClass='',labelClass='' }) => {
     return (
         <>
-            <label htmlFor={name}  style={{color : "var(--color-text-gray2)"}} className ='font-[400] text-[10px] md:text-[14px]'>{label}</label>
+            <label htmlFor={name}  style={{color : "var(--color-text-gray2)"}} className ={`font-[400] text-[10px]   md:text-[14px] text-right  ${labelClass}`}>{label}</label>
             <Field
                 type={type}
                 name={name}
