@@ -18,8 +18,6 @@ const BlogsPage = () => {
   const apiParams = {
     RowsOfPage: rowsOfthePage,
     PageNumber: pageNumber,
-    // SortingCol: sortingCol,
-    // SortType: sortType,
   };
   
   const { data, isError, isLoading } = useQuery({

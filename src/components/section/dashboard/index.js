@@ -5,6 +5,8 @@ import MyCourses from "./MyCourses/MyCourses";
 import ReservedCourses from "./ReservedCourses/ReservedCourses";
 import SecuritySetting from "./SecuritySetting/SecuritySetting";
 import UserInformation from "./UserInformation/UserInformation";
+import EditUserInformation from './UserInformation/EditUserInformation/EditUserInformation';
+import CurrentUserInformation from './UserInformation/CurrentUserInformation';
 
 export {
   UserDashboard,
@@ -14,4 +16,6 @@ export {
   ReservedCourses,
   SecuritySetting,
   UserInformation,
+  EditUserInformation,
+  CurrentUserInformation
 };

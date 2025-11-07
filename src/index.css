@@ -36,8 +36,16 @@ a {
   @apply flex justify-end ;
 }
 
+.flex-col-right {
+  @apply flex flex-col items-end
+}
+
 .flex-col-center {
   @apply flex flex-col items-center;
+}
+
+.justy-between {
+  @apply flex justify-between items-center
 }
 
 .section-padding {
@@ -45,11 +53,7 @@ a {
 }
 
 .text-responsive {
-  @apply text-sm lg:text-base;
-}
-
-.radius10 {
-  @apply rounded-[10px]
+  @apply text-sm;
 }
 
 /* 
@@ -58,9 +62,6 @@ body {
 @theme {
   --font-display: "iranSans";
 }
-
-
-
 
 body {
   background: var(--color-white);
@@ -73,6 +74,10 @@ body {
 
 .container-border {
   border-radius: 15px;
+}
+
+.radius10 {
+  @apply rounded-[10px]
 }
 
 /* ====== color =========== */
@@ -174,9 +179,7 @@ body {
   height: 40px;
   padding: 0.5rem;
   text-align: center;
-  position: absolute;
-  top: -24px;
-  left: 14px;
+  /* position: absolute; */
   @apply bg-dark-purple text-white;
 }
 

@@ -1,12 +1,12 @@
 import React from "react";
 
-const NewsNotifictionTable = () => {
+const NewsNotifictionTable = ({newsReleaseTime,isNew,newsTitle}) => {
   return (
-    <div className=" flex justify-between items-center">
-      <span className="text-[13px]">۱۴۰۴ / ۱۱ / ۳۰</span>
+    <div className="flex justify-between items-center whitespace-nowrap">
+      <span className="text-[9px] sm:text-[13px] text-text-gray">{newsReleaseTime}</span>
       <div className="flex justify-between gap-2.5">
-        <span className="text-red-600 text-[14px]">جدید</span>
-        <span>دوره آموزش جامع از پایه تا پیشرفته Next.js منتشر شد. </span>{" "}
+        <span className="text-red-600 text-[14px]">{isNew}</span>
+        <span className="text-[9px] sm:text-[14px] text-base-gray">{newsTitle}</span>{" "}
       </div>
     </div>
   );
