@@ -61,7 +61,7 @@ const MyComments = () => {
               text : "اخبار و مقالات",
             },
             {
-              text : "آموزش کامل کار با Figma",
+              text : "آموزش کامل با Figma",
             
             },
             {
