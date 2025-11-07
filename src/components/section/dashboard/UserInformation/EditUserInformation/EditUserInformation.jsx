@@ -1,4 +1,5 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as yup from "yup";
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
@@ -6,31 +7,27 @@ import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
 import toast from "react-hot-toast";
 import ImageContainer from "./ImageContainer/ImageContainer";
-import { useNavigate } from "react-router-dom";
 import ButtonSection from "./ButtonSection/ButtonSection";
 
+const validationSchema = yup.object({
+  BirthDay: yup.string().required("*الزامی است"),
+});
 const EditUserInformation = () => {
-
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: async () => await getCurrentUserProfile(),
   });
 
-
   const mutation = useMutation({
     mutationFn: (formData) => putEditProfile(formData),
     onError: (error) => {
       console.log("خطا رخ داد", error);
-      toast.error("خطا در ویرایش اطلاعات ! لطفا دوباره تلاش کنید")
-
+      toast.error("خطا در ویرایش اطلاعات ! لطفا دوباره تلاش کنید");
     },
     onSuccess: () => {
-      toast.success("پروفایل شما اپدیت شد")
+      toast.success("پروفایل شما اپدیت شد");
     },
   });
-
- 
-  
 
   const submitHandling = async (values) => {
     try {
@@ -69,6 +66,7 @@ const EditUserInformation = () => {
             UserAbout: currentProf?.userAbout || "",
             Gender: currentProf?.gender || "",
           }}
+          validationSchema={validationSchema}
           onSubmit={submitHandling}
           enableReinitialize
         >
@@ -101,6 +99,7 @@ const EditUserInformation = () => {
                     label={"تاریخ تولد"}
                     inputClass="h-[35px]"
                     labelClass="indent-2 -mb-2"
+                    errorClass="text-[12px] w-full  text-right -mt-3 "
                   />
 
                   <FormGroup
@@ -173,7 +172,7 @@ const EditUserInformation = () => {
               </div>
             </div>
             <div className=" flex flex-col w-full items-center gap-5 text-right">
-            <ImageContainer currentProf={currentProf} />
+              <ImageContainer currentProf={currentProf} />
 
               <FormGroup
                 name={"UserAbout"}
@@ -182,9 +181,8 @@ const EditUserInformation = () => {
                 inputClass="h-[135px] w-[300px] "
                 labelClass="-mb-2  "
               ></FormGroup>
-          <ButtonSection/>
+              <ButtonSection />
             </div>
-
           </Form>
         </Formik>
       </div>
