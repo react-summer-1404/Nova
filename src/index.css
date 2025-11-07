@@ -103,6 +103,7 @@ body {
     --color-pure-blue : #0000FF;
     --color-disable-heart : #CCCCCC;
     --color-base-gray : #555555;
+    --color-error-red : #DE5204;
   --gradient-main: radial-gradient(
       circle at 20% 50%,
       rgba(189, 175, 255, 0.32),

@@ -1,28 +1,36 @@
 import { Field, Form, Formik } from "formik";
-import React from "react";
-// import editIcon from "../../../../../assets/icons/userEdit.svg"
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
-import icon from "../../../../../assets/icons/ax-kartoni-bamazeh-11.svg"
-import { HiOutlineCamera } from "react-icons/hi2";
+import { IoSaveOutline } from "react-icons/io5";
+import toast from "react-hot-toast";
+import ImageContainer from "./ImageContainer/ImageContainer";
+import { YellowButton } from "../../../../ui";
+import Tag from "../../../../ui/Tag/Tag";
+
 const EditUserInformation = () => {
   const { data: currentProf } = useQuery({
-    queryKey: ["currentProfileUser"],
-    queryFn: getCurrentUserProfile,
+    queryKey: ["currentProfUser"],
+    queryFn: async () => await getCurrentUserProfile(),
   });
+
 
   const mutation = useMutation({
     mutationFn: (formData) => putEditProfile(formData),
     onError: (error) => {
       console.log("خطا رخ داد", error);
+      toast.error("خطا در ویرایش اطلاعات ! لطفا دوباره تلاش کنید")
+
     },
     onSuccess: () => {
-      console.log("ویرایش شد");
+      toast.success("پروفایل شما اپدیت شد")
     },
   });
+
+ 
+  
 
   const submitHandling = async (values) => {
     try {
@@ -35,8 +43,8 @@ const EditUserInformation = () => {
       formData.append("LinkdinProfile", values.LinkdinProfile);
       formData.append("UserAbout", values.UserAbout);
       formData.append("HomeAdderess", values.HomeAdderess);
-      formData.append("NationalCode", values.NationalCode);
       formData.append("Gender", values.Gender);
+
       // formData.append("Latitude", values.Latitude);
       // formData.append("Longitude", values.Longitude);
 
@@ -45,23 +53,27 @@ const EditUserInformation = () => {
       console.log("خطا در ارسال فرم:", error);
     }
   };
-
   return (
     <div className="flex flex-col w-full gap-5" style={{ direction: "rtl" }}>
       <Subject />
-      <div className=" flex gap-4  ">
-        <div className="flex w-1/2  ">
-          <Formik
-            initialValues={{
-              FName: currentProf?.fName || "",
-              LName: currentProf?.lName || "",
-              NationalCode: currentProf?.nationalCode || "",
-              BirthDay: currentProf?.birthDay || "",
-              TelegramLink: currentProf?.telegramLink || "",
-            }}
-            onSubmit={submitHandling}
-          >
-            <Form className="flex flex-col gap-5">
+      <div className="flex w-full   justify-between ">
+        <Formik
+          initialValues={{
+            FName: currentProf?.fName || "",
+            LName: currentProf?.lName || "",
+            NationalCode: currentProf?.nationalCode || "",
+            BirthDay: currentProf?.birthDay || "",
+            TelegramLink: currentProf?.telegramLink || "",
+            HomeAdderess: currentProf?.homeAdderess || "",
+            LinkdinProfile: currentProf?.linkdinProfile || "",
+            UserAbout: currentProf?.userAbout || "",
+            Gender: currentProf?.gender || "",
+          }}
+          onSubmit={submitHandling}
+          enableReinitialize
+        >
+          <Form className="flex  gap-5 justify-between w-full">
+            <div className="flex flex-col ">
               <div className="flex gap-10  w-fit ">
                 <div className="flex flex-col w-[200px] gap-5 ">
                   <FormGroup
@@ -109,10 +121,11 @@ const EditUserInformation = () => {
                     inputClass="h-[35px]"
                     labelClass="indent-2 -mb-2"
                   />
+
                   <FormGroup
-                    name="gender"
-                    label="جنسیت"
-                    as="select"
+                    name={"Gender"}
+                    label={"جنسیت"}
+                    as={"select"}
                     inputClass="h-[35px]"
                     labelClass="indent-2 -mb-2"
                   >
@@ -158,19 +171,23 @@ const EditUserInformation = () => {
                   labelClass="indent-2 -mb-2"
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
-                ذخیره
-              </button>
-            </Form>
-          </Formik>
-        </div>
-
-        <div>
-            <div className=" relative overflow-hidden border rounded-full">
-              <img src={icon}/>
-            <div className="h-[30px] w-full bg-[#0E0E0E66] absolute bottom-0 flex justify-center items-center cursor-pointer"><HiOutlineCamera size={30} className="text-white"/></div>
             </div>
-        </div>
+            <div className=" flex flex-col w-full items-center gap-5 text-right">
+            <ImageContainer currentProf={currentProf} />
+
+              <FormGroup
+                name={"UserAbout"}
+                id={"UserAbout"}
+                label={"درباره من"}
+                inputClass="h-[135px] w-[300px] "
+                labelClass="-mb-2  "
+              ></FormGroup>
+            <YellowButton text={"ذخیره تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} type={"submit"}/>
+            <Tag text={"لغو تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} bgColor={"#F5F5F5"}/>
+            </div>
+
+          </Form>
+        </Formik>
       </div>
     </div>
   );

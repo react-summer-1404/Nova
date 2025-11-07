@@ -25,11 +25,11 @@ const UserDashboard = () => {
     queryFn: () => getBlogs(),
   });
 
-  const { data: myCourseData } = useQuery({
-    // برای کورسها
-    queryKey: ["coursegetCoursesnews"],
-    queryFn: () => getMyReserveCourses(),
-  });
+  // const { data: myCourseData } = useQuery({
+  //   // برای کورسها
+  //   queryKey: ["coursegetCoursesnews"],
+  //   queryFn: () => getMyReserveCourses(),
+  // });
 
   return (
     <div className="flex flex-col gap-13">
