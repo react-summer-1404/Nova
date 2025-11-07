@@ -13,7 +13,7 @@ const Dashboard = () => {
   });
   return (
     <div className="w-screen h-screen flex-center">
-      <div className="flex items-center justify-between w-[92%] h-[96%] container-border">
+      <div className=" justy-between w-[92%] h-[96%] container-border">
         <div className="flex flex-col w-[80%] h-full bg-white rounded-l-[15px]">
           <div className="flex-left"><Header /></div>
           <main className="px-8 py-2">
