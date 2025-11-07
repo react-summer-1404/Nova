@@ -56,8 +56,8 @@ const ChangePassWord = () => {
           <Form >
          <div className="flex flex-col gap-12 ">
          <div className="flex flex-col items-start gap-5 ">
-          <h2 className="text-bade text-text-gray">تغییر رمز</h2>
-        <div className="flex flex-col flex-center gap-12">
+          <h2 className="text-bade text-text-gray  font-semibold">تغییر رمز</h2>
+        <div className=" flex-col flex-center gap-12  w-full">
         <div className="flex  gap-5 ">
               <div className="w-[300px] flex flex-col">
                 <PasswordField name="oldPassword" label="رمز عبور فعلی" />
