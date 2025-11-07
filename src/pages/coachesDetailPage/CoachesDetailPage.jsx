@@ -8,7 +8,9 @@ import NavigationSection from "../../components/ui/navigation/NavigationSection"
 import ModalSection from "../../components/ui/Modal/ModalSection";
 import { IoCallOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
+import useToggle from "../../hooks/useToggle";
 const CoachesDetailPage = () => {
+  const [isOpen , toggleOpen] = useToggle(false)
   const {teacherId} =useParams();
   const { data: teacherDetail } = useQuery({
     queryKey: ["teacherDetail", teacherId],
@@ -28,7 +30,7 @@ const CoachesDetailPage = () => {
      <ContactTeacher/>
      </div>
      <div className="fixed z-50 right-4 bottom-8 lg:hidden block">
-     <ModalSection content={<ContactTeacher/>} Icon={<IoCallOutline size={34} color="white"/>}  StyleModal={" rounded-3xl w-[70px] h-[70px] bg-[#5751E1]"}/>
+     <ModalSection content={<ContactTeacher/>} Icon={<IoCallOutline size={34} color="white"/>}  StyleModal={" rounded-3xl w-[70px] h-[70px] bg-[#5751E1]"} isOpen={isOpen} onClose={toggleOpen} onOpen={toggleOpen}/>
      </div>
     </div>
    </div>

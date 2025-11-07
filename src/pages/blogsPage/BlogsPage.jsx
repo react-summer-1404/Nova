@@ -13,8 +13,6 @@ const BlogsPage = () => {
   const paramItems = Object.fromEntries(searchParam.entries());
   const [pageNumber, setPageNumber] = useState(1);
   const [rowsOfthePage, setRowsOfthePage] = useState(10);
-  const [sortingCol, setSortingCol] = useState("InsertDate");
-  const [sortType, setSortType] = useState("InsertDate");
   const [searchInput, setSearchInput] = useState(paramItems.Query || "");
   const [searchDelay] = useDebounce(searchInput, 500);
 
