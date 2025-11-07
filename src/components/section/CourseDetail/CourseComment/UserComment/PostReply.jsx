@@ -1,13 +1,11 @@
-import { Form, Formik, Field } from 'formik';
-import React from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { postCommentReply } from '../../../../../servises/api/coursesDetail/PostCommentReply';
+import toast from 'react-hot-toast';
 import * as Yup from "yup";
 import FormGroup from '../component/FormGroup';
 import { FaArrowLeft } from "react-icons/fa";
-import { useParams } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { postCommentCourse } from '../../../../../servises/api/coursesDetail/postComment';
-import { useMutation } from '@tanstack/react-query';
-
+import { Form, Formik, Field } from 'formik';
 
 
 const validationSchema = Yup.object({
@@ -19,14 +17,12 @@ const initialData = {
     title: "",
     describe: ""
 }
-
-const CommentForm = ({ initialValues = initialData }) => {
-    const { id } = useParams();
-    console.log("url CourseId: ", id)
+const PostReply = ( initialValues = initialData) => {
+    const { id } = useParams()  
     const token = localStorage.getItem("token");
 
-    const { mutate } = useMutation({
-        mutationFn: postCommentCourse,
+    const {mutate} = useMutation({
+        mutationFn : postCommentReply,
         onSuccess: (data) => {
             if (data.success) {
                 toast.success("نظر با موفقیت ثبت شد در انتظار تایید مدیران ...")
@@ -41,22 +37,24 @@ const CommentForm = ({ initialValues = initialData }) => {
         },
     });
 
-    const handleSubmit = async (values, { resetForm }) => {
+    const handleSubmit = async (values, {restForm}) => {
         if (!token) {
             toast.error("برای ارسال نظر ابتدا وارد شوید")
             return;
         }
-        mutate(
+        mutate (
             {
-                CourseId: id,
-                Title: values.title,
-                Describe: values.describe,
+                CourseId : id,
+                CommentId : parentCommentId,
+                Title : values.title,
+                Describe : values.describe,
             },
             {
-                onSuccess: () => resetForm(),
+                onSuccess : () => restForm(),
             }
-        );
-    };
+        )
+    }
+
     return (
         <Formik
             initialValues={initialValues}
@@ -64,8 +62,8 @@ const CommentForm = ({ initialValues = initialData }) => {
             onSubmit={handleSubmit}
         >
 
-            <Form className='w-11/12 h-5/6 flex flex-col items-end gap-2 md:gap-4'>
-                <p  className='font-[600] text-[22px] md:text-[26px] '>ارسال نظر</p>
+            <Form className='w-11/12 h-5/6 flex flex-col mt-5 items-end gap-2 md:gap-4'>
+                <p style={{ color: "var(--color-navy)" }} className='font-[600] text-[22px] md:text-[26px] '>ارسال نظر</p>
                 <FormGroup
                     label={"عنوان پیام"}
                     name={"title"}
@@ -76,16 +74,14 @@ const CommentForm = ({ initialValues = initialData }) => {
                     name={"describe"}
                     inputClass="h-[85px]"
                 />
-                <h4 className='font-[400] text-[#6D6C80] text-[10px] md:text-[14px]'>نظر شما پس از تایید توسط ادمین ثبت خواهد شد!</h4>
-                <button style={{ backgroundColor: "var(--color-golden-yellow)" }} type='submit' className="border border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]">
+                <button type='submit' className="border bg-golden-yellow border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[18%]">
                     <FaArrowLeft className='ml-[6px] mt-[5px]' />
                     <h2 className=' font-[400] text-[10px] md:text-[14px] ml-[10px] text-right text-[#161439]'>ارسال نظر </h2>
                 </button>
             </Form>
 
         </Formik>
-
     )
 }
 
-export default CommentForm
+export default PostReply
