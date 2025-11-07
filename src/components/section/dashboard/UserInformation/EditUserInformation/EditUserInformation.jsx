@@ -1,16 +1,14 @@
 import { Field, Form, Formik } from "formik";
-// import React, { useState } from "react";
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
-
-import { postUserImage } from "../../../../../servises/api/userPanel/addProfileImage";
-
-import useToggle from "../../../../../hooks/useToggle";
+import { IoSaveOutline } from "react-icons/io5";
 import toast from "react-hot-toast";
 import ImageContainer from "./ImageContainer/ImageContainer";
+import { YellowButton } from "../../../../ui";
+import Tag from "../../../../ui/Tag/Tag";
 
 const EditUserInformation = () => {
   const { data: currentProf } = useQuery({
@@ -58,7 +56,7 @@ const EditUserInformation = () => {
   return (
     <div className="flex flex-col w-full gap-5" style={{ direction: "rtl" }}>
       <Subject />
-      <div className="flex w-full  border justify-between ">
+      <div className="flex w-full   justify-between ">
         <Formik
           initialValues={{
             FName: currentProf?.fName || "",
@@ -75,7 +73,7 @@ const EditUserInformation = () => {
           enableReinitialize
         >
           <Form className="flex  gap-5 justify-between w-full">
-            <div className="flex flex-col border">
+            <div className="flex flex-col ">
               <div className="flex gap-10  w-fit ">
                 <div className="flex flex-col w-[200px] gap-5 ">
                   <FormGroup
@@ -173,21 +171,21 @@ const EditUserInformation = () => {
                   labelClass="indent-2 -mb-2"
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
-                ذخیره
-              </button>
             </div>
-            <div className=" flex flex-col border-1">
-            <ImageContainer currentProf={currentProf}/>
+            <div className=" flex flex-col w-full items-center gap-5 text-right">
+            <ImageContainer currentProf={currentProf} />
 
               <FormGroup
                 name={"UserAbout"}
                 id={"UserAbout"}
-                label={"درباره ما"}
-                inputClass="h-[135px]"
-                labelClass="indent-2 -mb-2"
+                label={"درباره من"}
+                inputClass="h-[135px] w-[300px] "
+                labelClass="-mb-2  "
               ></FormGroup>
+            <YellowButton text={"ذخیره تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} type={"submit"}/>
+            <Tag text={"لغو تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} bgColor={"#F5F5F5"}/>
             </div>
+
           </Form>
         </Formik>
       </div>

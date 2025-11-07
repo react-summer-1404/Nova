@@ -49,10 +49,10 @@ const ImageContainer = ({ currentProf }) => {
   });
 
   const currentImage = currentProf?.userImage;
-// console.log(selectedImg)
+// console.log(currentProf?.currentPictureAddres)
   return (
-    <div className=" relative overflow-hidden  rounded-full w-[200px] h-[200px]">
-<img src={selectedImg?.puctureAddress || currentProf?.currentPictureAddres} alt="profile" className="object-contain"/>
+    <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
+<img src={selectedImg?.puctureAddress || currentProf?.currentPictureAddres} alt="profile" />
 
       <ModalSection
         StyleModal={
