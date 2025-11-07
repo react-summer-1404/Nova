@@ -51,7 +51,8 @@ const EditUserInformation = () => {
     }
   };
   return (
-    <div className="flex flex-col w-full gap-5" style={{ direction: "rtl" }}>
+    <div className="w-screen  ">
+<div className="flex flex-col w-[68%] gap-5  justify-start" style={{ direction: "rtl" }}>
       <Subject />
       <div className="flex w-full   justify-between ">
         <Formik
@@ -70,9 +71,9 @@ const EditUserInformation = () => {
           onSubmit={submitHandling}
           enableReinitialize
         >
-          <Form className="flex  gap-5 justify-between w-full">
-            <div className="flex flex-col ">
-              <div className="flex gap-10  w-fit ">
+          <Form className="flex  gap-5 justify-between lg:flex-row flex-col  w-full">
+            <div className="flex    flex-col ">
+              <div className="flex gap-10  w-fit  md:flex-row flex-col">
                 <div className="flex flex-col w-[200px] gap-5 ">
                   <FormGroup
                     type={"text"}
@@ -186,6 +187,7 @@ const EditUserInformation = () => {
           </Form>
         </Formik>
       </div>
+    </div>
     </div>
   );
 };

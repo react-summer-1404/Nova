@@ -1,5 +1,6 @@
 import React from 'react'
 import { ListboxCustom, UserProfile } from '../../../ui'
+import { FaUserCog } from "react-icons/fa";
 
 const SideBar = ({data}) => {
   return (
