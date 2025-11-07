@@ -4,7 +4,7 @@ import { HiOutlineTrash } from 'react-icons/hi2'
 import { IoEyeOutline } from 'react-icons/io5'
 import { useQuery } from '@tanstack/react-query'
 import { favCourse } from '../../../../../servises/api/userPanel/getMyFavoriteCourses'
-import CourseStatusList1 from '../CourseStatusList1/CourseStatusList1'
+import CourseStatusList1 from '../FavoritesNews/CourseStatusList1'
 
 
 const FavoritesCourse = () => {

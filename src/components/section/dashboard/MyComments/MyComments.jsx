@@ -1,6 +1,6 @@
 import React from 'react';
 import CourseTableRow from './CourseTableRow/CourseTableRow';
-import CourseStatusList1 from '../Favorites/CourseStatusList1/CourseStatusList1';
+import CourseStatusList1 from '../Favorites/FavoritesNews/CourseStatusList1';
 import { HiOutlineTrash } from "react-icons/hi2";
 import { IoEyeOutline } from "react-icons/io5";
 
