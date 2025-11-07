@@ -1,30 +1,41 @@
-import {Select, SelectItem} from "@heroui/react";
+import {Autocomplete, AutocompleteItem} from "@heroui/react";
 
 export const animals = [
-  {key: "cat", label: "Cat"},
-  {key: "dog", label: "Dog"},
-  {key: "elephant", label: "Elephant"},
-  {key: "lion", label: "Lion"},
-  {key: "tiger", label: "Tiger"},
-  {key: "giraffe", label: "Giraffe"},
-  {key: "dolphin", label: "Dolphin"},
-  {key: "penguin", label: "Penguin"},
-  {key: "zebra", label: "Zebra"},
-  {key: "shark", label: "Shark"},
-  {key: "whale", label: "Whale"},
-  {key: "otter", label: "Otter"},
-  {key: "crocodile", label: "Crocodile"},
+  {label: "Cat", key: "cat", description: "The second most popular pet in the world"},
+  {label: "Dog", key: "dog", description: "The most popular pet in the world"},
+  {label: "Elephant", key: "elephant", description: "The largest land animal"},
+  {label: "Lion", key: "lion", description: "The king of the jungle"},
+  {label: "Tiger", key: "tiger", description: "The largest cat species"},
+  {label: "Giraffe", key: "giraffe", description: "The tallest land animal"},
+  {
+    label: "Dolphin",
+    key: "dolphin",
+    description: "A widely distributed and diverse group of aquatic mammals",
+  },
+  {label: "Penguin", key: "penguin", description: "A group of aquatic flightless birds"},
+  {label: "Zebra", key: "zebra", description: "A several species of African equids"},
+  {
+    label: "Shark",
+    key: "shark",
+    description: "A group of elasmobranch fish characterized by a cartilaginous skeleton",
+  },
+  {
+    label: "Whale",
+    key: "whale",
+    description: "Diverse group of fully aquatic placental marine mammals",
+  },
+  {label: "Otter", key: "otter", description: "A carnivorous mammal in the subfamily Lutrinae"},
+  {label: "Crocodile", key: "crocodile", description: "A large semiaquatic reptile"},
 ];
 
 export default function DashboardAutoComplete() {
   return (
     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-      <Select className="max-w-xs" label="Select an animal">
+      <Autocomplete className="w-[184px] h-[40px]" label="Select an animal">
         {animals.map((animal) => (
-          <SelectItem key={animal.key}>{animal.label}</SelectItem>
+          <AutocompleteItem key={animal.key}>{animal.label}</AutocompleteItem>
         ))}
-      </Select>
-      
+      </Autocomplete>
     </div>
   );
 }

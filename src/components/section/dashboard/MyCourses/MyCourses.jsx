@@ -1,18 +1,15 @@
 import React from "react";
-import SearchBox from "../../../layout/navbar/components/SearchBox";
 import DashboardAutoComplete from "./DashboardAutoComplete";
+import DashboardSearchBox from "./dashboardSearchBox";
 
 const MyCourses = () => {
   return (
-    <div className="w-full flex-col-right relative">
-      
-      <div className="w-full flex relative">
-        <DashboardAutoComplete radius={"full"}/>
-        <div className="absolute bottom-20 right-0">
-          <SearchBox />
-        </div>
-        <div></div>
+    <div className="w-full flex-col-center">
+      <div className="w-full justy-between">
+        <div><DashboardAutoComplete radius={"full"} /></div>
+        <div><DashboardSearchBox placeholder={"... جستجو برای دوره"} /></div>
       </div>
+      <div></div>
     </div>
   );
 };
