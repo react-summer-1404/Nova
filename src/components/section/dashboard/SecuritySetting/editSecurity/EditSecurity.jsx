@@ -13,7 +13,7 @@ function EditSecurity() {
         onError:(error)=>console.log("خطا رخ داد",error)
     })
   return (
-    <div className="border flex flex-col gap-12">
+    <div className=" flex flex-col gap-12">
       <Formik
       initialValues={{
         twoStepAuth: false,
