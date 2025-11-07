@@ -1,9 +1,11 @@
 import React from 'react'
+import ReserveTable from './ReserveTable/ReserveTable'
 
 const ReservedCourses = () => {
   return (
     <div>
-      ReservedCourses
+      <ReserveTable/>
+      
     </div>
   )
 }

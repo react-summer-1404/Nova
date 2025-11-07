@@ -3,6 +3,12 @@ import CourseStatusList1 from '../../MyComments/CourseStatusList1/CourseStatusLi
 import CourseStatusList2 from '../../MyComments/CourseStatusList2/CourseStatusList2'
 import { HiOutlineTrash } from 'react-icons/hi2'
 import { IoEyeOutline } from 'react-icons/io5'
+<<<<<<< Updated upstream
+=======
+import { useQuery } from '@tanstack/react-query'
+import { favCourse } from '../../../../../servises/api/userPanel/getMyFavoriteCourses'
+import CourseStatusList1 from '../FavoritesCourse/CourseStatusList1/CourseStatusList1'
+>>>>>>> Stashed changes
 
 
 const FavoritesCourse = () => {

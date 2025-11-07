@@ -1,6 +1,10 @@
 import React from 'react';
 import CourseTableRow from './CourseTableRow/CourseTableRow';
+<<<<<<< Updated upstream
 import CourseStatusList1 from './CourseStatusList1/CourseStatusList1';
+=======
+// import CourseStatusList1 from '../Favorites/FavoritesNews/CourseStatusList1/';
+>>>>>>> Stashed changes
 import { HiOutlineTrash } from "react-icons/hi2";
 import { IoEyeOutline } from "react-icons/io5";
 import CourseStatusList2 from './CourseStatusList2/CourseStatusList2';
