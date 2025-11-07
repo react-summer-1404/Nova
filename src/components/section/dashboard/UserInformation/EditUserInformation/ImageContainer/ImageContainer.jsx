@@ -8,9 +8,10 @@ import { HiOutlineCamera } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import useToggle from "../../../../../../hooks/useToggle";
 import toast from "react-hot-toast";
-import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
+import {  useMutation, useQueryClient } from "@tanstack/react-query";
 import { postUserImage } from "../../../../../../servises/api/userPanel/addProfileImage";
 import { postUserImageSelect } from "../../../../../../servises/api/userPanel/selectProfileImage";
+import { deleteUserImageSelect } from "../../../../../../servises/api/userPanel/deleteProfileImage";
 
 const ImageContainer = ({ currentProf }) => {
   const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
@@ -19,9 +20,7 @@ const ImageContainer = ({ currentProf }) => {
 
   const mutationImage = useMutation({
     mutationFn: (formData) => postUserImage(formData),
-    onError: () => toast.error("خطا در آپلود عکس"),
     onSuccess: () => {
-      toast.success("پروفایل شما اضافه شد");
       queryClient.invalidateQueries(["currentProfUser"])
     },
   });
@@ -37,11 +36,23 @@ const ImageContainer = ({ currentProf }) => {
     },
   });
 
-  const currentImage = currentProf?.userImage;
+  const deleteMutation = useMutation({
+    mutationFn: (formData) => deleteUserImageSelect(formData),
+    onError: (error) =>{ toast.error("خطا در حذف عکس")
+    console.log("error", error)
+  },
+    onSuccess: () => {
+      toast.success("پروفایل شما حذف شد");
+      queryClient.invalidateQueries(["currentProfUser"])
 
+    },
+  });
+
+  const currentImage = currentProf?.userImage;
+// console.log(selectedImg)
   return (
-    <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
-      <img src={currentProf?.currentPictureAddress} alt="profile" />
+    <div className=" relative overflow-hidden  rounded-full w-[200px] h-[200px]">
+<img src={selectedImg?.puctureAddress || currentProf?.currentPictureAddres} alt="profile" className="object-contain"/>
 
       <ModalSection
         StyleModal={
@@ -90,7 +101,12 @@ const ImageContainer = ({ currentProf }) => {
                         setSelectedImg(img);
                       }}
                     />
-                    <button className=" absolute -top-3 -left-3 w-[25px] h-[25px] flex-center rounded-full bg-dark-purple">
+                    <button className=" absolute -top-3 -left-3 w-[25px] h-[25px] flex-center rounded-full bg-dark-purple"
+                    onClick={()=>{
+                      const formData = new FormData();
+                      formData.append("DeleteEntityId", img.id);
+                      deleteMutation.mutate(formData);
+                    }}>
                       <IoClose color="white" />
                     </button>
                   </div>
@@ -110,12 +126,20 @@ const ImageContainer = ({ currentProf }) => {
                     name="formFile"
                     accept="image/png, image/jpeg"
                     className="hidden"
-                    onChange={(event) => {
+                    onChange={async(event) => {
                       const sendFile = event.currentTarget.files[0];
                       if (sendFile) {
                         const formData = new FormData();
                         formData.append("formFile", sendFile);
                         mutationImage.mutate(formData);
+                        await toast.promise(
+                          mutationImage.mutateAsync(formData),
+                          {
+                            loading: "در حال آپلود عکس...",
+                            success: "پروفایل شما اضافه شد ",
+                            error: "خطا در آپلود عکس ",
+                          }
+                        );
                       }
                     }}
                   />

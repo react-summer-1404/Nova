@@ -1,7 +1,6 @@
 import React from "react";
 import { ListboxCustom, UserProfile } from "../../components/ui/index";
 import { Outlet } from "react-router-dom";
-import userimg from "../../assets/images/userimg.jpg"
 import Header from './../../features/auth/componenets/authLayout/Header';
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../servises/api/userPanel/getProfileInfo";
