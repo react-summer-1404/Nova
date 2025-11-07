@@ -4,13 +4,13 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
-import { IoSaveOutline } from "react-icons/io5";
 import toast from "react-hot-toast";
 import ImageContainer from "./ImageContainer/ImageContainer";
-import { YellowButton } from "../../../../ui";
-import Tag from "../../../../ui/Tag/Tag";
+import { useNavigate } from "react-router-dom";
+import ButtonSection from "./ButtonSection/ButtonSection";
 
 const EditUserInformation = () => {
+
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: async () => await getCurrentUserProfile(),
@@ -182,8 +182,7 @@ const EditUserInformation = () => {
                 inputClass="h-[135px] w-[300px] "
                 labelClass="-mb-2  "
               ></FormGroup>
-            <YellowButton text={"ذخیره تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} type={"submit"}/>
-            <Tag text={"لغو تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} bgColor={"#F5F5F5"}/>
+          <ButtonSection/>
             </div>
 
           </Form>
