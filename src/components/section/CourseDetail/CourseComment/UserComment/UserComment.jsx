@@ -3,7 +3,6 @@ import { BiLike, BiDislike } from "react-icons/bi";
 import GetReply from './GetReply';
 import Tag from '../../../../ui/Tag/Tag';
 import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
-import { Modal } from '@heroui/react';
 import ModalSection from '../../../../ui/Modal/ModalSection';
 import useToggle from '../../../../../hooks/useToggle';
 import PostReply from './PostReply';
