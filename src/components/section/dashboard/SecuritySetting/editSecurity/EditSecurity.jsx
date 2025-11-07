@@ -18,6 +18,9 @@ function EditSecurity() {
       initialValues={{
         twoStepAuth: false,
         recoveryEmail: "",
+      }}
+      onSubmit={(values)=>{
+        securityMutation.mutate(values)
       }}>
         <Form className="flex flex-col gap-8 ">
          <div className="flex flex-col gap-5 items-end ">
