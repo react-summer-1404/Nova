@@ -3,7 +3,6 @@ import CourseTableRow from '../MyComments/CourseTableRow/CourseTableRow'
 import FavoritesCourse from './FavoritesCourse/FavoritesCourse';
 import FavoritesNews from './favoritesNews/favoritesNews';
 
-
 const Favorites = () => {
   const [activeTab, setActiveTab] = useState("Courses");
   return (
@@ -22,19 +21,20 @@ const Favorites = () => {
           وبلاگ ها
         </button>
       </div>
-      <div className ='w-[80%] '>
+      <div className ='w-[67%] '>
         <CourseTableRow
           items={[
             "نویسنده",
-            "زمان انتشار",
-            "دسته بندی",
+            "زمان انتشار", 
             "عنوان",            
           ]}
         />
       </div>
       <div className ='h-1 w-full bg-gradient-to-r from-transparent via-golden-yellow to-transparent'></div>
+      
       {activeTab === "courses" && <FavoritesCourse/>}
       {activeTab === "blogs" && <FavoritesNews/>}
+      
     </div>
   )
 }
