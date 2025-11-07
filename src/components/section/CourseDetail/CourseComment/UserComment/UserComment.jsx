@@ -4,19 +4,21 @@ import GetReply from './GetReply';
 import Tag from '../../../../ui/Tag/Tag';
 import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { Modal } from '@heroui/react';
+import ModalSection from '../../../../ui/Modal/ModalSection';
+import useToggle from '../../../../../hooks/useToggle';
 
 const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, pictureAddress, describe, title, id, likeMutation, disLikeMutation }) => {
     const [showReplies, setShowReplies] = useState(false);
-
+    
+    const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
+    
     const handleLike = () => { console.log("لایک کلیک شد"); likeMutation.mutate(CourseCommandId); }
+    
     const handleDisLike = () => { console.log("دیسلایک کلیک شد"); disLikeMutation.mutate(CourseCommandId); }
-
-
+    
     const toggleReplies = async () => {
         setShowReplies(prev => !prev)
     }
-
-
     console.log("commentcouurseID", likeCount)
 
 
@@ -57,14 +59,20 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                             /></div>
                         </div>
                         <div className=' h-[25px] flex flex-row gap-0.5'>
-                            <button style={{ backgroundColor: "var(--color-light-purple)" }} className='md:px-3 text-[#5751E1] text-[10px] md:text-[12px] p-0.5 px-3 rounded-[30px] flex items-center'
+                            <button className='md:px-3 text-[#5751E1] text-[10px] md:text-[12px] bg-light-purple h-[30px] px-3 rounded-[30px] flex items-center'
                                 onClick={toggleReplies}
                             >
                                 {showReplies ? " بستن  پاسخ ها" : " مشاهده پاسخ ها"}
                             </button>
-                            <Modal>
+                            <ModalSection
+                                StyleModal={"md:px-3 px-3 h-[30px] rounded-[30px] flex items-center bg-light-purple"}
+                                isOpen={isModalOpen}
+                                onClose={toggleModal}
+                                onOpen={toggleModal}
+                                size="3xl"
+                            >
                             
-                            </Modal>
+                            </ModalSection>
                         </div>
                     </div>
                 </div>
@@ -83,4 +91,4 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
 export default UserComment
 
 //className='font-[500] text-[10px] md:text-[12px] text-[#5751E1]'
-//style={{ backgroundColor: "var(--color-light-purple)" }} className='md:px-3 p-0.5 px-3 rounded-[30px] flex items-center'
+//style={{ backgroundColor: "var(--color-light-purple)" }} className =
