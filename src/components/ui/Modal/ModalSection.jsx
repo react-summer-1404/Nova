@@ -6,10 +6,10 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
+
 } from "@heroui/react";
-export default function ModalSection({ content, modalTitle ,ButtonText,Icon,StyleModal}) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export default function ModalSection({ content, modalTitle ,ButtonText,Icon,StyleModal,Btn,size = "md",isOpen,onClose,onOpen}) {
+  // const {  onOpen, onClose } = useDisclosure();
   const [backdrop, setBackdrop] = useState("opaque");
 
   const backdrops = ["blur"];
@@ -25,7 +25,7 @@ export default function ModalSection({ content, modalTitle ,ButtonText,Icon,Styl
         {backdrops.map((b) => (
           <Button
             key={b}
-            className ={StyleModal}
+            className={StyleModal}
             variant="flat"
             onPress={() => handleOpen(b)}
           >
@@ -36,7 +36,7 @@ export default function ModalSection({ content, modalTitle ,ButtonText,Icon,Styl
           </Button>
         ))}
       </div>
-      <Modal backdrop={backdrop} isOpen={isOpen} onClose={onClose}>
+      <Modal backdrop={backdrop} isOpen={isOpen} onClose={onClose} size={size}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -46,12 +46,14 @@ export default function ModalSection({ content, modalTitle ,ButtonText,Icon,Styl
               <ModalBody>{content}</ModalBody>
 
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+                {/* <Button color="danger" variant="light" onPress={onClose}>
                   بستن
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button color="primary" onPress={onClose} >
                   Action
-                </Button>
+                </Button> */}
+
+                {Btn}
               </ModalFooter>
             </>
           )}
