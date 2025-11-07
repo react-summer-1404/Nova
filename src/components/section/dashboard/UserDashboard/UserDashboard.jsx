@@ -6,9 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getBlogs } from "../../../../servises/api/news/getNews";
 import CourseInfoCard from "./CourseInfoCard";
 import { CiShoppingCart } from "react-icons/ci";
-import { getCourses } from "./../../../../servises/api/courses/coursList/index";
-import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
-import { getMyReserveCourses } from "../../../../servises/api/userPanel/getMyCoursesReserve";
+// import { getCourses } from "./../../../../servises/api/courses/coursList/index";
+// import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
+// import { getMyReserveCourses } from "../../../../servises/api/userPanel/getMyCoursesReserve";
 
 const UserDashboard = () => {
   const [rowsOfPage, setrowsOfPage] = useState("2");
