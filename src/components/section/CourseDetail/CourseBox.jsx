@@ -32,7 +32,7 @@ console.log(data)
         return <ErrorMessage message={error?.message || "خطای ناشناخته ای رخ داده"} />
     }
     return (
-        <div className ='flex border flex-col w-screen gap-20 items-center'>
+        <div className ='flex flex-col w-screen gap-20 items-center'>
             <NavigationSection title={"حل تعارضات بین طراحان و مهندسان"}/>
             <div className=' w-screen flex justify-center gap-8 mr-[20px] mb-[30px]'>
                 

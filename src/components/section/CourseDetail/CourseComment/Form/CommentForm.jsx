@@ -65,7 +65,7 @@ const CommentForm = ({ initialValues = initialData }) => {
         >
 
             <Form className='w-11/12 h-5/6 flex flex-col items-end gap-2 md:gap-4'>
-                <p  className='font-[600] text-navy text-[22px] md:text-[26px] '>ارسال نظر</p>
+                <p  className='font-[600] text-[22px] md:text-[26px] '>ارسال نظر</p>
                 <FormGroup
                     label={"عنوان پیام"}
                     name={"title"}
@@ -76,8 +76,8 @@ const CommentForm = ({ initialValues = initialData }) => {
                     name={"describe"}
                     inputClass="h-[85px]"
                 />
-                
-                <button type='submit' className="border border-black bg-golden-yellow rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]">
+                <h4 className='font-[400] text-[#6D6C80] text-[10px] md:text-[14px]'>نظر شما پس از تایید توسط ادمین ثبت خواهد شد!</h4>
+                <button style={{ backgroundColor: "var(--color-golden-yellow)" }} type='submit' className="border border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]">
                     <FaArrowLeft className='ml-[6px] mt-[5px]' />
                     <h2 className=' font-[400] text-[10px] md:text-[14px] ml-[10px] text-right text-[#161439]'>ارسال نظر </h2>
                 </button>

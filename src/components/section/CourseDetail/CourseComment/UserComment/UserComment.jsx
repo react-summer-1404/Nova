@@ -6,6 +6,7 @@ import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { Modal } from '@heroui/react';
 import ModalSection from '../../../../ui/Modal/ModalSection';
 import useToggle from '../../../../../hooks/useToggle';
+import PostReply from './PostReply';
 
 const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, pictureAddress, describe, title, id, likeMutation, disLikeMutation }) => {
     const [showReplies, setShowReplies] = useState(false);
@@ -38,7 +39,7 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                             <div className='w-[45%] md:w-[55%] h-full rounded-[15px] bg-soft-gray font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]' > 
                                 <Tag icon={
                                 currentUserIsLike ? (
-                                    <AiFillLike className="text-gray-500" />
+                                    <AiFillLike size={"20px"} className="text-gray-500" />
                                 ) : (
                                     <AiOutlineLike size={"20px"} />
                                 )
@@ -49,27 +50,38 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                             <div className='w-[45%] md:w-[55%] h-full rounded-[15px] bg-soft-gray font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]' > 
                                 <Tag icon={
                                 currentUserIsDissLike ? (
-                                    <AiFillLike className="text-gray-500" />
+                                    <AiFillLike size={"20px"} className="text-gray-500" />
                                 ) : (
                                     <AiOutlineLike size={"20px"} />
                                 )
                             }
                                 onClick={handleDisLike}
                                 title={disslikeCount}
-                            /></div>
+                            />
+                            </div>
                         </div>
                         <div className=' h-[25px] flex flex-row gap-0.5'>
-                            <button className='md:px-3 text-[#5751E1] text-[10px] md:text-[12px] bg-light-purple h-[30px] px-3 rounded-[30px] flex items-center'
+                            <button className ='md:px-3 text-dark-purple text-[10px] md:text-[12px] bg-light-purple h-[30px] px-2 rounded-[10px] flex items-center'
                                 onClick={toggleReplies}
                             >
                                 {showReplies ? " بستن  پاسخ ها" : " مشاهده پاسخ ها"}
                             </button>
                             <ModalSection
-                                StyleModal={"md:px-3 px-3 h-[30px] rounded-[30px] flex items-center bg-light-purple"}
+                                StyleModal={"md:px-3 px-2 h-[30px] rounded-[10px] flex items-center bg-light-purple"}
                                 isOpen={isModalOpen}
                                 onClose={toggleModal}
                                 onOpen={toggleModal}
                                 size="3xl"
+                                content={
+                                    <div className ="flex flex-col justify-between items-center h-[300px] bg-[#F7F7FA] px-8">
+                                        <PostReply
+                                            parentCommentId = {id}
+                                        />
+                                    </div>
+                                }
+                                ButtonText={ 
+                                    <span className='font-[500] text-[10px] md:text-[12px] text-dark-purple'>پاسخ</span>
+                                }
                             >
                             
                             </ModalSection>
@@ -89,6 +101,3 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
 }
 
 export default UserComment
-
-//className='font-[500] text-[10px] md:text-[12px] text-[#5751E1]'
-//style={{ backgroundColor: "var(--color-light-purple)" }} className =

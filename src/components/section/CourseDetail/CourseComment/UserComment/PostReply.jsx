@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import { postCommentReply } from '../../../../../servises/api/coursesDetail/PostCommentReply';
 import toast from 'react-hot-toast';
 import * as Yup from "yup";
+import FormGroup from '../component/FormGroup';
+import { FaArrowLeft } from "react-icons/fa";
+import { Form, Formik, Field } from 'formik';
 
 
 const validationSchema = Yup.object({
@@ -59,7 +62,7 @@ const PostReply = ( initialValues = initialData) => {
             onSubmit={handleSubmit}
         >
 
-            <Form className='w-11/12 h-5/6 flex flex-col items-end gap-2 md:gap-4'>
+            <Form className='w-11/12 h-5/6 flex flex-col mt-5 items-end gap-2 md:gap-4'>
                 <p style={{ color: "var(--color-navy)" }} className='font-[600] text-[22px] md:text-[26px] '>ارسال نظر</p>
                 <FormGroup
                     label={"عنوان پیام"}
@@ -71,8 +74,7 @@ const PostReply = ( initialValues = initialData) => {
                     name={"describe"}
                     inputClass="h-[85px]"
                 />
-                <h4 className='font-[400] text-[#6D6C80] text-[10px] md:text-[14px]'>نظر شما پس از تایید توسط ادمین ثبت خواهد شد!</h4>
-                <button style={{ backgroundColor: "var(--color-golden-yellow)" }} type='submit' className="border border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[15%]">
+                <button type='submit' className="border bg-golden-yellow border-black rounded-[50px] shadow-2d-yellow text-[10px] md:text-[14px] p-1 font-semibold flex cursor-pointer w-[25%] md:w-[18%]">
                     <FaArrowLeft className='ml-[6px] mt-[5px]' />
                     <h2 className=' font-[400] text-[10px] md:text-[14px] ml-[10px] text-right text-[#161439]'>ارسال نظر </h2>
                 </button>
