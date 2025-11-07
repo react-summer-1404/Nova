@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import { getCommentReply } from '../../../../servises/api/coursesDetail/getCommentReply';
+import { getCommentReply } from '../../../../../servises/api/coursesDetail/getCommentReply';
 import { useParams } from 'react-router-dom';
 import { BiLike, BiDislike } from "react-icons/bi";
 

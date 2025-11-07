@@ -6,7 +6,7 @@ export const postCommentReply = async({CourseId,Title, Describe,CommentId}) => {
     formData.append("Title", Title)
     formData.append("Describe", Describe )
     formData.append("CommentId", CommentId )
-    const response = await instance.post("/Course/AddCommentCourse", formData,{
+    const response = await instance.post("/Course/AddReplyCourseComment", formData,{
         headers : {
             "Content-Type" : "multipart/from-data",
         },

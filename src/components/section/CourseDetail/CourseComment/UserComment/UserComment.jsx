@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { BiLike, BiDislike } from "react-icons/bi";
 import GetReply from './GetReply';
-import Tag from '../../../ui/Tag/Tag';
+import Tag from '../../../../ui/Tag/Tag';
 import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
+import { Modal } from '@heroui/react';
 
 const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, pictureAddress, describe, title, id, likeMutation, disLikeMutation }) => {
     const [showReplies, setShowReplies] = useState(false);
@@ -61,11 +62,9 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                             >
                                 {showReplies ? " بستن  پاسخ ها" : " مشاهده پاسخ ها"}
                             </button>
-                            <button style={{ backgroundColor: "var(--color-light-purple)" }} className='md:px-3 p-0.5 px-3 rounded-[30px] flex items-center'
-                            // onClick={}
-                            >
-                                <span className='font-[500] text-[10px] md:text-[12px] text-[#5751E1]'>پاسخ</span>
-                            </button>
+                            <Modal>
+                            
+                            </Modal>
                         </div>
                     </div>
                 </div>
@@ -83,4 +82,5 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
 
 export default UserComment
 
-
+//className='font-[500] text-[10px] md:text-[12px] text-[#5751E1]'
+//style={{ backgroundColor: "var(--color-light-purple)" }} className='md:px-3 p-0.5 px-3 rounded-[30px] flex items-center'
