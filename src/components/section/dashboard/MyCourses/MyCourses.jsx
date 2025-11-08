@@ -78,12 +78,12 @@ const MyCourses = () => {
           />
         ))} */}
       </div>
-      <CustomPagination
+      {/* <CustomPagination
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}
         RowsOfPage={rowsOfthePage}
         totalCount={data?.totalCount}
-      />
+      /> */}
     </div>
   );
 };
