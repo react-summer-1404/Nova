@@ -9,7 +9,7 @@ const ForgetPassword = () => {
       <div className=" text-right ">
         <FormText title={"تغییر رمزعبور"} subtitle={"جهت دریافت کد یک بار مصرف شماره تماس خود را وارد کنید"}/>
         <ForgetPasswordForm />
-        <Stepper />
+
       </div>
     </div>
   );

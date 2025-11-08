@@ -3,6 +3,7 @@ import useBackgroundColor from "../hooks/useBackgroundColor";
 import SideComponent from "../componenets/authLayout/SideComponent";
 import { Outlet } from "react-router-dom";
 import Header from "../componenets/authLayout/Header";
+import DarkMode from "../../../components/ui/darkMode/DarkMode";
 
 const AuthLayout = () => {
   useBackgroundColor("var(--color-dark-purple)");
@@ -20,6 +21,7 @@ const AuthLayout = () => {
           <Outlet />
         </div>
       </div>
+      <div><DarkMode /></div>
     </div>
   );
 };
