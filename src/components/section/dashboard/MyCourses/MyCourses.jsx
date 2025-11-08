@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 // import DashboardSearchBox from "./dashboardSearchBox";
 import SearchSection from "../../../ui/pagesSearchSection/SearchSection";
 import CourseTableRow from "../MyComments/CourseTableRow/CourseTableRow";
-// import CourseStatusList1 from "../Favorites/FavoritesCourse/CourseStatusList1/CourseStatusList1";
-// import { useQuery } from "@tanstack/react-query";
-// import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
+import CourseStatusList1 from "../Favorites/FavoritesCourse/CourseStatusList1/CourseStatusList1";
+import { useQuery } from "@tanstack/react-query";
+import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
 import { useDebounce } from "use-debounce";
 import CustomPagination from "../../../ui/pagination/CustomPagination";
 import DashboardAutoComplete from "../../../ui/DashboardAutoComplete/DashboardAutoComplete";
@@ -39,9 +39,9 @@ const MyCourses = () => {
   });
   console.log("course", data);
 
-  // useEffect(() => {
-  //   setSearchInput(searchDelay);
-  // }, [searchDelay]);
+  useEffect(() => {
+    setSearchInput(searchDelay);
+  }, [searchDelay]);
 
   return (
     <div className="w-full flex-col-center gap-8">
@@ -69,22 +69,22 @@ const MyCourses = () => {
       </div>
       <div className="h-1 w-full bg-gradient-to-r from-transparent via-golden-yellow to-transparent"></div>
       <div className="w-full mt-[12px] gap-1.5 lg:gap-3 flex flex-col">
-        {/* {data?.listOfMyCourses?.map((item) => (
+        {data?.listOfMyCourses?.map((item) => (
           <CourseStatusList1
             key={item.id}
             courseTitle={item.course.title}
             teacheName={item.course.teacher.fName}
             lastUpdate={item.course.startTime}
           />
-        ))} */}
+        ))}
         
       </div>
-      {/* <CustomPagination
+      <CustomPagination
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}
         RowsOfPage={rowsOfthePage}
         totalCount={data?.totalCount}
-      /> */}
+      />
     </div>
   );
 };
