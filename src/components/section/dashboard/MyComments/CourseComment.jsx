@@ -16,8 +16,9 @@ const CourseComments = () => {
                     key={item.id}
                     // teacherId={item.teacherId}
                     // startTime={item.startTime}
-                    title={item.title}
+                    author={item.author}
                     describe={item.describe}
+                    title={item.title}
                 />
                 
         ))}

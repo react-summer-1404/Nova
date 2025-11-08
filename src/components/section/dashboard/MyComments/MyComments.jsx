@@ -27,12 +27,12 @@ const MyComments = () => {
         />
 
       </div>
-      <div className ='w-[50%]'>
+      <div className ='w-[64%]'>
         <CourseTableRow 
           items={[
           "درباره",
             "دسته بندی", 
-                      
+            "نویسنده",                      
           ]}
         />
       </div>
