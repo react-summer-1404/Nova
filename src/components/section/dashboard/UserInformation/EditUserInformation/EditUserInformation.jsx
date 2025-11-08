@@ -15,8 +15,9 @@ const validationSchema = yup.object({
 const EditUserInformation = () => {
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
-    queryFn:getCurrentUserProfile,
+    queryFn: getCurrentUserProfile,
   });
+  console.log(currentProf)
 
   const mutation = useMutation({
     mutationFn: (formData) => putEditProfile(formData),
@@ -40,7 +41,7 @@ const EditUserInformation = () => {
       formData.append("LinkdinProfile", values.LinkdinProfile);
       formData.append("UserAbout", values.UserAbout);
       formData.append("HomeAdderess", values.HomeAdderess);
-      formData.append("Gender", values.Gender);
+      formData.append("Gender",values.Gender === "true");
 
       // formData.append("Latitude", values.Latitude);
       // formData.append("Longitude", values.Longitude);
@@ -65,7 +66,7 @@ const EditUserInformation = () => {
             HomeAdderess: currentProf?.homeAdderess || "",
             LinkdinProfile: currentProf?.linkdinProfile || "",
             UserAbout: currentProf?.userAbout || "",
-            Gender: currentProf?.gender || "",
+            Gender:currentProf?.gender? String(currentProf.gender) : "",
           }}
           validationSchema={validationSchema}
           onSubmit={submitHandling}

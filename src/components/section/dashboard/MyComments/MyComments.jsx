@@ -15,14 +15,14 @@ const Citems =[
 
 
 const MyComments = () => {
-  const [activeTab, setActiveTab] = useState("Courses");
+  const [activeTab, setActiveTab] = useState(null);
   return (
     <div className =' w-full flex items-center justify-center flex-col'>
       <div className='flex gap-4 mb-6'>
       
         <DashboardAutoComplete
-        selected={activeTab}
-        setSelected={setActiveTab}
+        selected={activeTab||null}
+        setSelected={setActiveTab ||null}
         options={Citems}
         />
 

@@ -25,19 +25,19 @@ const MyCourses = () => {
   const [sortColCourse, setSortColCourse] = useState(null);
   const [sortTypeCourse, setSortTypeCourse] = useState(null);
 
-  // const apiParams = {
-  //   PageNumber: pageNumber,
-  //   RowsOfPage: rowsOfthePage,
-  //   SortingCol: sortColCourse,
-  //   SortType: sortTypeCourse,
-  //   Query: searchDelay,
-  // };
+  const apiParams = {
+    PageNumber: pageNumber,
+    RowsOfPage: rowsOfthePage,
+    SortingCol: sortColCourse,
+    SortType: sortTypeCourse,
+    Query: searchDelay,
+  };
 
-  // const { data } = useQuery({
-  //   queryKey: ["myCourses", apiParams],
-  //   queryFn: () => getMyCourses(apiParams),
-  // });
-  // console.log("course", data);
+  const { data } = useQuery({
+    queryKey: ["myCourses", apiParams],
+    queryFn: () => getMyCourses(apiParams),
+  });
+  console.log("course", data);
 
   // useEffect(() => {
   //   setSearchInput(searchDelay);
@@ -49,13 +49,13 @@ const MyCourses = () => {
         <div className="flex gap-3">
           <DashboardAutoComplete
             options={SortingColItems}
-            selected={sortColCourse}
-            setSelected={setSortColCourse}
+            selected={sortColCourse ||null}
+            setSelected={setSortColCourse ||null}
           />
           <DashboardAutoComplete
-            options={SortTypeItems}
-            selected={sortTypeCourse}
-            setSelected={setSortTypeCourse}
+            options={SortTypeItems }
+            selected={sortTypeCourse||null}
+            setSelected={setSortTypeCourse ||null}
           />
         </div>
         <div>
@@ -77,6 +77,7 @@ const MyCourses = () => {
             lastUpdate={item.course.startTime}
           />
         ))} */}
+        
       </div>
       {/* <CustomPagination
         pageNumber={pageNumber}
