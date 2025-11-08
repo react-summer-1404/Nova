@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { HiOutlineTrash } from 'react-icons/hi2'
-import { IoEyeOutline } from 'react-icons/io5'
+
 import { useQuery } from '@tanstack/react-query'
 import { favCourse } from '../../../../../servises/api/userPanel/getMyFavoriteCourses'
 import CourseStatusList1 from '../FavoritesCourse/CourseStatusList1/CourseStatusList1'
