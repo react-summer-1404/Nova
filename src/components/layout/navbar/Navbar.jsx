@@ -30,8 +30,7 @@ const Navbar = () => {
           <UserCartFavorites isOpen={isOpen} />
           <IoIosMenu
             fontSize={"40px"}
-            color="#5751E1"
-            className="md:hidden cursor-pointer"
+            className="text-pure-blue dark:text-Violet-Blue md:hidden cursor-pointer"
             onClick={toggle}
           />
           <SearchBox />

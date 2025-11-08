@@ -22,11 +22,9 @@ const AboutSection = () => {
             <AccentText
               afterLabel={"برتر اکنون در یک مکان"}
               beforeLabel={"هزاران"}
-              title={"دوره"}
             />
             <h3
-              style={{ color: "var(--color-text-gray)" }}
-              className="text-right max-w-md text-responsive"
+              className="text-right max-w-md text-responsive text-text-gray"
             >
               صندوق ورودی مشترک بصری Groove این کار را برای اعضای تیم آسان می
               کند سازماندهی، اولویت بندی و. در این قسمت از Smashing Pod ما هستیم

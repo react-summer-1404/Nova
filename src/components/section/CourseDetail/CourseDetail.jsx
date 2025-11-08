@@ -22,10 +22,10 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                     <button style={{ backgroundColor: "var(--color-light-purple)" }} className='md:px-9 p-1 px-2 rounded-[30px] flex items-center'
                         type="submit"
                     >
-                        <span className='font-[500] text-[10px] md:text-[13px] text-[#161439]'>{title}</span>
+                        <span className='font-[500] text-[10px] md:text-[13px] text-black'>{title}</span>
                     </button>
                 </div>
-                <p className='md:text-[30px] text-[18px] font-[600] text-[#161439]'>{title}</p>
+                <p className='md:text-[30px] text-[18px] font-[600] text-text-gray'>{title}</p>
                 <div className='flex items-center md:gap-12 gap-3.5'>
                     <div style={{ direction: "rtl" }} className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
                         <PiStudentThin size={19} />

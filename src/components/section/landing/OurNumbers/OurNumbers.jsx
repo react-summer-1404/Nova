@@ -24,7 +24,7 @@ const OurNumbers = () => {
         <div className ='w-1 rounded-[5px] bg-gradient-to-b from-[#FFFFFF] to-transparent h-[90px]'></div>
         <div style={{color : "var(--color-white)"}} className ='w-1/4 h-[200px] flex justify-center flex-col'>
           <div className ='font-[900] text-[30px] md:text-[34px] '>{data?.courseCount}+</div>
-          <div className ='text-[13px] md:text-[13px] mr-1'>دروس انشکده </div>
+          <div className ='text-[13px] md:text-[13px] mr-1'>دروس دانشکده </div>
         </div>
         <div className ='w-1 rounded-[5px] bg-gradient-to-b from-[#FFFFFF] to-transparent h-[90px]'></div>
         <div style={{color : "var(--color-white)"}} className ='w-1/4 h-[200px] flex justify-center flex-col'>

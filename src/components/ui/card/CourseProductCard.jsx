@@ -83,7 +83,7 @@ const CourseProductCard = ({ product,
       <div className="flex flex-col w-full">
         <div className={`flex flex-col ${isCol ? "gap-[18px]" : "gap-4"}`}>
           <Link to={`/courseDetail/${product.courseId}`}>
-            <h2 className="font-semibold text-responsive text-right">
+            <h2 className="font-semibold text-responsive text-right text-text-gray">
               {product.title}
             </h2>
           </Link>

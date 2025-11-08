@@ -9,7 +9,7 @@ const JoinTheClub = () => {
         </div>
         
       <div className =' w-[35%] flex flex-col justify-center relative items-end gap-4'>
-          <p style={{color: "var(--color-white)"}} className ='text-right text-[22px] text-[#FFFFFF] w-[100%] md:text-[34px] md:w-[70%]'>می خواهید از دوره های جدید در جریان باشید؟</p>
+          <p style={{color: "var(--color-white)"}} className ='text-right text-[22px] text-white w-[100%] md:text-[34px] md:w-[70%]'>می خواهید از دوره های جدید در جریان باشید؟</p>
           <input
             type="text"
             placeholder='ایمیل خود را تایپ کنید'

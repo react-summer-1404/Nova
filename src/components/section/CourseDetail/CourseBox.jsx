@@ -52,50 +52,50 @@ console.log(data)
                             <h2 style={{ color: "var(--color-white)" }} className='font-[500] text-[11px] md:text-[15px]'>:هزینه این دوره</h2>
                             <h3 style={{ color: "var(--color-white)" }} className='font-[600] text-[18px] md:text-[22px] mt-[10px] mr-[30px]'>{data.cost} تومان</h3>
                         </div>
-                        <p className='font-[600] text-[12px] md:text-[16px] text-[#161439]'> :دوره شامل</p>
+                        <p className='font-[600] text-[12px] md:text-[16px] text-black'> :دوره شامل</p>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
                             <div className ='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'>{data.courseLevelName}</div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-[#161439]'>سطح دوره</div>
+                                <div className ='font-[400] text-[12px] md:text-[16px] text-black'>سطح دوره</div>
                                 <IoStatsChartOutline color='#7F7E97' size={12} className ="mt-1.5" />
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
                             <div className='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'>{data.endTime.slice(0,10)}</div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[11px] md:text-[16px] text-[#161439]'>پایان دوره </div>
+                                <div className ='font-[400] text-[11px] md:text-[16px] text-black'>پایان دوره </div>
                                 <IoTimeOutline color='#7F7E97' size={12} className ='mt-1.5' />
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
                             <div className='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'></div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-[#161439]'>ازمون ها</div>
+                                <div className ='font-[400] text-[12px] md:text-[16px] text-black'>ازمون ها</div>
                                 <PiPuzzlePieceThin color='#7F7E97' size={12} className ='mt-1.5' />
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
                             <div className='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'></div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-[#161439]'>درس ها</div>
+                                <div className ='font-[400] text-[12px] md:text-[16px] text-black'>درس ها</div>
                                 <BiBook color='#7F7E97' size={12} className ='mt-1.5'/>
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
                             <div className ='font-[400] text-[12px] md:text-[16px] text-[#7F7E97]'></div>
                             <div className ='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-[#161439]' >گواهینامه ها</div>
+                                <div className ='font-[400] text-[12px] md:text-[16px] text-black' >گواهینامه ها</div>
                                 <PiCertificateThin size={12} className ='mt-1.5' />
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] flex-col gap-1.5 h-[50px] md:h-[70px] w-full '>
-                            <div className='font-[400] text-[10px] md:text-[14px] text-right text-[#161439]'>:پرداخت امن</div>
+                            <div className='font-[400] text-[10px] md:text-[14px] text-right text-black'>:پرداخت امن</div>
                             <div className='flex gap-1'>
                                 <img src="src/assets/images/6cce14a6fef39893ffec7aceae284a74f5721102.png" />
                             </div>
                         </div>
                         <div className='flex border-b-[1px]  border-[#D9D9D9] flex-col gap-1.5 h-[80px] w-full '>
-                            <div className ='font-[400]  text-[12px] md:text-[16px] text-right text-[#161439]'>: این دوره را به اشتراک بگذارید</div>
+                            <div className ='font-[400]  text-[12px] md:text-[16px] text-right text-text-gray'>: این دوره را به اشتراک بگذارید</div>
                             <div className='w-[100%] md:w-[70%] md:ml-[20px] flex gap-1.5 md:gap-1.5 items-center'>
                                 <CommunicationApp /> <FaYoutube className='border-[#9292B4] rounded-full w-[30px] md:w-[25px] h-[25px] md:h-[25px] shadow-[2px_3px_0px_0px_#00000040]' />
                             </div>

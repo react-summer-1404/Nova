@@ -24,7 +24,7 @@ const MasterMentors = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-end min-h-[50vh]  min-w-[80vh] ">
+      <div className="flex items-end min-h-[50vh] min-w-[80vh] ">
         <Spinner
           size="lg"
           labelColor="primary"
