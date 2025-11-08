@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../servises/api/userPanel/getProfileInfo";
 import DrawerComponent from "../../components/ui/Drawer/DrawerComponent";
 import SideBar from "../../components/section/dashboard/UserInformation/sideBar";
+import DarkMode from './../../components/ui/darkMode/DarkMode';
 
 const Dashboard = () => {
   
@@ -16,7 +17,7 @@ const Dashboard = () => {
   return (
     <div className="w-screen h-screen flex-center">
       <div className="w-screen justy-between container-border">
-        <div className="flex flex-col w-[80%] h-full bg-white rounded-l-[15px]">
+        <div className="flex flex-col w-[80%] h-screen bg-white rounded-l-[15px]">
           <div className="flex-left"><Header data={data} /></div>
           <main className="px-8 py-2">
             <Outlet />
@@ -25,8 +26,8 @@ const Dashboard = () => {
        <div className="hidden lg:block">
        <SideBar data={data}/>
        </div>
-      
       </div>
+      <div><DarkMode /></div>
     </div>
   );
 };

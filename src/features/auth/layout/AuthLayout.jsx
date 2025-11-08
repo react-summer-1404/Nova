@@ -12,7 +12,7 @@ const AuthLayout = () => {
         <SideComponent />
         <div
           style={{ background: "var(--color-white)" }}
-          className="w-full sm:w-[478px] rounded-[50px] shadow-[10px_8px_0_0_rgba(0,0,0,1)]"
+          className="w-full h-[618px] sm:w-[478px] rounded-[50px] shadow-[10px_8px_0_0_rgba(0,0,0,1)]"
         >
           <div className="block md:hidden">
             <Header />

@@ -50,8 +50,8 @@ const SignUpForm = () => {
     >
       <Form className=" flex flex-col justify-end mt-7 sm:mt-8">
         <div className="flex flex-col gap-3 sm:gap-8">
-          <div className="relative flex flex-col gap-[.5rem]">
-            <FormField type="email" label="ایمیل" name="gmail" />
+          <div style={{direction:"rtl"}} className="relative flex flex-col gap-[.5rem]">
+            <FormField type="email" label="ایمیل" name="gmail" placeholder={"ایمیل خود را وارد کنید"} />
             <ErrorMessage
               name="gmail"
               className="text-red-500 text-right text-[14px] pr-[1rem]"

@@ -55,8 +55,8 @@ const UserDashboard = () => {
           subtext={"شرکت کرده اید"}
         />
       </div>
-      <div className="w-full justy-between">
-        <div className="h- bg-soft-gray radius10">
+      <div className="w-full flex-wrap flex-right gap-16">
+        <div className="h- bg-soft-gray radius10 h-[215px]">
           <ProfileProgrgressBar
             profileCompletionPercentage={data?.profileCompletionPercentage}
           />

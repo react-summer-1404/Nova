@@ -18,7 +18,7 @@ const Header = ({data}) => {
       />
       {/* <ThemeToggle /> */}
     </Link>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
     </div>
 
       <div className="lg:hidden">
