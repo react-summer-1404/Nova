@@ -41,7 +41,7 @@ const Slider = () => {
 
   return (
     <div
-      // style={{ backgroundColor: "var(--color-light-gray)" }}
+      style={{ backgroundColor: "var(--color-light-gray)" }}
       className="flex justify-evenly items-center  gap-2 md:gap-10 px-10 sm:px-8 p-8 rounded-full w-fit  mx-auto "
     >
       {/* <YellowButton
