@@ -8,6 +8,7 @@ const FormGroup = ({
   type = "text",
   inputClass = "",
   labelClass = "",
+  errorClass = "",
 }) => {
   return (
     <>
@@ -19,7 +20,6 @@ const FormGroup = ({
         {label}
       </label>
       <Field
-        
         as={as}
         type={type}
         name={name}
@@ -29,7 +29,11 @@ const FormGroup = ({
       >
         {children}
       </Field>
-      <ErrorMessage name={name} component={"span"} className="text-[#df0f0f]" />
+      <ErrorMessage
+        name={name}
+        component={"span"}
+        className={`text-[#df0f0f] ${errorClass}`}
+      />
     </>
   );
 };

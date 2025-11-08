@@ -82,7 +82,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
 
    
   return (
-    <div className="md:flex flex-col gap-5 w-[310px] hidden">
+    <div className="flex  gap-5  flex-wrap md:flex-col lg:flex-nowrap ">
       <InfoCard title="دسته بندی ها">
         <CheckList
           data={topTech}

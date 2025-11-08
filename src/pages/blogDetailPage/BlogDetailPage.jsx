@@ -38,15 +38,15 @@ const BlogDetailPage = () => {
           />
           <GeneralInfo detailItems={detailItems} />
           <MainInfo detailItems={detailItems} />
-          <LikeAndDislike />
+          <LikeAndDislike newsId={detailItems?.id} isLiked={detailItems?.currentUserIsLike} isDisliked={detailItems?.currentUserIsDissLike}/>
 
           <div>comment</div>
         </div>
         <div className="lg:flex flex-col gap-4 hidden ">
         <InfoCard title={"اخبار مرتبط"}>
-          {currentNews?.map((related) => (
+          {currentNews?.length>0?(currentNews?.map((related) => (
             <RelatesNews key={`${related.id} - ${related.title}`} detailItems={related} />
-          ))}
+          ))):(<p>خبر مرتبطی وجود ندارد</p>)}
         </InfoCard>
         </div>
        

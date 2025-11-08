@@ -27,6 +27,9 @@ const BlogCard = ({ blogData }) => {
           currentLikeCount={blogData.currentLikeCount}
           currentDissLikeCount={blogData.currentDissLikeCount}
           currentView={blogData.currentView}
+          id={blogData.id}
+          isLiked={blogData.currentUserIsLike}
+          isDisLiked={blogData.currentUserIsDissLike}
         />
       </div>
     </div>

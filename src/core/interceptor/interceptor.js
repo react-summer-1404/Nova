@@ -29,7 +29,6 @@ instance.interceptors.response.use(
     if (status === 401) {
       toast.error("ابتدا لاگین کنید")
       removeToken("token");
-      useFavorite().getState().clearFavorite();
       
     } else if (status >= 404 && status < 500) {
       console.log("Client Error:", status);

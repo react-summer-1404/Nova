@@ -12,6 +12,7 @@ import {  useMutation, useQueryClient } from "@tanstack/react-query";
 import { postUserImage } from "../../../../../../servises/api/userPanel/addProfileImage";
 import { postUserImageSelect } from "../../../../../../servises/api/userPanel/selectProfileImage";
 import { deleteUserImageSelect } from "../../../../../../servises/api/userPanel/deleteProfileImage";
+import defaultProf from "../../../../../../assets/icons/images.jpg"
 
 const ImageContainer = ({ currentProf }) => {
   const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
@@ -52,7 +53,7 @@ const ImageContainer = ({ currentProf }) => {
 // console.log(currentProf?.currentPictureAddres)
   return (
     <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
-<img src={selectedImg?.puctureAddress || currentProf?.currentPictureAddres} alt="profile" />
+<img src={selectedImg?.puctureAddress || currentProf?.currentPictureAddres || defaultProf} alt="profile" />
 
       <ModalSection
         StyleModal={
