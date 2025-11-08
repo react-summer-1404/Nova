@@ -12,7 +12,7 @@ const CurrentUserInformation = () => {
   const navigate = useNavigate();
   const { data } = useQuery({
     queryKey: ["usercurrentinfo"],
-    queryFn: () => getCurrentUserProfile(),
+    queryFn:getCurrentUserProfile,
   });
   return (
     <div className="flex-col-center gap-8 h-[450px] radius10 px-11 py-10 bg-light-gray relative">

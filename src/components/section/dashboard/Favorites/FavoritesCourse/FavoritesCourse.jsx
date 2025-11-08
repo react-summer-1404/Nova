@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 import { favCourse } from '../../../../../servises/api/userPanel/getMyFavoriteCourses'
-import CourseStatusList1 from '../FavoritesCourse/CourseStatusList1/CourseStatusList1'
+import CourseStatusList1 from './CourseStatusList1/CourseStatusList1'
 
 
 
