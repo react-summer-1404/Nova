@@ -1,19 +1,24 @@
 import { MdOutlineDateRange } from "react-icons/md";
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import {
+  AiOutlineLike,
+  AiFillLike,
+  AiOutlineDislike,
+  AiFillDislike,
+} from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
 import { Link } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
 
-const CourseProductCard = ({ product, 
-  isCol, 
-  likeMutation, 
-  disLikeMutation, 
-  addToFavoriteMutation}) => {
+const CourseProductCard = ({
+  product,
+  isCol,
+  likeMutation,
+  disLikeMutation,
+  addToFavoriteMutation,
+}) => {
   const { addedToFavorite, addFavorite } = useFavorite();
   const isFav = addedToFavorite.includes(product.courseId);
-
- 
 
   // --- Handle Mutations ---
   const handleLike = () => likeMutation.mutate(product.courseId);
@@ -24,14 +29,14 @@ const CourseProductCard = ({ product,
     addToFavoriteMutation.mutate(product.courseId);
   };
 
-  const courseDate = product.startTime? product.startTime.slice(0, 10) : "";
+  const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
 
   return (
     <div
       style={{
         backgroundColor: "var(--color-white)",
         border: "1px solid var(--color-border-gray)",
-        direction:"rtl"
+        direction: "rtl",
       }}
       className={`flex p-5 rounded-[10px] gap-6 ${
         isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[500px] flex-col"
@@ -83,7 +88,7 @@ const CourseProductCard = ({ product,
       <div className="flex flex-col w-full">
         <div className={`flex flex-col ${isCol ? "gap-[18px]" : "gap-4"}`}>
           <Link to={`/courseDetail/${product.courseId}`}>
-            <h2 className="font-semibold text-responsive text-right">
+            <h2 className="font-semibold text-responsive text-right text-text-gray">
               {product.title}
             </h2>
           </Link>
@@ -146,7 +151,13 @@ const CourseProductCard = ({ product,
 
               <div className="md:flex gap-1 items-center hidden">
                 <Tag
-                  icon={<AiOutlineLike size={"20px"} />}
+                  icon={
+                    product.userIsLiked ? (
+                      <AiFillLike size={"20px"} className="text-gray-500" />
+                    ) : (
+                      <AiOutlineLike size={"20px"} />
+                    )
+                  }
                   bgColor={"var(--color-soft-gray)"}
                   title={product.likeCount}
                   textColor={"#5F5F66"}
@@ -155,8 +166,15 @@ const CourseProductCard = ({ product,
                   onClick={handleLike}
                 />
                 <Tag
+                  icon={
+                    product.currentUserDissLike? (
+                      <AiFillDislike size={"20px"} className="text-gray-500" />
+                    ) : (
+                      <AiOutlineDislike size={"20px"} />
+                    )
+                  }
                   title={product.dissLikeCount}
-                  icon={<AiOutlineDislike size={"20px"} />}
+                
                   bgColor={"var(--color-soft-gray)"}
                   textColor={"#5F5F66"}
                   width={"65px"}
@@ -187,4 +205,3 @@ const CourseProductCard = ({ product,
 };
 
 export default CourseProductCard;
-

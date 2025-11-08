@@ -1,30 +1,17 @@
-import {Select, SelectItem} from "@heroui/react";
+import {Autocomplete, AutocompleteItem} from "@heroui/react";
 
 export const animals = [
-  {key: "cat", label: "Cat"},
-  {key: "dog", label: "Dog"},
-  {key: "elephant", label: "Elephant"},
-  {key: "lion", label: "Lion"},
-  {key: "tiger", label: "Tiger"},
-  {key: "giraffe", label: "Giraffe"},
-  {key: "dolphin", label: "Dolphin"},
-  {key: "penguin", label: "Penguin"},
-  {key: "zebra", label: "Zebra"},
-  {key: "shark", label: "Shark"},
-  {key: "whale", label: "Whale"},
-  {key: "otter", label: "Otter"},
-  {key: "crocodile", label: "Crocodile"},
+  {label: "جدید ترین", key: "جدیدترین", description: "The second most popular pet in the world"},
 ];
 
 export default function DashboardAutoComplete() {
   return (
-    <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-      <Select className="max-w-xs" label="Select an animal">
+    <div style={{direction:"rtl"}} className="flex w-full flex-wrap md:flex-nowrap gap-4">
+      <Autocomplete className="w-[184px] h-[40px]" label="انتخاب کنید">
         {animals.map((animal) => (
-          <SelectItem key={animal.key}>{animal.label}</SelectItem>
+          <AutocompleteItem key={animal.key}>{animal.label}</AutocompleteItem>
         ))}
-      </Select>
-      
+      </Autocomplete>
     </div>
   );
 }

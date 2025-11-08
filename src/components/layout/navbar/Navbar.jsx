@@ -8,11 +8,20 @@ import AccountBtn from "./components/AccountBtn";
 import { IoIosMenu } from "react-icons/io";
 import { GoX } from "react-icons/go";
 import useToggle from "../../../hooks/useToggle";
+import { getToken } from "../../../hooks/localStorage";
+import AvatarComponent from "../../ui/Avatar/Avatar";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUserProfile } from "../../../servises/api/userPanel/getProfileInfo";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
   const [isOpen, toggle, setIsOpen] = useToggle(false);
-  
-
+  const navigate = useNavigate();
+  const token = getToken();
+ const {data}=useQuery({
+  queryKey:["getAvatar"],
+  queryFn:getCurrentUserProfile
+ })
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsOpen(false);
@@ -26,12 +35,11 @@ const Navbar = () => {
     <div className="flex-center w-screen  p-4 gap-6  ">
       <div className=" relative flex  md:gap-2 justify-between items-center p-4   w-full  ">
         <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
-          <AccountBtn isOpen={isOpen} />
+         {token?<AvatarComponent  data={data} onclick={()=>navigate("/dashboard")} isOpen={isOpen}/>: <AccountBtn isOpen={isOpen} onclick={()=>navigate("/auth")}/>}
           <UserCartFavorites isOpen={isOpen} />
           <IoIosMenu
             fontSize={"40px"}
-            color="#5751E1"
-            className="md:hidden cursor-pointer"
+            className="text-pure-blue dark:text-Violet-Blue md:hidden cursor-pointer"
             onClick={toggle}
           />
           <SearchBox />

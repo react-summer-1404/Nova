@@ -105,7 +105,7 @@ const Footer = () => {
         </div>
       </div>
       <div style={{backgroundColor : "var(--color-light-blue)" }} className ='w-full h-[60px] flex justify-center items-center'>
-        <p style={{color : "var(--color-text-fot)" }} className ='font-[400] text-[14px] md:text-[16px] '>© تمامی حقوق این سایت متعلق به تیم نامبر وان می باشد.</p>
+        <p style={{color : "var(--color-text-fot)" }} className ='font-[400] text-[14px] md:text-[16px] '>© تمامی حقوق این سایت متعلق به تیم تیم نوا و آکادمی بحر می باشد.</p>
       </div>
     </div>
   );

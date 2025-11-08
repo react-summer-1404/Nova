@@ -7,7 +7,7 @@ const Tag = ({ title, textColor, bgColor, icon, width, height, onClick }) => {
       style={{ backgroundColor: bgColor, height, width }}
       className="rounded-full px-2 flex items-center justify-center  whitespace-nowrap cursor-pointer"
     >
-      <span style={{ color: textColor }} className="p-1 text-base">
+      <span style={{ color: textColor }} className="p-1 text-base text-text-gray">
         {title}
       </span>
       {icon && <span className="mr-1">{icon}</span>}

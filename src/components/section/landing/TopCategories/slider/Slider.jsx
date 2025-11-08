@@ -42,18 +42,18 @@ const Slider = () => {
   return (
     <div
       style={{ backgroundColor: "var(--color-light-gray)" }}
-      className="flex justify-evenly items-center  gap-2 md:gap-10 px-4 sm:px-8 p-4 rounded-full w-full max-w-[1300px] mx-auto "
+      className="flex justify-evenly items-center  gap-2 md:gap-10 px-10 sm:px-8 p-8 rounded-full w-fit  mx-auto "
     >
-      <YellowButton
+      {/* <YellowButton
         onClick={prevSlide}
         width="50px"
         height="50px"
         icon={<GoArrowLeft className="-m-1" />}
-      />
+      /> */}
 
       <div className="overflow-hidden flex-1  flex-center ">
         <div
-          className="flex flex-1 transition-transform duration-500 ease-in-out gap-[44px]  xl:w-[1120px]"
+          className="flex flex-1 transition-transform duration-500 ease-in-out gap-[44px]  "
           style={{ transform: `translateX(-${slide * (100 / itemsPerPage)}%)` }}
         >
           {newTechList?.map((item) => (
@@ -73,12 +73,12 @@ const Slider = () => {
         </div>
       </div>
 
-      <YellowButton
+      {/* <YellowButton
         onClick={nextSlide}
         width="50px"
         height="50px"
         icon={<GoArrowRight className="-m-1" />}
-      />
+      /> */}
     </div>
   );
 };

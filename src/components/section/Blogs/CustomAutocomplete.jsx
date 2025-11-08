@@ -1,12 +1,6 @@
-import { Autocomplete, AutocompleteItem } from "@heroui/react";
 import SortDropdown from "../../ui/sortDropDown/SortDropdown";
 
-// export const sortOption = [
-//   { key: "popular", label: "محبوب‌ترین" },
-//   { key: "new", label: "جدیدترین" },
-//   { key: "cheap", label: "ارزان‌ترین" },
-//   { key: "expensive", label: "گران‌ترین" },
-// ];
+
 
 export default function CustomAutocomplete({paramItems ,handleChange}) {
   const sortType = [

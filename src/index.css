@@ -12,7 +12,7 @@
 }
 
 a {
-  color: inherit;                
+  color: inherit;
   text-decoration: none;
   transition: color 0.25s ease;
 }
@@ -33,11 +33,11 @@ a {
 }
 
 .flex-right {
-  @apply flex justify-end ;
+  @apply flex justify-end;
 }
 
 .flex-col-right {
-  @apply flex flex-col items-end
+  @apply flex flex-col items-end;
 }
 
 .flex-col-center {
@@ -45,7 +45,7 @@ a {
 }
 
 .justy-between {
-  @apply flex justify-between items-center
+  @apply flex justify-between items-center;
 }
 
 .section-padding {
@@ -66,7 +66,8 @@ body {
 body {
   background: var(--color-white);
   overflow-x: hidden;
-  padding: 0; margin: 0;
+  padding: 0;
+  margin: 0;
   font-family: "iranSans";
 }
 
@@ -77,33 +78,117 @@ body {
 }
 
 .radius10 {
-  @apply rounded-[10px]
+  @apply rounded-[10px];
 }
 
 /* ====== color =========== */
 
 @theme {
-    --color-white: #ffffff;
-    --color-black : #000000;
-    --color-navy: #161439;
-    --color-golden-yellow: #ffc124;
-    --color-light-gray: #F7F7F9;
-    --color-text-gray: #6D6C80;
-    --color-soft-gray:#EFEFF1;
-    --color-dark-purple: #5751E1;
-    --color-light-purple: #EFEEFE;
-    --color-soft-indigo: #D9D9F3;
-    --color-dark-blue : #06042E;
-    --color-light-blue : #1C1A4A;
-    --color-text-fot : #8C9AB4;
-    --color-text2-fot : #B2BBCC;
-    --color-blue-fot : #1C1B3C;
-    --color-border-gray : #B5B5C380;
-    --color-border-blue : #6196EA;
-    --color-pure-blue : #0000FF;
-    --color-disable-heart : #CCCCCC;
-    --color-base-gray : #555555;
-    --color-error-red : #DE5204;
+  --color-white: #ffffff;
+  /* dark mode*/
+  --color-rich-black: #0b0b10;
+  /* -------------------------------- */
+
+  --color-rich-black: #0b0b10;
+  /* dark mode*/
+  --color-white: #ffffff;
+  /* -------------------------------- */
+
+  --color-navy: #161439;
+  /* dark mode*/
+  --color-dark-indigo: #1b1a3c;
+  /* -------------------------------- */
+
+  --color-golden-yellow: #ffc124;
+  /* dark mode*/
+  --color-Sunray: #ffd75a;
+  /* -------------------------------- */
+
+  --color-light-gray: #f7f7f9;
+  /* dark mode*/
+  --color-space-blue: #1c1c28;
+  /* -------------------------------- */
+
+  --color-text-gray: #6d6c80;
+  /* dark mode*/
+  --color-Cool-Gray: #a1a1b3;
+  /* -------------------------------- */
+
+  --color-soft-gray: #efeff1;
+  /* dark mode*/
+  --color-Midnigh-Blue: #2a2a3f;
+  /* -------------------------------- */
+
+  --color-dark-purple: #5751e1;
+  /* dark mode*/
+  --color-Violet-Blue: #6c67e5;
+  /* -------------------------------- */
+
+  --color-light-purple: #efeefe;
+  /* dark mode*/
+  --color-Dark-Periwinkle: #2c2a5e;
+  /* -------------------------------- */
+
+  --color-soft-indigo: #d9d9f3;
+  /* dark mode*/
+  --color-Dark-Periwinkle: #3b3b74;
+  /* -------------------------------- */
+
+  --color-dark-blue: #06042e;
+  /* dark mode*/
+  --color-Very-Dark-Indigo: #0e0c3a;
+  /* -------------------------------- */
+
+  --color-light-blue: #1c1a4a;
+  /* dark mode*/
+  --color-Royal-Midnight: #1d1a55;
+  /* -------------------------------- */
+
+  --color-text-fot: #8c9ab4;
+  /* dark mode*/
+  --color-Slate-Blue: #aab2cc;
+  /* -------------------------------- */
+
+  --color-text2-fot: #b2bbcc;
+  /* dark mode*/
+  --color-Lavender-Gray: #8c94ac;
+  /* -------------------------------- */
+
+  --color-blue-fot: #1c1b3c;
+  /* dark mode*/
+  --color-Cosmic-Blue: #0f0e2a;
+  /* -------------------------------- */
+
+  --color-border-gray: #b5b5c380;
+  /* dark mode*/
+  --color-Muted-Indigo: #4c4c5a80;
+  /* -------------------------------- */
+
+  --color-border-blue: #6196ea;
+  /* dark mode*/
+  --color-Baby-Blue: #88b2f7;
+  /* -------------------------------- */
+
+  --color-pure-blue: #0000ff;
+  /* dark mode*/
+  --color-Electric-Blue: #4d6dff;
+  /* -------------------------------- */
+
+  --color-disable-heart: #cccccc;
+  /* dark mode*/
+  --color-MediumGray: #555555;
+  /* -------------------------------- */
+
+  --color-base-gray: #555555;
+  /* dark mode*/
+  --color-Silver: #aaaaaa;
+  /* -------------------------------- */
+
+  --color-error-red: #de5204;
+  /* dark mode*/
+  --color-Flamingo: #ff7043;
+  /* -------------------------------- */
+
   --gradient-main: radial-gradient(
       circle at 20% 50%,
       rgba(189, 175, 255, 0.32),
@@ -116,7 +201,6 @@ body {
     ),
     #ffffff;
 }
-
 /* ====== BOX SHADOWS =========== */
 
 .shadow-2d-yellow {
@@ -129,6 +213,18 @@ body {
 
 .shadow-2d-gray {
   box-shadow: 4px 3px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.beautiful-shadow {
+  box-shadow: 0 63px 17px 0 rgba(0, 0, 0, 0), 0 40px 16px 0 rgba(0, 0, 0, 0.01),
+    0 10px 14px 0 rgba(0, 0, 0, 0.05), 0 10px 16px 0 rgba(0, 0, 0, 0.09),
+    0 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.outside-shadow {
+  box-shadow: -144px 69px 45px 0 rgba(0, 0, 0, 0),
+    -92px 44px 41px 0 rgba(0, 0, 0, 0.01), -52px 25px 34px 0 rgba(0, 0, 0, 0.05),
+    -23px 11px 25px 0 rgba(0, 0, 0, 0.09), -6px 3px 14px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* ====== Error =========== */
@@ -174,7 +270,8 @@ body {
   @apply bg-soft-gray;
 }
 
-.course-info-card-icon, .notifiction-Icon {
+.course-info-card-icon,
+.notifiction-Icon {
   width: 40px;
   height: 40px;
   padding: 0.5rem;
@@ -183,7 +280,7 @@ body {
   @apply bg-dark-purple text-white;
 }
 
-.notifiction-Icon{
+.notifiction-Icon {
   position: absolute;
   top: -24px;
   left: 40px;

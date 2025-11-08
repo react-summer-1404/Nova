@@ -4,7 +4,7 @@ const UserProfile = ({imageUrl,userName}) => {
   return (
     <div className='flex-col-center gap-4'>
       <img className='w-[80px] rounded-[60px]' src={imageUrl} alt="user image" />
-      <span className='text-white text-[20px]'>خوش آمدی {userName}</span>
+      <span className='w-[80px] flex-col-center text-white text-[20px] overflow-ellipsis'>خوش آمدی {userName?userName:"کابر گرامی"}</span>
     </div>
   )
 }

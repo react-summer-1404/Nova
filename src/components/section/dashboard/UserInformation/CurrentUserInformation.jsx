@@ -11,7 +11,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 const CurrentUserInformation = () => {
   const navigate = useNavigate();
   const { data } = useQuery({
-    queryKey: "usercurrentinfo",
+    queryKey: ["usercurrentinfo"],
     queryFn: () => getCurrentUserProfile(),
   });
   return (

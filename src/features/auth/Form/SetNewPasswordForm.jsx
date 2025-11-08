@@ -29,7 +29,7 @@ const SetNewPasswordForm = () => {
       <Form className=" flex flex-col justify-end mt-7 sm:mt-8">
         <div className="flex flex-col gap-0.5">
           <div className="relative flex flex-col gap-[.5rem]">
-            <FormField
+            <FormField 
               type={"password"}
               name={"newPassword"}
               id={"newPassword"}

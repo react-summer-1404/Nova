@@ -1,9 +1,12 @@
 import React from 'react'
+import ChangePassWord from './ChangePassWord/ChangePassWord'
+import EditSecurity from './editSecurity/EditSecurity'
 
 const SecuritySetting = () => {
   return (
-    <div>
-      SecuritySetting
+    <div className='flex flex-col gap-12'>
+      <ChangePassWord/>
+      <EditSecurity/>
     </div>
   )
 }

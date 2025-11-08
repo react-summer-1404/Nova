@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <div
       style={{ background: "var(--gradient-main)" }}
-      className="w-screen flex-center pt-4"
+      className="w-screen flex-center pt-4 bg-gradient-main"
     >
       <div className="flex justify-between w-5/6">
         <img src={heroPic} className="hidden md:block md:w-1/2 md:h-3/4" />
@@ -17,12 +17,10 @@ const HeroSection = () => {
           <AccentText
             beforeLabel={"هرگز از"}
             afterLabel={"دست نکشید زندگی هرگز از اموزش دست نمیکشد"}
-            title={"یادگیری"}
           />
 
           <h3
-            style={{ color: "var(--color-text-gray)" }}
-            className="text-responsive text-right pb-[35px] max-w-md "
+            className="text-responsive text-right pb-[35px] max-w-md text-text-gray"
           >
             هر سفر اموزشی و یادگیری دنبال کردن منحصر به فرد است ما به شما کمک
             خواهیم کرد

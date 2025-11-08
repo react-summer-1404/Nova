@@ -1,9 +1,8 @@
 import React from "react";
 import { CustomAutocomplete, Result, Search } from "../../../pages/blogsPage/components/index";
 import { CiFilter } from "react-icons/ci";
-import SortDropdown from "../../ui/sortDropDown/SortDropdown";
 
-const Header = ({paramItems,handleChange}) => {
+const Header = ({paramItems,handleChange,currentItems ,totalCount}) => {
   return (
     <div className="w-full flex justify-between">
       <div className="hidden sm:flex">
@@ -12,7 +11,7 @@ const Header = ({paramItems,handleChange}) => {
       <div className="sm:hidden w-full flex items-center justify-center p-0.5 gap-1">
         <Search />
       </div>
-      <Result />
+      <Result currentItems={currentItems} totalCount={totalCount}/>
     </div>
   );
 };

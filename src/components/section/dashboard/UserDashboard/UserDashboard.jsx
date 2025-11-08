@@ -6,9 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getBlogs } from "../../../../servises/api/news/getNews";
 import CourseInfoCard from "./CourseInfoCard";
 import { CiShoppingCart } from "react-icons/ci";
-import { getCourses } from "./../../../../servises/api/courses/coursList/index";
-import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
-import { getMyReserveCourses } from "../../../../servises/api/userPanel/getMyCoursesReserve";
+// import { getCourses } from "./../../../../servises/api/courses/coursList/index";
+// import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
+// import { getMyReserveCourses } from "../../../../servises/api/userPanel/getMyCoursesReserve";
+import { PiGraduationCapThin } from "react-icons/pi";
 
 const UserDashboard = () => {
   const [rowsOfPage, setrowsOfPage] = useState("2");
@@ -32,16 +33,16 @@ const UserDashboard = () => {
   // });
 
   return (
-    <div className="flex flex-col gap-13">
+    <div className="flex flex-col gap-8">
       <div className=" flex-right gap-6 items-center">
        
        {/* {
         myCourseData.
        } */}
        
-        {/* <CourseInfoCard
+        <CourseInfoCard
           icon={
-            <CiShoppingCart className="course-info-card-icon rounded-[50px]" />
+            <CiShoppingCart className="course-info-card-icon rounded-[50px] " />
           }
           courseCount={"۲ دوره"}
           subtext={"رزرو کرده اید"}
@@ -52,10 +53,10 @@ const UserDashboard = () => {
           }
           courseCount={"4 دوره"}
           subtext={"شرکت کرده اید"}
-        /> */}
+        />
       </div>
-      <div className="w-full justy-between">
-        <div className="h- bg-soft-gray radius10">
+      <div className="w-full flex-wrap flex-right gap-16">
+        <div className="h- bg-soft-gray radius10 h-[215px]">
           <ProfileProgrgressBar
             profileCompletionPercentage={data?.profileCompletionPercentage}
           />

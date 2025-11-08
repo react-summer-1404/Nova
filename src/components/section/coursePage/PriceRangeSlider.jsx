@@ -5,7 +5,7 @@ import { Slider } from "@heroui/react";
 export default function PriceRangeSlider({ value, setValue }) {
 
   return (
-    <div className="flex flex-col gap-4 p-4 w-[240px]">
+    <div className="flex flex-col gap-4 p-4 lg:w-[240px] w-[300px]">
       <Slider
         step={10}
         minValue={0}

@@ -74,7 +74,6 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.error("login failed:", error);
-      // console.log("error.response?.data:", error?.response?.data);
     }
   };
 
@@ -91,9 +90,9 @@ const LoginForm = () => {
     >
       <Form
         style={{ direction: "rtl" }}
-        className="flex h-full flex-col justify-end mt-7 sm:mt-8 gap-4"
+        className="flex h-full flex-col justify-end mt-7 sm:mt-8 gap-6"
       >
-        <div className="flex flex-col gap-4 sm:gap-6">
+        <div className="flex flex-col gap-1 sm:gap-4">
           <div className="relative flex flex-col gap-[.4rem]">
             <FormField
               type={"email"}
