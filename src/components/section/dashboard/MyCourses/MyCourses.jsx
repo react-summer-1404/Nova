@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DashboardAutoComplete from "./DashboardAutoComplete";
+// import DashboardSearchBox from "./dashboardSearchBox";
 import SearchSection from "../../../ui/pagesSearchSection/SearchSection";
 import CourseTableRow from "../MyComments/CourseTableRow/CourseTableRow";
 import CourseStatusList1 from "../Favorites/FavoritesCourse/CourseStatusList1/CourseStatusList1";
