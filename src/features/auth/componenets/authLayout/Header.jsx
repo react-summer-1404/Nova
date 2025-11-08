@@ -13,7 +13,7 @@ const Header = ({data}) => {
     <Link to={"/"}>
     <IoHome
         style={{ color: "var(--color-dark-purple)" }}
-        className="cursor-pointer"
+        className="cursor-pointer w-[20px] h-[20px]"
         
       />
       {/* <ThemeToggle /> */}
