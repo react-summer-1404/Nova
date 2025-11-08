@@ -7,7 +7,7 @@ const InfoCard = ({ title, children, showMoreButton = false }) => {
   return (
     <div
       style={{ backgroundColor: "var(--color-light-gray)" }}
-      className="w-[310px] rounded-[10px] p-[30px]"
+      className="lg:w-[310px]  rounded-[10px] p-[30px]"
     >
       <div className="w-full flex flex-col items-end gap-4 ">
         <h2 className="font-semibold text-xl">{title}</h2>

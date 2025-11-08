@@ -8,7 +8,7 @@ const Result = ({currentItems ,totalCount}) => {
       <span style={{ color: "var(--color-dark-purple)" }}>{totalCount}</span>
       <span>از</span>
       <span style={{ color: "var(--color-dark-purple)" }}>
-        {/* {currentItems?.length} */}
+        {currentItems?.length}
       </span>
       <span>نمایش نتیجه</span>
     </div>

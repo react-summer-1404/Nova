@@ -11,6 +11,7 @@ import {
 export default function ModalSection({ content, modalTitle ,ButtonText,Icon,StyleModal,Btn,size = "md",isOpen,onClose,onOpen}) {
   // const {  onOpen, onClose } = useDisclosure();
   const [backdrop, setBackdrop] = useState("opaque");
+  const [scrollBehavior, setScrollBehavior] = useState("inside");
 
   const backdrops = ["blur"];
 
@@ -36,7 +37,7 @@ export default function ModalSection({ content, modalTitle ,ButtonText,Icon,Styl
           </Button>
         ))}
       </div>
-      <Modal backdrop={backdrop} isOpen={isOpen} onClose={onClose} size={size}>
+      <Modal backdrop={backdrop} isOpen={isOpen} onClose={onClose} size={size} scrollBehavior={scrollBehavior}>
         <ModalContent>
           {(onClose) => (
             <>
