@@ -12,12 +12,11 @@ import { CiShoppingCart } from "react-icons/ci";
 import { PiGraduationCapThin } from "react-icons/pi";
 
 const UserDashboard = () => {
-  const [rowsOfPage, setrowsOfPage] = useState("2");
 
   const { data } = useQuery({
     //ببرای پروسس بار
-    queryKey: "usercurrentinfo",
-    queryFn: () => getCurrentUserProfile(),
+    queryKey:[ "usercurrentinfodashboard"],
+    queryFn:getCurrentUserProfile,
   });
 
   const { data: newsData } = useQuery({

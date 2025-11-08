@@ -1,18 +1,16 @@
 import React from "react";
-import { ListboxCustom, UserProfile } from "../../components/ui/index";
 import { Outlet } from "react-router-dom";
 import Header from './../../features/auth/componenets/authLayout/Header';
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../servises/api/userPanel/getProfileInfo";
-import DrawerComponent from "../../components/ui/Drawer/DrawerComponent";
 import SideBar from "../../components/section/dashboard/UserInformation/sideBar";
 import DarkMode from './../../components/ui/darkMode/DarkMode';
 
 const Dashboard = () => {
   
   const { data } = useQuery({
-    queryKey: ["currentProfUser"],
-    queryFn: async () => await getCurrentUserProfile(),
+    queryKey: ["currentProfUsers"],
+    queryFn:getCurrentUserProfile,
   });
   return (
     <div className="w-screen h-screen flex-center">

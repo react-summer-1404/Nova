@@ -15,7 +15,7 @@ const validationSchema = yup.object({
 const EditUserInformation = () => {
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
-    queryFn: async () => await getCurrentUserProfile(),
+    queryFn:getCurrentUserProfile,
   });
 
   const mutation = useMutation({

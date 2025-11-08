@@ -8,7 +8,7 @@ import CourseComment from './CourseComment';
 import NewsComments from './NewsComment';
 import DashboardAutoComplete from '../../../ui/DashboardAutoComplete/DashboardAutoComplete';
 
-const commentItems =[
+const Citems =[
   {key:"CourseComment",label:"دوره ها",},
   {key:"NewCom",label:"وبلاگ ها",}
 ]
@@ -23,13 +23,13 @@ const MyComments = () => {
         <DashboardAutoComplete
         selected={activeTab}
         setSelected={setActiveTab}
-        options={items}
+        options={Citems}
         />
 
       </div>
       <div className ='w-[50%]'>
         <CourseTableRow 
-          commentItems={[
+          items={[
           "درباره",
             "دسته بندی", 
                       
