@@ -1,6 +1,6 @@
 import React from "react";
 import DashboardAutoComplete from "./DashboardAutoComplete";
-import DashboardSearchBox from "./dashboardSearchBox";
+// import DashboardSearchBox from "./dashboardSearchBox";
 import SearchSection from "../../../ui/pagesSearchSection/SearchSection";
 
 const MyCourses = () => {
