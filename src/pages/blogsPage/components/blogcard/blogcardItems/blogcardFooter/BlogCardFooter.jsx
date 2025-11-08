@@ -15,7 +15,7 @@ const BlogCardFooter = ({currentLikeCount,currentDissLikeCount,currentView,id,is
     onError:(error)=>{console.log("error",error)},
     onSuccess:()=>{
       queryClient.invalidateQueries(["newsDetail"])
-      toast.success("likeeee")
+      toast.error("لایک نشد")
     }
   })
   const newsDislikeMutation=useMutation({
@@ -23,7 +23,7 @@ const BlogCardFooter = ({currentLikeCount,currentDissLikeCount,currentView,id,is
     onError:(error)=>{console.log("error",error)},
     onSuccess:()=>{
       queryClient.invalidateQueries(["newsDetail"])
-      toast.success("disssssslikeeee")
+      toast.error("دیسلایک نشد")
 
     }
   })
