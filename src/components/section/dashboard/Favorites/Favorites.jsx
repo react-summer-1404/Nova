@@ -2,13 +2,18 @@ import React, { useState } from 'react'
 import CourseTableRow from '../MyComments/CourseTableRow/CourseTableRow'
 import FavoritesCourse from './FavoritesCourse/FavoritesCourse';
 import FavoritesNews from './favoritesNews/favoritesNews';
+import DashboardAutoComplete from '../../../ui/DashboardAutoComplete/DashboardAutoComplete';
 
+const faveItems =[
+  {key:"courses",label:"دوره ها",},
+  {key:"blogs",label:"وبلاگ ها",}
+]
 const Favorites = () => {
   const [activeTab, setActiveTab] = useState("Courses");
   return (
     <div className =' w-full flex items-center justify-center flex-col'>
       <div className='flex gap-4 mb-6'>
-        <button 
+        {/* <button 
           onClick={() => setActiveTab("courses")}
           className={(`px-4 py-2 rounded ${activeTab === "courses" ? "bg-blue-600": "bg-gray-200"}`)}
         >
@@ -19,7 +24,12 @@ const Favorites = () => {
           className ={(`px-4 py-2 rounded ${activeTab === "blogs" ? "bg-blue-600": "bg-gray-200"}`)}
         >
           وبلاگ ها
-        </button>
+        </button> */}
+        <DashboardAutoComplete
+        selected={activeTab}
+        setSelected={setActiveTab}
+        options={faveItems}
+        />
       </div>
       <div className ='w-[67%] '>
         <CourseTableRow
