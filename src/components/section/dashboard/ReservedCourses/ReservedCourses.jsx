@@ -9,7 +9,6 @@ const ReservedCourses = () => {
     queryKey: ["reserveCourse"],
     queryFn: getMyReserveCourses,
   });
-  // const newDate = data?.insertDate.slice(0, 10);
   return (
     <div>
       <div className="flex flex-col items-center w-full">

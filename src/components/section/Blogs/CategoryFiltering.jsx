@@ -11,11 +11,11 @@ const CategoryFiltering = ({ paramItems, handleChange }) => {
   );
 const {data}=useQuery({
   queryKey:["newsTech"],
-  queryFn:()=>getNewsCategory()
+  queryFn:getNewsCategory
 })
   const [selectNewsTechDebounce] = useDebounce(selectNewsTech, 500);
   useEffect(() => {
-    handleChange("id", selectNewsTechDebounce);
+    handleChange("NewsCategoryId", selectNewsTechDebounce);
   }, [selectNewsTechDebounce]);
   return (
     <div>
