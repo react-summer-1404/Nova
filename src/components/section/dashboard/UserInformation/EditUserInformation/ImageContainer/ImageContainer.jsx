@@ -50,10 +50,9 @@ const ImageContainer = ({ currentProf }) => {
   });
 
   const currentImage = currentProf?.userImage;
-// console.log(currentProf?.currentPictureAddres)
   return (
     <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
-<img src={selectedImg?.puctureAddress || currentProf?.currentPictureAddres || defaultProf} alt="profile" />
+<img src={selectedImg?.puctureAddress ||currentProf?.currentPictureAddress  || defaultProf} alt="profile" className="object-cover"/>
 
       <ModalSection
         StyleModal={
@@ -132,7 +131,6 @@ const ImageContainer = ({ currentProf }) => {
                       if (sendFile) {
                         const formData = new FormData();
                         formData.append("formFile", sendFile);
-                        mutationImage.mutate(formData);
                         await toast.promise(
                           mutationImage.mutateAsync(formData),
                           {

@@ -36,7 +36,7 @@ const Navbar = () => {
     <div className="flex-center w-screen  p-4 gap-6  ">
       <div className=" relative flex  md:gap-2 justify-between items-center p-4   w-full  ">
         <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
-         {token?<AvatarComponent  data={data} onclick={()=>navigate("/dashboard")} isOpen={isOpen}/>: <AccountBtn isOpen={isOpen} onclick={()=>navigate("/auth")}/>}
+         {token?<AvatarComponent  src={data?.currentPictureAddress} onclick={()=>navigate("/dashboard")} isOpen={isOpen}/>: <AccountBtn isOpen={isOpen} onclick={()=>navigate("/auth")}/>}
           <UserCartFavorites isOpen={isOpen} />
           <IoIosMenu
             fontSize={"40px"}
