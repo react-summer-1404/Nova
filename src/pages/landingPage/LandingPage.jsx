@@ -18,7 +18,7 @@ import { useLocation } from 'react-router-dom'
 const LandingPage = () => {
   
   const location = useLocation();
-  //  console.log(location)
+ 
 
   return (
     <>

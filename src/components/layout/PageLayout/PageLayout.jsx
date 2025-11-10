@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import { Button } from "@heroui/react";
 import DarkMode from "../../ui/darkMode/DarkMode";
 
 const PageLayout = () => {
@@ -10,7 +9,7 @@ const PageLayout = () => {
     <div className="relative">
       <Navbar />
       <div><DarkMode /></div>
-      <main>
+      <main className="mt-30">
         <Outlet />
       </main>
       <Footer />
