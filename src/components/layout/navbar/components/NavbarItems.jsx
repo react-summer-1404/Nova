@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavbarItems = ({ isOpen }) => {
+const NavbarItems = () => {
   const items = [
     { title: "مربیان", path: "/coaches" },
     { title: "وبلاگ", path: "/blogs" },
@@ -11,16 +11,12 @@ const NavbarItems = ({ isOpen }) => {
 
   return (
     <div
-      className={`${
-        isOpen ? "relative right-18 top-[100px]  z-10 " : "hidden md:block"
-      }`}
+      className= "hidden md:block"
+      
     >
       <ul
-        className={`flex  ${
-          isOpen
-            ? "gap-3 sm:gap-16 sm:text-2xl"
-            : "md:flex-row md:items-center md:gap-2 sm:gap-1 lg:gap-3  w-full text-responsive text-black"
-        }`}
+        className= "flex md:flex-row md:items-center md:gap-2 sm:gap-1 lg:gap-3  w-full text-responsive text-black"
+      
       >
         {items.map((item, index) => (
           <Link to={item.path} key={index} className="nav-item">
