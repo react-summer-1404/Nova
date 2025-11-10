@@ -33,18 +33,17 @@ const CoursesPage = () => {
   }, [debounceSearch]);
 
   const handleChange = (key, value) => {
-    setSearchParam(
-      (prev) => {
-        if (value) {
-          prev.set(key, value);
-        } else {
-          prev.delete(key);
-        }
-        return prev;
-      },
-      { replace: true }
-    );
+    setSearchParam((prev) => {
+      const newParams = new URLSearchParams(prev); 
+      if (value && value.length!==0) {
+        newParams.set(key, value);
+      } else {
+        newParams.delete(key);
+      }
+      return newParams;  
+    }, { replace: true });
   };
+  
   const apiParams = {
     ...paramsObject,
     TechCount: 1,
