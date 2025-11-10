@@ -1,7 +1,8 @@
 import React from "react";
 import shopIcon from "../../../../assets/images/shop.svg";
 import faveIcon from "../../../../assets/images/favorite.svg";
-import useFavorite from "../../../../core/store/favoriteStore";
+// import useFavorite from "../../../core/store/favoriteStore";
+import useFavorite from "../../../../core/store/favoriteStore"
 import { Link } from "react-router-dom";
 const UserCartFavorites = () => {
   const { addedToFavorite } = useFavorite();

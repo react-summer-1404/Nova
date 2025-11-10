@@ -3,28 +3,28 @@ import { BsSearch } from "react-icons/bs";
 import { GoChevronDown } from "react-icons/go";
 const SearchBox = () => {
   return (
-    <div className="flex-center md:border md:border-[#D3D2DF] rounded-full md:gap-1 p-1 xl:w-[400px] md:w-[300px]">
-      <div className="flex justify-between  w-full ">
+    <div className="flex-center border border-[#D3D2DF] rounded-full gap-1 p-1 xl:w-[400px] ">
+      <div className="flex justify-between  w-full  ">
         <div
-          style={{ backgroundColor: "var(--color-dark-purple)" }}
-          className="rounded-full  xl:w-[44px] xl:h-[44px] md:w-[30px] md:h-[30px] sm:w-[44px] sm:h-[44px] w-8 h-8 flex-center cursor-pointer p-1"
+        
+          className=" bg-dark-purple rounded-full  lg:w-[44px] lg:h-[44px]  flex-center cursor-pointer p-1"
         >
           <BsSearch
-            className="w-4 h-4  lg:w-6 lg:h-6 text-white -scale-x-100"
+            className="  w-6 h-6 text-white -scale-x-100 "
           />
         </div>
         <input
           type="text"
           placeholder="...جستجوی برای دوره"
-          className=" focus:outline-none text-base hidden md:block text-text-fot text-right xl:w-[150px]  w-full "
+          className=" focus:outline-none lg:text-base   text-text-fot text-right xl:w-[150px]  text-sm "
         />
       </div>
-      <div className="hidden xl:flex gap-2 md:border-l md:border-[#BDBABB]  md:items-center md:p-1">
+      <div className=" flex gap-2 border-l border-[#BDBABB]  items-center ">
         <GoChevronDown size={12}  />
-        <span  className="whitespace-nowrap text-base text-black font-medium">
+        <span  className="whitespace-nowrap md:text-base text-black font-medium text-sm">
           دسته بندی ها
         </span>
-        <img src="/src/assets/icons/SVG.svg" className="w-[12px] "/>
+        <img src="/src/assets/icons/SVG.svg" className="w-[10px] "/>
       </div>
     </div>
   );

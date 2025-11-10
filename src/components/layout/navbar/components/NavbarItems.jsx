@@ -10,12 +10,9 @@ const NavbarItems = () => {
   ];
 
   return (
-    <div
-      className= "hidden md:block"
-      
-    >
+  
       <ul
-        className= "flex md:flex-row md:items-center md:gap-2 sm:gap-1 lg:gap-3  w-full text-responsive text-black"
+        className= "flex flex-row items-center gap-3  justify-evenly t w-full text-responsive text-black "
       
       >
         {items.map((item, index) => (
@@ -24,7 +21,6 @@ const NavbarItems = () => {
           </Link>
         ))}
       </ul>
-    </div>
   );
 };
 
