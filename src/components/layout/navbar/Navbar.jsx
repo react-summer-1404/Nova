@@ -20,7 +20,8 @@ const Navbar = () => {
   const token = getToken();
  const {data}=useQuery({
   queryKey:["getAvatar"],
-  queryFn:getCurrentUserProfile
+  queryFn:getCurrentUserProfile,
+  enabled:!!token
  })
   useEffect(() => {
     const handleResize = () => {
