@@ -14,15 +14,17 @@ const CoachesPage = () => {
    <div className='w-screen flex flex-col'>
     <NavigationSection title={"مربیان"}/>
      <div className ='w-screen flex  md:px-6  justify-center py-8 '>
-        <div className ='w-fit md:w-[80%] flex justify-end p-4  '>
+        <div className ='w-fit md:w-full flex lg:justify-evenly justify-end p-4  flex-wrap gap-4 '>
           {data?.map(item => (
-              <TeacherCard
-                key={`${item.id} + ${item.fullName}`}
+             <div key={`${item.id} + ${item.fullName}`} className='lg:w-fit w-[200px] md:w-[300px] '>
+               <TeacherCard
+                
                 fullName={item.fullName}
                 pictureAddress={item.pictureAddress}
                 courseCounts={item.courseCounts}
                 id={item.teacherId}
               />
+             </div>
           ))
         }
         

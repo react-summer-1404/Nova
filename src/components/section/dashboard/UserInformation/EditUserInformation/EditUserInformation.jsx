@@ -66,6 +66,8 @@ const EditUserInformation = () => {
             HomeAdderess: currentProf?.homeAdderess || "",
             LinkdinProfile: currentProf?.linkdinProfile || "",
             UserAbout: currentProf?.userAbout || "",
+            gmail: currentProf?.email || "",
+            phoneNumber: currentProf?.phoneNumber || "",
             Gender:currentProf?.gender? String(currentProf.gender) : "",
           }}
           validationSchema={validationSchema}
