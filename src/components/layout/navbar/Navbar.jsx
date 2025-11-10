@@ -23,8 +23,7 @@ const Navbar = () => {
 
   
   return (
-    <div className=" w-full p-4 gap-6   fixed top-0 left-0 bg-white z-50  shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),_0_4px_6px_-2px_rgba(0,0,0,0.05)]
-    ">
+    <div className=" w-full p-4 gap-6   fixed top-0 left-0 bg-white z-50  shadow-[0_3px_5px_rgba(0,0,0,0.04)]">
       <div className=" relative flex  md:gap-2 justify-between items-center p-4   w-full  ">
         <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
           <div className="hidden lg:flex">

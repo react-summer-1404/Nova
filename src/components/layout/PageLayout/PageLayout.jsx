@@ -9,7 +9,7 @@ const PageLayout = () => {
     <div className="relative">
       <Navbar />
       <div><DarkMode /></div>
-      <main className="mt-30">
+      <main className="mt-40">
         <Outlet />
       </main>
       <Footer />
