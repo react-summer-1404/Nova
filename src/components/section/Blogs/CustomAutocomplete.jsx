@@ -4,12 +4,12 @@ import SortDropdown from "../../ui/sortDropDown/SortDropdown";
 
 export default function CustomAutocomplete({paramItems ,handleChange}) {
   const sortType = [
-    { label: "ascending", key: "asc" },
-    { label: "Descending", key: "desc" },
+    { label: "صعودی", key: "asc" },
+    { label: "نزولی", key: "desc" },
   ];
   const sortCol = [
-    { key: "InsertDate", label: "InsertDate" },
-    { key: "active", label: "active" },
+    { key: "insertDate", label: "تاریخ بارگزاری" },
+    { key: "currentView", label: "بازدید" },
   ];
 
   return (
@@ -23,14 +23,14 @@ export default function CustomAutocomplete({paramItems ,handleChange}) {
 
     <SortDropdown
       options={sortType}
-      selected={paramItems.SortType || "asc"}
+      selected={paramItems.SortType ||sortType[0].key}
       onChange={handleChange}
       paramKey="SortType"
     />
 
     <SortDropdown
       options={sortCol}
-      selected={paramItems.SortingCol || "active"}
+      selected={paramItems.SortingCol || sortCol[0].key}
       onChange={handleChange}
       paramKey="SortingCol"
     />

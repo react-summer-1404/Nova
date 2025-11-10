@@ -27,17 +27,15 @@ const BlogsPage = () => {
   }, [searchDelay]);
 
   const handleChange = (key, value) => {
-    setSearchParam(
-      (searchParam) => {
-        if (value) {
-          searchParam.set(key, value);
-        } else {
-          searchParam.delete(key);
-        }
-        return searchParam;
-      },
-      { replace: true }
-    );
+    setSearchParam((prev) => {
+      const newParams = new URLSearchParams(prev); 
+      if (value && value.length!==0) {
+        newParams.set(key, value);
+      } else {
+        newParams.delete(key);
+      }
+      return newParams;  
+    }, { replace: true });
   };
 
   const { data, isError, isLoading } = useQuery({

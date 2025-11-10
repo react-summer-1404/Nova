@@ -2,6 +2,7 @@ import React from "react";
 import shopIcon from "../../../../assets/images/shop.svg";
 import faveIcon from "../../../../assets/images/favorite.svg";
 import useFavorite from "../../../../core/store/favoriteStore";
+import { Link } from "react-router-dom";
 const UserCartFavorites = ({ isOpen }) => {
   const { addedToFavorite } = useFavorite();
   return (
@@ -19,7 +20,8 @@ const UserCartFavorites = ({ isOpen }) => {
           </div>
         </div>
 
-        <div className=" relative flex items-end xl:w-[40px] md:w-[35px] ">
+      <Link to={"/dashboard/favorite"}>
+      <div className=" relative flex items-end xl:w-[40px] md:w-[35px] ">
           <img src={faveIcon}></img>
           <div
             style={{ backgroundColor: "var(--color-golden-yellow)" }}
@@ -27,7 +29,7 @@ const UserCartFavorites = ({ isOpen }) => {
           >
             {addedToFavorite.length}
           </div>
-        </div>
+        </div></Link>
       </div>
     </>
   );

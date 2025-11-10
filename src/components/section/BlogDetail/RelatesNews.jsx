@@ -1,11 +1,13 @@
 import React from "react";
 import { MdOutlineDateRange } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-const RelatesNews = ({detailItems}) => {
+const RelatesNews = ({detailItems,id}) => {
 const shortDate = detailItems?.insertDate.slice(0,10);
 
   return (
-    <div className=" flex gap-4 items-center p-2">
+    <Link to={`/blogDetail/${id}`}>
+    <div className=" flex gap-4 items-center p-2 ">
       <div className="flex flex-col items-end gap-1 ">
         <div className="flex gap-2 items-center">
           <span className="text-text-gray text-sm">{shortDate}</span>
@@ -19,7 +21,7 @@ const shortDate = detailItems?.insertDate.slice(0,10);
         src={detailItems?.currentImageAddress}
         className="w-[74px] h-[74px] rounded-sm"
       />
-    </div>
+    </div></Link>
   );
 };
 

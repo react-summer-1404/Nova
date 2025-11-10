@@ -45,7 +45,7 @@ const BlogDetailPage = () => {
         <div className="lg:flex flex-col gap-4 hidden ">
         <InfoCard title={"اخبار مرتبط"}>
           {currentNews?.length>0?(currentNews?.map((related) => (
-            <RelatesNews key={`${related.id} - ${related.title}`} detailItems={related} />
+            <RelatesNews key={`${related.id} - ${related.title}`} detailItems={related} id={related.id} />
           ))):(<p>خبر مرتبطی وجود ندارد</p>)}
         </InfoCard>
         </div>
