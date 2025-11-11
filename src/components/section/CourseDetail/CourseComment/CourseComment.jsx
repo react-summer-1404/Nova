@@ -3,9 +3,6 @@ import CommentForm from './Form/CommentForm';
 import { useParams } from 'react-router-dom';
 import { useQuery} from '@tanstack/react-query';
 import { getCourseDetailComment } from '../../../../servises/api/coursesDetail/getComment';
-// import {useMutation, useQueryClient } from '@tanstack/react-query';
-// import { PostCommentLike } from '../../../../servises/api/coursesDetail/PostCommentLike';
-// import { PostCommentDisLike } from '../../../../servises/api/coursesDetail/PostCommentDisLike';
 import UserComment from './UserComment/UserComment';
 const CourseComment = ({ teacherName, imageAddress}) => {
     const { id } = useParams();
