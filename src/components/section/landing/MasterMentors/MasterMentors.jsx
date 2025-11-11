@@ -1,10 +1,7 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-// import CommunicationApp from "./CommunicationApp";
 import TeacherCard from "./TeacherCArd";
-import Dummy_teacher from "./TeacherData";
 import { useQuery } from "@tanstack/react-query";
 import { getMasterTeacher } from "../../../../servises/api/landing/masterteacher";
-import Loader from "../BlogSection/Loader";
 import ErrorMessage from "../BlogSection/ErrorMessage";
 import { Spinner } from "@heroui/react";
 import { Link } from "react-router";
@@ -56,7 +53,7 @@ const MasterMentors = () => {
         <div className="w-[90%] md:w-[80%] grid grid-cols-2 p-4">
           {data?.slice(0, 4).map((item) => (
             <TeacherCard
-              key={item.id}
+              key={`${item.id} _ ${item.fullName}`}
               fullName={item.fullName}
               pictureAddress={item.pictureAddress}
               courseCounts={item.courseCounts}

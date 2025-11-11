@@ -200,7 +200,21 @@ body {
       transparent 45%
     ),
     #ffffff;
+
+    --gradient-dark-main: radial-gradient(
+      circle at 20% 50%,
+      rgba(120, 100, 255, 0.2),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(255, 130, 255, 0.18),
+      transparent 45%
+    ),
+    #0b0b10;
+
 }
+
 /* ====== BOX SHADOWS =========== */
 
 .shadow-2d-yellow {

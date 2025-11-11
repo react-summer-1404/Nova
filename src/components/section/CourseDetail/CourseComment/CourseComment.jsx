@@ -3,79 +3,18 @@ import CommentForm from './Form/CommentForm';
 import { useParams } from 'react-router-dom';
 import { useQuery} from '@tanstack/react-query';
 import { getCourseDetailComment } from '../../../../servises/api/coursesDetail/getComment';
-import {useMutation, useQueryClient } from '@tanstack/react-query';
-import { PostCommentLike } from '../../../../servises/api/coursesDetail/PostCommentLike';
-import { PostCommentDisLike } from '../../../../servises/api/coursesDetail/PostCommentDisLike';
+// import {useMutation, useQueryClient } from '@tanstack/react-query';
+// import { PostCommentLike } from '../../../../servises/api/coursesDetail/PostCommentLike';
+// import { PostCommentDisLike } from '../../../../servises/api/coursesDetail/PostCommentDisLike';
 import UserComment from './UserComment/UserComment';
 const CourseComment = ({ teacherName, imageAddress}) => {
     const { id } = useParams();
     const { data } = useQuery({
         queryKey: ['comment', id],
-        queryFn: () => getCourseDetailComment(id),
+        queryFn:getCourseDetailComment,
     });
-    console.log("داده", data)
-    // console.log("id:", CourseId)
-    const queryClient = useQueryClient();
-    const queryKey = ["comment",id]
-    const likeMutation = useMutation({
-        mutationFn : PostCommentLike,
-        onMutate : async(CourseCommandId) => {
-            await queryClient.cancelQueries({ queryKey });
-
-            const previousData = queryClient.getQueryData(queryKey);
-            queryClient.setQueriesData(queryKey,(old) => 
-            old.map((comment)=> 
-                comment.comment === CourseCommandId ? {
-                    ...comment,
-                    likeCount : comment.likeCount +1,
-                    userLiked : true,
-                    currentUserIsDissLike : false,
-                    disslikeCount : comment.currentUserIsDissLike ? comment.disslikeCount -1 : comment.disslikeCount,
-                }
-                : comment
-            )
-        );
-            return { previousData, queryKey };
-        },
-        onError : (error, _CourseCommandId, context) => {
-            queryClient.setQueriesData(context.queryKey, context.previousData);
-            console.error(error)
-        },
-        onSettled : () => {
-            queryClient.invalidateQueries({queryKey});
-        },       
-    })
-    const disLikeMutation = useMutation({
-        mutationFn : PostCommentDisLike,
-        onMutate : async(CourseCommandId) => {
-            await queryClient.cancelQueries({ queryKey });
-
-            const previousData = queryClient.getQueryData(queryKey);
-            queryClient.setQueriesData(queryKey,(old) => 
-            old.map((comment)=> 
-                comment.CourseCommandId == CourseCommandId ? {
-                    ...comment,
-                    disslikeCount : comment.disslikeCount +1,
-                    currentUserIsLike : false,
-                    currentUserIsDissLike : true,
-                    likeCount : comment.currentUserIsLike ? comment.likeCount -1 : comment.likeCount,
-                }
-                : comment
-            )
-        );
-            return { previousData, queryKey };
-        },
-        onError : (error, _CourseCommandId, context) => {
-            queryClient.setQueriesData(context.queryKey, context.previousData);
-            console.error(error)
-        },
-        onSettled : () => {
-            queryClient.invalidateQueries({queryKey});
-        },
-        onSuccess: ()=> {
-            console.log("لایک موفق بود")
-        }
-    })
+    console.log("داده", id)
+    
     return (
         <div className=' border-[#DFDFDF] flex justify-center items-center'>
             <div className=' flex flex-col items-end gap-5'>
@@ -100,8 +39,8 @@ const CourseComment = ({ teacherName, imageAddress}) => {
                         pictureAddress={item.pictureAddress}
                         id={item.id}
                         CourseId={id}
-                        likeMutation={likeMutation}
-                        disLikeMutation= {disLikeMutation}
+                        // likeMutation={likeMutation}
+                        // disLikeMutation= {disLikeMutation}
                         CourseCommandId={item.CourseCommandId}
                     />
                 )}
