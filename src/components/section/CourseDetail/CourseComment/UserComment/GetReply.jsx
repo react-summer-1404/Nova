@@ -15,13 +15,13 @@ const GetReply = ({ parentCommentId }) => {
     return (
         <div className='w-full'>
             {data?.map((item) =>
-                <div className='w-full border-t-1 border-[#E8E8E8] h-[120px] lg:h-[140px] flex gap-4'>
+                <div className='w-full border-t-1 border-[#E8E8E8] sm:h-[120px] h-[100px] lg:h-[140px] flex gap-4'>
                     <div className='flex lg:w-4/5 w-2/3 flex-col items-end mt-[10px] lg:mt-[8px] gap-1 lg:gap-2'>
                         <div className='w-full flex justify-between'>
-                            <h1 className=' text-right font-[400] text-[9px] md:text-[12px] text-[#6D6C80]'>{item.insertDate.slice(0,10)} </h1>
-                            <h2 className='font-[600] text-[#1C1A4A]'>{item.author}</h2>
+                            <h1 className='ml-[9px] text-right font-[400] text-[6px] sm:text-[9px] lg:text-[12px] text-[#6D6C80]'>{item.insertDate.slice(0,10)} </h1>
+                            <h2 className='font-[600] text-[9px] text-[#1C1A4A]'>{item.author}</h2>
                         </div>
-                        <h3 className='font-[600] text-[14px] md:text-[16px] text-[#1C1A4A]'> {item.title}</h3>
+                        <h3 className='font-[600] text-[6px] sm:text-[14px] lg:text-[16px] text-[#1C1A4A]'> {item.title}</h3>
                         <h4 className=' text-right font-[400] text-[10px] md:text-[14px] text-[#6D6C80]'>{item.describe}</h4>
 
                         <div className='w-[85px] h-[25px] flex flex-row gap-0.5'>

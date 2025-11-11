@@ -48,45 +48,45 @@ console.log(data)
                         describe = {data.describe}
                     />
                 </div>
-                <div className ='border border-[#DFDFDF] md:w-[18%] w-[24%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]'>
+                <div className ='border border-[#DFDFDF] lg:w-[18%] sm:w-[24%] w-[30%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]'>
                     <div className='w-[82%] flex flex-col items-end gap-5 '>
                         <div style={{ backgroundColor: "var(--color-dark-purple)" }} className='w-full h-[90px] flex flex-col justify-center text-right rounded-[8px]'>
-                            <h2 style={{ color: "var(--color-white)" }} className='font-[500] mr-[14px] text-[11px]  md:text-[15px]'>:هزینه این دوره</h2>
-                            <h3 style={{ color: "var(--color-white)" }} className='font-[600] text-[16px] md:text-[22px] mt-[10px] mr-[25px] lg:mr-[40px]'>{data.cost} تومان</h3>
+                            <h2 className='text-white font-[500] mr-[14px] text-[9px] sm:text-[11px] lg:text-[15px]'>:هزینه این دوره</h2>
+                            <h3 className='text-white font-[600] text-[14px] sm:text-[16px] lg:text-[22px] mt-[10px] mr-[25px] lg:mr-[40px]'>{data.cost} تومان</h3>
                         </div>
                         <p className='font-[600] text-[12px] md:text-[16px] text-black'> :دوره شامل</p>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
-                            <div className ='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'>{data.courseLevelName}</div>
+                            <div className ='font-[400] text-[8px] sm:text-[10px] lg:text-[14px] text-[#7F7E97]'>{data.courseLevelName}</div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-black'>سطح دوره</div>
+                                <div className ='font-[400] text-[9px] sm:text-[11px] lg:text-[16px] text-black'>سطح دوره</div>
                                 <IoStatsChartOutline color='#7F7E97' size={12} className ="mt-1.5" />
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
-                            <div className='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'>{data.endTime.slice(0,10)}</div>
+                            <div className='font-[400] text-[8px] sm:text-[10px] lg:text-[14px] text-[#7F7E97]'>{data.endTime.slice(0,10)}</div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[11px] md:text-[16px] text-black'>پایان دوره </div>
+                                <div className ='font-[400] text-[9px] sm:text-[11px] lg:text-[15px] text-black'>پایان دوره </div>
                                 <IoTimeOutline color='#7F7E97' size={12} className ='mt-1.5' />
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
                             <div className='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'></div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-black'>ازمون ها</div>
+                                <div className ='font-[400] text-[9px] sm:text-[11px] lg:text-[16px] text-black'>ازمون ها</div>
                                 <PiPuzzlePieceThin color='#7F7E97' size={12} className ='mt-1.5' />
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
                             <div className='font-[400] text-[10px] md:text-[14px] text-[#7F7E97]'></div>
                             <div className='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-black'>درس ها</div>
+                                <div className ='font-[400] text-[9px] sm:text-[11px] lg:text-[15px] text-black'>درس ها</div>
                                 <BiBook color='#7F7E97' size={12} className ='mt-1.5'/>
                             </div>
                         </div>
                         <div className='flex border-b-[1px] border-[#D9D9D9] h-[20px] md:h-[30px] justify-between w-full '>
-                            <div className ='font-[400] text-[12px] md:text-[16px] text-[#7F7E97]'></div>
+                            <div className ='font-[400] text-[9px] sm:text-[11px] lg:text-[15px] text-[#7F7E97]'></div>
                             <div className ='flex gap-1'>
-                                <div className ='font-[400] text-[12px] md:text-[16px] text-black' >گواهینامه ها</div>
+                                <div className ='font-[400] text-[9px] sm:text-[11px] lg:text-[15px] text-black' >گواهینامه ها</div>
                                 <PiCertificateThin size={12} className ='mt-1.5' />
                             </div>
                         </div>
@@ -97,15 +97,15 @@ console.log(data)
                             </div>
                         </div>
                         <div className='flex border-b-[1px]  border-[#D9D9D9] flex-col gap-1.5 h-[80px] w-full '>
-                            <div className ='font-[400]  text-[12px] md:text-[16px] text-right text-text-gray'>: این دوره را به اشتراک بگذارید</div>
-                            <div className='w-[100%] md:w-[70%] md:ml-[20px] flex gap-1.5 md:gap-1.5 items-center'>
+                            <div className ='font-[400] text-[9px] sm:text-[11px] lg:text-[15px] text-right text-text-gray'>: این دوره را به اشتراک بگذارید</div>
+                            <div className='sm:w-[100%] lg:w-[70%] lg:ml-[20px] ml-[-8px] flex gap-1.5 lg:gap-1.5 items-center'>
                                 <CommunicationApp /> <FaYoutube className='border-[#9292B4] rounded-full w-[30px] md:w-[25px] h-[25px] md:h-[25px] shadow-[2px_3px_0px_0px_#00000040]' />
                             </div>
                         </div>
                         <div className='w-full font-[600] text-[14px] flex justify-center'>
-                            <button style={{ backgroundColor: "var(--color-golden-yellow)" }} className="border border-black rounded-[50px] shadow-2d-yellow text-[14px] p-2 font-semibold flex cursor-pointer w-[100%] ms:w-[85%]">
+                            <button style={{ backgroundColor: "var(--color-golden-yellow)" }} className="border border-black rounded-[50px] shadow-2d-yellow p-2 font-semibold flex cursor-pointer w-[100%] ms:w-[85%]">
                                 <FaArrowLeft className ='ml-[-4px] md:ml-[25px] mt-[2px] md:mt-[5px]' />
-                                <h2 className ='ml-[6px] md:ml-[10px] font-[400] text-[12px] md:text-[16px] text-right text-[#161439]'>ثبت نام در دوره</h2>
+                                <h2 className ='ml-[6px] md:ml-[10px] font-[400] text-[8px] sm:text-[12px] lg:text-[16px] text-right text-[#161439]'>ثبت نام در دوره</h2>
                             </button>
                         </div>
 
@@ -114,7 +114,7 @@ console.log(data)
                 </div>
             </div>
             <div className='w-[920px] h-[700px] flex-col flex mr-[260px]' >
-                <div className="mr-[30px] lg:mr-0">
+                <div className="sm:mr-[30px] mr-[155px] lg:mr-0">
                 <AccentText 
                     title={"دوره های "}
                     afterLabel={"مرتبط"}
