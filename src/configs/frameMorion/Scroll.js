@@ -1,14 +1,16 @@
 export const scrollVariant = {
     hidden: {
       opacity: 0,
-      y: 50,  
+      z: 50, 
+      y:40 
     },
     visible: {
       opacity: 1,
-      y: 0,
+      z: 0,
+      y:0,
       transition: {
-        duration: 1.5,
-        delay:0.3,
+        duration: 1,
+        delay:0.2,
       },
       
     },

@@ -1,12 +1,19 @@
 import React from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import {useNavigate } from 'react-router-dom'
+import { motion } from "framer-motion";
+import { scrollVariant } from '../../../../configs/frameMorion/Scroll';
+
 
 const GettingStartedSection = () => {
   const navigate = useNavigate();
   return (
     <div className ='w-screen md:h-[1000px] h-[750px] bg-[#282568]'>
-      <div className ='h-[550px] flex justify-center items-center '>
+      <motion.div className ='h-[550px] flex justify-center items-center '
+      variants={scrollVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}>
         <div className ='md:h-[360px] md:mb-[0px] mb-[120px] h-[300px] w-[77%] flex flex-col items-center gap-3'>
           <button className =' p-1.5 px-5 md:px-7 rounded-[30px] font-[500] bg-[#5751E1] text-[12px] md:text-[16px] text-[#FFFFFF] '>
             چگونه سفر را شروع می کنیم
@@ -38,8 +45,12 @@ const GettingStartedSection = () => {
             </div>
           </div>
         </div>
-      </div >
-        <div className ='flex justify-center gap-2 md:gap-6 mt-[-10px] md:mt-[100px]'>
+      </motion.div >
+        <motion.div className ='flex justify-center gap-2 md:gap-6 mt-[-10px] md:mt-[100px]'
+        variants={scrollVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}>
           <div className ='flex items-center h-[140px] md:h-[220px] w-[45%] md:w-[39%] border bg-[#FFFFFF] border-[#BDBDBD] rounded-[15px] relative'>
             <img src="src/assets/images/SVG (5).png" className ='absolute md:top-[80px] top-[48px] md:left-[335px] left-[158px] w-[45%] md:w-[37%]'/>
             <img src="src/assets/images/7fe7f1624b741e2591310cbf55fa4c6afcf4b877.png" className ='absolute top-[15px] md:top-[17px] left-[160px] md:left-[325px] w-[42%] md:w-[37%]'/>
@@ -81,7 +92,7 @@ const GettingStartedSection = () => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
   )

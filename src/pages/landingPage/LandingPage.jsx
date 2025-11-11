@@ -1,9 +1,7 @@
-// src/pages/landing/LandingPage.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { variantPages } from "../../configs/frameMorion/PagesVariants";
 import { scrollVariant } from "../../configs/frameMorion/Scroll";
-
 import HeroSection from "../../components/section/landing/HeroSection/HeroSection";
 import TopCategories from "../../components/section/landing/TopCategories/TopCategories";
 import AboutSection from "../../components/section/landing/AboutSection/AboutSection";
@@ -42,24 +40,10 @@ const LandingPage = () => {
         <AboutSection />
       </motion.div>
 
-      <motion.div
-        variants={scrollVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-      >
+   
         <FeaturedCourses />
-      </motion.div>
-
-      <motion.div
-        variants={scrollVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-      >
         <JoinTheClub />
-      </motion.div>
-
+    
       <motion.div
         variants={scrollVariant}
         initial="hidden"
@@ -87,23 +71,8 @@ const LandingPage = () => {
         <FAQSection />
       </motion.div>
 
-      <motion.div
-        variants={scrollVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-      >
         <GettingStartedSection />
-      </motion.div>
-
-      <motion.div
-        variants={scrollVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-      >
         <BlogSection />
-      </motion.div>
     </motion.div>
   );
 };

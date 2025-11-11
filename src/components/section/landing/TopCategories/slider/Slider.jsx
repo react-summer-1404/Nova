@@ -4,8 +4,6 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useSlider } from "../../../../../hooks/useSlider";
 import { getCourses } from "../../../../../servises/api/courses/coursList";
 import useTechs from "../../../../../hooks/useTech"
-
-
 const Slider = () => {
   const { data } = useTechs();
 

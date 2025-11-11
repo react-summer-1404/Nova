@@ -10,6 +10,7 @@ import UserCartFavorites from "./components/UserCartFavorites";
 import SearchBox from "./components/SearchBox";
 import NavbarItems from "./components/NavbarItems";
 import { motion ,useScroll} from "framer-motion";
+import AccountBtn from "./components/AccountBtn"
 
 const Navbar = () => {
   const navigate = useNavigate();
