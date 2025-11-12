@@ -37,4 +37,3 @@ const DarkMode = () => {
 };
 
 export default DarkMode;
-// <PiSunLight />
