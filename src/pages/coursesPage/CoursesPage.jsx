@@ -12,13 +12,14 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
 import { Spinner } from "@heroui/react";
 import { useDebounce } from "use-debounce";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
 import ModalSection from "../../components/ui/Modal/ModalSection";
 import { CiFilter } from "react-icons/ci";
 import {motion} from "framer-motion"
 import { variantPages } from "../../configs/frameMorion/PagesVariants";
+import useCompare from "../../core/store/CmpareStore";
 const CoursesPage = () => {
   const [isOpen, toggleOpen] = useToggle(false);
   const [searchParam, setSearchParam] = useSearchParams();
@@ -29,11 +30,19 @@ const CoursesPage = () => {
   const [rowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
-
- 
+  const { compareChosen, addCompareCourse, reset } = useCompare();
+const navigate = useNavigate();
+ console.log("compareChosen",compareChosen)
   useEffect(() => {
     handleChange("Query", debounceSearch || "");
   }, [debounceSearch]);
+
+  useEffect(() => {
+   if (compareChosen.length==2) {
+    navigate("/");
+    reset()
+   }
+  }, [compareChosen,reset]);
 
   const handleChange = (key, value) => {
     setSearchParam((prev) => {
@@ -187,6 +196,7 @@ const CoursesPage = () => {
                   likeMutation={likeMutation}
                   disLikeMutation={disLikeMutation}
                   addToFavoriteMutation={addToFavoriteMutation}
+                  
                 />
               ))}
           </div>

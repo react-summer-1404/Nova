@@ -9,6 +9,7 @@ import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
 import { Link } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
+import useCompare from "../../../core/store/CmpareStore";
 
 const CourseProductCard = ({
   product,
@@ -19,6 +20,8 @@ const CourseProductCard = ({
 }) => {
   const { addedToFavorite, addFavorite } = useFavorite();
   const isFav = addedToFavorite.includes(product.courseId);
+  const { compareChosen, addCompareCourse, resetCompare } = useCompare();
+
 
   // --- Handle Mutations ---
   const handleLike = () => likeMutation.mutate(product.courseId);
@@ -54,8 +57,7 @@ const CourseProductCard = ({
           }`}
         >
           <div
-            style={{ backgroundColor: "var(--color-white)" }}
-            className="w-[36px] h-[36px] border flex flex-center rounded-[6px]"
+            className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-white"
             onClick={handleAddToFavorite}
           >
             <FaHeart
@@ -65,8 +67,8 @@ const CourseProductCard = ({
           </div>
 
           <div
-            style={{ backgroundColor: "var(--color-white)" }}
-            className="w-[36px] h-[36px] border flex flex-center rounded-[6px]"
+            className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-red-500 border"
+            onClick={()=>addCompareCourse(product.courseId)}
           >
             <svg
               width="26"
@@ -167,14 +169,13 @@ const CourseProductCard = ({
                 />
                 <Tag
                   icon={
-                    product.currentUserDissLike? (
+                    product.currentUserDissLike ? (
                       <AiFillDislike size={"20px"} className="text-gray-500" />
                     ) : (
                       <AiOutlineDislike size={"20px"} />
                     )
                   }
                   title={product.dissLikeCount}
-                
                   bgColor={"var(--color-soft-gray)"}
                   textColor={"#5F5F66"}
                   width={"65px"}
