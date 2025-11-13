@@ -4,9 +4,11 @@ import {
   TileLayer,
   Marker,
   Popup,
+  ZoomControl,
   useMap,
   useMapEvents,
 } from "react-leaflet";
+import { MdMyLocation } from "react-icons/md";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
@@ -15,41 +17,40 @@ function LocateButton({ setPosition }) {
   const map = useMap();
 
   const handleClick = () => {
-    map.locate().on("locationfound", function (e) {
+    map.locate().once("locationfound", function (e) {
       setPosition(e.latlng);
       map.flyTo(e.latlng, map.getZoom());
     });
   };
 
- 
   return (
     <button
       onClick={handleClick}
-      className="absolute z-[1000] bottom-5 right-5 bg-pink-700 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-pink-800 transition-all"
+      className="absolute z-[1000] bottom-5 right-5 bg-white text-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 active:scale-95 transition-all"
     >
-      📍
+      <MdMyLocation size={22} />
     </button>
   );
 }
 
-const LocationFinderDummy = ({setPosition}) => {
-    const map = useMapEvents({
-        click(e) {
-            setPosition(e.latlng);
-            map.flyTo(e.latlng, map.getZoom());
-        },
-    });
-    return null;
-};
+function LocationFinderDummy({ setPosition }) {
+  const map = useMapEvents({
+    click(e) {
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
+    },
+  });
+  return null;
+}
 
 function MapComponent() {
   const [position, setPosition] = useState(null);
-console.log("positon",position)
+
   return (
     <div className="relative w-screen h-[500px] border">
       <MapContainer
-        center={[36.5633, 53.0601]} 
-        zoom={16}
+        center={[36.5633, 53.0601]}
+        zoom={14}
         scrollWheelZoom={true}
         zoomControl={true}
         style={{ height: "100%", width: "100%" }}
@@ -59,10 +60,10 @@ console.log("positon",position)
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <LocationFinderDummy setPosition={setPosition}/>
+        <LocationFinderDummy setPosition={setPosition} />
         <LocateButton setPosition={setPosition} />
 
-        {position&& (
+        {position && (
           <Marker position={position}>
             <Popup>📍 موقعیت مکانی شما</Popup>
           </Marker>
