@@ -37,11 +37,11 @@ const CourseProductCard = ({
   return (
     <div
       style={{
-        backgroundColor: "var(--color-white)",
+       
         border: "1px solid var(--color-border-gray)",
         direction: "rtl",
       }}
-      className={`flex p-5 rounded-[10px] gap-6 ${
+      className={`flex p-5 rounded-[10px] gap-6 bg-white ${
         isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[500px] flex-col"
       }`}
     >
@@ -67,7 +67,7 @@ const CourseProductCard = ({
           </div>
 
           <div
-            className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-red-500 border"
+            className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-white"
             onClick={()=>addCompareCourse(product.courseId)}
           >
             <svg

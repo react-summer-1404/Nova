@@ -9,6 +9,7 @@ import { Button } from "@heroui/button";
 import toast from "react-hot-toast";
 import { deleteAddToFavorite } from "../../../../../../servises/api/addToFavortie";
 import { getCourseDetail } from "../../../../../../servises/api/coursesDetail/getDetail";
+import useFavorite from "../../../../../../core/store/favoriteStore";
 
 const CourseStatusList1 = ({
   courseTitle,
@@ -18,6 +19,7 @@ const CourseStatusList1 = ({
   courseId,
   id
 }) => {
+    const {removeFavorite} = useFavorite()
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
     useToggle(false);
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
@@ -36,6 +38,7 @@ const CourseStatusList1 = ({
       toast.success("دوره  با موفقیت حذف شد");
       queryClient.invalidateQueries(["favCourse"]);
       setIsDeleteModalOpen(false);
+      removeFavorite(courseId)
     },
     onError: (error) => {
       console.log("خطا", error), toast.error("حذف دوره با خطا مواجه شد");
