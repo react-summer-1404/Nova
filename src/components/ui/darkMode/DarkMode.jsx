@@ -19,7 +19,7 @@ const DarkMode = () => {
     document.documentElement.classList.toggle("dark", storedTheme === "dark");
   }, []);
   return (
-    <div className="flex gap-4 items-center fixed bottom-11 left-10 ">
+    <div className="flex gap-4 items-center fixed bottom-11 left-10 z-50">
       <Button
         isIconOnly
         aria-label="Like"
