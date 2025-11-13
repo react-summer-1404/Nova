@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../../../../servises/api/userPanel/getProfileInfo";
 import Subject from "./Subject/Subject";
 import { putEditProfile } from "../../../../../servises/api/userPanel/updateProfileInfo";
@@ -9,11 +9,11 @@ import toast from "react-hot-toast";
 import ImageContainer from "./ImageContainer/ImageContainer";
 import ButtonSection from "./ButtonSection/ButtonSection";
 import MapContainer from "./MapContainer/MapContainer";
-
 const validationSchema = yup.object({
   BirthDay: yup.string().required("*الزامی است"),
 });
 const EditUserInformation = () => {
+   const queryClient = useQueryClient()
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: getCurrentUserProfile,
@@ -28,6 +28,7 @@ const EditUserInformation = () => {
     },
     onSuccess: () => {
       toast.success("پروفایل شما اپدیت شد");
+      queryClient.invalidateQueries(["usercurrentinfo"]); 
     },
   });
 
@@ -73,7 +74,7 @@ const EditUserInformation = () => {
               phoneNumber: currentProf?.phoneNumber || "",
               Latitude: currentProf?.latitude || "",
               Longitude: currentProf?.longitude || "",
-              Gender: currentProf?.gender ? String(currentProf.gender) : "",
+              Gender: String(currentProf?.gender ?? ""),
             }}
             validationSchema={validationSchema}
             onSubmit={submitHandling}
@@ -138,7 +139,7 @@ const EditUserInformation = () => {
                         inputClass="h-[35px]"
                         labelClass="indent-2 -mb-2"
                       >
-                        <option value="true">مرد</option>
+                       <option value="true">مرد</option>
                         <option value="false">زن</option>
                       </FormGroup>
 
