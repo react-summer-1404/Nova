@@ -3,7 +3,7 @@ import React from 'react'
 import { CourseComment } from '../../../../servises/api/userPanel/getCourseComment'
 import CoursCommentList from './CoursCommentList'
 
-const CourseComments = ({activeTab}) => {
+const CourseComments = () => {
     const {data} = useQuery({
         queryKey : ["CourseComment"],
         queryFn :   CourseComment,
@@ -14,7 +14,6 @@ const CourseComments = ({activeTab}) => {
         <div className ='w-full h-[300px] items-center mt-[12px] gap-1.5 lg:gap-3 flex flex-col'>
             {data?.myCommentsDtos?.map((item) =>(
                 <CoursCommentList
-                activeTab={activeTab}
                     key={item.id}
                     courseId={item.courseId}
                     id={item.id}

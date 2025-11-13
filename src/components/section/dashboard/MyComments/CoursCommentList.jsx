@@ -17,7 +17,7 @@ const CoursCommentList = ({
   accept,
   courseId,
   id,
-  activeTab
+  
 }) => {
   const acceptStatus = accept ? (
     <p className="text-[#005A34]">تایید شده</p>
@@ -71,7 +71,7 @@ const CoursCommentList = ({
 
                 <Button
                   className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
-                  onPress={() => mutationDelete.mutate(reservedId)}
+                  onPress={() => mutationDelete.mutate(id)}
                 >
                   حذف
                 </Button>
@@ -93,7 +93,7 @@ const CoursCommentList = ({
               <p>در حال بارگذاری...</p>
             ) : (
               <div className="w-full flex-center">
-                {activeTab&&<CourseProductCard product={data} />}
+                <CourseProductCard product={data} />
               </div>
             )
           }

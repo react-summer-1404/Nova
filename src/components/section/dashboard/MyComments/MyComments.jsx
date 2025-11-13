@@ -38,8 +38,8 @@ const MyComments = () => {
         />
       </div>
       <div className ='h-1 w-full bg-gradient-to-r from-transparent via-golden-yellow to-transparent'></div>
-      {activeTab === "deleteCommentCourse" && <CourseComment activeTab={activeTab}/>}
-      {activeTab === "NewCom" && <NewsComments activeTab={activeTab}/>}
+      {activeTab === "CourseComment" && <CourseComment />}
+      {activeTab === "NewCom" && <NewsComments />}
     </div>
   )
 }
