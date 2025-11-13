@@ -7,6 +7,7 @@ import ModalSection from "../../../ui/Modal/ModalSection";
 import { Button } from "@heroui/button";
 import CourseProductCard from "../../../ui/card/CourseProductCard";
 import { getCourseDetail } from "../../../../servises/api/coursesDetail/getDetail";
+import { deleteCommentCourse } from "../../../../servises/api/coursesDetail/deleteComment";
 
 const CoursCommentList = ({
   title,
@@ -15,6 +16,7 @@ const CoursCommentList = ({
   startTime,
   accept,
   courseId,
+  id,
   activeTab
 }) => {
   const acceptStatus = accept ? (
@@ -26,7 +28,7 @@ const CoursCommentList = ({
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =useToggle(false);
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
 
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
     queryKey: ["coursesNewsDashboard", courseId],
@@ -34,17 +36,17 @@ const CoursCommentList = ({
     enabled: !!courseId,
   });
 
-  // const mutationDelete = useMutation({
-  //   mutationFn: (reservedId) => deleteReserveCourse(reservedId),
-  //   onSuccess: () => {
-  //     toast.success("دوره  با موفقیت حذف شد");
-  //     queryClient.invalidateQueries(["CourseComment"]);
-  //     setIsDeleteModalOpen(false);
-  //   },
-  //   onError: (error) => {
-  //     console.log("خطا", error), toast.error("حذف دوره با خطا مواجه شد");
-  //   },
-  // });
+  const mutationDelete = useMutation({
+    mutationFn: (id) =>deleteCommentCourse(id),
+    onSuccess: () => {
+      toast.success("کامنت  با موفقیت حذف شد");
+      queryClient.invalidateQueries(["CourseComment"]);
+      setIsDeleteModalOpen(false);
+    },
+    onError: (error) => {
+      console.log("خطا", error), toast.error("حذف کامنت با خطا مواجه شد");
+    },
+  });
   return (
     <div className="justify-center items-center gap-8 flex w-full h-[40px] py-2 text-[10px] lg:text-[14px] font[600] text-navy even:bg-[#F7F7F7] odd:bg-[#C8C1ED4D] rounded-[5px] shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)]">
       <div className="w-[10%] lg:w-[5%] flex ">
