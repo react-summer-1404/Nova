@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import Header from './../../features/auth/componenets/authLayout/Header';
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../servises/api/userPanel/getProfileInfo";
-import SideBar from "../../components/section/dashboard/UserInformation/sideBar";
 import DarkMode from './../../components/ui/darkMode/DarkMode';
+import SideBar from "../../components/section/dashboard/UserInformation/SideBar";
 
 const Dashboard = () => {
   

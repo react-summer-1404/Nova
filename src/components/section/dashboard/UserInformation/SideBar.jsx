@@ -12,6 +12,7 @@ const SideBar = ({ data }) => {
           <UserProfile
             imageUrl={data?.currentPictureAddress}
             userName={data?.userName}
+            fName={data?.fName}
           />
         </div>
         <div>
