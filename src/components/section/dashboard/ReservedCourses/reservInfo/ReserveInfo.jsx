@@ -18,7 +18,11 @@ const ReserveInfo = ({
   courseId,
   reservedId,
 }) => {
-  const acceptStatus = accept ? "تایید شده" : "در انتظار تایید";
+  const acceptStatus = accept ? (
+    <p className="text-[#005A34]">تایید شده</p>
+  ) : (
+    <p className="text-[#DE5204]"> در انتظار تایید</p>
+  );
 
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
     useToggle(false);
@@ -54,16 +58,17 @@ const ReserveInfo = ({
           onOpen={toggleDeleteModal}
           content={
             <div className="flex-col-center gap-5">
-              <p>ایا از حذف این دوره اطمینن دارید؟</p>
+              <p className="text-navy">ایا از حذف این دوره اطمینن دارید؟</p>
               <div className="flex w-full justify-evenly">
                 <Button
-                  className="w-[50px] h-[30px]"
+                  className="w-[70px] h-[35px] bg-gray-300 text-gray-800 font-medium rounded-md hover:bg-gray-400 transition-all duration-200"
                   onPress={() => setIsDeleteModalOpen(false)}
                 >
                   لغو
                 </Button>
+
                 <Button
-                  className="w-[50px] h-[30px]"
+                  className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
                   onPress={() => mutationDelete.mutate(reservedId)}
                 >
                   حذف

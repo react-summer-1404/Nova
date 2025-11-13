@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
 import { NewsComment } from '../../../../servises/api/userPanel/getNewsComment'
+import CoursCommentList from './CoursCommentList'
 
 const NewsComments = () => {
     const {data} = useQuery({
