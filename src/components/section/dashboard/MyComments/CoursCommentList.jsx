@@ -8,6 +8,7 @@ import { Button } from "@heroui/button";
 import CourseProductCard from "../../../ui/card/CourseProductCard";
 import { getCourseDetail } from "../../../../servises/api/coursesDetail/getDetail";
 import { deleteCommentCourse } from "../../../../servises/api/coursesDetail/deleteComment";
+import toast from "react-hot-toast";
 
 const CoursCommentList = ({
   title,
@@ -24,10 +25,9 @@ const CoursCommentList = ({
   ) : (
     <p className="text-[#DE5204]"> در انتظار تایید</p>
   );
-
-  const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =useToggle(false);
-  const [isViewModalOpen, toggleViewModal] = useToggle(false);
-
+  const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
+  useToggle(false);
+const [isViewModalOpen, toggleViewModal] = useToggle(false);
   const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
@@ -36,7 +36,7 @@ const CoursCommentList = ({
     enabled: !!courseId,
   });
 
-  const mutationDelete = useMutation({
+  const mutationCourseDelete = useMutation({
     mutationFn: (id) =>deleteCommentCourse(id),
     onSuccess: () => {
       toast.success("کامنت  با موفقیت حذف شد");
@@ -71,7 +71,7 @@ const CoursCommentList = ({
 
                 <Button
                   className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
-                  onPress={() => mutationDelete.mutate(id)}
+                  onPress={() => mutationCourseDelete.mutate(id)}
                 >
                   حذف
                 </Button>

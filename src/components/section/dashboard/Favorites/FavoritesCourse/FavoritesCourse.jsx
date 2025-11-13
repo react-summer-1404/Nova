@@ -12,7 +12,7 @@ const FavoritesCourse = () => {
         queryKey : ["favCourse"],
         queryFn : favCourse,
     })
-    console.log(data?.favoriteCourseDto);
+    // console.log(data?.favoriteCourseDto);
 
 
     return (
@@ -20,9 +20,12 @@ const FavoritesCourse = () => {
             {data?.favoriteCourseDto?.map((item) =>(
                 <CourseStatusList1
                     key={item.id}
+                    courseId={item.courseId}
+                    id={item.id}
                     teacheName={item.teacheName}
                     lastUpdate={item.lastUpdate.slice(0,10)}
                     courseTitle={item.courseTitle}
+                    imageAddress={item.imageAddress}
                 />
                 
         ))}

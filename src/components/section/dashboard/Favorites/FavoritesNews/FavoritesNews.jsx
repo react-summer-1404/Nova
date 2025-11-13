@@ -13,7 +13,7 @@ const FavoritesNews = () => {
         queryKey : ["FavNews"],
         queryFn : FavNews,
     })
-    console.log("خبر",data?.favoriteCourseDto);
+    // console.log("خبر",data?.favoriteCourseDto);
     const favN = data?.favoriteCourseDto;
 
     return (

@@ -13,18 +13,6 @@ const Favorites = () => {
   return (
     <div className =' w-full flex items-center justify-center flex-col'>
       <div className='flex gap-4 mb-6'>
-        {/* <button 
-          onClick={() => setActiveTab("courses")}
-          className={(`px-4 py-2 rounded ${activeTab === "courses" ? "bg-blue-600": "bg-gray-200"}`)}
-        >
-          دوره ها
-        </button>
-        <button 
-          onClick={() => setActiveTab("blogs")}
-          className ={(`px-4 py-2 rounded ${activeTab === "blogs" ? "bg-blue-600": "bg-gray-200"}`)}
-        >
-          وبلاگ ها
-        </button> */}
         <DashboardAutoComplete
         selected={activeTab}
         setSelected={setActiveTab}

@@ -24,8 +24,7 @@ const ReserveInfo = ({
     <p className="text-[#DE5204]"> در انتظار تایید</p>
   );
 
-  const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
-    useToggle(false);
+  const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] = useToggle(false);
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
   const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({

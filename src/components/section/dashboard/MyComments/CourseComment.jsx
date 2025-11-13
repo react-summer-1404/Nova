@@ -12,7 +12,8 @@ const CourseComments = () => {
     
     return (
         <div className ='w-full h-[300px] items-center mt-[12px] gap-1.5 lg:gap-3 flex flex-col'>
-            {data?.myCommentsDtos?.map((item) =>(
+           { data?.myCommentsDtos?.length > 0 ?(
+             data?.myCommentsDtos?.map((item) =>(
                 <CoursCommentList
                     key={item.id}
                     courseId={item.courseId}
@@ -23,8 +24,10 @@ const CourseComments = () => {
                     accept={item.accept}
                 />
                 
-        ))}
-        
+        ))
+           ):<p className='text-text-gray'>نظری یافت نشد</p>
+           
+            }
         </div>
         
     )
