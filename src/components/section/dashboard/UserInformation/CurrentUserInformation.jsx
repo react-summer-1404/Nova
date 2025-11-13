@@ -23,8 +23,8 @@ const CurrentUserInformation = () => {
           <UserInfoBox label={"تلگرام"} value={data?.telegramLink} />
           <UserInfoBox label={"لینکداین"} value={data?.linkdinProfile} />
           <UserInfoBox label={"آدرس"} value={data?.homeAdderess} />
-          <UserInfoBox label={"طول جغرافیایی"} value={"--"} />
-          <UserInfoBox label={"عرض جغرافیایی"} value={"--"} />
+          <UserInfoBox label={"طول جغرافیایی"} value={data?.longitude} />
+          <UserInfoBox label={"عرض جغرافیایی"} value={data?.latitude} />
         </div>
         <Divider orientation="vertical" />
         <div className="w-[50%] flex-col-right gap-8">

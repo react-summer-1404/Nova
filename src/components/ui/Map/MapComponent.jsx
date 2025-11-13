@@ -26,7 +26,7 @@ function LocateButton({ setPosition }) {
   return (
     <button
       onClick={handleClick}
-      className="absolute z-[1000] bottom-5 right-5 bg-white text-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 active:scale-95 transition-all"
+      className="absolute z-[1000] bottom-5 right-5 bg-white text-text-gray rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 active:scale-95 transition-all"
     >
       <MdMyLocation size={22} />
     </button>
@@ -43,17 +43,16 @@ function LocationFinderDummy({ setPosition }) {
   return null;
 }
 
-function MapComponent() {
-  const [position, setPosition] = useState(null);
-
+function MapComponent({position ,setPosition}) {
+console.log(position)
   return (
-    <div className="relative w-screen h-[500px] border">
+    <div className="relative w-[755px] h-[400px] ">
       <MapContainer
         center={[36.5633, 53.0601]}
         zoom={14}
         scrollWheelZoom={true}
         zoomControl={true}
-        style={{ height: "100%", width: "100%" }}
+        style={{ height: "100%", width: "100%" ,borderRadius:"10px"}}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
