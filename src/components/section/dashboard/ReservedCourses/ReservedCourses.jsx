@@ -11,15 +11,19 @@ const ReservedCourses = () => {
   });
   return (
     <div>
-      <div className="flex flex-col items-center w-full">
+      <div className="flex flex-col items-center w-full  gap-4">
         <ReserveTable />
         {data?.length > 0 ? (
           data.map((item) => (
             <ReserveInfo
               key={item.id}
-              courseTitle={item.courseName}
+              courseId={item.courseId}
+              reservedId={item.reserveId}
               lastUpdate={item.insertDate?.slice(0, 10)}
-              teacheName={item.accept}
+              teacheName={item.teacher}
+              accept={item.accept}
+              courseTitle={item.courseName}
+              image={item.image}
             />
           ))
         ) : (
