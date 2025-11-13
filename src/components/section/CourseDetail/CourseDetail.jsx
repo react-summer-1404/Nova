@@ -7,7 +7,7 @@ import CourseExplanation from './CourseExplanation/CourseExplanation';
 
 import CourseComment from './CourseComment/CourseComment';
 import { useState } from 'react';
-const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName, capacity,describe}) => {
+const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,describe, studentCount}) => {
     const [selected, setSelected] = useState("بررسی اجمالی");
     
     return (
@@ -29,7 +29,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                 <div className='flex items-center md:gap-12 gap-3.5'>
                     <div style={{ direction: "rtl" }} className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
                         <PiStudentThin size={19} />
-                            {capacity} دانش آموز 
+                            {studentCount} دانش آموز 
                     </div>
                     <div style={{ color: "var(--color-text-gray2)" }} className='font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
                         {startTime}
