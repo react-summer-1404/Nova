@@ -3,7 +3,7 @@ import InfoCard from "../../ui/infoCard/InfoCard";
 import CheckList from "../../ui/checkList/CheckList";
 import { useDebounce } from "use-debounce";
 import { useQuery } from "@tanstack/react-query";
-import { getNewsCategory } from "../../../servises/api/newsCategory";
+import { getNewsCategory } from "../../../servises/api/news/newsCategory";
 
 const CategoryFiltering = ({ paramItems, handleChange }) => {
   const [selectNewsTech, setSelectNewsTech] = useState(

@@ -1,4 +1,4 @@
-import instance from "../../../core/interceptor/interceptor";
+import instance from "../../../../core/interceptor/interceptor";
 
 export const postNewsLike = async (newsId) => {
   const response = await instance.post(

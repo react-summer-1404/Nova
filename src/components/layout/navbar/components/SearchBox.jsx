@@ -2,6 +2,7 @@ import React from "react";
 import { BsSearch } from "react-icons/bs";
 import { GoChevronDown } from "react-icons/go";
 const SearchBox = () => {
+  
   return (
     <div className="flex-center border border-[#D3D2DF] rounded-full gap-1 p-1 xl:w-[400px] ">
       <div className="flex justify-between  w-full  ">

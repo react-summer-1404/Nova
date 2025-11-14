@@ -4,12 +4,11 @@ import GetReply from "./GetReply";
 import Tag from "../../../../ui/Tag/Tag";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import ModalSection from "../../../../ui/Modal/ModalSection";
-import useToggle from "../../../../../hooks/useToggle";
 import PostReply from "./PostReply";
-// import { useMutation, useQueryClient } from '@tanstack/react-query';
-// import { PostCommentLike } from '../../../../../servises/api/coursesDetail/PostCommentLike';
-// import { PostCommentDisLike } from '../../../../../servises/api/coursesDetail/PostCommentDisLike';
-// import toast from 'react-hot-toast';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import useToggle from "../../../../../hooks/useToggle";
+import { postNewsCommentLike } from "../../../../../servises/api/blogComments/Like And DisLike";
 
 const UserComment = ({
   insertDate,
@@ -26,27 +25,18 @@ const UserComment = ({
 
   const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
 
-//   const queryClient = useQueryClient();
-//   const likeMutation = useMutation({
-//       mutationFn :()=> PostCommentLike(CourseCommandId),
-//       onError : (error) => {
-//           console.error(error)
-//       },
-//       onSuccess : () => {
-//           queryClient.invalidateQueries(["comment"]);
-//           toast.success("کامنت دیسلایک شد")
-//       },
-//   })
-//   const disLikeMutation = useMutation({
-//       mutationFn :()=> PostCommentDisLike(CourseCommandId),
-//       onError : (error) => {
-//           console.error(error)
-//       },
-//       onSuccess : () => {
-//           queryClient.invalidateQueries(["comment"]);
-//           toast.success("کامنت دیسلایک شد")
-//       },
-//   })
+  const queryClient = useQueryClient();
+  const likeMutation = useMutation({
+      mutationFn :()=> postNewsCommentLike(id),
+      onError : (error) => {
+          console.error(error)
+      },
+      onSuccess : () => {
+          queryClient.invalidateQueries(["newsComment"]);
+          toast.success("کامنت لایک شد")
+      },
+  })
+ 
 
   const toggleReplies = async () => {
     setShowReplies((prev) => !prev);
@@ -80,8 +70,8 @@ const UserComment = ({
                       <AiOutlineLike size={"20px"} />
                     )
                   }
-                  // onClick={()=>{likeMutation.mutate(CourseCommandId)
-                  //     console.log("like CourseCommandId:", CourseCommandId)}}
+                  onClick={()=>{likeMutation.mutate(id)
+                      console.log("like CourseCommandId:", id)}}
                   title={likeCount}
                 />
               </div>

@@ -36,8 +36,6 @@ const CourseComment = ({ teacherName, imageAddress}) => {
                         pictureAddress={item.pictureAddress}
                         id={item.id}
                         CourseId={id}
-                        // likeMutation={likeMutation}
-                        // disLikeMutation= {disLikeMutation}
                         CourseCommandId={item.CourseCommandId}
                     />
                 )}

@@ -24,7 +24,7 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
         },
         onSuccess : () => {
             queryClient.invalidateQueries(["comment"]);
-            toast.success("کامنت دیسلایک شد")
+            toast.success("کامنت لایک شد")
         },       
     })
     const disLikeMutation = useMutation({

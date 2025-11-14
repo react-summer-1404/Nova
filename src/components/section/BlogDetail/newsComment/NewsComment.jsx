@@ -25,6 +25,8 @@ const NewsComment = ({newsId}) => {
                         describe={item.describe}
                         title={item.title}
                         id={item.id}
+                        currentUserIsDissLike={item.currentUserIsDissLike}
+                        currentUserIsLike={item.currentUserIsLike}
                     />
                 )}
                 
