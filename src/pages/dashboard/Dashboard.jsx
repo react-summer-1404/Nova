@@ -16,8 +16,8 @@ const Dashboard = () => {
     <div className="w-screen h-screen flex-center  ">
       <div className="w-screen container-border flex justify-between ">
         <div className="flex flex-col w-[80%] h-screen bg-white rounded-l-[15px] ">
-          <div className="flex-left  w-screen lg:w-full"><Header data={data} /></div>
-          <main className="px-8 py-2 w-screen lg:w-full">
+          <div className="flex-left  w-screen lg:w-full "><Header data={data} /></div>
+          <main className="px-8 py-2 w-screen lg:w-full ">
             <Outlet />
           </main>
         </div>

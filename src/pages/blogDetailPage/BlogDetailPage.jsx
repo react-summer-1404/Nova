@@ -9,6 +9,7 @@ import NavigationSection from "../../components/ui/navigation/NavigationSection"
 import InfoCard from "../../components/ui/infoCard/InfoCard";
 import RelatesNews from "../../components/section/BlogDetail/RelatesNews";
 import { useParams } from "react-router-dom";
+import NewsComment from "../../components/section/BlogDetail/newsComment/NewsComment";
 
 const BlogDetailPage = () => {
   const {newsId} = useParams();
@@ -40,7 +41,9 @@ const BlogDetailPage = () => {
           <MainInfo detailItems={detailItems} />
           <LikeAndDislike newsId={detailItems?.id} isLiked={detailItems?.currentUserIsLike} isDisliked={detailItems?.currentUserIsDissLike}/>
 
-          <div>comment</div>
+          <div>
+            <NewsComment newsId={newsId}/>
+          </div>
         </div>
         <div className="lg:flex flex-col gap-4 hidden ">
         <InfoCard title={"اخبار مرتبط"}>

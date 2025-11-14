@@ -16,7 +16,7 @@ const NewsComments = () => {
           comments.map((item) => (<CoursCommentList
             key={item.id}
             teacherId={item.teacherId}
-            startTime={item.startTime.slice(0,10)}
+            startTime={item.inserDate?.slice(0,10)}
             title={item.title}
         />))
       ) : (<div>نظری یافت  نشد</div>

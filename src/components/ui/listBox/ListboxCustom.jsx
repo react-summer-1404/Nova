@@ -9,7 +9,7 @@ const ListboxCustom = () => {
   }
 
   return (
-    <div className='flex-col-center gap-2'>
+    <div className='flex-col-center gap-2 '>
       <Link to={"userdashboard"} className={`tab ${isSelected==="userdashboard" ? "selected" : ""}`} onClick={() => {handleSelect("userdashboard")}}>داشبورد</Link>
       <Link to={"userinformation"} className={`tab ${isSelected==="userinformation" ? "selected" : ""}`} onClick={() => {handleSelect("userinformation" )}}>اطلاعات کاربری</Link>
       <Link to={"mycourses"} className={`tab ${isSelected==="mycourses" ? "selected" : ""}`} onClick={() => {handleSelect("mycourses")}}>دوره های من</Link>

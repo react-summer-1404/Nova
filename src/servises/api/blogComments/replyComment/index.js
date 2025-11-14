@@ -1,8 +1,6 @@
 import instance from "../../../../core/interceptor/interceptor";
 export const postNewsReply = async (apiParams) => {
-    const response = await instance.post("/News/CreateNewsReplyComment",{
-        params:apiParams
-    });
+    const response = await instance.post("/News/CreateNewsReplyComment",apiParams);
     return response.data;
 }
 

@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 const SideBar = ({ data }) => {
   const navigate = useNavigate();
   return (
-    <div className="flex-col-center gap-14 h-full p-8 bg-dark-purple rounded-r-[15px] ">
+    <div className="flex-col-center gap-14 h-full p-8 bg-dark-purple ">
       <div className="flex-col-center gap-7">
         <div>
           
