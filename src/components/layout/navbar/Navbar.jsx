@@ -1,4 +1,4 @@
-import {useState,useEffect} from "react"
+import { useState, useEffect } from "react";
 import "../../../assets/styles/nav.css";
 import Logo from "../../ui/Logo/Logo";
 import { getToken } from "../../../hooks/localStorage";
@@ -10,8 +10,8 @@ import Responsive from "./components/Responsive";
 import UserCartFavorites from "./components/UserCartFavorites";
 import SearchBox from "./components/SearchBox";
 import NavbarItems from "./components/NavbarItems";
-import { motion ,useScroll} from "framer-motion";
-import AccountBtn from "./components/AccountBtn"
+import { motion, useScroll } from "framer-motion";
+import AccountBtn from "./components/AccountBtn";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -29,15 +29,16 @@ const Navbar = () => {
       if (window.scrollY > 10) setVisibleShadow(true);
       else setVisibleShadow(false);
     };
-  
+
     window.addEventListener("scroll", handleScroll);
   }, []);
-  
-  
+
   return (
-    <div className={`w-full p-4 gap-6   fixed top-0 left-0 bg-white z-50 ${
-      visibleShadow?"shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]":""
-    }`}>
+    <div
+      className={`w-full p-4 gap-6   fixed top-0 left-0 bg-white z-50 ${
+        visibleShadow ? "shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]" : ""
+      }`}
+    >
       <div className=" relative flex  md:gap-2 justify-between items-center p-4   w-full  ">
         <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
           <div className="hidden lg:flex">
@@ -56,9 +57,9 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <SearchBox />
           </div>
-         <div className="lg:hidden">
-         <Responsive data={data}/>
-         </div>
+          <div className="lg:hidden">
+            <Responsive data={data} />
+          </div>
         </div>
         <div className="flex justify-start items-center sm:gap-1  md:gap-4 lg:gap-6  ">
           <div className="hidden lg:block">
@@ -68,9 +69,9 @@ const Navbar = () => {
         </div>
       </div>
       <motion.div
-        style={{ scaleX: scrollYProgress , originX:0 }}
+        style={{ scaleX: scrollYProgress, originX: 0 }}
         className="h-[4px] bg-dark-purple absolute bottom-0 left-0  w-full"
-      /> 
+      />
     </div>
   );
 };
