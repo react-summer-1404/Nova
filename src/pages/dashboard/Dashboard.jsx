@@ -13,15 +13,15 @@ const Dashboard = () => {
     queryFn:getCurrentUserProfile,
   });
   return (
-    <div className="w-screen h-screen flex-center">
-      <div className="w-screen justy-between container-border">
-        <div className="flex flex-col w-[80%] h-screen bg-white rounded-l-[15px]">
-          <div className="flex-left"><Header data={data} /></div>
-          <main className="px-8 py-2">
+    <div className="w-screen h-screen flex-center  ">
+      <div className="w-screen container-border flex justify-between ">
+        <div className="flex flex-col w-[80%] h-screen bg-white rounded-l-[15px] ">
+          <div className="flex-left  w-screen lg:w-full"><Header data={data} /></div>
+          <main className="px-8 py-2 w-screen lg:w-full">
             <Outlet />
           </main>
         </div>
-       <div className="hidden lg:block">
+       <div className="hidden lg:block ">
        <SideBar data={data}/>
        </div>
       </div>

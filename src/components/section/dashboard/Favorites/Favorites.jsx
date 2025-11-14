@@ -12,7 +12,7 @@ const Favorites = () => {
   const [activeTab, setActiveTab] = useState("Courses");
   return (
     <div className =' w-full flex items-center justify-center flex-col'>
-      <div className='flex gap-4 mb-6'>
+      <div className='flex gap-4 mb-6  w-full justify-end'>
         <DashboardAutoComplete
         selected={activeTab}
         setSelected={setActiveTab}

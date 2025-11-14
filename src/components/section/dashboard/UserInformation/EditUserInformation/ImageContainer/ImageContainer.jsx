@@ -50,7 +50,7 @@ const ImageContainer = ({ currentProf }) => {
 
   const currentImage = currentProf?.userImage;
   return (
-    <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
+    <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px] ">
 <img src={selectedImg?.puctureAddress ||currentProf?.currentPictureAddress  || defaultProf} alt="profile" className="object-cover w-full h-full"/>
 
       <ModalSection

@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import CourseTableRow from './CourseTableRow/CourseTableRow';
-// import CourseStatusList1 from '../Favorites/FavoritesNews/CourseStatusList1';
-import { HiOutlineTrash } from "react-icons/hi2";
-import { IoEyeOutline } from "react-icons/io5";
 import CourseComment from './CourseComment';
-// import { NewsComment } from '../../../../servises/api/userPanel/getNewsComment';
 import NewsComments from './NewsComment';
 import DashboardAutoComplete from '../../../ui/DashboardAutoComplete/DashboardAutoComplete';
 

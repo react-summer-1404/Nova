@@ -55,7 +55,7 @@ const EditUserInformation = () => {
   return (
     <div className="w-screen  ">
       <div
-        className="flex flex-col w-[68%] gap-5  justify-start"
+        className="flex flex-col md:w-[68%] gap-5  justify-start w-[70%] " 
         style={{ direction: "rtl" }}
       >
         <Subject />
@@ -65,7 +65,7 @@ const EditUserInformation = () => {
               FName: currentProf?.fName || "",
               LName: currentProf?.lName || "",
               NationalCode: currentProf?.nationalCode || "",
-              BirthDay: currentProf?.birthDay || "",
+              BirthDay: currentProf?.birthDay.slice(0,10) || "",
               TelegramLink: currentProf?.telegramLink || "",
               HomeAdderess: currentProf?.homeAdderess || "",
               LinkdinProfile: currentProf?.linkdinProfile || "",
@@ -182,7 +182,7 @@ const EditUserInformation = () => {
                     />
                   </div>
                 </div>
-                <div className=" flex flex-col w-full items-center gap-5 text-right">
+                <div className=" flex flex-col w-full md:items-center items-start gap-5 text-right ">
                   <ImageContainer currentProf={currentProf} />
 
                   <FormGroup

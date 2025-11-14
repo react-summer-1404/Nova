@@ -1,4 +1,5 @@
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import { defaultEasing } from "framer-motion";
 
 export default function DashboardAutoComplete({selected,setSelected,options}) {
 

@@ -44,8 +44,8 @@ const MyCourses = () => {
   }, [searchDelay]);
 
   return (
-    <div className="w-full flex-col-center gap-8">
-      <div className="w-full justy-between ">
+    <div className="w-full flex-col-center gap-8  ">
+      <div className="w-full  flex flex-col-reverse items-center md:flex-row justify-between gap-4">
         <div className="flex gap-3">
           <DashboardAutoComplete
             options={SortingColItems}

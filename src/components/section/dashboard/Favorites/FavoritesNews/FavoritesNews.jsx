@@ -25,7 +25,7 @@ const FavoritesNews = () => {
             startTime={item.startTime.slice(0,10)}
             title={item.title}
         />))
-      ) : (<div>نظری یافت  نشد</div>
+      ) : (<div className='text-text-gray'>خبری یافت  نشد</div>
         )}
         
         </div>
