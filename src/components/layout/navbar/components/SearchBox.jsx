@@ -22,6 +22,12 @@ const SearchBox = () => {
   const apiParams = {
     Query: debounceQuery,
   };
+  const getPlaceholder = () => {
+    if (selected === "courses") return "جستجو برای دوره‌ها...";
+    if (selected === "blogs") return "جستجو برای وبلاگ‌ها...";
+    if (selected === "all") return "جستجو در همه دسته‌ها...";
+    else return "جستجو...";
+  };
   const { data: Course } = useQuery({
     queryKey: ["searchCourse", debounceQuery],
     queryFn: () => getCourses(apiParams),
@@ -43,15 +49,15 @@ const SearchBox = () => {
   
   return (
     <div className=" relative">
-      <div className="flex-center border border-[#D3D2DF] rounded-full gap-1 p-1 px-3 xl:w-[400px] ">
+      <div className="flex-center border border-[#D3D2DF] rounded-full gap-1 p-1  xl:w-[400px] ">
         <div className="flex justify-between  w-full  ">
-          <div className=" bg-dark-purple rounded-full  lg:w-[44px] lg:h-[44px]  flex-center cursor-pointer p-1">
+          <div className=" bg-dark-purple rounded-full  lg:w-[45px] lg:h-[45px]  flex-center cursor-pointer p-1">
             <BsSearch className="  w-6 h-6 text-white -scale-x-100 " />
           </div>
 
           <input
             type="text"
-            placeholder="...جستجوی برای دوره"
+            placeholder={getPlaceholder()}
             className=" focus:outline-none lg:text-base text-right w-[90%]  text-sm  px-4 "
             onChange={(e) => {
               setQuery(e.target.value);
@@ -64,7 +70,7 @@ const SearchBox = () => {
           selected={selected}
           setSelected={setSelected}
           variant={"none"}
-          inputWrapper={"bg-white border-gray-300 border-l rounded-none"}
+          inputWrapper={"bg-white border-l border-gray-300 rounded-r-full rounded-l-none"}
         />
       </div>
 
