@@ -22,8 +22,8 @@ const Favorites = () => {
       <div className ='w-[67%] '>
         <CourseTableRow
           items={[
-            "نویسنده",
             "زمان انتشار", 
+            "نویسنده",
             "عنوان",            
           ]}
         />

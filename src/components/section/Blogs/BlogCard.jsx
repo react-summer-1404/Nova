@@ -5,10 +5,9 @@ const BlogCard = ({ blogData }) => {
   return (
     <div
       style={{
-        backgroundColor: "var(--color-white)",
         border: "1px solid var(--color-border-gray)",
       }}
-      className="w-[300px] h-[469px] p-5 text-right rounded-[10px] mt-5"
+      className="w-[300px] h-[469px] p-5 text-right rounded-[10px] mt-5 bg-white"
     >
       <div className=" flex-center flex-col gap-2">
         <BlogcardMainContent

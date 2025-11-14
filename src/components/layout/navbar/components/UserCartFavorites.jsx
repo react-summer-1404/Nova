@@ -4,8 +4,11 @@ import faveIcon from "../../../../assets/images/favorite.svg";
 // import useFavorite from "../../../core/store/favoriteStore";
 import useFavorite from "../../../../core/store/favoriteStore"
 import { Link } from "react-router-dom";
+import useNewsFavorite from "../../../../core/store/newsFavoriteStore";
 const UserCartFavorites = () => {
   const { addedToFavorite } = useFavorite();
+  const { addedNewsToFavorite } = useNewsFavorite();
+
   return (
     <>
       <div
@@ -28,7 +31,7 @@ const UserCartFavorites = () => {
             style={{ backgroundColor: "var(--color-golden-yellow)" }}
             className=" min-w-[22px] min-h-[22px] rounded-full absolute -top-2 -right-1 leading-none text-center"
           >
-            {addedToFavorite.length}
+            {addedToFavorite.length + addedNewsToFavorite.length}
           </div>
         </div></Link>
       </div>
