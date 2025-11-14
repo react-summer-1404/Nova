@@ -48,7 +48,7 @@ const ReserveInfo = ({
     <div className=" justify-center items-center gap-2 flex w-full h-[40px] py-2 text-[10px] lg:text-[14px] font[600] text-navy even:bg-[#F7F7F7] odd:bg-[#C8C1ED4D] rounded-[5px] shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)] ">
       <div className="flex w-[100px] gap-2">
         <ModalSection
-          StyleModal={"h-fit bg-transparent"}
+          StyleModal={"h-fit bg-transparent "}
           Icon={
             <HiOutlineTrash className="text-dark-purple w-5 h-5 cursor-pointer" />
           }
@@ -78,7 +78,7 @@ const ReserveInfo = ({
         />
 
         <ModalSection
-          StyleModal={"h-fit bg-transparent"}
+          StyleModal={"h-fit bg-transparent "}
           Icon={
             <IoEyeOutline className="text-dark-purple w-5 h-5 cursor-pointer" />
           }
