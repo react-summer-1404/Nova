@@ -87,7 +87,7 @@ const mutationFavoriteNewsDelete = useMutation({
               <p>در حال بارگذاری...</p>
             ) : (
               <div className="w-full flex-center">
-                <BlogCard blogData={data}/>
+                <BlogCard blogData={data?.news}/>
               </div>
             )
           }
