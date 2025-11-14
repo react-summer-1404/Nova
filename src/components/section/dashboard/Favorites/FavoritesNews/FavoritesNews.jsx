@@ -21,6 +21,7 @@ const FavoritesNews = () => {
             title={item.title}
             currentImageAddress={item.news.currentImageAddress}
             id={item.id}
+            newsId={item.newsId}
         />))
       ) : (<div className='text-text-gray'>خبری یافت  نشد</div>
         )}

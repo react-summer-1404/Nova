@@ -5,6 +5,6 @@ export const postAddToFavoriteNews = async (NewsId) => {
   return response.data;
 };
 export const deleteAddToFavoriteNews = async (deleteEntityId) => {
-  const response = await instance.delete("/News/DeleteFavoriteNews",deleteEntityId);
+  const response = await instance.delete("/News/DeleteFavoriteNews",{data:{deleteEntityId}});
   return response.data;
 };

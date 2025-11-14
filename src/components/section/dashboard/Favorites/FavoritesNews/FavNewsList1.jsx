@@ -26,12 +26,13 @@ const { data, isLoading } = useQuery({
   queryFn: () => getBlogsDetail(newsId),
   enabled: !!newsId,
 });
+console.log("data",data);
 
 const mutationFavoriteNewsDelete = useMutation({
   mutationFn: (id) => deleteAddToFavoriteNews(id),
   onSuccess: () => {
     toast.success("دوره  با موفقیت حذف شد");
-    queryClient.invalidateQueries(["favCourse"]);
+    queryClient.invalidateQueries(["FavNews"]);
     setIsDeleteModalOpen(false);
     removeFavorite(newsId)
   },
@@ -87,7 +88,7 @@ const mutationFavoriteNewsDelete = useMutation({
               <p>در حال بارگذاری...</p>
             ) : (
               <div className="w-full flex-center">
-                <BlogCard blogData={data?.news}/>
+                <BlogCard blogData={data?.detailsNewsDto}/>
               </div>
             )
           }
