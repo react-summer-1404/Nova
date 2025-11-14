@@ -42,7 +42,7 @@ const CourseProductCard = ({
         direction: "rtl",
       }}
       className={`flex p-5 rounded-[10px] gap-6 bg-white ${
-        isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[500px] flex-col"
+        isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[480px] flex-col"
       }`}
     >
       <div className={`${isCol ? "flex flex-col gap-5" : "relative"}`}>

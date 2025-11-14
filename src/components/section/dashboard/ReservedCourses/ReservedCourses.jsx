@@ -11,7 +11,7 @@ const ReservedCourses = () => {
   });
   return (
     <div>
-      <div className="flex flex-col items-center w-full  gap-4">
+      <div className="flex flex-col items-center w-full  gap-4 ">
         <ReserveTable />
         {data?.length > 0 ? (
           data.map((item) => (

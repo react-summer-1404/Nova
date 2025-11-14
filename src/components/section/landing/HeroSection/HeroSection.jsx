@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <div
       style={{ background: "var(--gradient-main)" }}
-      className="w-screen flex-center pt-4 bg-gradient-main"
+      className="w-screen flex-center pt-4 "
     >
       <div className="flex justify-between w-5/6">
         <img src={heroPic} className="hidden md:block md:w-1/2 md:h-3/4" />

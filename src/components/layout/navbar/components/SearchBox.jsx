@@ -23,10 +23,10 @@ const SearchBox = () => {
     Query: debounceQuery,
   };
   const getPlaceholder = () => {
-    if (selected === "courses") return "جستجو برای دوره‌ها...";
-    if (selected === "blogs") return "جستجو برای وبلاگ‌ها...";
-    if (selected === "all") return "جستجو در همه دسته‌ها...";
-    else return "جستجو...";
+    if (selected === "courses") return "...جستجو برای دوره‌ها";
+    if (selected === "blogs") return "...جستجو برای وبلاگ‌ها ";
+    if (selected === "all") return "...جستجو در همه دسته‌ها";
+    else return "...جستجو";
   };
   const { data: Course } = useQuery({
     queryKey: ["searchCourse", debounceQuery],
@@ -129,7 +129,7 @@ const SearchBox = () => {
 
                   <div className="flex gap-2 items-center">
                     <h2>{item.title}</h2>
-                    <img className="w-7 h-7" src={item.currentImageAddress} />
+                    <img className="w-8 h-8 rounded-sm" src={item.currentImageAddress} />
                   </div>
                 </div>
               </Link>
