@@ -1,4 +1,3 @@
-// components/ScrollButton.js
 
 import React, { useState } from "react";
 import { FaChevronUp } from "react-icons/fa";

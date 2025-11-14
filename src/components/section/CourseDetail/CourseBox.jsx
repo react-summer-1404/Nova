@@ -19,8 +19,10 @@ import {
 } from "../../../servises/api/courses/ReserveCourse";
 import { getMyReserveCourses } from "../../../servises/api/userPanel/getMyCoursesReserve";
 import toast from "react-hot-toast";
+import { getToken } from "../../../hooks/localStorage";
 
 const CourseBox = () => {
+  const token = getToken()
   const queryClient = useQueryClient();
   const { id } = useParams();
   const { data, isError, isLoading, error } = useQuery({
@@ -42,6 +44,7 @@ const CourseBox = () => {
   const { data: reserveCourse } = useQuery({
     queryKey: ["reserveinfo"],
     queryFn: getMyReserveCourses,
+    enabled:!!token&&!!data
   });
 
   const mutationReserveDelete = useMutation({
@@ -87,6 +90,7 @@ const CourseBox = () => {
             teacherName={data.teacherName}
             studentCount={data.studentCount}
             describe={data.describe}
+            teacherId={data.teacherId}
           />
         </div>
         <div className="border border-[#DFDFDF] md:w-[18%] w-[24%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]">

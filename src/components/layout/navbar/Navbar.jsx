@@ -1,3 +1,4 @@
+import {useState,useEffect} from "react"
 import "../../../assets/styles/nav.css";
 import Logo from "../../ui/Logo/Logo";
 import { getToken } from "../../../hooks/localStorage";
@@ -21,10 +22,22 @@ const Navbar = () => {
     enabled: !!token,
   });
   const { scrollYProgress } = useScroll();
+  const [visibleShadow, setVisibleShadow] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) setVisibleShadow(true);
+      else setVisibleShadow(false);
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+  
   
   return (
-    <div className=" w-full p-4 gap-6   fixed top-0 left-0 bg-white z-50  shadow-[0_3px_5px_rgba(0,0,0,0.04)]">
+    <div className={`w-full p-4 gap-6   fixed top-0 left-0 bg-white z-50 ${
+      visibleShadow?"shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]":""
+    }`}>
       <div className=" relative flex  md:gap-2 justify-between items-center p-4   w-full  ">
         <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
           <div className="hidden lg:flex">

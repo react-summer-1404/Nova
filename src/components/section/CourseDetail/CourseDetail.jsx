@@ -7,7 +7,8 @@ import CourseExplanation from './CourseExplanation/CourseExplanation';
 
 import CourseComment from './CourseComment/CourseComment';
 import { useState } from 'react';
-const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,describe, studentCount}) => {
+import { Link } from 'react-router-dom';
+const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,describe, studentCount,teacherId}) => {
     const [selected, setSelected] = useState("بررسی اجمالی");
     
     return (
@@ -35,11 +36,13 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                         {startTime}
                         <CiCalendar size={19} />
                     </div>
-                    <div className='flex items-center md:gap-3 gap-1'>
-                        <h3 style={{ color: "var(--color-navy)" }} className='font-[400] text-[12px] md:text-[16px] whitespace-nowrap'>{teacherName}</h3>
+                    
+                       <Link to={`/coachesDetail/${teacherId}`} className='flex items-center md:gap-3 gap-1'>
+                       <h3 style={{ color: "var(--color-navy)" }} className='font-[400] text-[12px] md:text-[16px] whitespace-nowrap'>{teacherName}</h3>
                         <h2 className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px]'>توسط</h2> 
                         <img src={imageAddress} className =' rounded-full w-[45px] h-[44px]'/>
-                    </div>
+                       </Link>
+                    
                 </div>
 
 

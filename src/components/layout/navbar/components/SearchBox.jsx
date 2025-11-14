@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
-import { GoChevronDown } from "react-icons/go";
 import { useDebounce } from "use-debounce";
 import { getCourses } from "../../../../servises/api/courses/coursList";
 import { getBlogs } from "../../../../servises/api/news/getNews";
