@@ -7,6 +7,9 @@ import { useDebounce } from "use-debounce";
 import { getCourses } from "../../../../servises/api/courses/coursList";
 import { getBlogs } from "../../../../servises/api/news/getNews";
 import { GoChevronLeft } from "react-icons/go";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+
 const SearchBox = () => {
   const [query, setQuery] = useState("");
   const [debounceQuery] = useDebounce(query, 500);
@@ -53,33 +56,67 @@ const SearchBox = () => {
         <img src="/src/assets/icons/SVG.svg" className="w-[10px] "/>
       </div> */}
       </div>
-      <div
-        className="
-         w-[85%]  h-[300px] absolute right-4 top-13 z-50 overflow-y-scroll flex flex-col gap-2 items-end bg-white p-2 px-10"
-      >
-        {Course?.courseFilterDtos?.map((item) => (
-          <div
-            key={item.courseId}
-            className="flex gap-2  border-b border-gray-200 p-4 w-[100%] justify-between  items-center"
-          >
-            <GoChevronLeft className="text-dark-purple" size={18}/>
-            <div className="flex gap-2 items-center">
-              <h2>{item.title}</h2>
-              <img className="w-8 h-8 rounded-sm" src={item.imageAddress} />
-            </div>
-          </div>
-        ))}
-        {blogs?.news?.map((item) => (
-          <div
-            key={item.id}
-            className="flex gap-2 items-center border-b border-gray-200 p-4 w-[90%] justify-end"
-          >
+
+
+<AnimatePresence>
+  {debounceQuery.length > 0 && (
+    <motion.div
+      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+      transition={{
+        duration: 0.5,
+        ease: [0.5, 1, 0.5, 1], 
+      }}
+      className="
+        w-[85%] h-[300px] absolute right-4 top-15 z-50
+        overflow-y-scroll flex flex-col gap-2 items-end
+        rounded-xl bg-white p-2 px-10
+        shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]
+      "
+    >
+      {Course?.courseFilterDtos?.map((item) => (
+      <Link to={`/courseDetail/${item.courseId}`} className="w-full">
+        <div
+          key={item.courseId}
+          className="  flex gap-2 justify-between items-center w-full p-4
+          border-b border-light-purple rounded-lg
+          transition-all duration-200 ease-out
+          hover:bg-light-purple  hover:shadow-sm
+          cursor-pointer"
+        >
+          <GoChevronLeft className="text-dark-purple" size={18} />
+          <div className="flex gap-2 items-center">
             <h2>{item.title}</h2>
-            <img className="w-7 h-7" src={item.currentImageAddress} />
+            <img className="w-8 h-8 rounded-sm" src={item.imageAddress} />
           </div>
-        ))}
-        <h2></h2>
-      </div>
+        </div>
+      </Link>
+      ))}
+
+      {blogs?.news?.map((item) => (
+       <Link to={`/blogDetail/${item.id}`} className="w-full">
+        <div
+          key={item.id}
+          className="  flex gap-2 justify-between items-center w-full p-4
+          border-b border-light-purple rounded-lg
+          transition-all duration-200 ease-out
+          hover:bg-light-purple  hover:shadow-sm
+          cursor-pointer"
+        >
+          <GoChevronLeft className="text-dark-purple" size={18} />
+
+         <div className="flex gap-2 items-center">
+         <h2>{item.title}</h2>
+          <img className="w-7 h-7" src={item.currentImageAddress} />
+         </div>
+        </div>
+       </Link>
+      ))}
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </div>
   );
 };
