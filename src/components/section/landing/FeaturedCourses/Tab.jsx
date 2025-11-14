@@ -10,7 +10,7 @@ const Tabs = ({pointTab,setPointTab}) => {
 
 
   return (
-    <div className="flex flex-col items-start px-6" dir="rtl">
+    <div className="flex flex-col items-start px-6 text-sm truncate md:text-base" dir="rtl">
       <div className="flex gap-8 relative pb-1 px-10">
         <div
           className="flex flex-col items-center cursor-pointer relative"
@@ -35,16 +35,14 @@ const Tabs = ({pointTab,setPointTab}) => {
 
             {pointTab === tab.techName && (
               <div
-                style={{ backgroundColor: "var(--color-dark-purple)" }}
-                className="h-[3px] w-full rounded absolute -bottom-0.5 left-0 z-10 duration-300 transition-all"
+                className="h-[3px] w-full rounded absolute -bottom-0.5 left-0 z-10 duration-300 transition-all bg-dark-purple"
               ></div>
             )}
           </div>
         ))}
 
         <div
-          style={{ backgroundColor: "var(--color-soft-indigo)" }}
-          className="h-[3px] w-full absolute bottom-0 left-0 rounded"
+          className="h-[3px] w-full absolute bottom-0 left-0 rounded bg-soft-indigo"
         ></div>
       </div>
     </div>
