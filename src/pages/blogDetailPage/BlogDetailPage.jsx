@@ -10,6 +10,8 @@ import InfoCard from "../../components/ui/infoCard/InfoCard";
 import RelatesNews from "../../components/section/BlogDetail/RelatesNews";
 import { useParams } from "react-router-dom";
 import NewsComment from "../../components/section/BlogDetail/newsComment/NewsComment";
+import { variantPages } from "../../configs/frameMorion/PagesVariants";
+import{motion}from "framer-motion"
 
 const BlogDetailPage = () => {
   const {newsId} = useParams();
@@ -32,7 +34,10 @@ const BlogDetailPage = () => {
     <div className="flex-center w-screen  flex-col  gap-[100px] ">
       <NavigationSection title={detailItems?.title} />
       <div className="flex w-[90%] justify-center gap-8">
-        <div className="flex flex-col w-4/5 gap-5 ">
+        <motion.div className="flex flex-col w-4/5 gap-5 "
+         variants={variantPages}
+         initial="hidden"
+         animate="visible">
           <img
             src={detailItems?.currentImageAddress}
             className="w-full lg:h-[450px] md:h-[300px] rounded-[10px]"
@@ -44,14 +49,20 @@ const BlogDetailPage = () => {
           <div>
             <NewsComment newsId={newsId}/>
           </div>
-        </div>
-        <div className="lg:flex flex-col gap-4 hidden ">
+        </motion.div>
+        <motion.div className="lg:flex flex-col gap-4 hidden"
+         variants={variantPages}
+         initial={{opacity:0,
+          x:100,}}
+         animate={{opacity:1,x:0}}
+         transition={{delay:0.7 ,duration:0.3}}
+        >
         <InfoCard title={"اخبار مرتبط"}>
           {currentNews?.length>0?(currentNews?.map((related) => (
             <RelatesNews key={`${related.id} - ${related.title}`} detailItems={related} id={related.id} />
           ))):(<p>خبر مرتبطی وجود ندارد</p>)}
         </InfoCard>
-        </div>
+        </motion.div>
        
       </div>
     </div>

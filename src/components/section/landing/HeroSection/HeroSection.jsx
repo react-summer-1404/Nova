@@ -9,10 +9,9 @@ const HeroSection = () => {
   return (
     <div
       style={{ background: "var(--gradient-main)" }}
-      className="w-screen flex-center pt-4 "
+      className="w-screen flex-center pt-4  overflow-hidden"
     >
       <div className="flex justify-between w-4/5  ">
-        {/* <img src={heroPic} className="hidden md:block md:w-1/2 md:h-3/4" /> */}
         <ImageSection/> 
 
         <div className="p-5 flex flex-col gap-6 items-end w-[490px]">

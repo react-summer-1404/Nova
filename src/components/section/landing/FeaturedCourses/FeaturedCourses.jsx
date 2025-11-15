@@ -48,10 +48,7 @@ const FeaturedCourses = () => {
           <h2 className="font-bold md:text-4xl text-lg">
             بهترین دوره‌های آموزشی جهان ما را کاوش کنید
           </h2>
-          <h3
-            
-            className=" text-responsive text-text-gray "
-          >
+          <h3 className=" text-responsive text-text-gray ">
             امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است
           </h3>
           <Tabs pointTab={pointTab} setPointTab={setPointTab} />
@@ -68,26 +65,32 @@ const FeaturedCourses = () => {
               height={"50px"}
             />
           </div>
+          {filteredCourses?.length === 0 ? (
+            <div className="text-center text-text-gray py-10 text-xl">
+              دوره‌ای یافت نشد
+            </div>
+          ) : (
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              spaceBetween={20}
+              autoplay={true}
+              breakpoints={{
+                320: { slidesPerView: 1 },
+                400: { slidesPerView: 1 },
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1500: { slidesPerView: 4 },
+              }}
+            >
+              {filteredCourses?.map((product) => (
+                <SwiperSlide key={product.courseId} className="!w-auto !h-auto">
+                  <CourseProductCard product={product} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
 
-          <Swiper
-            modules={[Navigation, Autoplay]}
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
-            spaceBetween={20}
-            autoplay={true}
-            breakpoints={{
-              320: { slidesPerView: 1 },
-              400: { slidesPerView: 1 },
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1500:{ slidesPerView: 4 }
-            }}
-          >
-            {filteredCourses?.map((product) => (
-              <SwiperSlide key={product.courseId} >
-                <CourseProductCard product={product} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
           <div className="hidden md:block">
             <BlueButton
               onClick={() => swiperRef.current?.slideNext()}

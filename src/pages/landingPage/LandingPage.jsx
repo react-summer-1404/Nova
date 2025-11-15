@@ -26,7 +26,6 @@ const LandingPage = () => {
         variants={scrollVariant}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false }}
       >
         <TopCategories />
       </motion.div>
@@ -35,7 +34,6 @@ const LandingPage = () => {
         variants={scrollVariant}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false }}
       >
         <AboutSection />
       </motion.div>
@@ -48,7 +46,6 @@ const LandingPage = () => {
         variants={scrollVariant}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false }}
       >
         <MasterMentors />
       </motion.div>
@@ -57,7 +54,6 @@ const LandingPage = () => {
         variants={scrollVariant}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false }}
       >
         <OurNumbers />
       </motion.div>
@@ -66,7 +62,6 @@ const LandingPage = () => {
         variants={scrollVariant}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false }}
       >
         <FAQSection />
       </motion.div>
