@@ -4,16 +4,18 @@ import BlueButton from "../../../ui/button/BlueButton";
 import { GoArrowLeft } from "react-icons/go";
 import AccentText from "../../../ui/accentText/AccentText";
 import { Link } from "react-router";
+import ImageSection from "./imageSection/ImageSection";
 const HeroSection = () => {
   return (
     <div
       style={{ background: "var(--gradient-main)" }}
       className="w-screen flex-center pt-4 "
     >
-      <div className="flex justify-between w-5/6">
-        <img src={heroPic} className="hidden md:block md:w-1/2 md:h-3/4" />
+      <div className="flex justify-between w-4/5  ">
+        {/* <img src={heroPic} className="hidden md:block md:w-1/2 md:h-3/4" /> */}
+        <ImageSection/> 
 
-        <div className="p-5 flex flex-col gap-6 items-end max-w-[490px]">
+        <div className="p-5 flex flex-col gap-6 items-end w-[490px]">
           <AccentText
             beforeLabel={"هرگز از"}
             afterLabel={"دست نکشید زندگی هرگز از اموزش دست نمیکشد"}

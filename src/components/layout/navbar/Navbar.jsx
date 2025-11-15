@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`w-full p-4 gap-6   fixed top-0 left-0 bg-white z-50 ${
+      className={`w-full p-4 gap-6   fixed top-0 left-0 bg-white z-999 ${
         visibleShadow ? "shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]" : ""
       }`}
     >
