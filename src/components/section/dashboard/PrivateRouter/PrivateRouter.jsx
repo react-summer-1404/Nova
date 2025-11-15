@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 const PrivateRouter = ({ children }) => {
   const token = getToken();
 
-  return token ? children : <Navigate to="/login" replace />;
+  return token ? children : <Navigate to="/auth/login" replace />;
 };
 
 export default PrivateRouter;
