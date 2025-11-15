@@ -11,11 +11,16 @@ import {
 } from "../components/section/dashboard/index";
 import { Navigate } from "react-router-dom";
 import Dashboard from "../pages/dashboard/Dashboard";
+import PrivateRouter from "../components/section/dashboard/PrivateRouter/PrivateRouter";
 
 export const DashboardRoutes = [
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRouter>
+        <Dashboard />
+      </PrivateRouter>
+    ),
     children: [
       { index: true, element: <Navigate to="userdashboard" /> },
       { path: "userdashboard", element: <UserDashboard /> },
@@ -34,6 +39,5 @@ export const DashboardRoutes = [
         ],
       },
     ],
-    
   },
 ];
