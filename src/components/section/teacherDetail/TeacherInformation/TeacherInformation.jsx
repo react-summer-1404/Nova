@@ -2,16 +2,21 @@ import React from 'react'
 import SocialList from "../socialList/SocialList";
 import { MdOutlineEmail } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
+import{motion} from "framer-motion"
 const TeacherInformation = ({teacherDetail}) => {
   return (
     <div
     style={{ backgroundColor: "var(--color-bg-purple)" }}
-    className="w-full xl:h-[368px] p-[50px] flex items-center flex-col md:flex-row gap-[40px] rounded-xl"
+    className="w-full xl:h-[368px] p-[50px] flex items-center flex-col md:flex-row gap-[40px] rounded-xl "
     dir="rtl"
   >
     <img src={teacherDetail?.pictureAddress} className="lg:w-[200px] lg:h-[200px] rounded-full w-[120px] h-[120px]"/>
-    <div style={{color:"var(--color-white)"}} className="flex flex-col gap-4 items-start">
-      <h2 className="font-semibold text-2xl">{teacherDetail?.fullName}</h2>
+    <div  className="flex flex-col gap-4 items-start text-white">
+      <motion.h2 className="font-semibold text-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >{teacherDetail?.fullName}</motion.h2>
       <h3>لاراول پرو خبره</h3>
         <div className="flex gap-2 items-center text-responsive">
         <MdOutlineEmail size={20}/>

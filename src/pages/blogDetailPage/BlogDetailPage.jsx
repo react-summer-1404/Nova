@@ -51,7 +51,6 @@ const BlogDetailPage = () => {
           </div>
         </motion.div>
         <motion.div className="lg:flex flex-col gap-4 hidden"
-         variants={variantPages}
          initial={{opacity:0,
           x:100,}}
          animate={{opacity:1,x:0}}

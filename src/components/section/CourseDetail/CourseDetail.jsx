@@ -4,10 +4,11 @@ import { PiStudentThin } from "react-icons/pi";
 import { CiCalendar } from "react-icons/ci";
 import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import CourseExplanation from './CourseExplanation/CourseExplanation';
-
 import CourseComment from './CourseComment/CourseComment';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
+
 const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,describe, studentCount,teacherId}) => {
     const [selected, setSelected] = useState("بررسی اجمالی");
     
@@ -37,10 +38,17 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                         <CiCalendar size={19} />
                     </div>
                     
-                       <Link to={`/coachesDetail/${teacherId}`} className='flex items-center md:gap-3 gap-1'>
-                       <h3 style={{ color: "var(--color-navy)" }} className='font-[400] text-[12px] md:text-[16px] whitespace-nowrap'>{teacherName}</h3>
-                        <h2 className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px]'>توسط</h2> 
-                        <img src={imageAddress} className =' rounded-full w-[45px] h-[44px]'/>
+                       <Link to={`/coachesDetail/${teacherId}`}  >
+                      <motion.div  className='flex items-center md:gap-3 gap-1'
+                      initial={{scale:0}}
+                      animate={{scale:[1,1.2,1,1,1.2,1]}}
+                      transition={{ duration:2,delay:1.5}}>
+                      <h3 className='font-[400] text-[12px] md:text-[16px] whitespace-nowrap text-navy'
+                      
+                      >{teacherName}</h3>
+                       <h2 className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px]'>توسط</h2> 
+                       <img src={imageAddress} className =' rounded-full w-[45px] h-[44px]'/>
+                      </motion.div>
                        </Link>
                     
                 </div>

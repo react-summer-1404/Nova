@@ -20,9 +20,11 @@ import {
 import { getMyReserveCourses } from "../../../servises/api/userPanel/getMyCoursesReserve";
 import toast from "react-hot-toast";
 import { getToken } from "../../../hooks/localStorage";
+import { motion } from "framer-motion";
+import { variantPages } from "../../../configs/frameMorion/PagesVariants";
 
 const CourseBox = () => {
-  const token = getToken()
+  const token = getToken();
   const queryClient = useQueryClient();
   const { id } = useParams();
   const { data, isError, isLoading, error } = useQuery({
@@ -44,7 +46,7 @@ const CourseBox = () => {
   const { data: reserveCourse } = useQuery({
     queryKey: ["reserveinfo"],
     queryFn: getMyReserveCourses,
-    enabled:!!token&&!!data
+    enabled: !!token && !!data,
   });
 
   const mutationReserveDelete = useMutation({
@@ -79,7 +81,12 @@ const CourseBox = () => {
   return (
     <div className="flex flex-col w-screen gap-20 items-center">
       <NavigationSection title={"حل تعارضات بین طراحان و مهندسان"} />
-      <div className=" w-screen flex justify-center gap-8 mr-[20px] mb-[30px]">
+      <motion.div
+        className=" w-screen flex justify-center gap-8 mr-[20px] mb-[30px]"
+        variants={variantPages}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="w-[65%] flex items-end flex-col gap-7">
           <CourseDetail
             key={data.id}
@@ -93,7 +100,12 @@ const CourseBox = () => {
             teacherId={data.teacherId}
           />
         </div>
-        <div className="border border-[#DFDFDF] md:w-[18%] w-[24%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px]">
+        <motion.div className="border border-[#DFDFDF] md:w-[18%] w-[24%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px] "
+         initial={{opacity:0,
+          x:100,}}
+         animate={{opacity:1,x:0}}
+         transition={{delay:0.8 ,duration:0.3}}
+        >
           <div className="w-[82%] flex flex-col items-end gap-5 ">
             <div
               style={{ backgroundColor: "var(--color-dark-purple)" }}
@@ -208,8 +220,8 @@ const CourseBox = () => {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       <div className="w-[920px] h-[700px] flex-col flex mr-[260px]">
         <div className="mr-[30px] lg:mr-0">
           <AccentText title={"دوره های "} afterLabel={"مرتبط"} />
