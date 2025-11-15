@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useToggle from "../../../hooks/useToggle";
 
 const InfoCard = ({ title, children, showMoreButton = false }) => {

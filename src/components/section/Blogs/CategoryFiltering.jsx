@@ -19,7 +19,7 @@ const {data}=useQuery({
   }, [selectNewsTechDebounce]);
   return (
     <div>
-      <InfoCard title={"دسته بندی ها"}>
+      <InfoCard title={"دسته بندی ها"} >
         <CheckList
           data={data}
           labelKey="categoryName"
