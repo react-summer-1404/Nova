@@ -14,7 +14,7 @@ export default function CustomPagination({
       showControls
       radius="full"
       initialPage={pageNumber}
-      onChange={setPageNumber}
+      onChange={pageNumber}
       total={totalPagination}
     />
   );
