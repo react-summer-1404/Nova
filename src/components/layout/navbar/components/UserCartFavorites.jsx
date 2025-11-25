@@ -4,8 +4,11 @@ import faveIcon from "../../../../assets/images/favorite.svg";
 // import useFavorite from "../../../core/store/favoriteStore";
 import useFavorite from "../../../../core/store/favoriteStore"
 import { Link } from "react-router-dom";
+import useNewsFavorite from "../../../../core/store/newsFavoriteStore";
 const UserCartFavorites = () => {
   const { addedToFavorite } = useFavorite();
+  const { addedNewsToFavorite } = useNewsFavorite();
+
   return (
     <>
       <div
@@ -14,8 +17,7 @@ const UserCartFavorites = () => {
         <div className="relative flex items-end  xl:w-[40px] md:w-[35px]">
           <img src={shopIcon}></img>
           <div
-            style={{ backgroundColor: "var(--color-golden-yellow)" }}
-            className=" min-w-[22px] min-h-[22px]  rounded-full absolute -top-2 -right-1 leading-none text-center"
+            className=" min-w-[22px] min-h-[22px]  rounded-full absolute -top-2 -right-1 leading-none flex-center bg-golden-yellow"
           >
             0
           </div>
@@ -25,10 +27,9 @@ const UserCartFavorites = () => {
       <div className=" relative flex items-end xl:w-[40px] md:w-[35px] ">
           <img src={faveIcon}></img>
           <div
-            style={{ backgroundColor: "var(--color-golden-yellow)" }}
-            className=" min-w-[22px] min-h-[22px] rounded-full absolute -top-2 -right-1 leading-none text-center"
+            className=" min-w-[22px] min-h-[22px] rounded-full absolute -top-2 -right-1 leading-none flex-center bg-golden-yellow"
           >
-            {addedToFavorite.length}
+            {addedToFavorite.length + addedNewsToFavorite.length}
           </div>
         </div></Link>
       </div>

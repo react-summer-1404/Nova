@@ -5,15 +5,18 @@ import GettingStartedSection from "../../components/section/landing/GettingStart
 import AboutMore from "../../components/section/aboutUs/AboutMore";
 import Tag from "../../components/ui/Tag/Tag";
 import ServicesList from "../../components/section/aboutUs/ServicesList";
-
+import { motion } from "framer-motion";
+import { variantPages } from "../../configs/frameMorion/PagesVariants";
 const AboutUsPage = () => {
   return (
     <>
       <NavigationSection title={"ما کی هستیم"} />
       <AboutMore />
-      <div
-        style={{ backgroundColor: "var(--color-light-gray)" }}
-        className="w-screen flex flex-col items-center justify-center gap-8 lg:p-[120px] p-8"
+      <motion.div
+        className="w-screen flex flex-col items-center justify-center gap-8 lg:p-[120px] p-8 bg-light-gray"
+        variants={variantPages}
+        initial="hidden"
+        animate="visible"
       >
         <Tag
           title={"آنچه ما ارائه می دهیم"}
@@ -32,10 +35,9 @@ const AboutUsPage = () => {
           سلام! این یک پیام تستی است سلام! این یک پیام تستی است سلام! این یک
           پیام تستی است
         </span>
-        
-       <ServicesList/>
-        
-      </div>
+
+        <ServicesList />
+      </motion.div>
       <JoinTheClub />
       <GettingStartedSection />
       <div></div>

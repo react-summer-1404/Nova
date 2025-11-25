@@ -5,8 +5,8 @@ import {  AiOutlineLike,
   AiOutlineDislike,
   AiFillDislike} from "react-icons/ai";
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { postNewsDisLike, postNewsLike } from '../../../servises/api/newsLikeAndDislike';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
+import { postNewsDisLike, postNewsLike } from '../../../servises/api/news/newsLikeAndDislike';
 const LikeAndDislike = ({newsId,isLiked,isDisliked}) => {
   const queryClient = useQueryClient();
   const newsLikeMutation=useMutation({

@@ -1,14 +1,21 @@
 import React from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import {useNavigate } from 'react-router-dom'
+import { motion } from "framer-motion";
+import { scrollVariant } from '../../../../configs/frameMorion/Scroll';
+
 
 const GettingStartedSection = () => {
   const navigate = useNavigate();
   return (
-    <div className ='w-screen lg:h-[1000px] h-[650px] sm:h-[730px] bg-[#282568]'>
-      <div className ='h-[550px] flex justify-center items-center '>
-        <div className ='lg:h-[480px] mb-[220px] lg:mb-[0px] sm:mb-[30px] h-[250px] sm:h-[450px] w-[77%] flex flex-col items-center gap-3'>
-          <button className =' p-1.5 px-3 sm:px-5 md:px-7 rounded-[30px] font-[500] bg-dark-purple text-[10px] sm:text-[12px] lg:text-[16px] text-[#FFFFFF] '>
+    <div className ='w-screen md:h-[1000px] h-[750px] bg-[#282568]'>
+      <motion.div className ='h-[550px] flex justify-center items-center '
+      variants={scrollVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}>
+        <div className ='md:h-[360px] md:mb-[0px] mb-[120px] h-[300px] w-[77%] flex flex-col items-center gap-3'>
+          <button className =' p-1.5 px-5 md:px-7 rounded-[30px] font-[500] bg-[#5751E1] text-[12px] md:text-[16px] text-[#FFFFFF] '>
             چگونه سفر را شروع می کنیم
           </button>
           <p className ='w-[43%] font-[600] text-[16px] sm:text-[26px] lg:text-[36px] text-white'>!سفر یادگیری خود را از همین امروز شروع کنید</p>
@@ -38,15 +45,19 @@ const GettingStartedSection = () => {
             </div>
           </div>
         </div>
-      </div >
-        <div className ='sm:flex-row flex-col flex items-center justify-center gap-2 md:gap-6 mt-[-225px] sm:mt-[-10px] lg:mt-[100px]'>
-          <div className ='flex items-center h-[140px] md:h-[220px] w-[70%] sm:w-[45%] lg:w-[39%] border bg-white border-[#BDBDBD] rounded-[15px] relative'>
-            <img src="src/assets/images/SVG (5).png" className ='absolute lg:top-[80px] sm:top-[48px] lg:left-[335px] sm:left-[158px] left-[137px] top-[60px] left w-[45%] md:w-[37%]'/>
-            <img src="src/assets/images/7fe7f1624b741e2591310cbf55fa4c6afcf4b877.png" className ='absolute sm:top-[15px] lg:top-[17px] sm:left-[160px] lg:left-[325px] left-[140px] top-[31px] w-[42%] md:w-[37%]'/>
-            <img src="src/assets/images/SVG-6.png" className ='absolute sm:top-[9px] lg:top-[5px] sm:left-[245px] lg:left-[469px] left-[220px] top-[25px] w-[5%] md:w-[6%]'/>
-            <div className ='w-[53%] md:w-[57%] sm:h-[110px] lg:h-[170px] h-[80px] text-right flex flex-col gap-1 md:gap-5 items-end'>
-              <p className ='font-[600] text-[14px] sm:text-[18px] lg:text-[28px] text-[#161439]'>دانشجو شوید</p>
-              <h2 className ='font-[400] text-[8px] sm:text-[10px] lg:text-[16px] text-[#6D6C80] w-[100%] md:w-[85%]'>به میلیون ها نفر از سراسر جهان بپیوندید
+      </motion.div >
+        <motion.div className ='flex justify-center gap-2 md:gap-6 mt-[-10px] md:mt-[100px]'
+        variants={scrollVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}>
+          <div className ='flex items-center h-[140px] md:h-[220px] w-[45%] md:w-[39%] border bg-[#FFFFFF] border-[#BDBDBD] rounded-[15px] relative'>
+            <img src="src/assets/images/SVG (5).png" className ='absolute md:top-[80px] top-[48px] md:left-[335px] left-[158px] w-[45%] md:w-[37%]'/>
+            <img src="src/assets/images/7fe7f1624b741e2591310cbf55fa4c6afcf4b877.png" className ='absolute top-[15px] md:top-[17px] left-[160px] md:left-[325px] w-[42%] md:w-[37%]'/>
+            <img src="src/assets/images/SVG-6.png" className ='absolute top-[9px] md:top-[5px] left-[245px] md:left-[469px] w-[5%] md:w-[6%]'/>
+            <div className ='w-[53%] md:w-[57%] h-[110px] md:h-[170px] text-right flex flex-col gap-1 md:gap-5 items-end'>
+              <p className ='font-[600] text-[18px] md:text-[28px] text-[#161439]'>دانشجو شوید</p>
+              <h2 className ='font-[400] text-[10px] md:text-[16px] text-[#6D6C80] w-[100%] md:w-[85%]'>به میلیون ها نفر از سراسر جهان بپیوندید
               با هم یاد می گیرند یادگیری آنلاین.</h2>
               <button
                 type="submit"
@@ -81,7 +92,7 @@ const GettingStartedSection = () => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
   )

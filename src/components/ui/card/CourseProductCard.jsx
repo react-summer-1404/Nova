@@ -9,7 +9,14 @@ import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
 import { Link } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
+import useCompare from "../../../core/store/CmpareStore";
+import { MdStar } from "react-icons/md";
+import { useRef } from "react";
+import { useMotionTemplate, useMotionValue, useMotionValueEvent, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 
+const ROTATION_RANGE = 32.5;
+const HALF_ROTATION_RANGE = 32.5 / 2;
 const CourseProductCard = ({
   product,
   isCol,
@@ -17,8 +24,42 @@ const CourseProductCard = ({
   disLikeMutation,
   addToFavoriteMutation,
 }) => {
+
+const ref = useRef(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const xSpring = useSpring(x);
+  const ySpring = useSpring(y);
+
+  const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`;
+
+  const handleMouseMove = (e) => {
+    if (!ref.current) return [0, 0];
+
+    const rect = ref.current.getBoundingClientRect();
+
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = (e.clientX - rect.left) * ROTATION_RANGE;
+    const mouseY = (e.clientY - rect.top) * ROTATION_RANGE;
+
+    const rX = (mouseY / height - HALF_ROTATION_RANGE) * -1;
+    const rY = mouseX / width - HALF_ROTATION_RANGE;
+
+    x.set(rX);
+    y.set(rY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
   const { addedToFavorite, addFavorite } = useFavorite();
   const isFav = addedToFavorite.includes(product.courseId);
+  const { compareChosen, addCompareCourse, resetCompare } = useCompare();
 
   // --- Handle Mutations ---
   const handleLike = () => likeMutation.mutate(product.courseId);
@@ -32,17 +73,25 @@ const CourseProductCard = ({
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
 
   return (
-    <div
-      style={{
-        backgroundColor: "var(--color-white)",
-        border: "1px solid var(--color-border-gray)",
-        direction: "rtl",
-      }}
-      className={`flex p-5 rounded-[10px] gap-6 ${
-        isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[500px] flex-col"
+    <motion.div
+    ref={ref}
+  onMouseMove={handleMouseMove}
+  onMouseLeave={handleMouseLeave}
+
+  style={{
+    transformStyle: "preserve-3d",
+    transform,
+    border: "1px solid var(--color-border-gray)",
+    direction: "rtl",
+  }}
+      className={`flex p-5 rounded-[10px] gap-6 bg-white ${
+        isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[480px] flex-col"
       }`}
     >
-      <div className={`${isCol ? "flex flex-col gap-5" : "relative"}`}>
+      <div className={`${isCol ? "flex flex-col gap-5" : "relative"}`}  style={{
+          transform: "translateZ(75px)",
+          transformStyle: "preserve-3d",
+        }}>
         <img
           src={product.imageAddress}
           alt={product.title}
@@ -54,8 +103,7 @@ const CourseProductCard = ({
           }`}
         >
           <div
-            style={{ backgroundColor: "var(--color-white)" }}
-            className="w-[36px] h-[36px] border flex flex-center rounded-[6px]"
+            className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-white"
             onClick={handleAddToFavorite}
           >
             <FaHeart
@@ -65,8 +113,8 @@ const CourseProductCard = ({
           </div>
 
           <div
-            style={{ backgroundColor: "var(--color-white)" }}
-            className="w-[36px] h-[36px] border flex flex-center rounded-[6px]"
+            className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-white"
+            onClick={() => addCompareCourse(product.courseId)}
           >
             <svg
               width="26"
@@ -93,18 +141,23 @@ const CourseProductCard = ({
             </h2>
           </Link>
 
-          <div
-            className={`flex items-center gap-2 whitespace-nowrap ${
-              isCol ? "justify-start" : "justify-end"
-            }`}
-          >
-            {product.technologyList && (
+          <div className="flex items-center gap-2 whitespace-nowrap  justify-between ">
+            <div className="flex gap-2">
+              {product.technologyList && (
+                <Tag
+                  bgColor={"var(--color-soft-gray)"}
+                  title={product.technologyList}
+                />
+              )}
               <Tag
                 bgColor={"var(--color-soft-gray)"}
-                title={product.technologyList}
+                title={product.levelName}
               />
-            )}
-            <Tag bgColor={"var(--color-soft-gray)"} title={product.levelName} />
+            </div>
+            <div className="flex gap-1 ">
+              <span>{String(product.courseRate?.avg)?.slice(0,4)}</span>
+              <MdStar className="text-golden-yellow" size={18}/>
+            </div>
           </div>
 
           {isCol && (
@@ -167,14 +220,13 @@ const CourseProductCard = ({
                 />
                 <Tag
                   icon={
-                    product.currentUserDissLike? (
+                    product.currentUserDissLike ? (
                       <AiFillDislike size={"20px"} className="text-gray-500" />
                     ) : (
                       <AiOutlineDislike size={"20px"} />
                     )
                   }
                   title={product.dissLikeCount}
-                
                   bgColor={"var(--color-soft-gray)"}
                   textColor={"#5F5F66"}
                   width={"65px"}
@@ -200,7 +252,7 @@ const CourseProductCard = ({
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

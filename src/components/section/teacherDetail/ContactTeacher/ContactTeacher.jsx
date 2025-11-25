@@ -3,10 +3,14 @@ import BlueButton from "../../../ui/button/BlueButton";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import SimpleInput from '../../../ui/SimpleInput/SimpleInput';
 import TextArea from '../../../ui/TextArea/TextArea';
-
+import {easeInOut, motion} from "framer-motion"
 function ContactTeacher() {
   return (
-    <div className="lg:w-[280px] h-[600px] w-full flex flex-col gap-5  p-6 shadow-[0_0_14px_0_rgba(0,0,0,0.08)] rounded-[10px] border border-[#DFDFDF]">
+    <motion.div className="lg:w-[280px] h-[600px] w-full flex flex-col gap-5  p-6 shadow-[0_0_14px_0_rgba(0,0,0,0.08)] rounded-[10px] border border-[#DFDFDF]"
+    initial={{x:"100vh"}}
+    animate={{x:0}}
+    transition={{duration:1,delay:0.7 }}
+    >
     <div className=" text-right flex flex-col gap-3">
       <h2 className="font-semibold text-[20px]">تماس سریع</h2>
       <h3 style={{color:"var(--color-text-gray)"}} className="text-base">
@@ -23,7 +27,7 @@ function ContactTeacher() {
     <div className='hidden lg:block'>
     <BlueButton width={"100%"} height={"50px"} content={"پیام فرستادن"} BtnIcon={<FaArrowLeftLong color="var(---color-white)"/>} />
     </div>
-  </div>
+  </motion.div>
   )
 }
 

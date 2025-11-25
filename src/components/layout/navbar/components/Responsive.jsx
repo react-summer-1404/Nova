@@ -6,6 +6,7 @@ import SearchBox from './SearchBox';
 import NavbarItems from './NavbarItems';
 import AvatarComponent from '../../../ui/Avatar/Avatar';
 import { getToken } from '../../../../hooks/localStorage';
+import AccountBtn from './AccountBtn';
 
 const Responsive = ({data}) => {
   const token = getToken();

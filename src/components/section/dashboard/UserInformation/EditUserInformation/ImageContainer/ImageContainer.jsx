@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import UserProfModal from '../UserProfModal/UserProfModal'
 import ModalSection from "../../../../../ui/Modal/ModalSection";
 import { Field } from "formik";
 import { FaCheck } from "react-icons/fa";
@@ -51,8 +50,8 @@ const ImageContainer = ({ currentProf }) => {
 
   const currentImage = currentProf?.userImage;
   return (
-    <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px]">
-<img src={selectedImg?.puctureAddress ||currentProf?.currentPictureAddress  || defaultProf} alt="profile" className="object-cover"/>
+    <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px] ">
+<img src={selectedImg?.puctureAddress ||currentProf?.currentPictureAddress  || defaultProf} alt="profile" className="object-cover w-full h-full"/>
 
       <ModalSection
         StyleModal={
@@ -65,7 +64,6 @@ const ImageContainer = ({ currentProf }) => {
           <HiOutlineCamera
             color="white"
             size={30}
-            onClick={() => toggleModal}
           />
         }
         size="4xl"

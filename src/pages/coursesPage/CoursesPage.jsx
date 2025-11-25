@@ -12,11 +12,14 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
 import { Spinner } from "@heroui/react";
 import { useDebounce } from "use-debounce";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
 import ModalSection from "../../components/ui/Modal/ModalSection";
-
+import { CiFilter } from "react-icons/ci";
+import {motion} from "framer-motion"
+import { variantPages } from "../../configs/frameMorion/PagesVariants";
+import useCompare from "../../core/store/CmpareStore";
 const CoursesPage = () => {
   const [isOpen, toggleOpen] = useToggle(false);
   const [searchParam, setSearchParam] = useSearchParams();
@@ -24,13 +27,22 @@ const CoursesPage = () => {
   const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfThePage] = useState(12);
+  const [rowsOfThePage] = useState(20);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
-
+  const { compareChosen, addCompareCourse, reset } = useCompare();
+const navigate = useNavigate();
+ console.log("compareChosen",compareChosen)
   useEffect(() => {
     handleChange("Query", debounceSearch || "");
   }, [debounceSearch]);
+
+  useEffect(() => {
+   if (compareChosen.length==2) {
+    navigate("/");
+    reset()
+   }
+  }, [compareChosen,reset]);
 
   const handleChange = (key, value) => {
     setSearchParam((prev) => {
@@ -130,7 +142,11 @@ const CoursesPage = () => {
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
       <NavigationSection title={"همه دوره ها"} />
-      <div className="md:w-[97%] flex justify-between gap-5 flex-col-reverse md:flex-row md:items-stretch  items-center ">
+      <motion.div className="md:w-[97%] flex justify-between gap-5 flex-col-reverse md:flex-row md:items-stretch  items-center "
+        variants={variantPages}
+        initial="hidden"
+        animate="visible"
+        exit="exit">
         <div className="flex flex-col gap-5 items-end  w-full">
           <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%] md:mr-0 mr-9">
             <div className="flex gap-2 ">
@@ -180,6 +196,7 @@ const CoursesPage = () => {
                   likeMutation={likeMutation}
                   disLikeMutation={disLikeMutation}
                   addToFavoriteMutation={addToFavoriteMutation}
+                  
                 />
               ))}
           </div>
@@ -196,7 +213,7 @@ const CoursesPage = () => {
           </div>
           <div className="fixed z-50 right-4 bottom-8 md:hidden block">
             <ModalSection
-            
+            Icon={<CiFilter size={40} color="white"/>}
               content={
               <div className="flex-center flex-col  gap-5">
                   <FiltersPanel
@@ -214,7 +231,7 @@ const CoursesPage = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="flex-center p-8">
         <CustomPagination
           pageNumber={pageNumber}

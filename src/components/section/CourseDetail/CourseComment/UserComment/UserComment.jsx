@@ -6,20 +6,44 @@ import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import ModalSection from '../../../../ui/Modal/ModalSection';
 import useToggle from '../../../../../hooks/useToggle';
 import PostReply from './PostReply';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { PostCommentLike } from '../../../../../servises/api/coursesDetail/PostCommentLike';
+import { PostCommentDisLike } from '../../../../../servises/api/coursesDetail/PostCommentDisLike';
+import toast from 'react-hot-toast';
 
-const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, pictureAddress, describe, title, id, likeMutation, disLikeMutation }) => {
+const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, pictureAddress, describe, title, id, }) => {
     const [showReplies, setShowReplies] = useState(false);
     
     const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
     
-    const handleLike = () => { console.log("لایک کلیک شد"); likeMutation.mutate(CourseCommandId); }
-    
-    const handleDisLike = () => { console.log("دیسلایک کلیک شد"); disLikeMutation.mutate(CourseCommandId); }
+    const queryClient = useQueryClient();
+    const likeMutation = useMutation({
+        mutationFn :()=> PostCommentLike(CourseCommandId),
+        onError : (error) => {
+            console.error(error)
+        },
+        onSuccess : () => {
+            queryClient.invalidateQueries(["comment"]);
+            toast.success("کامنت لایک شد")
+        },       
+    })
+    const disLikeMutation = useMutation({
+        mutationFn :()=> PostCommentDisLike(CourseCommandId),
+        onError : (error) => {
+            console.error(error)
+        },
+        onSuccess : () => {
+            queryClient.invalidateQueries(["comment"]);
+            toast.success("کامنت دیسلایک شد")
+        },       
+    })
+    console.log("CourseCommandId:", CourseCommandId);
+
     
     const toggleReplies = async () => {
         setShowReplies(prev => !prev)
     }
-    console.log("commentcouurseID", likeCount)
+    console.log("commentcouurseID", CourseCommandId)
 
 
     return (
@@ -43,18 +67,20 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                                     <AiOutlineLike size={"20px"} />
                                 )
                             }
-                                onClick={handleLike}
+                                onClick={()=>{likeMutation.mutate(CourseCommandId)
+                                    console.log("like CourseCommandId:", CourseCommandId)}}
                                 title={likeCount}
                             /></div>
                             <div className='w-[45%] md:w-[55%] h-full rounded-[15px] bg-soft-gray font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]' > 
                                 <Tag icon={
                                 currentUserIsDissLike ? (
-                                    <AiFillLike size={"20px"} className="text-gray-500" />
+                                    <BiDislike size={"20px"} className="text-gray-500" />
                                 ) : (
-                                    <AiOutlineLike size={"20px"} />
+                                    <BiDislike size={"20px"} />
                                 )
                             }
-                                onClick={handleDisLike}
+                            onClick={()=>disLikeMutation.mutate(CourseCommandId)}
+
                                 title={disslikeCount}
                             />
                             </div>

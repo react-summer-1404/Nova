@@ -2,15 +2,16 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import { Button } from "@heroui/react";
 import DarkMode from "../../ui/darkMode/DarkMode";
+import ScrollButton from "../../ui/button/ScrollToTop";
 
 const PageLayout = () => {
   return (
     <div className="relative">
       <Navbar />
       <div><DarkMode /></div>
-      <main>
+      <div><ScrollButton/></div>
+      <main className="mt-40">
         <Outlet />
       </main>
       <Footer />

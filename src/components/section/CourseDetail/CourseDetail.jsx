@@ -4,10 +4,12 @@ import { PiStudentThin } from "react-icons/pi";
 import { CiCalendar } from "react-icons/ci";
 import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import CourseExplanation from './CourseExplanation/CourseExplanation';
-
 import CourseComment from './CourseComment/CourseComment';
 import { useState } from 'react';
-const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName, capacity,describe}) => {
+import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
+
+const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,describe, studentCount,teacherId}) => {
     const [selected, setSelected] = useState("بررسی اجمالی");
     
     return (
@@ -25,21 +27,30 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                         <span className ='font-[500] text-[8px] sm:text-[10px] lg:text-[13px] text-black'>{title}</span>
                     </button>
                 </div>
-                <p className='lg:text-[30px] sm:text-[18px] text-[16px] font-[600] text-text-gray'>{title}</p>
-                <div className=' flex items-center lg:gap-12 sm:gap-3.5 gap-0.5'>
-                    <div style={{ direction: "rtl" }} className='text-[#7F7E97] font-[400] text-[9px] sm:text-[12px] lg:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
-                        <PiStudentThin size={10} sm:size={19} />
-                            {capacity} دانش آموز 
+                <p className='md:text-[30px] text-[18px] font-[600] text-text-gray'>{title}</p>
+                <div className='flex items-center md:gap-12 gap-3.5'>
+                    <div style={{ direction: "rtl" }} className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
+                        <PiStudentThin size={19} />
+                            {studentCount} دانش آموز 
                     </div>
                     <div style={{ color: "var(--color-text-gray2)" }} className='font-[400] text-[9px] sm:text-[12px] lg:text-[16px] flex items-center gap-0.5 md:gap-1.5'>
                         {startTime}
                         <CiCalendar size={10} sm:size={19} />
                     </div>
-                    <div className='flex items-center md:gap-3 gap-1'>
-                        <h3 style={{ color: "var(--color-navy)" }} className='font-[400] text-[9px] sm:text-[12px] lg:text-[16px] whitespace-nowrap'>{teacherName}</h3>
-                        <h2 className='text-[#7F7E97] font-[400] text-[9px] sm:text-[12px] lg:text-[16px]'>توسط</h2> 
-                        <img src={imageAddress} className =' rounded-full w-[25px] h-[26px] sm:w-[45px] sm:h-[44px]'/>
-                    </div>
+                    
+                       <Link to={`/coachesDetail/${teacherId}`}  >
+                      <motion.div  className='flex items-center md:gap-3 gap-1'
+                      initial={{scale:0}}
+                      animate={{scale:[1,1.2,1,1,1.2,1]}}
+                      transition={{ duration:2,delay:1.5}}>
+                      <h3 className='font-[400] text-[12px] md:text-[16px] whitespace-nowrap text-navy'
+                      
+                      >{teacherName}</h3>
+                       <h2 className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px]'>توسط</h2> 
+                       <img src={imageAddress} className =' rounded-full w-[45px] h-[44px]'/>
+                      </motion.div>
+                       </Link>
+                    
                 </div>
 
 

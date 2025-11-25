@@ -1,13 +1,18 @@
 import React from 'react'
 import AvatarComponent from '../Avatar/Avatar'
 
-const UserProfile = ({imageUrl,userName}) => {
-  return (
-    <div className='flex-col-center gap-4 '>
-      <AvatarComponent src={imageUrl} size={"lg"}/>
-      <span className='w-[80px] flex-col-center text-white text-[20px] overflow-ellipsis'>خوش آمدی {userName?userName:"کابر گرامی"}</span>
-    </div>
-  )
-}
+const UserProfile = ({ imageUrl, userName, fName }) => {
+  const displayName = fName || userName || "کاربر گرامی";
 
-export default UserProfile
+  return (
+    <div className="flex-col-center gap-4">
+      <AvatarComponent src={imageUrl} size="lg" />
+      <div className="w-[80px] flex-col-center text-white text-lg overflow-ellipsis text-nowrap">
+        <span>خوش آمدی</span>
+        <span>{displayName}</span>
+      </div>
+    </div>
+  );
+};
+
+export default UserProfile;

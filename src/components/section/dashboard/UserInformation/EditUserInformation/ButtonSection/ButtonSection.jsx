@@ -10,7 +10,7 @@ const ButtonSection = () => {
 
   return (
     <div className="flex gap-3">
-       <YellowButton text={"ذخیره تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} type={"submit"}/>
+       <YellowButton text={"ذخیره تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} type={"submit"} onClick={()=>navigate("/dashboard/userinformation")}/>
             <Tag title={"لغو تغییرات"} width={"120px"} height={"35px"} icon={<FiXCircle size={18}/>} bgColor={"#F5F5F5"} onClick={()=>{
               navigate("/dashboard/userinformation")
             }}/>
