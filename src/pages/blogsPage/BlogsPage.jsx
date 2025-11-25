@@ -27,7 +27,9 @@ const BlogsPage = () => {
   useEffect(() => {
     handleChange("Query", searchDelay);
   }, [searchDelay]);
+ 
 
+ 
   const handleChange = (key, value) => {
     setSearchParam(
       (prev) => {

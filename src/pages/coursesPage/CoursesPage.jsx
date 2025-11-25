@@ -27,7 +27,7 @@ const CoursesPage = () => {
   const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfThePage] = useState(12);
+  const [rowsOfThePage] = useState(20);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
   const { compareChosen, addCompareCourse, reset } = useCompare();
