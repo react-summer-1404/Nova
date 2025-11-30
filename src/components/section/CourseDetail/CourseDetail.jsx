@@ -14,7 +14,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
     
     return (
         <div className ='flex flex-col gap-7'>
-            <img src={imageAddress} className ='lg:h-[400px] sm:h-[300px] w-[70%] sm:w-[85%] sm:ml-[70px] ml-[100px] lg:w-[900px] lg:ml-[0px] rounded-[15px]' />
+            <img src={imageAddress||"/default.png"} className ='lg:h-[400px] sm:h-[300px] w-[70%] sm:w-[85%] sm:ml-[70px] ml-[100px] lg:w-[900px] lg:ml-[0px] rounded-[15px]' />
             <div className='flex flex-col items-end gap-2.5 md:gap-4'>
                 <div className='flex justify-between md:gap-3.5 gap-2'>
                     <div className='text-text-gray text-[9px] lg:text-[14px] sm:text-[11px] font-[400] flex items-center gap-1'>
@@ -47,7 +47,7 @@ const CourseDetail = ({ imageAddress, courseRate, title, startTime, teacherName,
                       
                       >{teacherName}</h3>
                        <h2 className='text-[#7F7E97] font-[400] text-[12px] md:text-[16px]'>توسط</h2> 
-                       <img src={imageAddress} className =' rounded-full w-[45px] h-[44px]'/>
+                       <img src={imageAddress||"/default.png"} className =' rounded-full w-[45px] h-[44px]'/>
                       </motion.div>
                        </Link>
                     

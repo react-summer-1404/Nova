@@ -29,7 +29,7 @@ const GetReply = ({ parentCommentId }) => {
                             <button style={{ backgroundColor: "var(--color-soft-gray)" }} className='w-[45%] md:w-[50%] h-full rounded-[15px] font-[500] text-[10px] md:text-[12px] flex flex-row items-center gap-0.5 justify-center text-[#5F5F66]' >{item.disslikeCount} <BiDislike /></button>
                         </div>
                     </div>
-                    <img src={item.pictureAddress} className='lg:w-[10%] lg:h-[58%] w-[15%] h-[40%] rounded-full mt-[20px]' />
+                    <img src={item.pictureAddress||"/default.png"} className='lg:w-[10%] lg:h-[58%] w-[15%] h-[40%] rounded-full mt-[20px]' />
 
                 </div>
             )}

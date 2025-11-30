@@ -93,7 +93,7 @@ const ref = useRef(null);
           transformStyle: "preserve-3d",
         }}>
         <img
-          src={product.imageAddress}
+          src={product.imageAddress||"/default.png"}
           alt={product.title}
           className="w-[300px] h-[190px] rounded-[8px] shadow-[0px_5px_20px_0px_#00000040]"
         />

@@ -113,7 +113,7 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                         </div>
                     </div>
                 </div>
-                <img src={pictureAddress} className='lg:w-[12%] lg:h-[55%] w-[17%] h-[40%] rounded-full mt-[20px]' />
+                <img src={pictureAddress||"/default.png"} className='lg:w-[12%] lg:h-[55%] w-[17%] h-[40%] rounded-full mt-[20px]' />
 
             </div>
             {showReplies && (

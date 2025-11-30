@@ -139,7 +139,7 @@ const CourseStatusList1 = ({
         <div>{lastUpdate}</div>
         <div>{courseTitle}</div>
       </div>
-      <img className="w-8 h-8 rounded-full" src={imageAddress} />
+      <img className="w-8 h-8 rounded-full" src={imageAddress||"/default.png"} />
       <div className=" lg:w-[4%] rounded-full h-[35px]"></div>
     </div>
   );

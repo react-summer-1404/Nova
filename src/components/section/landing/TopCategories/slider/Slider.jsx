@@ -53,7 +53,6 @@ const Slider = () => {
 
 export default Slider;
 
-/* ------------------ کارت جدید HoverDevCards ولی داینامیک ------------------ */
 
 const TechCard = ({ item }) => {
   return (
@@ -64,14 +63,14 @@ const TechCard = ({ item }) => {
 
       {/* Big icon (background icon) */}
       <img
-        src={`/icons/${item.techName}.svg`}
+        src={`/icons/${item.techName}.svg`||"/public/default.png"}
         className="absolute z-10 -top-12 -right-12 w-32 opacity-20 group-hover:rotate-12 transition-transform duration-300"
         alt={item.techName}
       />
 
       {/* Main icon */}
       <img
-        src={`/icons/${item.techName}.svg`}
+        src={`/icons/${item.techName}.svg`||"/default.png"}
         className="mb-2 w-10 relative z-10 group-hover:brightness-200 transition-all duration-300"
         alt={item.techName}
       />

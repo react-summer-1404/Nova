@@ -21,7 +21,7 @@ const CourseComment = ({ teacherName, imageAddress}) => {
                         <h4 className='font-[500] text-[14px] sm:text-[18px] lg:text-[22px] text-[#1C1A4A]'>{teacherName}</h4>
                         <h2 className=' text-right font-[400] w-[70%] text-[6px] sm:text-[9px] lg:text-[14px]'>مهندس حسین نوری کادیجانی دارای مدرک کارشناسی مهندسی کامپیوتر – نرم‌افزار از دانشگاه تربیت دبیر شهید رجایی هستند. ایشان شش سال سابقه برنامه‌نویسی اندروید دارند و تاکنون برنامه‌های موفق و باکیفیتی را در مارکت‌های مطرح ایرانی منتشر کرده‌اند و پیوسته به دنبال یادگیری و کسب دانش بیشتر در این زمینه هستند.</h2>
                     </div>
-                    <img src={imageAddress} className='lg:w-[20%] sm:w-[75%] w-[70%] mr-[25px]' />
+                    <img src={imageAddress||"/default.png"} className='lg:w-[20%] sm:w-[75%] w-[70%] mr-[25px]' />
                 </div>
                 <p className='font-[600] text-[14px] sm:text-[18px] lg:text-[22px] mr-5'>نظر </p>
                 {data?.map(item =>

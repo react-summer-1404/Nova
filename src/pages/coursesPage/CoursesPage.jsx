@@ -17,9 +17,9 @@ import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
 import ModalSection from "../../components/ui/Modal/ModalSection";
 import { CiFilter } from "react-icons/ci";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 import { variantPages } from "../../configs/frameMorion/PagesVariants";
-import useCompare from "../../core/store/CmpareStore";
+// import useCompare from "../../core/store/CmpareStore";
 const CoursesPage = () => {
   const [isOpen, toggleOpen] = useToggle(false);
   const [searchParam, setSearchParam] = useSearchParams();
@@ -30,38 +30,54 @@ const CoursesPage = () => {
   const [rowsOfThePage] = useState(20);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
-  const { compareChosen, addCompareCourse, reset } = useCompare();
-const navigate = useNavigate();
- console.log("compareChosen",compareChosen)
+  // const { compareChosen, addCompareCourse, reset } = useCompare();
+  // const navigate = useNavigate();
+  // console.log("compareChosen", compareChosen);
   useEffect(() => {
-    handleChange("Query", debounceSearch || "");
-  }, [debounceSearch]);
-
-  useEffect(() => {
-   if (compareChosen.length==2) {
-    navigate("/");
-    reset()
-   }
-  }, [compareChosen,reset]);
+    if (debounceSearch !== paramsObject.Query) {
+      handleChange("Query", debounceSearch || "");
+    }
+  }, [debounceSearch, paramsObject.Query]);
+  
+  // useEffect(() => {
+  //   if (compareChosen.length == 2) {
+  //     navigate("/");
+  //     reset();
+  //   }
+  // }, [compareChosen, reset]);
 
   const handleChange = (key, value) => {
-    setSearchParam((prev) => {
-      const newParams = new URLSearchParams(prev); 
-      if (value && value.length!==0) {
-        newParams.set(key, value);
-      } else {
-        newParams.delete(key);
-      }
-      return newParams;  
-    }, { replace: true });
+    setSearchParam(
+      (prev) => {
+        const newParams = new URLSearchParams(prev);
+        if (value && value.length !== 0) {
+          newParams.set(key, value);
+        } else {
+          newParams.delete(key);
+        }
+        return newParams;
+      },
+      { replace: true }
+    );
   };
-  
+
   const apiParams = {
     ...paramsObject,
     TechCount: 1,
     PageNumber: pageNumber,
     RowsOfPage: rowsOfThePage,
   };
+  // Query
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["courses", apiParams],
+    queryFn: () => getCourses(apiParams),
+    refetchOnWindowFocus:false,
+  });
+  console.log("data", data);
+
+  const currentItems = data?.courseFilterDtos || [];
+  console.log("currentItems", currentItems);
+
   // mutation
   const queryKey = ["courses", apiParams];
 
@@ -131,22 +147,17 @@ const navigate = useNavigate();
     mutationFn: postAddToFavorite,
     onSuccess: () => {},
   });
-  // Query
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ["courses", apiParams],
-    queryFn: () => getCourses(apiParams),
-  });
-
-  const currentItems = data?.courseFilterDtos || [];
-
+  
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
       <NavigationSection title={"همه دوره ها"} />
-      <motion.div className="md:w-[97%] flex justify-between gap-5 flex-col-reverse md:flex-row md:items-stretch  items-center "
+      <motion.div
+        className="md:w-[97%] flex justify-between gap-5 flex-col-reverse md:flex-row md:items-stretch  items-center "
         variants={variantPages}
         initial="hidden"
         animate="visible"
-        exit="exit">
+        exit="exit"
+      >
         <div className="flex flex-col gap-5 items-end  w-full">
           <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%] md:mr-0 mr-9">
             <div className="flex gap-2 ">
@@ -196,7 +207,6 @@ const navigate = useNavigate();
                   likeMutation={likeMutation}
                   disLikeMutation={disLikeMutation}
                   addToFavoriteMutation={addToFavoriteMutation}
-                  
                 />
               ))}
           </div>
@@ -213,16 +223,20 @@ const navigate = useNavigate();
           </div>
           <div className="fixed z-50 right-4 bottom-8 md:hidden block">
             <ModalSection
-            Icon={<CiFilter size={40} color="white"/>}
+              Icon={<CiFilter size={40} color="white" />}
               content={
-              <div className="flex-center flex-col  gap-5">
+                <div className="flex-center flex-col  gap-5">
                   <FiltersPanel
-                  paramsObject={paramsObject}
-                  onChangeParams={handleChange}
-
-                />
-                <button onClick={()=>toggleOpen()} className="rounded-xl bg-dark-purple text-white w-1/2 h-[35px] cursor-pointer">اعمال فیلتر</button>
-              </div>
+                    paramsObject={paramsObject}
+                    onChangeParams={handleChange}
+                  />
+                  <button
+                    onClick={() => toggleOpen()}
+                    className="rounded-xl bg-dark-purple text-white w-1/2 h-[35px] cursor-pointer"
+                  >
+                    اعمال فیلتر
+                  </button>
+                </div>
               }
               StyleModal={" rounded-3xl w-[70px] h-[70px] bg-[#5751E1]"}
               isOpen={isOpen}
@@ -233,12 +247,12 @@ const navigate = useNavigate();
         </div>
       </motion.div>
       <div className="flex-center p-8">
-        <CustomPagination
+        {/* <CustomPagination
           pageNumber={pageNumber}
           setPageNumber={setPageNumber}
           RowsOfPage={rowsOfThePage}
           totalCount={data?.totalCount}
-        />
+        /> */}
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ const shortDate = detailItems?.insertDate.slice(0,10);
         </h2>
       </div>
       <img
-        src={detailItems?.currentImageAddress}
+        src={detailItems?.currentImageAddress||"/default.png"}
         className="w-[74px] h-[74px] rounded-sm"
       />
     </div></Link>

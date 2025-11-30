@@ -143,7 +143,7 @@ const ReserveInfo = ({
         <div>{courseTitle}</div>
       </div>
 
-      <img src={image} className="w-8 h-8 rounded-full" alt={courseTitle} />
+      <img src={image||"/default.png"} className="w-8 h-8 rounded-full" alt={courseTitle} />
       <div className="lg:w-[4%] rounded-full h-[35px]"></div>
     </div>
   );

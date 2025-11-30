@@ -7,7 +7,7 @@ import { BiDislike } from "react-icons/bi";
 const Card1 = ({title,insertDate,miniDescribe,currentImageAddress,currentView,currentDissLikeCount,currentLikeCount,newsCatregoryName}) => {
     return (
         <div className ='w-[75%] sm:h-[260px] h-[190px] bg-white md:w-[25%] lg:h-[375px] rounded-[10px] flex flex-col gap-1 md:gap-2 items-center justify-center'>
-            <img src={currentImageAddress} className ='w-[80%] object-cover rounded-[6px]'/> 
+            <img src={currentImageAddress||"/default.png"} className ='w-[80%] object-cover rounded-[6px]'/> 
             <p className ='text-navy font-[600] text-[9px] sm:text-[12px] lg:text-[16px]'> 
             {title}
             </p>
