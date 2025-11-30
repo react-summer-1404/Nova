@@ -27,7 +27,7 @@ const { data, isLoading } = useQuery({
   queryFn: () => getBlogsDetail(newsId),
   enabled: !!newsId,
 });
-console.log("data",data);
+// console.log("data",data);
 
 const mutationFavoriteNewsDelete = useMutation({
   mutationFn: (id) => deleteAddToFavoriteNews(id),

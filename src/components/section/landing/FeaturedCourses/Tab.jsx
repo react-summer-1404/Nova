@@ -25,7 +25,7 @@ const Tabs = ({pointTab,setPointTab}) => {
           )}
         </div>
 
-        {data?.map((tab) => (
+        {data?.slice(0,4)?.map((tab) => (
           <div
             key={tab.id}
             className="flex flex-col items-center cursor-pointer relative"

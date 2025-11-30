@@ -26,7 +26,7 @@ const FeaturedCourses = () => {
       : topCourseData.filter((tc) => tc.technologyList?.includes(pointTab));
 
   const swiperRef = useRef(null);
-
+console.log(topCourseData)
   return (
     <div
       style={{ background: "var(--gradient-main)" }}

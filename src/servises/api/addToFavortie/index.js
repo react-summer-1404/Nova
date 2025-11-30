@@ -10,7 +10,7 @@ export const postAddToFavorite = async (courseId) => {
 export const deleteAddToFavorite = async (CourseFavoriteId) => {
   const formData = new FormData();
   formData.append("CourseFavoriteId", CourseFavoriteId);
-
+console.log(formData)
   const response = await instance.delete("/Course/DeleteCourseFavorite", {
     data: formData,
     headers: {
