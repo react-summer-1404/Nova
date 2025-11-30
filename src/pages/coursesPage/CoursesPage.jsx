@@ -27,7 +27,7 @@ const CoursesPage = () => {
   const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfThePage] = useState(20);
+  const [rowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
   // const { compareChosen, addCompareCourse, reset } = useCompare();
@@ -71,9 +71,8 @@ const CoursesPage = () => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", apiParams],
     queryFn: () => getCourses(apiParams),
-    refetchOnWindowFocus:false,
+    staleTime:5*1000*60
   });
-  console.log("data", data);
 
   const currentItems = data?.courseFilterDtos || [];
   console.log("currentItems", currentItems);
@@ -247,12 +246,12 @@ const CoursesPage = () => {
         </div>
       </motion.div>
       <div className="flex-center p-8">
-        {/* <CustomPagination
+        <CustomPagination
           pageNumber={pageNumber}
           setPageNumber={setPageNumber}
           RowsOfPage={rowsOfThePage}
           totalCount={data?.totalCount}
-        /> */}
+        />
       </div>
     </div>
   );
