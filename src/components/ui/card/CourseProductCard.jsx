@@ -83,7 +83,7 @@ const CourseProductCard = ({
   };
 
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
-
+// console.log(product.technologyList)
   return (
     <motion.div
       ref={ref}
@@ -156,12 +156,14 @@ const CourseProductCard = ({
           </Link>
 
           <div className="flex items-center gap-2 whitespace-nowrap  justify-between ">
-            <div className="flex gap-2">
+            <div className="flex gap-2 ">
               {product.technologyList && (
-                <Tag
+                <div className="w-[100px] truncate">
+                  <Tag
                   bgColor={"var(--color-soft-gray)"}
                   title={product.technologyList}
                 />
+                </div>
               )}
               <Tag
                 bgColor={"var(--color-soft-gray)"}
@@ -261,7 +263,7 @@ const CourseProductCard = ({
 
           <span
             style={{ color: "var(--color-dark-purple)" }}
-            className="font-bold text-xl"
+            className="font-bold text-lg whitespace-nowrap"
           >
             {`${product.cost} هزار تومان`}
           </span>
