@@ -14,7 +14,11 @@ import {
   postNewsLike,
 } from "../../../servises/api/news/newsLikeAndDislike";
 import toast from "react-hot-toast";
+import StarRate from "../../ui/StarRate/StarRate";
+
+
 const LikeAndDislike = ({ newsId, isLiked, isDisliked }) => {
+
   const queryClient = useQueryClient();
   const newsLikeMutation = useMutation({
     mutationFn: postNewsLike,
@@ -38,10 +42,14 @@ const LikeAndDislike = ({ newsId, isLiked, isDisliked }) => {
       queryClient.invalidateQueries(["newsDetail"]);
     },
   });
-
+  
   return (
-    <div className="flex gap-7 border-b-1 border-border-gray justify-end py-[25px]">
-      <div className="flex gap-3">
+    <>
+    <div className="flex gap-7 border-b-1 border-border-gray justify-between py-[25px]">
+  <StarRate newsId={newsId} />
+
+     <div className="flex gap-4 items-center">
+     <div className="flex gap-3 ">
         <Tag
           icon={
             isLiked ? (
@@ -76,7 +84,10 @@ const LikeAndDislike = ({ newsId, isLiked, isDisliked }) => {
         />
       </div>
       <h2 className="font-semibold sm:text-lg">ایا از این مقاله راضی بودید؟</h2>
+     </div>
     </div>
+
+    </>
   );
 };
 

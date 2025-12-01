@@ -62,21 +62,28 @@ const BlogDetailPage = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.7, duration: 0.3 }}
         >
-          {/* <InfoCard title={"اخبار مرتبط"}> */}
-          
-            {currentNews?.length > 0 ? (
-              currentNews?.map((related) => (
-                <RelatesNews
-                  key={`${related.id} - ${related.title}`}
-                  detailItems={related}
-                  id={related.id}
-                />
-              ))
-            ) : (
-              <p>خبر مرتبطی وجود ندارد</p>
-            )}
+          <div
+            style={{ backgroundColor: "var(--color-light-gray)" }}
+            className="lg:w-[310px]  rounded-[10px] p-[30px]"
+          >
+            <div className="w-full flex flex-col items-end gap-4 ">
+              <h2 className="font-semibold text-xl">اخبار مرتبط</h2>
 
-          {/* </InfoCard> */}
+              <div className="transition-all duration-500 overflow-hidden w-[90%] max-h-[500px]">
+                {currentNews?.length > 0 ? (
+                  currentNews?.map((related) => (
+                    <RelatesNews
+                      key={`${related.id} - ${related.title}`}
+                      detailItems={related}
+                      id={related.id}
+                    />
+                  ))
+                ) : (
+                  <p>خبر مرتبطی وجود ندارد</p>
+                )}
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>
