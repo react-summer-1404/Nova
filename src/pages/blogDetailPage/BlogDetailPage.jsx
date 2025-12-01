@@ -39,7 +39,7 @@ const BlogDetailPage = () => {
          initial="hidden"
          animate="visible">
           <img
-            src={detailItems?.currentImageAddress}
+            src={detailItems?.currentImageAddress||"/default.png"}
             className="w-full lg:h-[450px] md:h-[300px] rounded-[10px]"
           />
           <GeneralInfo detailItems={detailItems} />
