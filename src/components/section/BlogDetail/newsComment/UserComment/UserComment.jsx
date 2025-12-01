@@ -28,7 +28,7 @@ const UserComment = ({
   const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
 
   const queryClient = useQueryClient();
-  
+
   const likeMutation = useMutation({
     mutationFn: () => postNewsCommentLike(id),
     onError: (error) => {
@@ -93,7 +93,6 @@ const UserComment = ({
                       <BiDislike size={"20px"} />
                     )
                   }
-                  // onClick={()=>disLikeMutation.mutate(CourseCommandId)}
 
                   title={disslikeCount}
                 />
