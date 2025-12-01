@@ -10,7 +10,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import toast from "react-hot-toast";
-import { postNewsDisLike, postNewsLike } from "../../../../../../servises/api/news/newsLikeAndDislike";
+import { deleteNewsLike, postNewsDisLike, postNewsLike } from "../../../../../../servises/api/news/newsLikeAndDislike";
 const BlogCardFooter = ({
   currentLikeCount,
   currentDissLikeCount,
@@ -18,6 +18,7 @@ const BlogCardFooter = ({
   id,
   isLiked,
   isDisLiked,
+  likeId
 }) => {
   const queryClient = useQueryClient();
   const newsLikeMutation = useMutation({
@@ -42,6 +43,18 @@ const BlogCardFooter = ({
       toast.success("دیسلایک شد");
     },
   });
+  const newsDeleteLikeMutation = useMutation({
+    mutationFn: deleteNewsLike,
+    onError: (error) => {
+      console.log("error", error);
+      const msg= error?.response?.data?.message
+      toast.error(msg);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["newsDetail"]);
+      toast.success("لایک حذف شد");
+    },
+  });
   return (
     <div className="w-[64%] sm:w-full flex justify-between items-center text-[10px] sm:text-[16px] py-2">
       <div className=" flex justify-between items-center gap-1">
@@ -55,7 +68,7 @@ const BlogCardFooter = ({
           }
           number={currentLikeCount}
           onclick={() => {
-            newsLikeMutation.mutate(id);
+            isLiked? newsDeleteLikeMutation.mutate(likeId):newsLikeMutation.mutate(id)
           }}
         />
         <SocialButton

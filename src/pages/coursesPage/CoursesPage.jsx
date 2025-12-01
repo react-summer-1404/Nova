@@ -111,9 +111,11 @@ const CoursesPage = () => {
     onError: (error, _courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
       console.log(error);
+      toast.error("خطایی رخ داد")
     },
-    onSettled: () => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
+      toast.success("لایک شد")
     },
   });
 
@@ -141,9 +143,11 @@ const CoursesPage = () => {
     },
     onError: (error, courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
+      toast.error("خطایی رخ  داد")
     },
-    onSettled: () => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
+      toast.success("دیسلایک شد")
     },
   });
   const mutationDeleteLike = useMutation({
