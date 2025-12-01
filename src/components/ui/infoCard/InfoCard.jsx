@@ -1,7 +1,6 @@
 import useToggle from "../../../hooks/useToggle";
 import {Accordion, AccordionItem} from "@heroui/accordion";
-const InfoCard = ({ title, children, showMoreButton = false }) => {
-  const [isExpanded, setIsExpanded] = useToggle(false);
+const InfoCard = ({ title, children}) => {
 
   return (
     <Accordion className="lg:w-[310px]  rounded-[10px] p-[20px] bg-light-gray">
