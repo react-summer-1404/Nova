@@ -9,8 +9,9 @@ const container = {
     opacity: 1,
     transition: {
       staggerChildren:0.5,
-      delayChildren: 0.1,
+      delayChildren: 1,
     },
+  
   },
 };
 
