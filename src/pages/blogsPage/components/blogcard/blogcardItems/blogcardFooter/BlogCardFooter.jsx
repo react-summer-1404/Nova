@@ -36,7 +36,8 @@ const BlogCardFooter = ({
     mutationFn: postNewsDisLike,
     onError: (error) => {
       console.log("error", error);
-      toast.error("دیسلایک نشد");
+      const msg = error?.response?.data?.message
+      toast.error(msg)
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["newsDetail"]);
@@ -44,7 +45,7 @@ const BlogCardFooter = ({
     },
   });
   const newsDeleteLikeMutation = useMutation({
-    mutationFn: deleteNewsLike,
+    mutationFn:(likeId)=>deleteNewsLike(likeId),
     onError: (error) => {
       console.log("error", error);
       const msg= error?.response?.data?.message
