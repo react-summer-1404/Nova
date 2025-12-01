@@ -13,12 +13,17 @@ import { getCourses } from "../../servises/api/courses/coursList";
 import { Spinner } from "@heroui/react";
 import { useDebounce } from "use-debounce";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
+import {
+  deleteLike,
+  postDisLike,
+  postLike,
+} from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
 import ModalSection from "../../components/ui/Modal/ModalSection";
 import { CiFilter } from "react-icons/ci";
 import { motion } from "framer-motion";
 import { variantPages } from "../../configs/frameMorion/PagesVariants";
+import toast from "react-hot-toast";
 // import useCompare from "../../core/store/CmpareStore";
 const CoursesPage = () => {
   const [isOpen, toggleOpen] = useToggle(false);
@@ -38,7 +43,7 @@ const CoursesPage = () => {
       handleChange("Query", debounceSearch || "");
     }
   }, [debounceSearch, paramsObject.Query]);
-  
+
   // useEffect(() => {
   //   if (compareChosen.length == 2) {
   //     navigate("/");
@@ -71,7 +76,7 @@ const CoursesPage = () => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", apiParams],
     queryFn: () => getCourses(apiParams),
-    staleTime:5*1000*60
+    staleTime: 5 * 1000 * 60,
   });
 
   const currentItems = data?.courseFilterDtos || [];
@@ -141,11 +146,23 @@ const CoursesPage = () => {
       queryClient.invalidateQueries({ queryKey });
     },
   });
-
+  const mutationDeleteLike = useMutation({
+    mutationFn: (courseLikeId) => deleteLike(courseLikeId),
+    onSuccess: () => {
+      toast.success("لایک حذف شد");
+      queryClient.invalidateQueries({ queryKey });
+    },
+    onError: (error) => {
+      const msg = error?.response?.data?.message || "خطایی رخ داد";
+      toast.error(msg);
+    },
+  });
+  
   const addToFavoriteMutation = useMutation({
     mutationFn: postAddToFavorite,
-    onSuccess: () => {},
+    onSuccess: () => {toast.success("به علاقه مندی ها اضافه شد")},
   });
+  
   
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
@@ -206,6 +223,7 @@ const CoursesPage = () => {
                   likeMutation={likeMutation}
                   disLikeMutation={disLikeMutation}
                   addToFavoriteMutation={addToFavoriteMutation}
+                  mutationDeleteLike={mutationDeleteLike}
                 />
               ))}
           </div>
