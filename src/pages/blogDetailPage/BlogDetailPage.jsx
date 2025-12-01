@@ -11,10 +11,10 @@ import RelatesNews from "../../components/section/BlogDetail/RelatesNews";
 import { useParams } from "react-router-dom";
 import NewsComment from "../../components/section/BlogDetail/newsComment/NewsComment";
 import { variantPages } from "../../configs/frameMorion/PagesVariants";
-import{motion}from "framer-motion"
+import { motion } from "framer-motion";
 
 const BlogDetailPage = () => {
-  const {newsId} = useParams();
+  const { newsId } = useParams();
   const { data } = useQuery({
     queryKey: ["newsDetail", newsId],
     queryFn: () => getBlogsDetail(newsId),
@@ -34,35 +34,50 @@ const BlogDetailPage = () => {
     <div className="flex-center w-screen  flex-col  gap-[100px] ">
       <NavigationSection title={detailItems?.title} />
       <div className="flex w-[90%] justify-center gap-8">
-        <motion.div className="flex flex-col w-4/5 gap-5 "
-         variants={variantPages}
-         initial="hidden"
-         animate="visible">
+        <motion.div
+          className="flex flex-col w-4/5 gap-5 "
+          variants={variantPages}
+          initial="hidden"
+          animate="visible"
+        >
           <img
             src={detailItems?.currentImageAddress}
             className="w-full lg:h-[450px] md:h-[300px] rounded-[10px]"
           />
           <GeneralInfo detailItems={detailItems} />
           <MainInfo detailItems={detailItems} />
-          <LikeAndDislike newsId={detailItems?.id} isLiked={detailItems?.currentUserIsLike} isDisliked={detailItems?.currentUserIsDissLike}/>
+          <LikeAndDislike
+            newsId={detailItems?.id}
+            isLiked={detailItems?.currentUserIsLike}
+            isDisliked={detailItems?.currentUserIsDissLike}
+          />
 
           <div>
-            <NewsComment newsId={newsId}/>
+            <NewsComment newsId={newsId} />
           </div>
         </motion.div>
-        <motion.div className="lg:flex flex-col gap-4 hidden"
-         initial={{opacity:0,
-          x:100,}}
-         animate={{opacity:1,x:0}}
-         transition={{delay:0.7 ,duration:0.3}}
+        <motion.div
+          className="lg:flex flex-col gap-4 hidden"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.7, duration: 0.3 }}
         >
-        <InfoCard title={"اخبار مرتبط"}>
-          {currentNews?.length>0?(currentNews?.map((related) => (
-            <RelatesNews key={`${related.id} - ${related.title}`} detailItems={related} id={related.id} />
-          ))):(<p>خبر مرتبطی وجود ندارد</p>)}
-        </InfoCard>
+          {/* <InfoCard title={"اخبار مرتبط"}> */}
+          
+            {currentNews?.length > 0 ? (
+              currentNews?.map((related) => (
+                <RelatesNews
+                  key={`${related.id} - ${related.title}`}
+                  detailItems={related}
+                  id={related.id}
+                />
+              ))
+            ) : (
+              <p>خبر مرتبطی وجود ندارد</p>
+            )}
+
+          {/* </InfoCard> */}
         </motion.div>
-       
       </div>
     </div>
   );
