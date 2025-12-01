@@ -1,6 +1,7 @@
 import React from 'react'
 import { IoIosArrowDown } from "react-icons/io";
 import { FaChevronLeft } from "react-icons/fa6";
+import AccardionComponent from '../../../ui/AccardionComponent/AccardionComponent';
 const FAQSection = () => {
   return (
     <div style={{backgroundColor : "var(--color-light-gray)"}} className ='w-screen h-[350px] sm:h-[500px] lg:h-[750px] flex items-center justify-center'>      
@@ -28,7 +29,7 @@ const FAQSection = () => {
         {/* <div className ='text-text-gray md:w-[57%] w-[70%] border-b-[1px] border-b-[#B2BBCC] h-[30px] sm:h-[40px] lg:h-[45px] font-[500] text-[10px] sm:text-[12px] lg:text-[14px] pt-1.5 flex flex-row-reverse md:flex md:flex-row-reverse justify-between'>آیا برای دوره خود مقرون به صرفه هستید؟
           <FaChevronLeft  className ='sm:size-3 mt-[5px]'/>
         </div> */}
-        
+        <AccardionComponent/>
       </div>
       <div className ='hidden md:block w-2/4 h-[450px]'>
         <img src="src/assets/images/div.faq__img.png" className ='h-[450px] ml-[40px] md:ml-[68px]'/>
