@@ -11,7 +11,7 @@ import { PostCommentLike } from '../../../../../servises/api/coursesDetail/PostC
 import { PostCommentDisLike } from '../../../../../servises/api/coursesDetail/PostCommentDisLike';
 import toast from 'react-hot-toast';
 
-const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, pictureAddress, describe, title, id, }) => {
+const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, CourseId, pictureAddress, describe, title, id, }) => {
     const [showReplies, setShowReplies] = useState(false);
     
     const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
@@ -23,7 +23,7 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
             console.error(error)
         },
         onSuccess : () => {
-            queryClient.invalidateQueries(["comment"]);
+            queryClient.invalidateQueries(["comment"], CourseId);
             toast.success("کامنت لایک شد")
         },       
     })
@@ -33,7 +33,7 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
             console.error(error)
         },
         onSuccess : () => {
-            queryClient.invalidateQueries(["comment"]);
+            queryClient.invalidateQueries(["comment"], CourseId);
             toast.success("کامنت دیسلایک شد")
         },       
     })
@@ -100,7 +100,7 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                                 content={
                                     <div className ="flex flex-col justify-between items-center h-[300px] bg-[#F7F7FA] px-8">
                                         <PostReply
-                                            parentCommentId = {id}
+                                            CourseCommandId = {id} CourseId = {CourseId} onSuccess={toggleModal}
                                         />
                                     </div>
                                 }

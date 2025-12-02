@@ -2,7 +2,7 @@ import React from 'react'
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
 import { BiDislike } from "react-icons/bi";
-
+ 
 
 const Card1 = ({title,insertDate,miniDescribe,currentImageAddress,currentView,currentDissLikeCount,currentLikeCount,newsCatregoryName}) => {
     return (

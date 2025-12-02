@@ -8,7 +8,8 @@ const CourseComment = ({ teacherName, imageAddress}) => {
     const { id } = useParams();
     const { data } = useQuery({
         queryKey: ['comment', id],
-        queryFn:getCourseDetailComment,
+        queryFn:() => 
+            getCourseDetailComment(id),
     });
     console.log("داده", id)
     
@@ -36,11 +37,9 @@ const CourseComment = ({ teacherName, imageAddress}) => {
                         pictureAddress={item.pictureAddress}
                         id={item.id}
                         CourseId={id}
-                        CourseCommandId={item.CourseCommandId}
+                        CourseCommandId={item.id}
                     />
                 )}
-                
-
                 <div className=' w-full h-[270px] md:h-[390px] bg-[#F7F7FA] rounded-[10px] flex justify-center items-center'>
                     <CommentForm/>
                 </div>
