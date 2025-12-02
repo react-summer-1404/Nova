@@ -5,7 +5,7 @@ import { convertSlugToTitle } from "../../../core/services/slugService";
 export default function BreadcrumbCustom() {
   const location = useLocation();
   const pathName = location.pathname.split("/").filter((x) => x);
-  console.log(location)
+  // console.log(location)
 
   return (
     <Breadcrumbs>

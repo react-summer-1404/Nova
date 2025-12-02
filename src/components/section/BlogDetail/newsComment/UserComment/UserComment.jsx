@@ -5,10 +5,11 @@ import Tag from "../../../../ui/Tag/Tag";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import ModalSection from "../../../../ui/Modal/ModalSection";
 import PostReply from "./PostReply";
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import useToggle from "../../../../../hooks/useToggle";
 import { postNewsCommentLike } from "../../../../../servises/api/blogComments/Like And DisLike";
+import { motion } from "framer-motion";
 
 const UserComment = ({
   insertDate,
@@ -20,23 +21,24 @@ const UserComment = ({
   title,
   newsId,
   id,
+  userId
 }) => {
   const [showReplies, setShowReplies] = useState(false);
 
   const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
 
   const queryClient = useQueryClient();
+
   const likeMutation = useMutation({
-      mutationFn :()=> postNewsCommentLike(id),
-      onError : (error) => {
-          console.error(error)
-      },
-      onSuccess : () => {
-          queryClient.invalidateQueries(["newsComment"]);
-          toast.success("کامنت لایک شد")
-      },
-  })
- 
+    mutationFn: () => postNewsCommentLike(id),
+    onError: (error) => {
+      console.error(error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["newsComment"]);
+      toast.success("کامنت لایک شد");
+    },
+  });
 
   const toggleReplies = async () => {
     setShowReplies((prev) => !prev);
@@ -44,7 +46,12 @@ const UserComment = ({
 
   return (
     <>
-      <div className="w-full border-t-1 border-[#E8E8E8] h-[120px] lg:h-[140px] flex gap-4">
+      <motion.div
+        className="w-full border-t-1 border-[#E8E8E8] h-[120px] lg:h-[140px] flex gap-4"
+        initial={{ opacity: 0.5, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
         <div className="flex w-full flex-col items-end mt-[10px] lg:mt-[8px] gap-1 lg:gap-2">
           <div className="w-full flex justify-between">
             <h1 className=" text-right font-[400] text-[9px] md:text-[12px] text-[#6D6C80]">
@@ -70,8 +77,10 @@ const UserComment = ({
                       <AiOutlineLike size={"20px"} />
                     )
                   }
-                  onClick={()=>{likeMutation.mutate(id)
-                      console.log("like CourseCommandId:", id)}}
+                  onClick={() => {
+                    likeMutation.mutate(id);
+                    console.log("like CourseCommandId:", id);
+                  }}
                   title={likeCount}
                 />
               </div>
@@ -84,7 +93,6 @@ const UserComment = ({
                       <BiDislike size={"20px"} />
                     )
                   }
-                  // onClick={()=>disLikeMutation.mutate(CourseCommandId)}
 
                   title={disslikeCount}
                 />
@@ -107,7 +115,7 @@ const UserComment = ({
                 size="3xl"
                 content={
                   <div className="flex flex-col justify-between items-center h-[300px] bg-[#F7F7FA] px-8">
-                    <PostReply newsId={newsId} parentId={id} />
+                    <PostReply newsId={newsId} parentId={id} userId={userId} />
                   </div>
                 }
                 ButtonText={
@@ -119,7 +127,7 @@ const UserComment = ({
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       {showReplies && <GetReply parentCommentId={id} newsId={newsId} />}
     </>
   );

@@ -13,12 +13,17 @@ import { getCourses } from "../../servises/api/courses/coursList";
 import { Spinner } from "@heroui/react";
 import { useDebounce } from "use-debounce";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
+import {
+  deleteLike,
+  postDisLike,
+  postLike,
+} from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
 import ModalSection from "../../components/ui/Modal/ModalSection";
 import { CiFilter } from "react-icons/ci";
 import { motion } from "framer-motion";
 import { variantPages } from "../../configs/frameMorion/PagesVariants";
+import toast from "react-hot-toast";
 // import useCompare from "../../core/store/CmpareStore";
 const CoursesPage = () => {
   const [isOpen, toggleOpen] = useToggle(false);
@@ -27,7 +32,7 @@ const CoursesPage = () => {
   const queryClient = useQueryClient();
   const [isCol, setIsCol] = useToggle(false);
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfThePage] = useState(20);
+  const [rowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
   // const { compareChosen, addCompareCourse, reset } = useCompare();
@@ -38,7 +43,7 @@ const CoursesPage = () => {
       handleChange("Query", debounceSearch || "");
     }
   }, [debounceSearch, paramsObject.Query]);
-  
+
   // useEffect(() => {
   //   if (compareChosen.length == 2) {
   //     navigate("/");
@@ -71,9 +76,8 @@ const CoursesPage = () => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["courses", apiParams],
     queryFn: () => getCourses(apiParams),
-    refetchOnWindowFocus:false,
+    staleTime: 5 * 1000 * 60,
   });
-  console.log("data", data);
 
   const currentItems = data?.courseFilterDtos || [];
   console.log("currentItems", currentItems);
@@ -107,9 +111,11 @@ const CoursesPage = () => {
     onError: (error, _courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
       console.log(error);
+      toast.error("خطایی رخ داد")
     },
-    onSettled: () => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
+      toast.success("لایک شد")
     },
   });
 
@@ -137,16 +143,30 @@ const CoursesPage = () => {
     },
     onError: (error, courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
+      toast.error("خطایی رخ  داد")
     },
-    onSettled: () => {
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey });
+      toast.success("دیسلایک شد")
+    },
+  });
+  const mutationDeleteLike = useMutation({
+    mutationFn: (courseLikeId) => deleteLike(courseLikeId),
+    onSuccess: () => {
+      toast.success("لایک حذف شد");
       queryClient.invalidateQueries({ queryKey });
     },
+    onError: (error) => {
+      const msg = error?.response?.data?.message || "خطایی رخ داد";
+      toast.error(msg);
+    },
   });
-
+  
   const addToFavoriteMutation = useMutation({
     mutationFn: postAddToFavorite,
-    onSuccess: () => {},
+    onSuccess: () => {toast.success("به علاقه مندی ها اضافه شد")},
   });
+  
   
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
@@ -207,6 +227,7 @@ const CoursesPage = () => {
                   likeMutation={likeMutation}
                   disLikeMutation={disLikeMutation}
                   addToFavoriteMutation={addToFavoriteMutation}
+                  mutationDeleteLike={mutationDeleteLike}
                 />
               ))}
           </div>
@@ -247,12 +268,12 @@ const CoursesPage = () => {
         </div>
       </motion.div>
       <div className="flex-center p-8">
-        {/* <CustomPagination
+        <CustomPagination
           pageNumber={pageNumber}
           setPageNumber={setPageNumber}
           RowsOfPage={rowsOfThePage}
           totalCount={data?.totalCount}
-        /> */}
+        />
       </div>
     </div>
   );

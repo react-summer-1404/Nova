@@ -20,7 +20,7 @@ const BlogCard = ({ blogData }) => {
         <BlogcardMainContent
           title={blogData.title}
           miniDescribe={blogData.miniDescribe}
-          img={blogData.addUserProfileImage}
+          img={blogData.addUserProfileImage||"/default.png"}
           label={blogData.newsCatregoryName}
           date={blogData.updateDate}
           id={blogData.id}
@@ -36,6 +36,7 @@ const BlogCard = ({ blogData }) => {
           currentDissLikeCount={blogData.currentDissLikeCount}
           currentView={blogData.currentView}
           id={blogData.id}
+          likeId={blogData.likeId}
           isLiked={blogData.currentUserIsLike}
           isDisLiked={blogData.currentUserIsDissLike}
         />

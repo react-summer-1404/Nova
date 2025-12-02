@@ -12,3 +12,11 @@ export const postNewsDisLike = async (newsId) => {
   );
   return response.data;
 };
+export const deleteNewsLike = async (deleteEntityId) => {
+  const response = await instance.delete(
+    "/News/DeleteLikeNews",{
+      data: { deleteEntityId }
+    }
+  );
+  return response.data;
+};

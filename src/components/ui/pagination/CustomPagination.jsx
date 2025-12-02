@@ -7,20 +7,17 @@ export default function CustomPagination({
   totalCount,
   RowsOfPage,
 }) {
-  const totalPagination = Math.max(1,Math.ceil(totalCount / RowsOfPage)||1)
- 
-  useEffect(() => {
-    setPageNumber(totalCount/RowsOfPage);
-  console.log("pageNumber",pageNumber)
+  const totalPagination = Math.max(1, Math.ceil(totalCount / RowsOfPage) || 1);
 
-  }, [pageNumber]);
   return (
     <Pagination
       className="mt-16"
       showControls
       radius="full"
       initialPage={pageNumber}
-      onChange={setPageNumber}
+      onChange={(numberOfThePage) => {   
+        setPageNumber(numberOfThePage);
+      }}
       total={totalPagination}
     />
   );

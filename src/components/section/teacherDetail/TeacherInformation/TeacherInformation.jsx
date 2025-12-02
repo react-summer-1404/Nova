@@ -15,7 +15,7 @@ const TeacherInformation = ({teacherDetail}) => {
       <motion.h2 className="font-semibold text-2xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1 ,delay:0.3 }}
       >{teacherDetail?.fullName}</motion.h2>
       <h3>لاراول پرو خبره</h3>
         <div className="flex gap-2 items-center text-responsive">

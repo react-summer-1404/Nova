@@ -3,7 +3,7 @@ import React from "react";
 import * as Yup from "yup";
 import { FaArrowLeft } from "react-icons/fa";
 import toast from "react-hot-toast";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import FormGroup from "../../../CourseDetail/CourseComment/component/FormGroup";
 import { postNewsComment } from "../../../../../servises/api/blogComments/comment";
 import YellowButton from "../../../../ui/button/YellowButton";
@@ -19,14 +19,16 @@ const initialData = {
 };
 
 const NewsForm = ({ initialValues = initialData, newsId }) => {
-  // console.log("url newsId: ", newsId);
   const token = localStorage.getItem("token");
+  const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
     mutationFn: postNewsComment,
     onSuccess: (data) => {
       if (data.success) {
-        toast.success("نظر با موفقیت ثبت شد در انتظار تایید مدیران ...");
+        toast.success("نظر با موفقیت ثبت شد");
+        queryClient.invalidateQueries(["newsComment"]);
+
       } else {
         toast.error("ارسال نظر با خطا مواجه شد");
       }

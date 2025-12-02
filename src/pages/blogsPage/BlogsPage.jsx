@@ -14,13 +14,13 @@ const BlogsPage = () => {
   const [searchParam, setSearchParam] = useSearchParams();
   const paramItems = Object.fromEntries(searchParam.entries());
   const [pageNumber, setPageNumber] = useState(1);
-  const [rowsOfthePage, setRowsOfthePage] = useState(12);
+  const [rowsOfThePage] = useState(12);
   const [searchInput, setSearchInput] = useState(paramItems.Query || "");
   const [searchDelay] = useDebounce(searchInput, 500);
 
   const apiParams = {
     ...paramItems,
-    RowsOfPage: rowsOfthePage,
+    RowsOfPage: rowsOfThePage,
     PageNumber: pageNumber,
   };
 
@@ -46,11 +46,11 @@ const BlogsPage = () => {
   };
 
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["blogs", paramItems],
+    queryKey: ["blogs", apiParams],
     queryFn: () => getBlogs(apiParams),
   });
   const currentItems = data?.news;
-  console.log("currentItems", currentItems);
+  // console.log("currentItems", currentItems);
   return (
     <div
       className="w-screen flex flex-col justify-center items-center gap-8 p-5">
@@ -83,7 +83,7 @@ const BlogsPage = () => {
           <CustomPagination
             pageNumber={pageNumber}
             setPageNumber={setPageNumber}
-            RowsOfPage={rowsOfthePage}
+            RowsOfPage={rowsOfThePage}
             totalCount={data?.totalCount}
           />
         </div>

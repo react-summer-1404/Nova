@@ -12,3 +12,16 @@ export const postDisLike = async (courseId) => {
   );
   return response.data;
 };
+export const deleteLike = async (courseLikeId) => {
+  const formData = new FormData();
+  formData.append("CourseLikeId", courseLikeId);
+
+  const response = await instance.delete("/Course/DeleteCourseLike", {
+    data: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+  return response.data;
+};

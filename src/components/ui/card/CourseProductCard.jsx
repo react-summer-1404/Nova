@@ -12,7 +12,12 @@ import useFavorite from "../../../core/store/favoriteStore";
 import useCompare from "../../../core/store/CmpareStore";
 import { MdStar } from "react-icons/md";
 import { useRef } from "react";
-import { useMotionTemplate, useMotionValue, useMotionValueEvent, useSpring } from "framer-motion";
+import {
+  useMotionTemplate,
+  useMotionValue,
+  useMotionValueEvent,
+  useSpring,
+} from "framer-motion";
 import { motion } from "framer-motion";
 
 const ROTATION_RANGE = 32.5;
@@ -23,9 +28,9 @@ const CourseProductCard = ({
   likeMutation,
   disLikeMutation,
   addToFavoriteMutation,
+  mutationDeleteLike,
 }) => {
-
-const ref = useRef(null);
+  const ref = useRef(null);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -62,38 +67,47 @@ const ref = useRef(null);
   const { compareChosen, addCompareCourse, resetCompare } = useCompare();
 
   // --- Handle Mutations ---
-  const handleLike = () => likeMutation.mutate(product.courseId);
   const handleDisLike = () => disLikeMutation.mutate(product.courseId);
 
   const handleAddToFavorite = () => {
     addFavorite(product.courseId);
     addToFavoriteMutation.mutate(product.courseId);
   };
+  const handleLikeClick = () => {
+    if (product.userIsLiked) {
+      if (!product.userLikedId) return; 
+      mutationDeleteLike.mutate(product.userLikedId?.id);
+    } else {
+      likeMutation.mutate(product.courseId);
+    }
+  };
 
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
-
+// console.log(product.technologyList)
   return (
     <motion.div
-    ref={ref}
-  onMouseMove={handleMouseMove}
-  onMouseLeave={handleMouseLeave}
-
-  style={{
-    transformStyle: "preserve-3d",
-    transform,
-    border: "1px solid var(--color-border-gray)",
-    direction: "rtl",
-  }}
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transformStyle: "preserve-3d",
+        transform,
+        border: "1px solid var(--color-border-gray)",
+        direction: "rtl",
+      }}
       className={`flex p-5 rounded-[10px] gap-6 bg-white ${
         isCol ? "w-[98%] h-[310px]" : "w-[300px] h-[480px] flex-col"
       }`}
     >
-      <div className={`${isCol ? "flex flex-col gap-5" : "relative"}`}  style={{
+      <div
+        className={`${isCol ? "flex flex-col gap-5" : "relative"}`}
+        style={{
           transform: "translateZ(75px)",
           transformStyle: "preserve-3d",
-        }}>
+        }}
+      >
         <img
-          src={product.imageAddress||"/default.png"}
+          src={product.imageAddress || "/default.png"}
           alt={product.title}
           className="w-[300px] h-[190px] rounded-[8px] shadow-[0px_5px_20px_0px_#00000040]"
         />
@@ -142,12 +156,14 @@ const ref = useRef(null);
           </Link>
 
           <div className="flex items-center gap-2 whitespace-nowrap  justify-between ">
-            <div className="flex gap-2">
+            <div className="flex gap-2 ">
               {product.technologyList && (
-                <Tag
+                <div className="w-[100px] truncate">
+                  <Tag
                   bgColor={"var(--color-soft-gray)"}
                   title={product.technologyList}
                 />
+                </div>
               )}
               <Tag
                 bgColor={"var(--color-soft-gray)"}
@@ -155,8 +171,8 @@ const ref = useRef(null);
               />
             </div>
             <div className="flex gap-1 ">
-              <span>{String(product.courseRate?.avg)?.slice(0,4)}</span>
-              <MdStar className="text-golden-yellow" size={18}/>
+              <span>{String(product.courseRate?.avg)?.slice(0, 4)}</span>
+              <MdStar className="text-golden-yellow" size={18} />
             </div>
           </div>
 
@@ -216,8 +232,9 @@ const ref = useRef(null);
                   textColor={"#5F5F66"}
                   width={"65px"}
                   height={"34px"}
-                  onClick={handleLike}
+                  onClick={handleLikeClick} // ← تابع wrapper
                 />
+
                 <Tag
                   icon={
                     product.currentUserDissLike ? (
@@ -246,7 +263,7 @@ const ref = useRef(null);
 
           <span
             style={{ color: "var(--color-dark-purple)" }}
-            className="font-bold text-xl"
+            className="font-bold text-lg whitespace-nowrap"
           >
             {`${product.cost} هزار تومان`}
           </span>

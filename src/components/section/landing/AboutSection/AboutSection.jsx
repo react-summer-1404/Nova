@@ -6,6 +6,7 @@ import { GoArrowLeft } from "react-icons/go";
 import AccentText from "../../../ui/accentText/AccentText";
 import { Link } from "react-router-dom";
 import AboutOption from "./AboutOption";
+import { motion } from "framer-motion";
 
 const AboutSection = () => {
  
@@ -36,7 +37,12 @@ const AboutSection = () => {
             </Link>
           </div>
         </div>
-        <img src={AboutPic} className="hidden md:block w-1/2 " />
+        <motion.img src={AboutPic} className="hidden md:block w-1/2 " 
+        
+        initial={{ opacity: 0.5, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false, amount: 0.3 }} 
+        transition={{ duration: 1.5 }}/>
       </div>
     </div>
   );
