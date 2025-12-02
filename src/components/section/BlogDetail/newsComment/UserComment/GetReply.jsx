@@ -9,6 +9,10 @@ const GetReply = ({ newsId }) => {
     queryKey: ["replies", newsId],
     queryFn: () => getNewsCommentReply(newsId),
   });
+
+  if (!data || data.length === 0) {
+    return (<p className='text-red-500 text-sm items-center flex'> پاسخی ثبت نشده</p>)
+}
   console.log("replyData", newsId);
   return (
     <div className="w-full">
