@@ -50,19 +50,17 @@ const ReserveInfo = ({
     },
   });
   const payMutation = useMutation({
-    mutationFn: (reserveId,courseId) => payStep1(reserveId,courseId),
+    mutationFn: ({ reservedId, courseId }) => payStep1({ reservedId, courseId }),
     onSuccess: (data) => {
-      toast.success("موفقیت امیز بود");
-      console.log("data",data)
-      window.location.href =data?.link ;
-      
+      toast.success("موفقیت آمیز بود");
+      window.location.href = data?.link;
     },
     onError: (error) => {
       const msg = error?.response?.data?.message;
       toast.error(msg);
-      console.log("error==>", error);
     },
   });
+  
 
   return (
     <div className=" justify-center items-center gap-2 flex w-full  h-[40px] py-2 text-[10px] lg:text-[14px] font[600] text-navy even:bg-[#F7F7F7] odd:bg-[#C8C1ED4D] rounded-[5px] shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)] ">
@@ -132,8 +130,9 @@ const ReserveInfo = ({
             }
           />
         ) : (
-          // <Link to={`/dashboard/payMent/step1/${courseId}?reservedId=${reservedId}`} className="ml-8 pr-8">
-            <HiOutlineCreditCard className="text-dark-purple w-5 h-5 cursor-pointer" onClick={()=>payMutation.mutate(reservedId,courseId)} />
+          // <Link to={`/dashboard/payMent/${courseId}`} className="ml-8 pr-8">
+            <HiOutlineCreditCard className="text-dark-purple w-5 h-5 cursor-pointer" onClick={() => payMutation.mutate({ reservedId, courseId })}
+            />
           // </Link>
         )}
 

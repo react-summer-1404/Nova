@@ -11,7 +11,7 @@ import { Spinner } from "@heroui/spinner";
 
 const FirstStep = () => {
   const { CourseId: courseId } = useParams();
-
+const navigate =useNavigate()
   const [searchParams] =useSearchParams()
 
   const Authority = searchParams.get("Authority");
