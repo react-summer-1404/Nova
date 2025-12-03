@@ -2,37 +2,62 @@ import React from "react";
 import { YellowButton } from "../../../../ui";
 import { MdOutlineCancel } from "react-icons/md";
 import { FiArrowLeft } from "react-icons/fi";
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCourseDetail } from "../../../../../servises/api/coursesDetail/getDetail";
-import { payStep1 } from "../../../../../servises/api/payment";
+import { payStep1, payStep2 } from "../../../../../servises/api/payment";
 import toast from "react-hot-toast";
 import { Spinner } from "@heroui/spinner";
 
 const FirstStep = () => {
-  const { CourseId: courseId } = useParams();
-const navigate =useNavigate()
-  const [searchParams] =useSearchParams()
+  const {  courseId } = useParams();
+  const apiParams ={
+    CourseId:courseId
+  }
+  console.log("id",courseId)
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
+  const reservedId = searchParams.get("reservedId");
   const Authority = searchParams.get("Authority");
+
   const { data, isLoading } = useQuery({
-    queryKey: ["FirstStepPaymentCourses", courseId],
-    queryFn: () => getCourseDetail(courseId),
+    queryKey: ["FirstStepPaymentCourses", apiParams],
+    queryFn: () => getCourseDetail(apiParams),
     enabled: !!courseId,
   });
 
+  const finalPayMutation = useMutation({
+    mutationFn: ({ reservedId, Authority }) =>
+      payStep2({ reservedId, Authority }),
+    onSuccess: (data) => {
+      toast.success("موفقیت آمیز بود");
+      console.log("data",data)
+      navigate("/dashboard/reservedcourses")
+    },
+    onError: (error) => {
+      const msg = error?.response?.data?.message;
+      toast.error(msg);
+    },
+  });
 
-
- 
   // console.log("CourseId:", courseId);
   // console.log("reservedId:", reservedId);
-  
-  if (isLoading) return<Spinner
-  size="lg"
-  labelColor="primary"
-  label="درحال بارگزاری "
-  variant="wave"
-/>;
+
+  if (isLoading)
+    return (
+      <Spinner
+        size="lg"
+        labelColor="primary"
+        label="درحال بارگزاری "
+        variant="wave"
+      />
+    );
 
   return (
     <div className="w-screen flex">
@@ -73,9 +98,9 @@ const navigate =useNavigate()
             />
             <YellowButton
               height={"35px"}
-              text={"پرداخت"}
+              text={"نهایی کردن پرداخت"}
               icon={<FiArrowLeft size={20} />}
-              onClick={() => payMutation.mutate(reservedId)}
+              onClick={() => finalPayMutation.mutate({ reservedId, Authority })}
             />
           </div>
         </div>

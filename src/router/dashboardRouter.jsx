@@ -31,7 +31,7 @@ export const DashboardRoutes = [
       { path: "mycourses", element: <MyCourses /> },
       { path: "reservedcourses", element: <ReservedCourses /> },
       { path: "securitysetting", element: <SecuritySetting /> },
-      { path: "payMent/:CourseId",element: <FirstStep />,},
+      { path: "payMent/:courseId",element: <FirstStep />,},
       // { path: "payMent/step2",element: <SecondStep />,},
       {
         path: "userinformation",
