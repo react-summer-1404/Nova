@@ -58,7 +58,7 @@ const CourseDetail = ({
             </span>
           </button>
         </div>
-        <div className="flex justify-between  w-full">
+        <div className="flex justify-between  w-full items-center">
          
           <StarRate
             initialRateNumber={currentUserRateNumber}
