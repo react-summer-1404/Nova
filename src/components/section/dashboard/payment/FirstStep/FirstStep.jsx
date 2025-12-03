@@ -2,7 +2,7 @@ import React from "react";
 import { YellowButton } from "../../../../ui";
 import { MdOutlineCancel } from "react-icons/md";
 import { FiArrowLeft } from "react-icons/fi";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCourseDetail } from "../../../../../servises/api/coursesDetail/getDetail";
 import { payStep1 } from "../../../../../servises/api/payment";
@@ -12,10 +12,9 @@ import { Spinner } from "@heroui/spinner";
 const FirstStep = () => {
   const { CourseId: courseId } = useParams();
 
-  const navigate = useNavigate();
   const [searchParams] =useSearchParams()
 
-  const reservedId = searchParams.get("reservedId");
+  const Authority = searchParams.get("Authority");
   const { data, isLoading } = useQuery({
     queryKey: ["FirstStepPaymentCourses", courseId],
     queryFn: () => getCourseDetail(courseId),
@@ -24,20 +23,9 @@ const FirstStep = () => {
 
 
 
-  const payMutation = useMutation({
-    mutationFn: (reserveId) => payStep1(reserveId),
-    onSuccess: (data) => {
-      toast.success("موفقیت امیز بود");
-    },
-    onError: (error, data) => {
-      const msg = error?.response?.data?.message;
-      toast.error(msg);
-      console.log("error==>", error);
-      console.log("data", data);
-    },
-  });
-  console.log("CourseId:", courseId);
-  console.log("reservedId:", reservedId);
+ 
+  // console.log("CourseId:", courseId);
+  // console.log("reservedId:", reservedId);
   
   if (isLoading) return<Spinner
   size="lg"

@@ -10,7 +10,8 @@ import { getCourseDetail } from "../../../../../servises/api/coursesDetail/getDe
 import { Button } from "@heroui/button";
 import { deleteReserveCourse } from "../../../../../servises/api/courses/ReserveCourse";
 import toast from "react-hot-toast";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { payStep1 } from "../../../../../servises/api/payment";
 const ReserveInfo = ({
   courseTitle,
   teacheName,
@@ -25,6 +26,7 @@ const ReserveInfo = ({
   ) : (
     <p className="text-[#DE5204]"> در انتظار تایید</p>
   );
+  // const navigate = useNavigate();
 
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
     useToggle(false);
@@ -45,6 +47,20 @@ const ReserveInfo = ({
     },
     onError: (error) => {
       console.log("خطا", error), toast.error("حذف دوره با خطا مواجه شد");
+    },
+  });
+  const payMutation = useMutation({
+    mutationFn: (reserveId,courseId) => payStep1(reserveId,courseId),
+    onSuccess: (data) => {
+      toast.success("موفقیت امیز بود");
+      console.log("data",data)
+      window.location.href =data?.link ;
+      
+    },
+    onError: (error) => {
+      const msg = error?.response?.data?.message;
+      toast.error(msg);
+      console.log("error==>", error);
     },
   });
 
@@ -116,9 +132,9 @@ const ReserveInfo = ({
             }
           />
         ) : (
-          <Link to={`/dashboard/payMent/step1/${courseId}?reservedId=${reservedId}`} className="ml-8 pr-8">
-            <HiOutlineCreditCard className="text-dark-purple w-5 h-5 cursor-pointer" />
-          </Link>
+          // <Link to={`/dashboard/payMent/step1/${courseId}?reservedId=${reservedId}`} className="ml-8 pr-8">
+            <HiOutlineCreditCard className="text-dark-purple w-5 h-5 cursor-pointer" onClick={()=>payMutation.mutate(reservedId,courseId)} />
+          // </Link>
         )}
 
         <ModalSection
