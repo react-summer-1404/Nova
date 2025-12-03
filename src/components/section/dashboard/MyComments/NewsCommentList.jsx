@@ -36,8 +36,8 @@ const [mobileView, toggleMobileView] = useToggle(false);
     queryFn: () => getBlogsDetail(newsId),
     enabled: !!newsId,
   });
-
- 
+const comments = data?.detailsNewsDto
+ console.log("data",data)
   return (
     <div className="justify-center items-center gap-8 flex w-full h-[40px] py-2 text-[10px] lg:text-[14px] font[600] text-navy even:bg-[#F7F7F7] odd:bg-[#C8C1ED4D] rounded-[5px] shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)]">
        <div className="md:hidden">
@@ -53,7 +53,7 @@ const [mobileView, toggleMobileView] = useToggle(false);
            <div className="flex-col-center gap-5">
               <p className="text-navy">ایا از حذف این دوره اطمینن دارید؟</p>
               <div className="w-full flex-center">
-             <CourseProductCard product={data} />
+             <BlogCard blogData={comments} />
            </div>
               <div className="flex w-full justify-evenly">
                 <Button
@@ -125,7 +125,7 @@ const [mobileView, toggleMobileView] = useToggle(false);
                 />
             ) : (
               <div className="w-full flex-center">
-                <BlogCard blogData={data} />
+                <BlogCard blogData={comments} />
               </div>
             )
           }

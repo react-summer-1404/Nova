@@ -11,7 +11,7 @@ const Citems =[
 
 
 const MyComments = () => {
-  const [activeTab, setActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState("CourseComment");
   return (
     <div className =' w-full flex items-center justify-center flex-col gap-5'>
       <div className='flex gap-4 mb-6  w-full justify-end'>

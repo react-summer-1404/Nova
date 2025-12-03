@@ -9,7 +9,7 @@ const faveItems =[
   {key:"blogs",label:"وبلاگ ها",}
 ]
 const Favorites = () => {
-  const [activeTab, setActiveTab] = useState("Courses");
+  const [activeTab, setActiveTab] = useState("courses");
   return (
     <div className =' w-full flex items-center justify-center flex-col'>
       <div className='flex gap-4 mb-6  w-full justify-end'>
