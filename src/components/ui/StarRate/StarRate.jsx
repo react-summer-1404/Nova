@@ -1,27 +1,14 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { useMutation } from "@tanstack/react-query";
-import { postNewsRate } from "../../../servises/api/news/rateNews";
-import toast from "react-hot-toast";
 
-export default function StarRate({ newsId }) {
-  const [rating, setRating] = useState(0);
-
-  const newsRateMutation = useMutation({
-    mutationFn: ({ newsId, rateNumber }) => postNewsRate(newsId, rateNumber),
-    onError: (error) => {
-      console.log("error", error);
-      const msg = error?.response?.data?.message;
-      toast.error(msg);
-    },
-    onSuccess: () => {
-      toast.success("امتیاز شما ثبت شد");
-    },
-  });
+export default function StarRate({ initialRateNumber = 0, onRate }) {
+  const [rating, setRating] = useState(initialRateNumber);
 
   const handleClick = (star) => {
-    setRating(star); // اول state رو آپدیت می‌کنیم
-    newsRateMutation.mutate({ newsId, rateNumber: star }); // بعد API call
+    setRating(star);
+    if (onRate) {
+      onRate(star); 
+    }
   };
 
   return (
@@ -35,7 +22,7 @@ export default function StarRate({ newsId }) {
               ? "text-yellow-400 cursor-pointer"
               : "text-gray-400 cursor-pointer"
           }
-          onClick={() => handleClick(star)} // پارامتر ستاره
+          onClick={() => handleClick(star)}
         />
       ))}
     </div>

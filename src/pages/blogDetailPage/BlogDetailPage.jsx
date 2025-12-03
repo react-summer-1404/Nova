@@ -50,6 +50,7 @@ const BlogDetailPage = () => {
             newsId={detailItems?.id}
             isLiked={detailItems?.currentUserIsLike}
             isDisliked={detailItems?.currentUserIsDissLike}
+            newsRate ={detailItems?.newsRate?.avg}
           />
 
           <div>
