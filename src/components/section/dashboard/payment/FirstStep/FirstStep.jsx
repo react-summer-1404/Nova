@@ -2,23 +2,49 @@ import React from "react";
 import { YellowButton } from "../../../../ui";
 import { MdOutlineCancel } from "react-icons/md";
 import { FiArrowLeft } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCourseDetail } from "../../../../../servises/api/coursesDetail/getDetail";
+import { payStep1 } from "../../../../../servises/api/payment";
+import toast from "react-hot-toast";
+import { Spinner } from "@heroui/spinner";
 
 const FirstStep = () => {
-  const { reserveId } = useParams();
+  const { CourseId: courseId } = useParams();
+
   const navigate = useNavigate();
-  const courseId = reserveId;
+  const [searchParams] =useSearchParams()
+
+  const reservedId = searchParams.get("reservedId");
   const { data, isLoading } = useQuery({
     queryKey: ["FirstStepPaymentCourses", courseId],
     queryFn: () => getCourseDetail(courseId),
     enabled: !!courseId,
   });
 
-  console.log("data=>>>>>>>>>>>>", data);
 
-  if (isLoading) return <p>در حال بارگذاری...</p>;
+
+  const payMutation = useMutation({
+    mutationFn: (reserveId) => payStep1(reserveId),
+    onSuccess: (data) => {
+      toast.success("موفقیت امیز بود");
+    },
+    onError: (error, data) => {
+      const msg = error?.response?.data?.message;
+      toast.error(msg);
+      console.log("error==>", error);
+      console.log("data", data);
+    },
+  });
+  console.log("CourseId:", courseId);
+  console.log("reservedId:", reservedId);
+  
+  if (isLoading) return<Spinner
+  size="lg"
+  labelColor="primary"
+  label="درحال بارگزاری "
+  variant="wave"
+/>;
 
   return (
     <div className="w-screen flex">
@@ -61,7 +87,7 @@ const FirstStep = () => {
               height={"35px"}
               text={"پرداخت"}
               icon={<FiArrowLeft size={20} />}
-              onClick={() => console.log("پرداخت رزرو:", reserveId)}
+              onClick={() => payMutation.mutate(reservedId)}
             />
           </div>
         </div>

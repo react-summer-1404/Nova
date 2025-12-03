@@ -116,7 +116,7 @@ const ReserveInfo = ({
             }
           />
         ) : (
-          <Link to={`/dashboard/payMent/step1/${courseId}`} className="ml-8 pr-8">
+          <Link to={`/dashboard/payMent/step1/${courseId}?reservedId=${reservedId}`} className="ml-8 pr-8">
             <HiOutlineCreditCard className="text-dark-purple w-5 h-5 cursor-pointer" />
           </Link>
         )}

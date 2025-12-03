@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from "@heroui/button";
 import { CiCalendar } from "react-icons/ci";
 
 const LabelAndDate = ({ label, date }) => {
-  const newsData = date.slice(0,10)
+  const newsData = date?.slice(0,10)
   return (
     <div className="w-[80%] sm:w-full flex justify-between items-center text-[8px] sm:text-[15px]">
       <div className="flex-center gap-0.5">
