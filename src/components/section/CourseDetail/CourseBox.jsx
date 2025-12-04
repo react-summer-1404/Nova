@@ -98,6 +98,8 @@ const CourseBox = () => {
             studentCount={data.studentCount}
             describe={data.describe}
             teacherId={data.teacherId}
+            currentUserRateNumber={data.currentUserRateNumber}
+            courseId={data.courseId}
           />
         </div>
         <motion.div className="border border-[#DFDFDF] md:w-[18%] w-[24%] h-[590px] md:h-[670px] flex justify-center items-center shadow-[0_0_14px_0_rgba(0,0,0,0.08) rounded-[10px] "

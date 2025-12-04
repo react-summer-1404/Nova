@@ -2,7 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
 import { NewsComment } from '../../../../servises/api/userPanel/getNewsComment'
-import CoursCommentList from './CoursCommentList'
+import NewsCommentList from './NewsCommentList'
+// import CoursCommentList from './CoursCommentList'
 
 const NewsComments = () => {
     const {data} = useQuery({
@@ -13,11 +14,12 @@ const NewsComments = () => {
   return (
     <div className ='w-full h-[300px] items-center mt-[12px] gap-1.5 lg:gap-3 flex flex-col'>
         {comments?.length > 0 ? (
-          comments.map((item) => (<CoursCommentList
+          comments.map((item) => (<NewsCommentList
             key={item.id}
             teacherId={item.teacherId}
-            startTime={item.inserDate?.slice(0,10)}
+            startTime={item.inserDate.slice(0,10)}
             title={item.title}
+            newsId={item.newsId}
         />))
       ) : (<div>نظری یافت  نشد</div>
         )}
