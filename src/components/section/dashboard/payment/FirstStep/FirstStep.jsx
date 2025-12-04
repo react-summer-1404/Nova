@@ -16,9 +16,9 @@ import { Spinner } from "@heroui/spinner";
 
 const FirstStep = () => {
   const {  courseId } = useParams();
-  const apiParams ={
-    CourseId:courseId
-  }
+
+    
+  
   console.log("id",courseId)
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -27,8 +27,8 @@ const FirstStep = () => {
   const Authority = searchParams.get("Authority");
 
   const { data, isLoading } = useQuery({
-    queryKey: ["FirstStepPaymentCourses", apiParams],
-    queryFn: () => getCourseDetail(apiParams),
+    queryKey: ["FirstStepPaymentCourses", courseId],
+    queryFn: () => getCourseDetail(courseId),
     enabled: !!courseId,
   });
 
@@ -36,7 +36,7 @@ const FirstStep = () => {
     mutationFn: ({ reservedId, Authority }) =>
       payStep2({ reservedId, Authority }),
     onSuccess: (data) => {
-      toast.success("موفقیت آمیز بود");
+      toast.success("پرداخت موفقیت  امیز بود");
       console.log("data",data)
       navigate("/dashboard/reservedcourses")
     },
