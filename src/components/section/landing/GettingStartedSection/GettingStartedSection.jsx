@@ -18,29 +18,29 @@ const GettingStartedSection = () => {
           <button className =' p-1.5 px-5 md:px-7 rounded-[30px] font-[500] bg-[#5751E1] text-[12px] md:text-[16px] text-[#FFFFFF] '>
             چگونه سفر را شروع می کنیم
           </button>
-          <p className ='w-[43%] font-[600] text-[16px] sm:text-[26px] lg:text-[36px] text-white'>!سفر یادگیری خود را از همین امروز شروع کنید</p>
+          <p className ='w-[43%] font-[600] text-[16px] sm:text-[26px] lg:text-[36px] text-[#fff]'>!سفر یادگیری خود را از همین امروز شروع کنید</p>
           <h2 className ='w-[44%] font-[400] hidden sm:block sm:text-[12px] lg:text-[16px] text-[#ACAACC]'>شهودی Groove اعضای maketeam صندوق ورودی را با هم به اشتراک گذاشت
           سازماندهی، اولویت بندی و.در این قسمت.
           </h2>
           <div className ='w-full flex flex-row gap-4 md:mt-[30px] mt-[15px]'>
             <div className ='w-[24%] flex flex-col items-center gap-3'>
               <img src="src/assets/images/SVG.png" className ='h-[25%] md:h-[30%] object-cover ml-5'/>
-              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-white'>بازاریابی ایمیلی</p>
+              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-[#fff]'>بازاریابی ایمیلی</p>
               <h2 className ='font-[400] w-[100%] md:w-[100%] hidden sm:block sm:text-[11px] lg:text-[16px] text-[#ACAACC]'>بازاریابی ایمیلی ابزاری موثر برای ارتباط با مشتریان و افزایش فروش است.</h2>
             </div>
             <div className ='w-[24%] flex flex-col items-center gap-3'>
               <img src="src/assets/images/SVG (1).png" className ='h-[25%] md:h-[30%] ml-5 object-cover'/>
-              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-white'>دریافت گواهی آنلاین</p>
+              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-[#fff]'>دریافت گواهی آنلاین</p>
               <h2 className ='font-[400] w-[100%] md:w-[93%] hidden sm:block sm:text-[11px] lg:text-[16px] text-[#ACAACC]'>گواهی آنلاین دریافت کنید و مدارک معتبر مهارت‌های خود را تکمیل کنید.</h2>
             </div>
             <div className ='w-[24%] flex flex-col items-center gap-3'>
               <img src="src/assets/images/SVG (2).png" className ='h-[25%] md:h-[30%] object-cover ml-5'/>
-              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-white'>هر چیزی یاد بگیر</p>
+              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-[#fff]'>هر چیزی یاد بگیر</p>
               <h2 className ='font-[400] w-[100%] md:w-[84%] hidden sm:block sm:text-[11px] lg:text-[16px] text-[#ACAACC]'>هر چیزی یاد بگیرید و افق‌های جدیدی را به روی خودتان باز کنید.</h2>
             </div>
             <div className ='w-[24%] flex flex-col items-center gap-3'>
               <img src="src/assets/images/SVG (3).png" className ='h-[25%] md:h-[30%] object-cover ml-5'/>
-              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-white'>با کارشناسان بیاموزید</p>
+              <p className ='font-[600] text-[11px] sm:text-[15px] lg:text-[20px] text-[#fff]'>با کارشناسان بیاموزید</p>
               <h2 className ='font-[400] w-[100%] md:w-[70%] hidden sm:block sm:text-[11px] lg:text-[16px] text-[#ACAACC]'>با کارشناسان بیاموزید و از تجربیات آنها بهره‌مند شوید.</h2>
             </div>
           </div>
@@ -73,7 +73,7 @@ const GettingStartedSection = () => {
             </div>
           </div>
           
-          <div className ='items-center flex h-[140px] md:h-[220px] w-[70%] sm:w-[45%] lg:w-[39%] border bg-white border-[#BDBDBD] rounded-[15px] relative'>
+          <div className ='items-center flex h-[140px] md:h-[220px] w-[70%] sm:w-[45%] lg:w-[39%] border bg-[#fff] border-[#BDBDBD] rounded-[15px] relative'>
             <img src="src/assets/images/SVG (5).png" className ='absolute sm:top-[48px] sm:left-[158px] w-[45%] lg:top-[80px] lg:left-[336px] left-[138px] top-[60px] md:w-[37%]'/>
             <img src="src/assets/images/3da9724bd304df2f0f944c30163217afe198a0b6.png" className ='absolute sm:top-[11px] lg:top-[13px] sm:left-[165px] lg:left-[347px] top-[27px] left-[145px] w-[37%] md:w-[32%]'/>
             

@@ -3,7 +3,7 @@ import TypewriterComponent from "typewriter-effect";
 
 export function AutoTypeWriter(params) {
   return (
-    <div style={{direction:"rtl"}} className="text-2xl text-white">
+    <div style={{direction:"rtl"}} className="text-2xl text-black">
       <TypewriterComponent
         options={{
           strings: ["تلاش", "استقامت", "ایستادگی", "پشتکار"],

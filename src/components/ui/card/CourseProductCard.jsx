@@ -171,7 +171,7 @@ const CourseProductCard = ({
               />
             </div>
             <div className="flex gap-1 ">
-              <span>{String(product.courseRate?.avg)?.slice(0, 4)}</span>
+              <span className="text-base-gray">{String(product.courseRate?.avg)?.slice(0, 4)}</span>
               <MdStar className="text-golden-yellow" size={18} />
             </div>
           </div>
@@ -213,7 +213,7 @@ const CourseProductCard = ({
             >
               <div className="flex gap-0.5 items-center">
                 <img src="/public/coch 1.svg" className="w-[18px] h-[16px]" />
-                <div className="overflow-hidden text-ellipsis whitespace-nowrap w-[61px] rtl">
+                <div className="overflow-hidden text-ellipsis whitespace-nowrap w-[61px] text-[#5F5F66] rtl">
                   {product.teacherName}
                 </div>
               </div>
@@ -222,7 +222,7 @@ const CourseProductCard = ({
                 <Tag
                   icon={
                     product.userIsLiked ? (
-                      <AiFillLike size={"20px"} className="text-gray-500" />
+                      <AiFillLike size={"20px"} className="text-black" />
                     ) : (
                       <AiOutlineLike size={"20px"} />
                     )
@@ -257,8 +257,8 @@ const CourseProductCard = ({
 
         <div className="flex justify-between pt-5" style={{ direction: "rtl" }}>
           <div className="flex items-center">
-            <MdOutlineDateRange />
-            <div>{courseDate}</div>
+            <MdOutlineDateRange className="text-[#5F5F66]"/>
+            <div className="text-[#5F5F66]">{courseDate}</div>
           </div>
 
           <span

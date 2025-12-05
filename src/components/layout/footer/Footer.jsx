@@ -15,19 +15,19 @@ const Footer = () => {
     <div className ='bg-dark-blue flex flex-col items-center justify-center w-screen h-[350px] sm:h-[400px] lg:h-[560px]'>
       <div className ='w-[80%] md:h-[500px] h-[350px] flex items-center justify-center'>
         <div className ='w-[22%] h-[250px] flex flex-col items-end gap-1 md:gap-3'>
-          <div className ='text-white flex flex-col gap-3 items-end'>
-            <p className ='font-[600] text-[9px] sm:text-[14px] lg:text-[20px]'> در تماس باشید</p>
+          <div className ='text-[#fff] flex flex-col gap-3 items-end'>
+            <p className ='font-[600] text-[9px] sm:text-[14px] lg:text-[20px] '> در تماس باشید</p>
             <div className ='text-dark-purple border-b-[3px] w-[32%]'></div>
           </div>
           <div className ='text-right flex flex-col gap-3 w-[85%]'>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>
+            <div className ='font-[500] text-[8px] sm:text-[12px] text-[#8c94ac] lg:text-[15px] flex flex-row-reverse'>
             هنگامی که یک چاپگر ناشناس گرفت
             نوع گالی و درهم
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500] text-[15px] flex flex-row-reverse gap-2 '> 
+            <div className ='font-[500] text-[15px] text-[#8c94ac] flex flex-row-reverse gap-2 '> 
               <FaYoutube /> <FaInstagram/> <FaWhatsapp/> <FaTwitter/> <FaFacebook/>   
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500] text-[15px] flex flex-row-reverse gap-2'>  
+            <div className ='font-[500] text-[15px] text-[#8c94ac] flex flex-row-reverse gap-2'>  
               <div style={{backgroundColor: "var(--color-blue-fot)"}} className ='md:w-[48%] h-[31px] flex items-center '>
               <FaApple className ='md:ml-[3px]'/>
                 <div className ='flex flex-col items-start ml-[7px] w-[80%] text-left'>
@@ -48,59 +48,59 @@ const Footer = () => {
         </div>
         <div className ='w-[22%] h-[250px] flex flex-col items-end gap-1 md:gap-3'>
           <div style={{color: "var(--color-white)"}} className ='flex flex-col gap-3 items-end'>
-            <p className ='font-[600] text-[9px] sm:text-[14px] lg:text-[20px]'> شرکت ما </p>
+            <p className ='font-[600] text-[9px] sm:text-[14px] lg:text-[20px] text-[#fff]'> شرکت ما </p>
             <div style={{color: "var(--color-dark-purple)"}} className ='border-b-[3px] w-[52%]'></div>
           </div>
           <div className ='text-right flex flex-col gap-1 md:gap-3 w-[85%]'>
-            <div style={{color: "var(--color-text2-fot)"}} className =' font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'> 
+            <div  className =' font-[500] text-[#8c94ac]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'> 
             با ما تماس بگیرید
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
+            <div  className ='font-[500]  text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
             معلم شوید
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>وبلاگ </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px]  flex flex-row-reverse '> 
+            <div  className ='font-[500]  text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>وبلاگ </div>
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px]  flex flex-row-reverse '> 
             مربی
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
             مناسبت ها
             </div>
           </div>
         </div>
         <div className ='w-[22%] h-[250px] flex flex-col items-end gap-1 md:gap-3'>
-          <div style={{color: "var(--color-white)"}} className ='flex flex-col gap-3 items-end'>
-            <p className ='font-[600] text-[9px] sm:text-[14px] lg:text-[20px]'>لینک های مفید</p>
+          <div className ='flex flex-col gap-3 items-end text-[#fff]'>
+            <p className ='font-[600] text-[9px] sm:text-[14px] lg:text-[20px] text-[#fff]'>لینک های مفید</p>
             <div style={{color: "var(--color-dark-purple)"}} className ='border-b-[3px] w-[32%]'></div>
           </div>
           <div className ='text-right flex flex-col gap-1 md:gap-3 w-[85%]'>
-            <div style={{color: "var(--color-text2-fot)"}} className ='mt-[7px] font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'> 
+            <div className ='mt-[7px] font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse text-[#8c94ac]'> 
               ارزش های ما
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
             شریک شدن
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>شرکای ما </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>شرکای ما </div>
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
             در Future Learn کار کنید
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
             Quizlet Plus
             </div>
           </div>
         </div>
         <div className ='w-[22%] h-[250px] flex flex-col items-end gap-2.5 md:gap-2'>
-          <div style={{color: "var(--color-white)"}} className ='md:mt-[-8px] mt-[-7px]'>
+          <div style={{color: "#fff"}} className ='md:mt-[-8px] mt-[-7px]'>
             <Logo />
           </div>
           <div className ='text-right flex flex-col gap-1 md:gap-3 w-[85%]'>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>هنگامی که یک چاپگر ناشناخته گالی از
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>هنگامی که یک چاپگر ناشناخته گالی از
               را تایپ کرده و آن را درهم می‌زنید تا نمونه‌ای بسازد
               کتابت دارد.
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse '> 
+            <div className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] text-[#8c94ac] flex flex-row-reverse '> 
             استان مازندران، علیوک، جاده فرح آباد، H3X7+5V3، ایران
             </div>
-            <div style={{color: "var(--color-text2-fot)"}} className ='font-[500]  text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>+98 9999999999</div>
+            <div className ='font-[500] text-[#8c94ac] text-[8px] sm:text-[12px] lg:text-[15px] flex flex-row-reverse'>+98 9999999999</div>
           </div>
         </div>
       </div>

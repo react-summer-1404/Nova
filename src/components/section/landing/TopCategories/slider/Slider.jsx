@@ -75,7 +75,7 @@ const TechCard = ({ item }) => {
         alt={item.techName}
       />
 
-      <h3 className="font-medium text-lg text-slate-950 group-hover:text-white relative z-10 duration-300">
+      <h3 className="font-medium text-lg  text-black  group-hover: text-black relative z-10 duration-300">
         {item.techName}
       </h3>
 

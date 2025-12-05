@@ -8,7 +8,7 @@ export default function BreadcrumbCustom() {
   // console.log(location)
 
   return (
-    <Breadcrumbs>
+    <Breadcrumbs className="text-black">
       <BreadcrumbItem href="/">صفحه اصلی</BreadcrumbItem>
       {pathName.map((value, index) => {
         const lastItem = index === pathName.length - 1;
