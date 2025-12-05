@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 // import DashboardSearchBox from "./dashboardSearchBox";
 import SearchSection from "../../../ui/pagesSearchSection/SearchSection";
 import CourseTableRow from "../MyComments/CourseTableRow/CourseTableRow";
-import CourseStatusList1 from "../Favorites/FavoritesCourse/CourseStatusList1/CourseStatusList1";
 import { useQuery } from "@tanstack/react-query";
 import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
 import { useDebounce } from "use-debounce";
 import CustomPagination from "../../../ui/pagination/CustomPagination";
 import DashboardAutoComplete from "../../../ui/DashboardAutoComplete/DashboardAutoComplete";
+import CourseStatusList1 from "./MyCoursesLisst1";
 const SortingColItems = [
   { key: "desc", label: "نزولی" },
   { key: "asc", label: " صعودی" },
@@ -44,8 +44,8 @@ const MyCourses = () => {
   }, [searchDelay]);
 
   return (
-    <div className="w-full flex-col-center gap-8">
-      <div className="w-full justy-between ">
+    <div className="w-full flex-col-center gap-8  ">
+      <div className="w-full  flex flex-col-reverse items-center md:flex-row justify-between gap-4">
         <div className="flex gap-3">
           <DashboardAutoComplete
             options={SortingColItems}
@@ -64,7 +64,7 @@ const MyCourses = () => {
       </div>
       <div className="w-[65%] ">
         <CourseTableRow
-          items={["مدرس دوره",
+          items={["قیمت","مدرس دوره",
              "تاریخ شروع","نام دوره",]}
         />
       </div>
@@ -76,6 +76,8 @@ const MyCourses = () => {
             courseTitle={item.course.title}
             teacheName={item.course.teacher.fName}
             lastUpdate={item.course.startTime.slice(0,10)}
+            courseId={item.course.courseId}
+            cost={item.cost}
           />
         ))}
         

@@ -8,7 +8,7 @@ import CourseInfoCard from "./CourseInfoCard";
 import { CiShoppingCart } from "react-icons/ci";
 // import { getCourses } from "./../../../../servises/api/courses/coursList/index";
 // import { getMyCourses } from "../../../../servises/api/userPanel/getMyCourses";
-// import { getMyReserveCourses } from "../../../../servises/api/userPanel/getMyCoursesReserve";
+import { getMyReserveCourses } from "../../../../servises/api/userPanel/getMyCoursesReserve";
 import { PiGraduationCapThin } from "react-icons/pi";
 
 const UserDashboard = () => {
@@ -25,33 +25,30 @@ const UserDashboard = () => {
     queryFn: () => getBlogs(),
   });
 
-  // const { data: myCourseData } = useQuery({
-  //   // برای کورسها
-  //   queryKey: ["coursegetCoursesnews"],
-  //   queryFn: () => getMyReserveCourses(),
-  // });
+  const { data: myCourseData } = useQuery({
+    // برای کورسها
+    queryKey: ["coursegetCoursesnews"],
+    queryFn:getMyReserveCourses,
+  });
 
   return (
     <div className="flex flex-col gap-8">
       <div className=" flex-right gap-6 items-center">
        
-       {/* {
-        myCourseData.
-       } */}
-       
+     
         <CourseInfoCard
           icon={
             <CiShoppingCart className="course-info-card-icon rounded-[50px] " />
           }
-          courseCount={"۲ دوره"}
-          subtext={"رزرو کرده اید"}
+          courseCount={myCourseData?.length}
+          subtext={"دوره رزرو کردید"}
         />
         <CourseInfoCard
           icon={
             <PiGraduationCapThin className="course-info-card-icon rounded-[50px]" />
           }
-          courseCount={"4 دوره"}
-          subtext={"شرکت کرده اید"}
+          courseCount={myCourseData?.length}
+          subtext={"دوره شرکت کردید" }
         />
       </div>
       <div className="w-full flex-wrap flex-right gap-16">

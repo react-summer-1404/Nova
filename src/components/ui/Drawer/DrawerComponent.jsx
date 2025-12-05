@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Drawer,
   DrawerContent,
@@ -14,16 +14,21 @@ export default function DrawerComponent({
   Icon,
   ButtonText,
   buttonStyle,
+  placementValue ="right"
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [size, setSize] = React.useState("md");
+  const [size, setSize] = useState("md");
+  const [placement, setPlacement] = useState(placementValue);
 
   const sizes = ["lg"];
 
-  const handleOpen = (size) => {
+  const handleOpen = (size ,placement) => {
     setSize(size);
+    setPlacement(placement);
     onOpen();
   };
+  
+
 
   return (
     <>
@@ -31,7 +36,8 @@ export default function DrawerComponent({
         {sizes.map((size) => (
           <Button
             key={size}
-            onPress={() => handleOpen(size)}
+            onPress={() =>{ handleOpen(size ,placement)
+            }}
             className={buttonStyle}
           >
             <div className="flex gap-2">
@@ -45,7 +51,7 @@ export default function DrawerComponent({
           </Button>
         ))}
       </div>
-      <Drawer isOpen={isOpen} size={size} onClose={onClose}>
+      <Drawer isOpen={isOpen} size={size} onClose={onClose}  placement={placement}>
         <DrawerContent>
           {(onClose) => (
             <>

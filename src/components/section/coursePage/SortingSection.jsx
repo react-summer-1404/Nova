@@ -3,13 +3,13 @@ import SortDropdown from "../../ui/sortDropDown/SortDropdown";
 
 const SortingSection = ({ paramsObject, onChangeParams }) => {
   const sortType = [
-    { label: "ascending", key:"asc" },
-    { label: "Descending", key:"desc" },
+    { label: "صعودی", key:"asc" },
+    { label: "نزولی", key:"desc" },
   ];
 
   const sortCol = [
-    { key: "cost", label: "cost" },
-    { key: "active", label: "active" },
+    { key: "cost", label: "قیمت" },
+    { key: "active", label: "فعال" },
   ];
 
   return (
@@ -23,14 +23,14 @@ const SortingSection = ({ paramsObject, onChangeParams }) => {
 
       <SortDropdown
         options={sortType}
-        selected={paramsObject.SortType || "asc"}
+        selected={paramsObject.SortType || sortType[0].key}
         onChange={onChangeParams}
         paramKey="SortType"
       />
 
       <SortDropdown
         options={sortCol}
-        selected={paramsObject.SortingCol || "cost"}
+        selected={paramsObject.SortingCol || sortCol[0].key}
         onChange={onChangeParams}
         paramKey="SortingCol"
       />

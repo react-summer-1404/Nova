@@ -1,5 +1,5 @@
-import { useMutation } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 import { postCommentReply } from '../../../../../servises/api/coursesDetail/PostCommentReply';
 import toast from 'react-hot-toast';
 import * as Yup from "yup";
@@ -17,15 +17,16 @@ const initialData = {
     title: "",
     describe: ""
 }
-const PostReply = ( initialValues = initialData) => {
-    const { id } = useParams()  
+const PostReply = ( {initialValues = initialData, CourseCommandId , CourseId, onSuccess}) => { 
     const token = localStorage.getItem("token");
-
+    const queryClient = useQueryClient();
     const {mutate} = useMutation({
         mutationFn : postCommentReply,
         onSuccess: (data) => {
             if (data.success) {
                 toast.success("نظر با موفقیت ثبت شد در انتظار تایید مدیران ...")
+                queryClient.invalidateQueries(['replies', CourseId, CourseCommandId]);
+                onSuccess?.();
             } else {
                 toast.error("ارسال نظر با خطا مواجه شد")
             }
@@ -37,22 +38,17 @@ const PostReply = ( initialValues = initialData) => {
         },
     });
 
-    const handleSubmit = async (values, {restForm}) => {
+    const handleSubmit = async (values) => {
         if (!token) {
             toast.error("برای ارسال نظر ابتدا وارد شوید")
             return;
         }
-        mutate (
-            {
-                CourseId : id,
-                CommentId : parentCommentId,
-                Title : values.title,
-                Describe : values.describe,
-            },
-            {
-                onSuccess : () => restForm(),
-            }
-        )
+        mutate ({
+            CourseId,
+            CommentId: CourseCommandId,
+            title: values.title,
+            describe: values.describe,
+        });
     }
 
     return (

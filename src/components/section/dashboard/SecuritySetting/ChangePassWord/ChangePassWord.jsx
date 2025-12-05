@@ -12,7 +12,7 @@ import Subject from "../../UserInformation/EditUserInformation/Subject/Subject";
 
 const validationSchema = yup.object({
   oldPassword: yup.string().required("*رمز عبور فعلی الزامی است"),
-  newPassword: yup
+  newPass: yup
     .string()
     .min(4, "پسورد نمیتواند کمتر از 4 کاراکتر باشد")
     .max(15, "پسورد نمیتواند بیشتر از 15 کاراکتر باشد")
@@ -20,10 +20,10 @@ const validationSchema = yup.object({
     .matches(/[A-Z]+/, "حداقل شامل یک حرف بزرگ باشد")
     .matches(/\d+/, "پسورد باید شامل عدد باشد")
     .required("*رمز عبور جدید الزامی است"),
-  // confirmPassword: yup
-  //   .string()
-  //   .oneOf([yup.ref("newPassword"), null], "رمزها یکسان نیستند")
-  //   .required("*تکرار رمز الزامی است"),
+    newPassword: yup
+    .string()
+    .oneOf([yup.ref("newPass"), null], "رمزها یکسان نیستند")
+    .required("*تکرار رمز الزامی است"),
 });
 
 const ChangePassWord = () => {
@@ -45,8 +45,8 @@ const ChangePassWord = () => {
       <Formik
         initialValues={{
           oldPassword: "",
+          newPass: "",
           newPassword: "",
-          // confirmPassword: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
@@ -58,7 +58,7 @@ const ChangePassWord = () => {
          <div className="flex flex-col items-start gap-5 ">
           <h2 className="text-bade text-text-gray  font-semibold">تغییر رمز</h2>
         <div className=" flex-col flex-center gap-12  w-full">
-        <div className="flex  gap-5 ">
+        <div className="lg:flex-row flex flex-col  gap-5  ">
               <div className="w-[300px] flex flex-col">
                 <PasswordField name="oldPassword" label="رمز عبور فعلی" />
                 <ErrorMessage
@@ -69,22 +69,22 @@ const ChangePassWord = () => {
               </div>
 
               <div className="w-[300px] flex flex-col">
-                <PasswordField name="newPassword" label="رمز عبور جدید" />
+                <PasswordField name="newPass" label="رمز عبور جدید" />
+                <ErrorMessage
+                  name="newPass"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+
+              <div className="w-[300px] flex flex-col">
+                <PasswordField name="newPassword" label="تکرار رمز جدید" />
                 <ErrorMessage
                   name="newPassword"
                   component="div"
                   className="text-red-500 text-sm mt-1"
                 />
               </div>
-
-              {/* <div className="w-[300px] flex flex-col">
-                <PasswordField name="confirmPassword" label="تکرار رمز جدید" />
-                <ErrorMessage
-                  name="confirmPassword"
-                  component="div"
-                  className="text-red-500 text-sm mt-1"
-                />
-              </div> */}
             </div>
 
             <YellowButton text={"ذخیره تغییرات"} width={"160px"} height={"35px"} icon={<IoSaveOutline size={18}/>} type={"submit"}/>

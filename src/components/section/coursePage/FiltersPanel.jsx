@@ -12,8 +12,8 @@ import useTechs from "../../../hooks/useTech";
 const FiltersPanel = ({ paramsObject, onChangeParams }) => {
   //  Price Range 
   const [priceRange, setPriceRange] = useState([
-    Number(paramsObject.CostDown) || 0,
-    Number(paramsObject.CostUp) || 2000,
+    paramsObject.CostDown || 0,
+    paramsObject.CostUp || 2000,
   ]);
 
   const [debouncePrice] = useDebounce(priceRange, 500);
@@ -25,7 +25,7 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
 
   // Techs 
   const [selectedTech, setSelectedTech] = useState(
-    paramsObject.ListTech?.split(",") || []
+    paramsObject.ListTech?.split(",") 
   );
   const [debounceTech] = useDebounce(selectedTech, 500);
 
@@ -35,17 +35,17 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
 
   //Course Levels 
   const [selectedLevel, setSelectedLevel] = useState(
-    paramsObject.courseLvlId?.split(",") || []
+    paramsObject.courseLevelId?.split(",") 
   );
   const [debounceLevel] = useDebounce(selectedLevel, 500);
 
   useEffect(() => {
-    onChangeParams("courseLvlId", debounceLevel);
+    onChangeParams("courseLevelId", debounceLevel);
   }, [debounceLevel]);
 
   //  Course State 
   const [selectedState, setSelectedState] = useState(
-    paramsObject.courseState?.split(",") || []
+    paramsObject.courseState?.split(",") 
   );
   const [debounceState] = useDebounce(selectedState, 500);
 
@@ -55,12 +55,12 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
 
   // Teachers 
   const [selectedTeacher, setSelectedTeacher] = useState(
-    paramsObject.teacherId ? [String(paramsObject.teacherId)] : []
+    paramsObject.teacherId?.split(",") 
   );
   const [debounceTeacher] = useDebounce(selectedTeacher, 500);
 
   useEffect(() => {
-    onChangeParams("teacherId", debounceTeacher);
+    onChangeParams("TeacherId", debounceTeacher);
   }, [debounceTeacher]);
 
   //  Queries 
@@ -70,14 +70,12 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
     queryKey: ["courseLevels"],
     queryFn: getCourseLevel,
     staleTime: 1000 * 60 * 10,    
-  refetchOnMount: false,
   });
 
   const { data: teachersData } = useQuery({
     queryKey: ["teachers"],
     queryFn: getTeachers,
     staleTime: 1000 * 60 * 10,    
-  refetchOnMount: false,
   });
 
    

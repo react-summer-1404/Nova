@@ -3,7 +3,7 @@ import InfoCard from "../../ui/infoCard/InfoCard";
 import CheckList from "../../ui/checkList/CheckList";
 import { useDebounce } from "use-debounce";
 import { useQuery } from "@tanstack/react-query";
-import { getNewsCategory } from "../../../servises/api/newsCategory";
+import { getNewsCategory } from "../../../servises/api/news/newsCategory";
 
 const CategoryFiltering = ({ paramItems, handleChange }) => {
   const [selectNewsTech, setSelectNewsTech] = useState(
@@ -11,15 +11,15 @@ const CategoryFiltering = ({ paramItems, handleChange }) => {
   );
 const {data}=useQuery({
   queryKey:["newsTech"],
-  queryFn:()=>getNewsCategory()
+  queryFn:getNewsCategory
 })
   const [selectNewsTechDebounce] = useDebounce(selectNewsTech, 500);
   useEffect(() => {
-    handleChange("id", selectNewsTechDebounce);
+    handleChange("NewsCategoryId", selectNewsTechDebounce);
   }, [selectNewsTechDebounce]);
   return (
     <div>
-      <InfoCard title={"دسته بندی ها"}>
+      <InfoCard title={"دسته بندی ها"} >
         <CheckList
           data={data}
           labelKey="categoryName"

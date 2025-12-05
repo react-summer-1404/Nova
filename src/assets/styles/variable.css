@@ -21,8 +21,7 @@
   --color-base-gray: #555555;
   --color-bg-purple: #282568;
   --color-text-gray2: #7f7e97;
-  --color-box-gray: #F4F3F8;
-
+  --color-box-gray: #f4f3f8;
 
   --gradient-main: radial-gradient(
       circle at 20% 50%,
@@ -61,4 +60,15 @@
   --color-disable-heart: #555555;
   --color-base-gray: #aaaaaa;
   --color-error-red: #ff7043;
+  --gradient-main: radial-gradient(
+      circle at 20% 50%,
+      rgba(165, 130, 255, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(220, 100, 255, 0.22),
+      transparent 55%
+    ),
+    #0f0b1a;
 }

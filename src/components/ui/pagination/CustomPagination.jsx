@@ -1,4 +1,5 @@
 import { Pagination } from "@heroui/react";
+import { useEffect } from "react";
 
 export default function CustomPagination({
   pageNumber,
@@ -6,7 +7,7 @@ export default function CustomPagination({
   totalCount,
   RowsOfPage,
 }) {
-  const totalPagination = Math.max(1,Math.ceil(totalCount / RowsOfPage)||1)
+  const totalPagination = Math.max(1, Math.ceil(totalCount / RowsOfPage) || 1);
 
   return (
     <Pagination
@@ -14,7 +15,9 @@ export default function CustomPagination({
       showControls
       radius="full"
       initialPage={pageNumber}
-      onChange={setPageNumber}
+      onChange={(numberOfThePage) => {   
+        setPageNumber(numberOfThePage);
+      }}
       total={totalPagination}
     />
   );

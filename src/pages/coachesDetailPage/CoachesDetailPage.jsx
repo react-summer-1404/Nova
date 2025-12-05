@@ -9,6 +9,8 @@ import ModalSection from "../../components/ui/Modal/ModalSection";
 import { IoCallOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import useToggle from "../../hooks/useToggle";
+import {motion} from "framer-motion"
+import { variantPages } from "../../configs/frameMorion/PagesVariants";
 const CoachesDetailPage = () => {
   const [isOpen , toggleOpen] = useToggle(false)
   const {teacherId} =useParams();
@@ -21,7 +23,11 @@ const CoachesDetailPage = () => {
    <div className="flex flex-col">
         <NavigationSection title={teacherDetail?.fullName}/>
 
-     <div className="w-screen flex justify-center gap-[20px] py-[90px]">
+     <motion.div className="w-screen flex justify-center gap-[20px] py-[90px]"
+     variants={variantPages}
+     initial="hidden"
+     animate="visible"
+     >
       <div className="flex flex-col md:w-[80%] lg:w-[60%] w-4/5 items-end gap-15">
         <TeacherInformation teacherDetail={teacherDetail} />
         <FilterTeacherCourses TeacherId={teacherId} />
@@ -32,7 +38,7 @@ const CoachesDetailPage = () => {
      <div className="fixed z-50 right-4 bottom-8 lg:hidden block">
      <ModalSection content={<ContactTeacher/>} Icon={<IoCallOutline size={34} color="white"/>}  StyleModal={" rounded-3xl w-[70px] h-[70px] bg-[#5751E1]"} isOpen={isOpen} onClose={toggleOpen} onOpen={toggleOpen}/>
      </div>
-    </div>
+    </motion.div>
    </div>
   );
 };

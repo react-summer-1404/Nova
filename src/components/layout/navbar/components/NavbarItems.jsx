@@ -1,34 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const NavbarItems = ({ isOpen }) => {
+const NavbarItems = () => {
+  const location = useLocation();
+
   const items = [
     { title: "مربیان", path: "/coaches" },
     { title: "وبلاگ", path: "/blogs" },
-    { title: "دوره های اموزشی", path: "/courses" },
-    { title: "  صفحه اصلی", path: "/" },
+    { title: "دوره های آموزشی", path: "/courses" },
+    { title: "صفحه اصلی", path: "/" },
   ];
 
   return (
-    <div
-      className={`${
-        isOpen ? "relative right-18 top-[100px]  z-10 " : "hidden md:block"
-      }`}
-    >
-      <ul
-        className={`flex  ${
-          isOpen
-            ? "gap-3 sm:gap-16 sm:text-2xl"
-            : "md:flex-row md:items-center md:gap-2 sm:gap-1 lg:gap-3  w-full text-responsive text-black"
-        }`}
-      >
-        {items.map((item, index) => (
-          <Link to={item.path} key={index} className="nav-item">
+    <ul className="flex flex-row items-center gap-3 justify-evenly w-full text-responsive text-black">
+      {items.map((item, index) => {
+        const isActive = location.pathname === item.path;
+        return (
+          <Link
+            to={item.path}
+            key={index}
+            className={`nav-item ${isActive ? "active" : ""}`}
+          >
             {item.title}
           </Link>
-        ))}
-      </ul>
-    </div>
+        );
+      })}
+    </ul>
   );
 };
 

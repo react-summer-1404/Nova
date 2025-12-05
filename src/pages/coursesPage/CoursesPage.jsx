@@ -12,11 +12,19 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCourses } from "../../servises/api/courses/coursList";
 import { Spinner } from "@heroui/react";
 import { useDebounce } from "use-debounce";
-import { useSearchParams } from "react-router-dom";
-import { postDisLike, postLike } from "../../servises/api/Like and Dislike";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import {
+  deleteLike,
+  postDisLike,
+  postLike,
+} from "../../servises/api/Like and Dislike";
 import { postAddToFavorite } from "../../servises/api/addToFavortie";
 import ModalSection from "../../components/ui/Modal/ModalSection";
-
+import { CiFilter } from "react-icons/ci";
+import { motion } from "framer-motion";
+import { variantPages } from "../../configs/frameMorion/PagesVariants";
+import toast from "react-hot-toast";
+// import useCompare from "../../core/store/CmpareStore";
 const CoursesPage = () => {
   const [isOpen, toggleOpen] = useToggle(false);
   const [searchParam, setSearchParam] = useSearchParams();
@@ -27,30 +35,53 @@ const CoursesPage = () => {
   const [rowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
-
+  // const { compareChosen, addCompareCourse, reset } = useCompare();
+  // const navigate = useNavigate();
+  // console.log("compareChosen", compareChosen);
   useEffect(() => {
-    handleChange("Query", debounceSearch || "");
-  }, [debounceSearch]);
+    if (debounceSearch !== paramsObject.Query) {
+      handleChange("Query", debounceSearch || "");
+    }
+  }, [debounceSearch, paramsObject.Query]);
+
+  // useEffect(() => {
+  //   if (compareChosen.length == 2) {
+  //     navigate("/");
+  //     reset();
+  //   }
+  // }, [compareChosen, reset]);
 
   const handleChange = (key, value) => {
     setSearchParam(
       (prev) => {
-        if (value) {
-          prev.set(key, value);
+        const newParams = new URLSearchParams(prev);
+        if (value && value.length !== 0) {
+          newParams.set(key, value);
         } else {
-          prev.delete(key);
+          newParams.delete(key);
         }
-        return prev;
+        return newParams;
       },
       { replace: true }
     );
   };
+
   const apiParams = {
     ...paramsObject,
     TechCount: 1,
     PageNumber: pageNumber,
     RowsOfPage: rowsOfThePage,
   };
+  // Query
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["courses", apiParams],
+    queryFn: () => getCourses(apiParams),
+    staleTime: 5 * 1000 * 60,
+  });
+
+  const currentItems = data?.courseFilterDtos || [];
+  console.log("currentItems", currentItems);
+
   // mutation
   const queryKey = ["courses", apiParams];
 
@@ -80,9 +111,11 @@ const CoursesPage = () => {
     onError: (error, _courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
       console.log(error);
+      toast.error("خطایی رخ داد")
     },
-    onSettled: () => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
+      toast.success("لایک شد")
     },
   });
 
@@ -110,28 +143,41 @@ const CoursesPage = () => {
     },
     onError: (error, courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
+      toast.error("خطایی رخ  داد")
     },
-    onSettled: () => {
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey });
+      toast.success("دیسلایک شد")
+    },
+  });
+  const mutationDeleteLike = useMutation({
+    mutationFn: (courseLikeId) => deleteLike(courseLikeId),
+    onSuccess: () => {
+      toast.success("لایک حذف شد");
       queryClient.invalidateQueries({ queryKey });
     },
+    onError: (error) => {
+      const msg = error?.response?.data?.message || "خطایی رخ داد";
+      toast.error(msg);
+    },
   });
-
+  
   const addToFavoriteMutation = useMutation({
     mutationFn: postAddToFavorite,
-    onSuccess: () => {},
+    onSuccess: () => {toast.success("به علاقه مندی ها اضافه شد")},
   });
-  // Query
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ["courses", apiParams],
-    queryFn: () => getCourses(apiParams),
-  });
-
-  const currentItems = data?.courseFilterDtos || [];
-
+  
+  
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
       <NavigationSection title={"همه دوره ها"} />
-      <div className="md:w-[97%] flex justify-between gap-5 flex-col-reverse md:flex-row md:items-stretch  items-center ">
+      <motion.div
+        className="md:w-[97%] flex justify-between gap-5 flex-col-reverse md:flex-row md:items-stretch  items-center "
+        variants={variantPages}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
         <div className="flex flex-col gap-5 items-end  w-full">
           <div className="flex gap-4 justify-between items-center w-[70%] md:w-[97%] md:mr-0 mr-9">
             <div className="flex gap-2 ">
@@ -181,6 +227,7 @@ const CoursesPage = () => {
                   likeMutation={likeMutation}
                   disLikeMutation={disLikeMutation}
                   addToFavoriteMutation={addToFavoriteMutation}
+                  mutationDeleteLike={mutationDeleteLike}
                 />
               ))}
           </div>
@@ -197,16 +244,20 @@ const CoursesPage = () => {
           </div>
           <div className="fixed z-50 right-4 bottom-8 md:hidden block">
             <ModalSection
-            
+              Icon={<CiFilter size={40} color="white" />}
               content={
-              <div className="flex-center flex-col  gap-5">
+                <div className="flex-center flex-col  gap-5">
                   <FiltersPanel
-                  paramsObject={paramsObject}
-                  onChangeParams={handleChange}
-
-                />
-                <button onClick={()=>toggleOpen()} className="rounded-xl bg-dark-purple text-white w-1/2 h-[35px] cursor-pointer">اعمال فیلتر</button>
-              </div>
+                    paramsObject={paramsObject}
+                    onChangeParams={handleChange}
+                  />
+                  <button
+                    onClick={() => toggleOpen()}
+                    className="rounded-xl bg-dark-purple text-white w-1/2 h-[35px] cursor-pointer"
+                  >
+                    اعمال فیلتر
+                  </button>
+                </div>
               }
               StyleModal={" rounded-3xl w-[70px] h-[70px] bg-[#5751E1]"}
               isOpen={isOpen}
@@ -215,7 +266,7 @@ const CoursesPage = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="flex-center p-8">
         <CustomPagination
           pageNumber={pageNumber}

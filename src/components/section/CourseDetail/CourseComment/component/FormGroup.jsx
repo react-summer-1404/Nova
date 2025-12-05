@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
+
 const FormGroup = ({
   name,
   label,
@@ -24,10 +25,12 @@ const FormGroup = ({
         type={type}
         name={name}
         id={name}
-        style={{ direction: "rtl", backgroundColor: "var(--color-white)" }}
-        className={`border indent-5 focus:outline-none border-[#E1E4E7] mt-[-7px] w-[100%] rounded-[5px] ${inputClass}`}
+        style={{ direction: "rtl" }}
+        className={`border indent-5 focus:outline-none border-[#E1E4E7] mt-[-7px] w-[100%] rounded-[5px] bg-white ${inputClass}`}
       >
         {children}
+     
+
       </Field>
       <ErrorMessage
         name={name}

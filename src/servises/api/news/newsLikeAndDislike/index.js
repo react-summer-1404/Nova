@@ -1,4 +1,4 @@
-import instance from "../../../core/interceptor/interceptor";
+import instance from "../../../../core/interceptor/interceptor";
 
 export const postNewsLike = async (newsId) => {
   const response = await instance.post(
@@ -9,6 +9,14 @@ export const postNewsLike = async (newsId) => {
 export const postNewsDisLike = async (newsId) => {
   const response = await instance.post(
     `/News/NewsDissLike/${newsId}`
+  );
+  return response.data;
+};
+export const deleteNewsLike = async (deleteEntityId) => {
+  const response = await instance.delete(
+    "/News/DeleteLikeNews",{
+      data: { deleteEntityId }
+    }
   );
   return response.data;
 };

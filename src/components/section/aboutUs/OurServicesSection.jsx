@@ -14,7 +14,7 @@ const OurServicesSection = ({
         backgroundColor: bgColor,
         boxShadow: `8px 8px 0px 0px ${shadow}`,
       }}
-      className="max-w-[370px] h-[226px]  rounded-[20px]  flex-center  p-[50px] relative"
+      className="max-w-[370px] h-[226px]  rounded-[20px]  flex-center  p-[50px] relative hover:scale-105 transition-all ease-in-out"
     >
       <div className="flex flex-col gap-5">
         <div className="flex items-center gap-4 " dir="rtl">
