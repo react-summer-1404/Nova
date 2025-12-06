@@ -14,7 +14,7 @@ const FAQSection = () => {
         <span className="text-navy text-[16px] sm:text-[18px] lg:text-[20px] font-[700] w-[65%] md:w-[32%] leading-6]">
           شروع به تمرین از مربیان حرفه ای جهان
         </span>
-        <h2 className="text-dark-gray text-[8px] sm:text-[9px] lg:text-[10px] w-[67%] md:w-[51%] font-[400]">
+        <h2 className="text-dark-gray text-[8px] sm:text-[9px] lg:text-[10px] w-[67%] md:w-[51%] font-[400] text-text2-fot">
           Grooveصندوق ورودی مشترک بصری این کار را برای اعضای تیم آسان میکند
           سازماندهی، اولویت بندی و.در این قسمت.
         </h2>

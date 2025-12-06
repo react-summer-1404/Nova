@@ -16,7 +16,7 @@ const JoinTheClub = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false }}>
-          <p style={{color: "var(--color-white)"}} className ='text-right text-[22px] text-white w-[100%] md:text-[34px] md:w-[70%]'>می خواهید از دوره های جدید در جریان باشید؟</p>
+          <p className ='text-right text-[22px] text-[#fff] w-[100%] md:text-[34px] md:w-[70%]'>می خواهید از دوره های جدید در جریان باشید؟</p>
           <input
             type="text"
             placeholder='ایمیل خود را تایپ کنید'

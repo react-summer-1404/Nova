@@ -16,7 +16,7 @@ const Tabs = ({pointTab,setPointTab}) => {
           className="flex flex-col items-center cursor-pointer relative"
           onClick={() => setPointTab("همه دوره‌ها")}
         >
-          <span>همه دوره‌ها</span>
+          <span className="text-text-gray">همه دوره‌ها</span>
           {pointTab === "همه دوره‌ها" && (
             <div
               style={{ backgroundColor: "var(--color-dark-purple)" }}
@@ -28,7 +28,7 @@ const Tabs = ({pointTab,setPointTab}) => {
         {data?.slice(0,4)?.map((tab) => (
           <div
             key={tab.id}
-            className="flex flex-col items-center cursor-pointer relative"
+            className="flex flex-col items-center cursor-pointer relative text-text-gray"
             onClick={() => setPointTab(tab.techName)}
           >
             <span>{tab.techName}</span>

@@ -56,9 +56,6 @@ a {
   @apply text-sm;
 }
 
-/* 
-body {
-} */
 @theme {
   --font-display: "iranSans";
 }

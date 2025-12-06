@@ -8,7 +8,7 @@ export default function SortDropdown({
 }) {
   return (
     <Autocomplete
-      className="w-[127px] h-[40px]"
+      className="w-[127px] h-[40px] text-black"
       selectedKey={selected}
       onSelectionChange={(val) => onChange(paramKey, val)}
       isClearable={false}

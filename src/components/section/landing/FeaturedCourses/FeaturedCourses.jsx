@@ -45,10 +45,10 @@ console.log(topCourseData)
             textColor={"var(--color-dark-purple)"}
             bgColor={"var(--color-light-purple)"}
           />
-          <h2 className="font-bold md:text-4xl text-lg">
+          <h2 className="font-bold md:text-4xl text-lg text-black">
             بهترین دوره‌های آموزشی جهان ما را کاوش کنید
           </h2>
-          <h3 className=" text-responsive text-text-gray ">
+          <h3 className=" text-responsive text-base-gray ">
             امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است
           </h3>
           <Tabs pointTab={pointTab} setPointTab={setPointTab} />

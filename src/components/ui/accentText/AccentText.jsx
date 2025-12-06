@@ -35,11 +35,11 @@ const AccentText = ({ beforeLabel, afterLabel }) => {
           <i className="w-40 absolute text-center mt-[4px] font-bold text-black">
             {" "}
             <AutoTypeWriter />
-          </i>
+          </i> 
         </div>
-        <h2 className="leading-[60px] text-navy ">{beforeLabel}</h2>
+        <h2 className="leading-[60px] text-black ">{beforeLabel}</h2>
       </div>
-      <h2 className="max-w-md leading-[60px] text-navy">{afterLabel}</h2>
+      <h2 className="max-w-md leading-[60px]  text-black">{afterLabel}</h2>
     </div>
   );
 };

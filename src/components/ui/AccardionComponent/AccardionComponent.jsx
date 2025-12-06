@@ -45,7 +45,7 @@ export default function AccardionComponent() {
               {item.title}
             </span>
           }
-          className="p-4"
+          className="p-4 text-base-gray"
           style={{ direction: "rtl" }}
         >
           {defaultContent}
