@@ -7,11 +7,11 @@ import { HiOutlineCamera } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import useToggle from "../../../../../../hooks/useToggle";
 import toast from "react-hot-toast";
-import {  useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postUserImage } from "../../../../../../servises/api/userPanel/addProfileImage";
 import { postUserImageSelect } from "../../../../../../servises/api/userPanel/selectProfileImage";
 import { deleteUserImageSelect } from "../../../../../../servises/api/userPanel/deleteProfileImage";
-import defaultProf from "../../../../../../assets/icons/images.jpg"
+import defaultProf from "../../../../../../assets/icons/images.jpg";
 
 const ImageContainer = ({ currentProf }) => {
   const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
@@ -21,7 +21,7 @@ const ImageContainer = ({ currentProf }) => {
   const mutationImage = useMutation({
     mutationFn: (formData) => postUserImage(formData),
     onSuccess: () => {
-      queryClient.invalidateQueries(["currentProfUser"])
+      queryClient.invalidateQueries(["currentProfUser"]);
     },
   });
 
@@ -31,28 +31,31 @@ const ImageContainer = ({ currentProf }) => {
     onSuccess: () => {
       toast.success("پروفایل شما انتخاب شد");
       setIsModalOpen(false);
-      queryClient.invalidateQueries(["currentProfUser"])
-
+      queryClient.invalidateQueries(["currentProfUser"]);
     },
   });
 
   const deleteMutation = useMutation({
     mutationFn: (formData) => deleteUserImageSelect(formData),
-    onError: (error) =>{ toast.error("خطا در حذف عکس")
-    console.log("error", error)
-  },
+    onError: (error) => {
+      toast.error("خطا در حذف عکس");
+      console.log("error", error);
+    },
     onSuccess: () => {
       toast.success("پروفایل شما حذف شد");
-      queryClient.invalidateQueries(["currentProfUser"])
-
+      queryClient.invalidateQueries(["currentProfUser"]);
     },
   });
 
   const currentImage = currentProf?.userImage;
-  console.log("currentProf",currentProf)
+  console.log("currentProf", currentProf);
   return (
     <div className=" relative overflow-hidden  rounded-full w-[150px] h-[150px] ">
-<img src={currentProf?.currentPictureAddress  ||selectedImg?.puctureAddress } alt="profile" className="object-cover w-full h-full"/>
+      <img
+        src={currentProf?.currentPictureAddress || selectedImg?.puctureAddress}
+        alt="profile"
+        className="object-cover w-full h-full"
+      />
 
       <ModalSection
         StyleModal={
@@ -61,12 +64,7 @@ const ImageContainer = ({ currentProf }) => {
         isOpen={isModalOpen}
         onClose={toggleModal}
         onOpen={toggleModal}
-        Icon={
-          <HiOutlineCamera
-            color="white"
-            size={30}
-          />
-        }
+        Icon={<HiOutlineCamera color="white" size={30} />}
         size="4xl"
         content={
           <div className="flex flex-col justify-between items-center h-[400px] px-8">
@@ -93,19 +91,23 @@ const ImageContainer = ({ currentProf }) => {
                     <img
                       src={img.puctureAddress}
                       alt={`image ${index}`}
-                        className={`w-[100px] h-[100px] object-cover rounded cursor-pointer transition ${
-                        selectedImg?.id === img.id ? "ring-4 ring-dark-purple" : ""
+                      className={`w-[100px] h-[100px] object-cover rounded cursor-pointer transition ${
+                        selectedImg?.id === img.id
+                          ? "ring-4 ring-dark-purple"
+                          : ""
                       }`}
                       onClick={() => {
                         setSelectedImg(img);
                       }}
                     />
-                    <button className=" absolute -top-3 -left-3 w-[25px] h-[25px] flex-center rounded-full bg-dark-purple"
-                    onClick={()=>{
-                      const formData = new FormData();
-                      formData.append("DeleteEntityId", img.id);
-                      deleteMutation.mutate(formData);
-                    }}>
+                    <button
+                      className=" absolute -top-3 -left-3 w-[25px] h-[25px] flex-center rounded-full bg-dark-purple"
+                      onClick={() => {
+                        const formData = new FormData();
+                        formData.append("DeleteEntityId", img.id);
+                        deleteMutation.mutate(formData);
+                      }}
+                    >
                       <IoClose color="white" />
                     </button>
                   </div>
@@ -125,7 +127,7 @@ const ImageContainer = ({ currentProf }) => {
                     name="formFile"
                     accept="image/png, image/jpeg"
                     className="hidden"
-                    onChange={async(event) => {
+                    onChange={async (event) => {
                       const sendFile = event.currentTarget.files[0];
                       if (sendFile) {
                         const formData = new FormData();
