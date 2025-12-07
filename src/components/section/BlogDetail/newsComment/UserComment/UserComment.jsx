@@ -33,6 +33,8 @@ const UserComment = ({
     mutationFn: () => postNewsCommentLike(id),
     onError: (error) => {
       console.error(error);
+      const msg = error?.response?.data?.message
+      toast.error(msg)
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["newsComment"]);

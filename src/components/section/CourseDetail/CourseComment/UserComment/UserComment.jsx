@@ -21,6 +21,8 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
         mutationFn :()=> PostCommentLike(CourseCommandId),
         onError : (error) => {
             console.error(error)
+            const msg = error?.response?.data?.message
+            toast.error(msg)
         },
         onSuccess : () => {
             queryClient.invalidateQueries(["comment"], CourseId);
