@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@heroui/react";
 const AskUser = () => {
   const text = `
-دوست داری قبل از شروع، یه توضیح ساده و خودمونی درباره‌ی برنامه‌نویسی برات بگم؟ 😄
+دوست داری قبل از شروع، یه توضیح ساده درباره‌ی برنامه‌نویسی برات بگم؟ 😄
 `;
   const LETTER_DELAY = 0.025;
 const navigate =useNavigate()
