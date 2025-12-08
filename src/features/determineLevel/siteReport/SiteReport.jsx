@@ -75,7 +75,7 @@ const SiteReport = () => {
           <div className="flex flex-col items-start gap-4 w-[50%]   ">
             {options.map((option, i) => {
               return (
-                <Button key={i} variant="faded" startContent={option.icon} onPress={() => navigate("/programmingKnowledge")} className=" text-[#5751e1] w-full h-[50px] bg-[hsl(240,5%,90%)]">
+                <Button key={i} variant="faded" startContent={option.icon} onPress={() => navigate("/programmingKnowledge")} className=" text-[#5751e1] w-full h-[50px] bg-[hsl(240,10%,85%)]">
                    {option.name}
                 </Button>
               );
