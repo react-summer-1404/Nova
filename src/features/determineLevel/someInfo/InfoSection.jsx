@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Accordion, AccordionItem, Button, ButtonGroup } from "@heroui/react";
 import { GoArrowRight } from "react-icons/go";
-
+import { FaFileAlt, FaYoutube } from "react-icons/fa";
+import { Tooltip } from "@heroui/react";
 const InfoSection = () => {
   const LETTER_DELAY = 0.025;
 
@@ -33,14 +34,17 @@ const InfoSection = () => {
     "",
     "هر کدام از این بخش‌ها وظایف و مهارت‌های مخصوص خودشان را دارند و بسته به نیاز پروژه انتخاب می‌شوند.",
   ];
-
+  const options = [
+    { name: "یوتوب", icon: <FaYoutube size={20} color="red"/> },
+    { name: "مقاله", icon: <FaFileAlt size={20} color="gray"/> },
+  ];
   return (
     <div className="w-screen flex-center bg-light-purple h-screen">
       <div className="w-[60%]">
         <div className="flex-center">
-          <div className="flex items-center gap-3 p-4 ">
+          <div className="flex items-center gap-3 ">
             <div className="flex items-center justify-end ">
-              <div className="bg-white p-4 my-6 rounded-lg flex-1 max-w-3xl ">
+              <div className="bg-white p-2 my-3 rounded-lg flex-1 max-w-3xl ">
                 <span className="ml-3 ">
                   {lines.map((line, lineIndex) => (
                     <div key={lineIndex}>
@@ -64,15 +68,20 @@ const InfoSection = () => {
                 </span>
                 <Accordion>
                   <AccordionItem
-                  style={{direction:"rtl"}}
+                    style={{ direction: "rtl" }}
                     key="1"
-                    aria-label="Accordion 1"
-                    title="ارهههه 1"
+                    title="کسب اطلاعات بیشتر"
                   >
-                    <Button>dkjf</Button>
-                    <Button>dkjf</Button>
-                    <Button>dkjf</Button>
-                
+                    <div className=" flex-center gap-3">
+                    {options.map((option) => {
+                      return (
+                        <Tooltip content={option.name} showArrow={true}>
+                          <Button startContent={option.icon}></Button>
+                        </Tooltip>
+                      );
+                    })}
+                    </div>
+
                   </AccordionItem>
                 </Accordion>
               </div>
