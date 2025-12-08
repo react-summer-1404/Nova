@@ -7,11 +7,11 @@ import {
 } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
 import useCompare from "../../../core/store/CmpareStore";
 import { MdStar } from "react-icons/md";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   useMotionTemplate,
   useMotionValue,
@@ -64,8 +64,10 @@ const CourseProductCard = ({
   };
   const { addedToFavorite, addFavorite } = useFavorite();
   const isFav = addedToFavorite.includes(product.courseId);
-  const { compareChosen, addCompareCourse, resetCompare } = useCompare();
-
+  // const { compareChosen, addCompareCourse, resetCompare } = useCompare();
+  const [sParams,setSParams]=useSearchParams("");
+  const [selectedId, setSelectedId] = useState("");
+  console.log("id",selectedId)
   // --- Handle Mutations ---
   const handleDisLike = () => disLikeMutation.mutate(product.courseId);
 
@@ -75,7 +77,7 @@ const CourseProductCard = ({
   };
   const handleLikeClick = () => {
     if (product.userIsLiked) {
-      if (!product.userLikedId) return; 
+      if (!product.userLikedId) return;
       mutationDeleteLike.mutate(product.userLikedId?.id);
     } else {
       likeMutation.mutate(product.courseId);
@@ -83,7 +85,7 @@ const CourseProductCard = ({
   };
 
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
-// console.log(product.technologyList)
+  // console.log(product.technologyList)
   return (
     <motion.div
       ref={ref}
@@ -128,7 +130,7 @@ const CourseProductCard = ({
 
           <div
             className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-white"
-            onClick={() => addCompareCourse(product.courseId)}
+            onClick={() => setSelectedId(product.courseId)}
           >
             <svg
               width="26"
@@ -160,9 +162,9 @@ const CourseProductCard = ({
               {product.technologyList && (
                 <div className="w-[100px] truncate">
                   <Tag
-                  bgColor={"var(--color-soft-gray)"}
-                  title={product.technologyList}
-                />
+                    bgColor={"var(--color-soft-gray)"}
+                    title={product.technologyList}
+                  />
                 </div>
               )}
               <Tag
@@ -171,7 +173,9 @@ const CourseProductCard = ({
               />
             </div>
             <div className="flex gap-1 ">
-              <span className="text-base-gray">{String(product.courseRate?.avg)?.slice(0, 4)}</span>
+              <span className="text-base-gray">
+                {String(product.courseRate?.avg)?.slice(0, 4)}
+              </span>
               <MdStar className="text-golden-yellow" size={18} />
             </div>
           </div>
@@ -232,7 +236,7 @@ const CourseProductCard = ({
                   textColor={"#5F5F66"}
                   width={"65px"}
                   height={"34px"}
-                  onClick={handleLikeClick} // ← تابع wrapper
+                  onClick={handleLikeClick}
                 />
 
                 <Tag
@@ -257,7 +261,7 @@ const CourseProductCard = ({
 
         <div className="flex justify-between pt-5" style={{ direction: "rtl" }}>
           <div className="flex items-center">
-            <MdOutlineDateRange className="text-[#5F5F66]"/>
+            <MdOutlineDateRange className="text-[#5F5F66]" />
             <div className="text-[#5F5F66]">{courseDate}</div>
           </div>
 

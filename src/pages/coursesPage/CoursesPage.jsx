@@ -111,11 +111,11 @@ const CoursesPage = () => {
     onError: (error, _courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
       console.log(error);
-      toast.error("خطایی رخ داد")
+      toast.error("خطایی رخ داد");
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
-      toast.success("لایک شد")
+      toast.success("لایک شد");
     },
   });
 
@@ -143,11 +143,11 @@ const CoursesPage = () => {
     },
     onError: (error, courseId, context) => {
       queryClient.setQueryData(context.queryKey, context.previousData);
-      toast.error("خطایی رخ  داد")
+      toast.error("خطایی رخ  داد");
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
-      toast.success("دیسلایک شد")
+      toast.success("دیسلایک شد");
     },
   });
   const mutationDeleteLike = useMutation({
@@ -161,13 +161,14 @@ const CoursesPage = () => {
       toast.error(msg);
     },
   });
-  
+
   const addToFavoriteMutation = useMutation({
     mutationFn: postAddToFavorite,
-    onSuccess: () => {toast.success("به علاقه مندی ها اضافه شد")},
+    onSuccess: () => {
+      toast.success("به علاقه مندی ها اضافه شد");
+    },
   });
-  
-  
+
   return (
     <div className="flex flex-col gap-8  w-screen  justify-center ">
       <NavigationSection title={"همه دوره ها"} />
