@@ -7,9 +7,8 @@ import {
 } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import Tag from "../Tag/Tag";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useFavorite from "../../../core/store/favoriteStore";
-import useCompare from "../../../core/store/CmpareStore";
 import { MdStar } from "react-icons/md";
 import { useRef, useState } from "react";
 import {
@@ -64,10 +63,8 @@ const CourseProductCard = ({
   };
   const { addedToFavorite, addFavorite } = useFavorite();
   const isFav = addedToFavorite.includes(product.courseId);
-  // const { compareChosen, addCompareCourse, resetCompare } = useCompare();
-  const [sParams,setSParams]=useSearchParams("");
-  const [selectedId, setSelectedId] = useState("");
-  console.log("id",selectedId)
+  const [sParams, setSParams] = useSearchParams("");
+  const navigate = useNavigate();
   // --- Handle Mutations ---
   const handleDisLike = () => disLikeMutation.mutate(product.courseId);
 
@@ -83,9 +80,24 @@ const CourseProductCard = ({
       likeMutation.mutate(product.courseId);
     }
   };
+  const handleClickCompare = (key, id) => {
+    setSParams((prev) => {
+      const prevParams = new URLSearchParams(prev);
+      const selected = prevParams.getAll(key);
+
+      if (selected.length < 2) {
+        prevParams.append(key, id);
+
+        if (selected.length + 1 == 2) {
+          navigate("/compareCourse");
+        }
+        return prevParams;
+      }
+
+    });
+  };
 
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
-  // console.log(product.technologyList)
   return (
     <motion.div
       ref={ref}
@@ -130,7 +142,7 @@ const CourseProductCard = ({
 
           <div
             className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-white"
-            onClick={() => setSelectedId(product.courseId)}
+            onClick={() => handleClickCompare("courseId", product.courseId)}
           >
             <svg
               width="26"

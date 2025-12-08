@@ -65,7 +65,7 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <NavbarItems />
           </div>
-          <Logo />
+          <Logo/>
         </div>
       </div>
       <motion.div

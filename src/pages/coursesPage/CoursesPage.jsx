@@ -35,21 +35,12 @@ const CoursesPage = () => {
   const [rowsOfThePage] = useState(12);
   const [searchQuery, setSearchQuery] = useState(paramsObject.Query || "");
   const [debounceSearch] = useDebounce(searchQuery, 500);
-  // const { compareChosen, addCompareCourse, reset } = useCompare();
-  // const navigate = useNavigate();
-  // console.log("compareChosen", compareChosen);
+
   useEffect(() => {
     if (debounceSearch !== paramsObject.Query) {
       handleChange("Query", debounceSearch || "");
     }
   }, [debounceSearch, paramsObject.Query]);
-
-  // useEffect(() => {
-  //   if (compareChosen.length == 2) {
-  //     navigate("/");
-  //     reset();
-  //   }
-  // }, [compareChosen, reset]);
 
   const handleChange = (key, value) => {
     setSearchParam(
