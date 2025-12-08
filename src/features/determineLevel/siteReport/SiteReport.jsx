@@ -1,22 +1,45 @@
 import { Button } from "@heroui/react";
 import React from "react";
-import { color, motion } from "framer-motion";
+import {  motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { FaUserFriends, FaGlobe, FaSearch, FaChalkboardTeacher, FaCalendarAlt, FaEllipsisH } from "react-icons/fa";
 
 const SiteReport = () => {
-  const text = `مارا از کجا پیدا کردید ؟ پاسخ شما میتونه بهمون کمک کنه`;
+  const text = `از چه راهی با نامبر وان آشنا شدی؟
+  جوابت  به ما کمک می‌کنه مسیر رشد رو بهتر بشناسیم 🌱`;
   const LETTER_DELAY = 0.025;
   const options = [
-    "دوستان",
-    "شبکه های مجازی",
-    "جستجوی گوگل",
-    "معرفی مدرس",
-    "رویداد یا وبینار",
-    "سایر موارد ..."
+    {
+      name: "دوستان",
+      icon: <FaUserFriends size={20}/>
+    },
+    {
+      name: "شبکه های مجازی",
+      icon: <FaGlobe size={20}/>
+    },
+    {
+      name: "جستجوی گوگل",
+      icon: <FaSearch size={20}/>
+    },
+    {
+      name: "معرفی مدرس",
+      icon: <FaChalkboardTeacher size={20}/>
+    },
+    {
+      name: "رویداد یا وبینار",
+      icon: <FaCalendarAlt size={20}/>
+    },
+    {
+      name: "سایر موارد",
+      icon: <FaEllipsisH size={20}/>
+    },
   ];
+  
+  const navigate = useNavigate();
   return (
     <div className=" w-screen flex-center bg-light-purple h-screen" dir="rtl">
-      <div className="w-[60%] ">
-        <div className="flex-center">
+      <div className="w-[60%]  ">
+        <div className="flex-center ">
           <div className="flex items-center gap-3 p-4 ">
             <div className="flex items-center justify-end ">
               <div className="bg-white p-4 my-6 rounded-lg flex-1 max-w-3xl ">
@@ -48,24 +71,17 @@ const SiteReport = () => {
             ></img>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4 w-full ">
-          {options.map((b,i)=>{
-            return(
-                <Button>{b}</Button>
-            )
-          })}
-        </div>
-        <div className="flex flex-col items-center gap-4 w-full ">
-          <Button color="primary" className="w-1/2">
-            ! بزن بریم
-          </Button>
-          <Button
-            onPress={() => navigate("/")}
-            color="info"
-            className="w-[300px]"
-          >
-            برگشت به صفحه اصلی
-          </Button>
+        <div className="flex-center flex-col gap-8 ">
+          <div className="flex flex-col items-start gap-4 w-[50%]   ">
+            {options.map((option, i) => {
+              return (
+                <Button key={i} variant="faded" startContent={option.icon} onPress={() => navigate("/programmingKnowledge")} className=" text-[#5751e1] w-full h-[50px] bg-[hsl(240,5%,90%)]">
+                   {option.name}
+                </Button>
+              );
+            })}
+          </div>
+         
         </div>
       </div>
     </div>
@@ -73,3 +89,7 @@ const SiteReport = () => {
 };
 
 export default SiteReport;
+
+
+
+

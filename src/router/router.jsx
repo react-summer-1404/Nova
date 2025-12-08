@@ -19,6 +19,7 @@ import PageLayout from "../components/layout/PageLayout/PageLayout";
 import DetermineLevel from "../features/determineLevel/introduction/DetermineLevel";
 import LayOut from "../features/determineLevel/LayOut/LayOut";
 import SiteReport from "../features/determineLevel/siteReport/SiteReport";
+import ProgrammingKnowledge from "../features/determineLevel/ProgrammingKnowledge/ProgrammingKnowledge";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/determineLevel", element: <DetermineLevel /> },
       { path: "/howDidYouFindUs", element: <SiteReport /> },
+      { path: "/programmingKnowledge", element: <ProgrammingKnowledge /> },
     ],
   },
   ...AuthRoutes,
