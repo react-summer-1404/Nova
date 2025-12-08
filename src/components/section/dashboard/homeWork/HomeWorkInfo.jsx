@@ -14,6 +14,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   addHomeWork,
   addHomeWorkStep2,
+  deleteHomeWork,
 } from "../../../../servises/api/userPanel/homeWork";
 import toast from "react-hot-toast";
 import { Field } from "formik";
@@ -49,6 +50,18 @@ const HomeWorkInfo = ({
   });
   const step2AddHw = useMutation({
     mutationFn: (formData) => addHomeWorkStep2(formData),
+  });
+  const deleteMutation = useMutation({
+    mutationFn: (apiData) => deleteHomeWork(apiData),
+    onSuccess: (data) => {
+      toast.success(data?.message);
+
+      setExercise(data?.id);
+    },
+    onError: (error) => {
+      const msg = error?.response?.data?.message;
+      toast.error(msg);
+    },
   });
   return (
     <div className="justify-center items-center flex w-full h-[40px] py-2 text-[10px] lg:text-[14px] font[600] text-navy even:bg-[#F7F7F7] odd:bg-[#C8C1ED4D] rounded-[5px] shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)]">
@@ -107,7 +120,7 @@ const HomeWorkInfo = ({
 
                 <Button
                   className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
-                  onPress={() => mutationDelete.mutate(reservedId)}
+                  onPress={() => deleteMutation.mutate({exerciseFileId:homeWorkId})}
                 >
                   حذف
                 </Button>

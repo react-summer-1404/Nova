@@ -13,3 +13,7 @@ export const addHomeWorkStep2 = async (formData) => {
     const response = await instance.post("/Session/AddExerciseFile",formData)
     return response.data;
 }
+export const deleteHomeWork = async (apiData) => {
+    const response = await instance.delete("/Session/DeleteExserciseFile",{data:apiData})
+    return response.data;
+}
