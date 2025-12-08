@@ -1,9 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
-import {LandingPage,AboutUsPage,NotFoundingPage,BlogDetailPage,BlogsPage,CartPage,CoachesPage,CoachesDetailPage,CompareCoursePage,ContactUsPage,CourseDetailPage,CoursesPage,} from "../pages/index";
+import {
+  LandingPage,
+  AboutUsPage,
+  NotFoundingPage,
+  BlogDetailPage,
+  BlogsPage,
+  CartPage,
+  CoachesPage,
+  CoachesDetailPage,
+  CompareCoursePage,
+  ContactUsPage,
+  CourseDetailPage,
+  CoursesPage,
+} from "../pages/index";
 import { AuthRoutes } from "../features/auth/routes/routes";
 import { DashboardRoutes } from "./dashboardRouter";
 import PageLayout from "../components/layout/PageLayout/PageLayout";
-import DetermineLevel from "../features/determineLevel/DetermineLevel";
+import DetermineLevel from "../features/determineLevel/introduction/DetermineLevel";
+import LayOut from "../features/determineLevel/LayOut/LayOut";
+import SiteReport from "../features/determineLevel/siteReport/SiteReport";
 
 const router = createBrowserRouter([
   {
@@ -22,9 +37,14 @@ const router = createBrowserRouter([
       { path: "/courses", element: <CoursesPage /> },
       { path: "*", element: <NotFoundingPage /> },
     ],
-    
   },
-  { path: "/determineLevel", element: <DetermineLevel/> },
+  {
+    element: <LayOut />,
+    children: [
+      { path: "/determineLevel", element: <DetermineLevel /> },
+      { path: "/howDidYouFindUs", element: <SiteReport /> },
+    ],
+  },
   ...AuthRoutes,
   ...DashboardRoutes,
 ]);

@@ -1,0 +1,75 @@
+import { Button } from "@heroui/react";
+import React from "react";
+import { color, motion } from "framer-motion";
+
+const SiteReport = () => {
+  const text = `مارا از کجا پیدا کردید ؟ پاسخ شما میتونه بهمون کمک کنه`;
+  const LETTER_DELAY = 0.025;
+  const options = [
+    "دوستان",
+    "شبکه های مجازی",
+    "جستجوی گوگل",
+    "معرفی مدرس",
+    "رویداد یا وبینار",
+    "سایر موارد ..."
+  ];
+  return (
+    <div className=" w-screen flex-center bg-light-purple h-screen" dir="rtl">
+      <div className="w-[60%] ">
+        <div className="flex-center">
+          <div className="flex items-center gap-3 p-4 ">
+            <div className="flex items-center justify-end ">
+              <div className="bg-white p-4 my-6 rounded-lg flex-1 max-w-3xl ">
+                <span className="ml-3 ">
+                  {text.split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        delay: i * LETTER_DELAY,
+                        duration: 0.2,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+              </div>
+              <div className="w-3 overflow-hidden">
+                <div className="h-4 bg-white rotate-45 transform origin-bottom-right rounded-sm"></div>
+              </div>
+            </div>
+            <img
+              src="/logo.svg"
+              alt="Logo"
+              className="filter drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] xl:w-[50px] sm:w-[50px] w-[35px]"
+            ></img>
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-4 w-full ">
+          {options.map((b,i)=>{
+            return(
+                <Button>{b}</Button>
+            )
+          })}
+        </div>
+        <div className="flex flex-col items-center gap-4 w-full ">
+          <Button color="primary" className="w-1/2">
+            ! بزن بریم
+          </Button>
+          <Button
+            onPress={() => navigate("/")}
+            color="info"
+            className="w-[300px]"
+          >
+            برگشت به صفحه اصلی
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SiteReport;
