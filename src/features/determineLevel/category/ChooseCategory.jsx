@@ -89,25 +89,28 @@ const ChooseCategory = () => {
         <div className="flex-center flex-col gap-8 ">
           <div className="flex flex-col items-start gap-4 w-[50%]   ">
             {options.map((option, i) => {
-             const isActive = selectedKey === option.name;
-
+              const isActive = selectedKey === option.name;
 
               return (
                 <Button
-                key={i}
-                variant="faded"
-                startContent={option.icon}
-                onPress={() => {
-                  setSelectedKey(option.name);
-                  setCategoryId(option.id);
-                }}
-                className={`w-full h-[50px] transition-all duration-200 
-                  ${isActive ? "bg-[#5751e1] text-white" : "bg-[hsl(240,5%,90%)] text-[#5751e1]"}
+                  key={i}
+                  variant="faded"
+                  startContent={option.icon}
+               
+                  onPress={() => {
+                    setCategoryId(option.id);
+                    setTimeout(() => navigate("/result"), 50);  
+                  }}
+                  className={`w-full h-[50px] transition-all duration-200 
+                  ${
+                    isActive
+                      ? "bg-[#5751e1] text-white"
+                      : "bg-[hsl(240,5%,90%)] text-[#5751e1]"
+                  }
                 `}
-              >
-                {option.name}
-              </Button>
-              
+                >
+                  {option.name}
+                </Button>
               );
             })}
           </div>
