@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Accordion, AccordionItem, Button, ButtonGroup } from "@heroui/react";
-import { GoArrowRight,GoArrowLeft } from "react-icons/go";
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import { FaFileAlt, FaYoutube } from "react-icons/fa";
 import { Tooltip } from "@heroui/react";
 const InfoSection = () => {
@@ -118,8 +118,8 @@ const InfoSection = () => {
             <Button
               color="primary"
               className="w-1/4"
-             startContent={<GoArrowLeft size={20} />}
-              onPress={()=>navigate("/programmingKnowledge")}
+              startContent={<GoArrowLeft size={20} />}
+              onPress={() => navigate("/programmingKnowledge")}
             >
               مرحله قبل
             </Button>
@@ -127,7 +127,7 @@ const InfoSection = () => {
               color="primary"
               className="w-1/4"
               endContent={<GoArrowRight size={20} />}
-              onPress={()=>navigate("/programmingCategory")}
+              onPress={() => navigate("/programmingCategory")}
             >
               مرحله بعد
             </Button>

@@ -1,8 +1,15 @@
 import { Button } from "@heroui/react";
 import React from "react";
-import {  motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { FaUserFriends, FaGlobe, FaSearch, FaChalkboardTeacher, FaCalendarAlt, FaEllipsisH } from "react-icons/fa";
+import {
+  FaUserFriends,
+  FaGlobe,
+  FaSearch,
+  FaChalkboardTeacher,
+  FaCalendarAlt,
+  FaEllipsisH,
+} from "react-icons/fa";
 
 const SiteReport = () => {
   const text = `از چه راهی با نامبر وان آشنا شدی؟
@@ -11,30 +18,30 @@ const SiteReport = () => {
   const options = [
     {
       name: "دوستان",
-      icon: <FaUserFriends size={20}/>
+      icon: <FaUserFriends size={20} />,
     },
     {
       name: "شبکه های مجازی",
-      icon: <FaGlobe size={20}/>
+      icon: <FaGlobe size={20} />,
     },
     {
       name: "جستجوی گوگل",
-      icon: <FaSearch size={20}/>
+      icon: <FaSearch size={20} />,
     },
     {
       name: "معرفی مدرس",
-      icon: <FaChalkboardTeacher size={20}/>
+      icon: <FaChalkboardTeacher size={20} />,
     },
     {
       name: "رویداد یا وبینار",
-      icon: <FaCalendarAlt size={20}/>
+      icon: <FaCalendarAlt size={20} />,
     },
     {
       name: "سایر موارد",
-      icon: <FaEllipsisH size={20}/>
+      icon: <FaEllipsisH size={20} />,
     },
   ];
-  
+
   const navigate = useNavigate();
   return (
     <div className=" w-screen flex-center bg-light-purple h-screen" dir="rtl">
@@ -75,13 +82,18 @@ const SiteReport = () => {
           <div className="flex flex-col items-start gap-4 w-[50%]   ">
             {options.map((option, i) => {
               return (
-                <Button key={i} variant="faded" startContent={option.icon} onPress={() => navigate("/programmingKnowledge")} className=" text-[#5751e1] w-full h-[50px] bg-[hsl(240,10%,85%)]">
-                   {option.name}
+                <Button
+                  key={i}
+                  variant="faded"
+                  startContent={option.icon}
+                  onPress={() => navigate("/programmingKnowledge")}
+                  className=" text-[#5751e1] w-full h-[50px] bg-[hsl(240,10%,85%)]"
+                >
+                  {option.name}
                 </Button>
               );
             })}
           </div>
-         
         </div>
       </div>
     </div>
@@ -89,7 +101,3 @@ const SiteReport = () => {
 };
 
 export default SiteReport;
-
-
-
-

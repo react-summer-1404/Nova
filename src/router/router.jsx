@@ -23,6 +23,7 @@ import ProgrammingKnowledge from "../features/determineLevel/ProgrammingKnowledg
 import ChooseCategory from "../features/determineLevel/category/ChooseCategory";
 import InfoSection from "../features/determineLevel/someInfo/InfoSection";
 import AskUser from "../features/determineLevel/someInfo/AskUser";
+import Result from "../features/determineLevel/result/Result";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       { path: "/askUserToBerSure", element: <AskUser /> },
       { path: "/programmingInformation", element: <InfoSection /> },
       { path: "/programmingCategory", element: <ChooseCategory /> },
+      { path: "/result", element: <Result /> },
     ],
   },
   ...AuthRoutes,
