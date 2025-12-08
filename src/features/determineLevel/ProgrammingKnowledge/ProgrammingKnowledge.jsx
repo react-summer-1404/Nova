@@ -29,9 +29,9 @@ const ProgrammingKnowledge = () => {
     }
 
     if (selectedKey === "3") {
-      navigate("/beginner");
+      navigate("/askUserToBerSure");
     } else {
-      navigate("/howDidYouFindUs");
+      navigate("/programmingCategory");
     }
   };
 
