@@ -76,8 +76,7 @@ const HomeWorkInfo = ({
             <div className="flex flex-col gap-3">
               <div className="flex-col-center gap-5">
                 <p className="text-navy">ایا از حذف این دوره اطمینن دارید؟</p>
-                <div className="w-full flex-center">
-                </div>
+                <div className="w-full flex-center"></div>
                 <div className="flex w-full justify-evenly">
                   <Button
                     className="w-[70px] h-[35px] bg-gray-300 text-gray-800 font-medium rounded-md hover:bg-gray-400 transition-all duration-200"
@@ -120,7 +119,9 @@ const HomeWorkInfo = ({
 
                 <Button
                   className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
-                  onPress={() => deleteMutation.mutate({exerciseFileId:homeWorkId})}
+                  onPress={() =>
+                    deleteMutation.mutate({ exerciseFileId: homeWorkId })
+                  }
                 >
                   حذف
                 </Button>
@@ -178,7 +179,7 @@ const HomeWorkInfo = ({
                         if (type.startsWith("image/")) {
                           setPreview(URL.createObjectURL(file));
                         } else if (type === "application/pdf") {
-                          setPreview(file.name); 
+                          setPreview(file.name);
                         }
                       }
                     }}
