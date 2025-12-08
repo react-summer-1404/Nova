@@ -47,7 +47,12 @@ const InfoSection = () => {
     },
   ];
   return (
-    <div className="w-screen flex-center bg-light-purple h-screen">
+    <motion.div
+      className="w-screen flex-center bg-light-purple h-screen"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="w-[60%]">
         <div className="flex-center">
           <div className="flex items-center gap-3 ">
@@ -74,7 +79,7 @@ const InfoSection = () => {
                     </div>
                   ))}
                 </span>
-                <div className="flex-center w-full ">
+                <div className="flex-center w-full text-dark-purple">
                   <Accordion style={{ width: 300 }}>
                     <AccordionItem
                       className="w-[300px] "
@@ -114,7 +119,12 @@ const InfoSection = () => {
         </div>
 
         <div className="flex-center flex-col gap-8 ">
-          <div className="flex-center items-center gap-4 w-full ">
+          <motion.div
+            className="flex-center items-center gap-4 w-full "
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3, duration: 1, ease: "easeInOut" }}
+          >
             <Button
               color="primary"
               className="w-1/4"
@@ -131,10 +141,10 @@ const InfoSection = () => {
             >
               مرحله بعد
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

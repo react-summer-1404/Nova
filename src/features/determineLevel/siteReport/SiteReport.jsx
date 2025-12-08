@@ -11,6 +11,21 @@ import {
   FaEllipsisH,
 } from "react-icons/fa";
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren:2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, scale: 0.5 },
+  show: { opacity: 1, scale: 1 },
+};
 const SiteReport = () => {
   const text = `از چه راهی با نامبر وان آشنا شدی؟
   جوابت  به ما کمک می‌کنه مسیر رشد رو بهتر بشناسیم 🌱`;
@@ -44,7 +59,13 @@ const SiteReport = () => {
 
   const navigate = useNavigate();
   return (
-    <div className=" w-screen flex-center bg-light-purple h-screen" dir="rtl">
+    <motion.div
+      className=" w-screen flex-center bg-light-purple h-screen"
+      dir="rtl"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="w-[60%]  ">
         <div className="flex-center ">
           <div className="flex items-center gap-3 p-4 ">
@@ -79,24 +100,31 @@ const SiteReport = () => {
           </div>
         </div>
         <div className="flex-center flex-col gap-8 ">
-          <div className="flex flex-col items-start gap-4 w-[50%]   ">
+          <motion.div
+            className="flex flex-col items-start gap-4 w-[50%]"
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
             {options.map((option, i) => {
               return (
-                <Button
-                  key={i}
-                  variant="faded"
-                  startContent={option.icon}
-                  onPress={() => navigate("/programmingKnowledge")}
-                  className=" text-[#5751e1] w-full h-[50px] bg-[hsl(240,10%,85%)]"
-                >
-                  {option.name}
-                </Button>
+                <motion.div className="w-full" variants={item}>
+                  <Button
+                    key={i}
+                    variant="faded"
+                    startContent={option.icon}
+                    onPress={() => navigate("/programmingKnowledge")}
+                    className=" text-[#5751e1] w-full h-[50px] bg-[hsl(240,10%,85%)]"
+                  >
+                    {option.name}
+                  </Button>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

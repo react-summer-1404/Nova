@@ -7,9 +7,15 @@ const AskUser = () => {
 دوست داری قبل از شروع، یه توضیح ساده درباره‌ی برنامه‌نویسی برات بگم؟ 😄
 `;
   const LETTER_DELAY = 0.025;
-const navigate =useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className=" w-screen flex-center bg-light-purple h-screen" dir="rtl">
+    <motion.div
+      className=" w-screen flex-center bg-light-purple h-screen"
+      dir="rtl"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="w-[60%]  ">
         <div className="flex-center ">
           <div className="flex items-center gap-3 p-4 ">
@@ -43,12 +49,25 @@ const navigate =useNavigate()
             ></img>
           </div>
         </div>
-        <div className="flex-center  gap-4 w-full ">
-          <Button color="primary" className="w-[200px]" onPress={()=>navigate("/programmingInformation")} >اره !</Button>
-          <Button onPress={()=>navigate("/programmingCategory")}  className="w-[200px]" >نیازی نیست</Button>
-        </div>
+        <motion.div className="flex-center  gap-4 w-full "initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2, duration: 1, ease: "easeInOut" }}>
+          <Button
+            color="primary"
+            className="w-[200px]"
+            onPress={() => navigate("/programmingInformation")}
+          >
+            اره !
+          </Button>
+          <Button
+            onPress={() => navigate("/programmingCategory")}
+            className="w-[200px]"
+          >
+            نیازی نیست
+          </Button>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

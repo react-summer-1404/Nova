@@ -7,7 +7,7 @@ import CourseProductCard from "../../../components/ui/card/CourseProductCard";
 import { Spinner } from "@heroui/spinner";
 import CustomPagination from "../../../components/ui/pagination/CustomPagination";
 import { useState } from "react";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 import Plan from "../plan/Plan";
 const Result = () => {
   const categoryId = useCategoryId((state) => state.categoryId);
@@ -32,82 +32,92 @@ const Result = () => {
   const currentItems = data?.courseFilterDtos || [];
   console.log("data from API:", data);
 
-  const text =
-    `این دوره‌ها مخصوص سطح تو هستن.با استفاده از نقشه‌ٔ راه پایین می‌تونی مسیر یادگیریت رو دنبال کنی. `;
+  const text = `این دوره‌ها مخصوص سطح تو هستن.با استفاده از نقشه‌ٔ راه پایین می‌تونی مسیر یادگیریت رو دنبال کنی. `;
 
   const LETTER_DELAY = 0.025;
 
   return (
-    <div className="w-screen flex-center flex-col bg-light-purple h-fit border">
+    <motion.div
+      className="w-screen flex-center flex-col bg-light-purple h-fit"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="w-[90%] h-[90%]  flex flex-col mt-8 flex-center gap-4">
-      <div className="w-[60%]">
-        <div className="flex-center ">
-          <div className="flex items-center gap-3 p-4 ">
-            <div className="flex items-center justify-end ">
-              <div className="bg-white p-4 my-6 rounded-lg flex-1 max-w-3xl ">
-                <span className="ml-3 ">
-                  {text.split("").map((char, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{
-                        delay: i * LETTER_DELAY,
-                        duration: 0.2,
-                        ease: "easeInOut",
-                      }}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
+        <div className="w-[60%]">
+          <div className="flex-center ">
+            <div className="flex items-center gap-3 p-4 ">
+              <div className="flex items-center justify-end ">
+                <div className="bg-white p-4 my-6 rounded-lg flex-1 max-w-3xl ">
+                  <span className="ml-3 ">
+                    {text.split("").map((char, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                          delay: i * LETTER_DELAY,
+                          duration: 0.2,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                </div>
+                <div className="w-3 overflow-hidden">
+                  <div className="h-4 bg-white rotate-45 transform origin-top-left rounded-sm"></div>
+                </div>
               </div>
-              <div className="w-3 overflow-hidden">
-                <div className="h-4 bg-white rotate-45 transform origin-top-left rounded-sm"></div>
-              </div>
+              <img
+                src="/logo.svg"
+                alt="Logo"
+                className="filter drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] xl:w-[50px] sm:w-[50px] w-[35px]"
+              />
             </div>
-            <img
-              src="/logo.svg"
-              alt="Logo"
-              className="filter drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] xl:w-[50px] sm:w-[50px] w-[35px]"
-            />
           </div>
         </div>
-
-      </div>
-        <div className=" w-4/5 flex-center"><Plan/></div>
+        <div className=" w-4/5 flex-center">
+          <Plan />
+        </div>
         <div className="flex flex-wrap pt-5 justify-evenly gap-y-2 w-[90%]">
-        {isLoading && (
-          <div className="flex items-end min-h-[50vh]  min-w-[80vh] ">
-            <Spinner
-              size="lg"
-              labelColor="primary"
-              label="درحال بارگزاری محصولاتیم"
-              variant="wave"
-            />
-          </div>
-        )}
+          {isLoading && (
+            <div className="flex items-end min-h-[50vh]  min-w-[80vh] ">
+              <Spinner
+                size="lg"
+                labelColor="primary"
+                label="درحال بارگزاری محصولاتیم"
+                variant="wave"
+              />
+            </div>
+          )}
 
-        {isError && (
-          <h2 className="text-red-500 text-left text-2xl font-semibold flex items-end min-h-[50vh]  min-w-[100vh] ">
-            مشکلی در دریافت اطلاعات پیش آمد. لطفاً دوباره تلاش کنید.
-          </h2>
-        )}
-        {!isLoading && !isError && currentItems?.length === 0 && (
-          <h2 className="text-[#6D6C80] text-left text-2xl font-semibold flex items-end min-h-[50vh]  min-w-[100vh]">
-            محصول یافت نشد
-          </h2>
-        )}
+          {isError && (
+            <h2 className="text-red-500 text-left text-2xl font-semibold flex items-end min-h-[50vh]  min-w-[100vh] ">
+              مشکلی در دریافت اطلاعات پیش آمد. لطفاً دوباره تلاش کنید.
+            </h2>
+          )}
+          {!isLoading && !isError && currentItems?.length === 0 && (
+            <h2 className="text-[#6D6C80] text-left text-2xl font-semibold flex items-end min-h-[50vh]  min-w-[100vh]">
+              محصول یافت نشد
+            </h2>
+          )}
 
-        {!isLoading &&
-          !isError &&
-          currentItems?.map((product) => (
-            <CourseProductCard key={product.courseId} product={product} />
-          ))}
+          {!isLoading &&
+            !isError &&
+            currentItems?.map((product) => (
+              <CourseProductCard key={product.courseId} product={product} />
+            ))}
         </div>
-          <CustomPagination RowsOfPage={rowsOfThePage} pageNumber={pageNumber} setPageNumber={setPageNumber} totalCount={data?.totalCount}/>
+        <CustomPagination
+          RowsOfPage={rowsOfThePage}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          totalCount={data?.totalCount}
+        />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

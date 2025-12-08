@@ -5,6 +5,22 @@ import { Button } from "@heroui/react";
 import useLevelStore from "../../../core/store/GetLevelId";
 import toast from "react-hot-toast";
 import { GoArrowRight } from "react-icons/go";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, scale: 0.5 },
+  show: { opacity: 1, scale: 1 },
+};
 const ProgrammingKnowledge = () => {
   const navigate = useNavigate();
   const setLevelId = useLevelStore((state) => state.setLevelId);
@@ -36,7 +52,12 @@ const ProgrammingKnowledge = () => {
   };
 
   return (
-    <div className="w-screen flex-center bg-light-purple h-screen">
+    <motion.div
+      className="w-screen flex-center bg-light-purple h-screen"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="w-[60%]">
         <div className="flex-center">
           <div className="flex items-center gap-3 p-4 ">
@@ -72,33 +93,45 @@ const ProgrammingKnowledge = () => {
         </div>
 
         <div className="flex-center flex-col gap-8 ">
-          <div className="flex flex-col items-start gap-4 w-[50%] ">
+          <motion.div
+            className="flex flex-col items-start gap-4 w-[50%] "
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
             {options.map((option) => {
               const isActive = selectedKey === option.key;
 
               return (
-                <Button
-                  key={option.key}
-                  variant="faded"
-                  onPress={() => {
-                    setSelectedKey(option.key);
-                    setLevelId(option.key);
-                  }}
-                  className={`w-full h-[50px] transition-all font-semibold
+                <motion.div className="w-full" variants={item}>
+                  <Button
+                    key={option.key}
+                    variant="faded"
+                    onPress={() => {
+                      setSelectedKey(option.key);
+                      setLevelId(option.key);
+                    }}
+                    className={`w-full h-[50px] transition-all font-semibold
                   ${
                     isActive
                       ? "bg-[#5751e1] text-white"
                       : "text-[#5751e1] bg-[hsl(240,5%,90%)]"
                   }
                 `}
-                >
-                  {option.name}
-                </Button>
+                  >
+                    {option.name}
+                  </Button>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col items-center gap-4 w-full ">
+          <motion.div
+            className="flex flex-col items-center gap-4 w-full "
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3, duration: 1, ease: "easeInOut" }}
+          >
             <Button
               color="primary"
               className="w-1/2"
@@ -107,10 +140,10 @@ const ProgrammingKnowledge = () => {
             >
               مرحله بعد
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

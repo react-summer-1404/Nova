@@ -6,7 +6,23 @@ import { FaLaptopCode, FaServer, FaRobot, FaMobileAlt } from "react-icons/fa";
 import useCategoryId from "../../../core/store/GetCategoryId";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, scale: 0.5 },
+  show: { opacity: 1, scale: 1 },
+};
 const ChooseCategory = () => {
   const setCategoryId = useCategoryId((state) => state.setCategoryId);
   const [selectedKey, setSelectedKey] = useState(null);
@@ -87,35 +103,43 @@ const ChooseCategory = () => {
           </div>
         </div>
         <div className="flex-center flex-col gap-8 ">
-          <div className="flex flex-col items-start gap-4 w-[50%]   ">
+          <motion.div
+            className="flex flex-col items-start gap-4 w-[50%] "
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
             {options.map((option, i) => {
               const isActive = selectedKey === option.name;
 
               return (
-                <Button
-                  key={i}
-                  variant="faded"
-                  startContent={option.icon}
-               
-                  onPress={() => {
-                    setCategoryId(option.id);
-                    setTimeout(() => navigate("/result"), 50);  
-                  }}
-                  className={`w-full h-[50px] transition-all duration-200 
+                <motion.div className="w-full" variants={item}>
+                  <Button
+                    key={i}
+                    variant="faded"
+                    startContent={option.icon}
+                    onPress={() => {
+                      setCategoryId(option.id);
+                      setTimeout(() => navigate("/result"), 50);
+                    }}
+                    className={`w-full h-[50px] transition-all duration-200 
                   ${
                     isActive
                       ? "bg-[#5751e1] text-white"
                       : "bg-[hsl(240,5%,90%)] text-[#5751e1]"
                   }
                 `}
-                >
-                  {option.name}
-                </Button>
+                  >
+                    {option.name}
+                  </Button>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
-        <div className="flex-center  gap-4 w-full pt-10">
+        <motion.div className="flex-center  gap-4 w-full pt-10"initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.5, duration: 1, ease: "easeInOut" }}>
           <Button
             color="primary"
             className="w-[200px]"
@@ -132,7 +156,7 @@ const ChooseCategory = () => {
           >
             مرحله قبل
           </Button>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

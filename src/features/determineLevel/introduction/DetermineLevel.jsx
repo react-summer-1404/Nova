@@ -11,9 +11,14 @@ const DetermineLevel = () => {
    آماده‌ای شروع کنیم؟`;
 
   const LETTER_DELAY = 0.025;
-const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className=" w-screen flex-center bg-light-purple h-screen">
+    <motion.div
+      className=" w-screen flex-center bg-light-purple h-screen"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="w-[60%]   ">
         <div className="flex-center">
           <div className="flex items-center gap-3 p-4 ">
@@ -47,12 +52,29 @@ const navigate = useNavigate()
             ></img>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4 w-full ">
-          <Button color="primary" className="w-1/2" onPress={()=>navigate("/howDidYouFindUs")} >! بزن بریم</Button>
-          <Button onPress={()=>navigate("/")} color="info" className="w-[300px]" >برگشت به صفحه اصلی</Button>
-        </div>
+        <motion.div
+          className="flex flex-col items-center gap-4 w-full "
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 8, duration: 1, ease: "easeInOut" }}
+        >
+          <Button
+            color="primary"
+            className="w-1/2"
+            onPress={() => navigate("/howDidYouFindUs")}
+          >
+            ! بزن بریم
+          </Button>
+          <Button
+            onPress={() => navigate("/")}
+            color="info"
+            className="w-[300px]"
+          >
+            برگشت به صفحه اصلی
+          </Button>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
