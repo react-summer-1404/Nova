@@ -3,6 +3,7 @@ import {LandingPage,AboutUsPage,NotFoundingPage,BlogDetailPage,BlogsPage,CartPag
 import { AuthRoutes } from "../features/auth/routes/routes";
 import { DashboardRoutes } from "./dashboardRouter";
 import PageLayout from "../components/layout/PageLayout/PageLayout";
+import DetermineLevel from "../features/determineLevel/DetermineLevel";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
       { path: "/courses", element: <CoursesPage /> },
       { path: "*", element: <NotFoundingPage /> },
     ],
+    
   },
+  { path: "/determineLevel", element: <DetermineLevel/> },
   ...AuthRoutes,
   ...DashboardRoutes,
 ]);

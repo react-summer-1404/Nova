@@ -11,7 +11,7 @@ const PageLayout = () => {
       <Navbar />
       <div><DarkMode /></div>
       <div><ScrollButton/></div>
-      <main className="mt-40">
+      <main className="mt-28">
         <Outlet />
       </main>
       <Footer />
