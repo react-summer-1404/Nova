@@ -11,8 +11,8 @@ const PageLayout = () => {
     <div className="relative">
       <Navbar />
       <div><DarkMode /></div>
-      <div><ScrollButton/></div>
       <div><DetermineButton/></div>
+      <div><ScrollButton/></div>
       <main className="mt-28">
         <Outlet />
       </main>

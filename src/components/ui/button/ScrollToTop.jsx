@@ -26,7 +26,7 @@ const ScrollButton = () => {
 	window.addEventListener("scroll", toggleVisible);
 
 	return (
-		<div className="flex gap-4 items-center fixed bottom-11 right-10 z-50">
+		<div className="flex gap-4 items-center fixed bottom-33 right-10 z-50">
             <Button 
             
         style={{ display: visible ? "flex" : "none" }}
