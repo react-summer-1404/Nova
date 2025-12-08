@@ -11,7 +11,7 @@ import { PostCommentLike } from '../../../../../servises/api/coursesDetail/PostC
 import { PostCommentDisLike } from '../../../../../servises/api/coursesDetail/PostCommentDisLike';
 import toast from 'react-hot-toast';
 
-const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, CourseId, pictureAddress, describe, title, id, }) => {
+const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, currentUserIsDissLike, likeCount, CourseCommandId, pictureAddress, describe, title, id, userLikedId}) => {
     const [showReplies, setShowReplies] = useState(false);
     
     const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
@@ -39,13 +39,21 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
             toast.success("کامنت دیسلایک شد")
         },       
     })
-    console.log("CourseCommandId:", CourseCommandId);
+    const deleteLikeMutation = useMutation({
+        mutationFn :(CourseLikeId)=> deleteLike(CourseLikeId),
+        onError : (error) => {
+            console.error(error)
+        },
+        onSuccess : () => {
+            queryClient.invalidateQueries(["comment"]);
+            toast.success("کامنت دیسلایک شد")
+        },       
+    })
 
     
     const toggleReplies = async () => {
         setShowReplies(prev => !prev)
     }
-    console.log("commentcouurseID", CourseCommandId)
 
 
     return (
@@ -81,7 +89,7 @@ const UserComment = ({ insertDate, author, disslikeCount, currentUserIsLike, cur
                                     <BiDislike size={"20px"} />
                                 )
                             }
-                            onClick={()=>disLikeMutation.mutate(CourseCommandId)}
+                            onClick={()=>{currentUserIsLike ?deleteLikeMutation.mutate(userLikedId):disLikeMutation.mutate(CourseCommandId)}}
 
                                 title={disslikeCount}
                             />

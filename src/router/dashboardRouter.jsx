@@ -13,7 +13,7 @@ import { Navigate } from "react-router-dom";
 import Dashboard from "../pages/dashboard/Dashboard";
 import PrivateRouter from "../components/section/dashboard/PrivateRouter/PrivateRouter";
 import FirstStep from "../components/section/dashboard/payment/FirstStep/FirstStep";
-import SecondStep from "../components/section/dashboard/payment/SecondStep/SecondStep";
+import HomeWorkList from "../components/section/dashboard/homeWork/HomeWorkList";
 
 export const DashboardRoutes = [
   {
@@ -27,12 +27,12 @@ export const DashboardRoutes = [
       { index: true, element: <Navigate to="userdashboard" /> },
       { path: "userdashboard", element: <UserDashboard /> },
       { path: "favorite", element: <Favorites /> },
+      { path: "homeWork", element: <HomeWorkList /> },
       { path: "mycomment", element: <MyComments /> },
       { path: "mycourses", element: <MyCourses /> },
       { path: "reservedcourses", element: <ReservedCourses /> },
       { path: "securitysetting", element: <SecuritySetting /> },
       { path: "payMent/:courseId",element: <FirstStep />,},
-      // { path: "payMent/step2",element: <SecondStep />,},
       {
         path: "userinformation",
         element: <UserInformation />,

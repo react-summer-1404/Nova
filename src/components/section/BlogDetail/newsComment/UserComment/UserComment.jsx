@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import useToggle from "../../../../../hooks/useToggle";
 import { postNewsCommentLike } from "../../../../../servises/api/blogComments/Like And DisLike";
 import { motion } from "framer-motion";
+import { deleteNewsLike } from "../../../../../servises/api/news/newsLikeAndDislike";
 
 const UserComment = ({
   insertDate,
@@ -21,7 +22,8 @@ const UserComment = ({
   title,
   newsId,
   id,
-  userId
+  userId,
+  currentUserLikeId
 }) => {
   const [showReplies, setShowReplies] = useState(false);
 
@@ -39,6 +41,17 @@ const UserComment = ({
     onSuccess: () => {
       queryClient.invalidateQueries(["newsComment"]);
       toast.success("کامنت لایک شد");
+    },
+  });
+  const deleteLikeMutation = useMutation({
+    mutationFn: () => deleteNewsLike(deleteEntityId),
+    onError: (error) => {
+      console.error(error);
+      toast.error("مشکلی رخ داد")
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["newsComment"]);
+      toast.success("لایک کامنت حذف شد");
     },
   });
 
@@ -80,8 +93,8 @@ const UserComment = ({
                     )
                   }
                   onClick={() => {
-                    likeMutation.mutate(id);
-                    console.log("like CourseCommandId:", id);
+                    currentUserIsLike?deleteLikeMutation.mutate(currentUserLikeId):likeMutation.mutate(id);
+               
                   }}
                   title={likeCount}
                 />

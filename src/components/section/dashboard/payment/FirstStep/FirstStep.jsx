@@ -15,11 +15,9 @@ import toast from "react-hot-toast";
 import { Spinner } from "@heroui/spinner";
 
 const FirstStep = () => {
-  const {  courseId } = useParams();
+  const { courseId } = useParams();
 
-    
-  
-  console.log("id",courseId)
+  console.log("id", courseId);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -37,8 +35,8 @@ const FirstStep = () => {
       payStep2({ reservedId, Authority }),
     onSuccess: (data) => {
       toast.success("پرداخت موفقیت  امیز بود");
-      console.log("data",data)
-      navigate("/dashboard/reservedcourses")
+      console.log("data", data);
+      navigate("/dashboard/reservedcourses");
     },
     onError: (error) => {
       const msg = error?.response?.data?.message;
@@ -88,17 +86,8 @@ const FirstStep = () => {
 
           <div className="flex-center gap-6 ">
             <YellowButton
-              bgColor={"var(--color-border-gray)"}
               height={"35px"}
-              text={"لغو"}
-              icon={<MdOutlineCancel size={20} />}
-              onClick={() => {
-                navigate("/dashboard/reservedcourses");
-              }}
-            />
-            <YellowButton
-              height={"35px"}
-              text={"نهایی کردن پرداخت"}
+              text={"برگشت  به سایت"}
               icon={<FiArrowLeft size={20} />}
               onClick={() => finalPayMutation.mutate({ reservedId, Authority })}
             />

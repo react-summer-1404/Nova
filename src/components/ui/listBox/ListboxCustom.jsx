@@ -16,6 +16,7 @@ const ListboxCustom = () => {
       <Link to={"reservedcourses"} className={`tab ${isSelected==="reservedcourses" ? "selected" : ""}`} onClick={() => {handleSelect("reservedcourses")}}>دوره های رزرو شده</Link>
       <Link to={"mycomment"} className={`tab ${isSelected==="mycomment" ? "selected" : ""}`} onClick={() => {handleSelect("mycomment")}}>دیدگاه های من</Link>
       <Link to={"favorite"} className={`tab ${isSelected==="favorite" ? "selected" : ""}`} onClick={() => {handleSelect("favorite")}}>علاقه مندی ها</Link>
+      <Link to={"homeWork"} className={`tab ${isSelected==="homeWork" ? "selected" : ""}`} onClick={() => {handleSelect("homeWork")}}>تکالیف من</Link>
       <Link to={"securitysetting"} className={`tab ${isSelected==="securitysetting" ? "selected" : ""}`} onClick={() => {handleSelect("securitysetting")}}>تنظیمات امنیتی</Link>
     </div> 
   )

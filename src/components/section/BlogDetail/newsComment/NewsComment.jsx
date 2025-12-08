@@ -39,6 +39,7 @@ const NewsComment = ({ newsId }) => {
               currentUserIsLike={item.currentUserIsLike}
               userId={item.userId}
               newsId={newsId}
+              currentUserLikeId={item.currentUserLikeId}
             />
           );
         })}
