@@ -3,6 +3,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { scrollVariant } from "../../../../configs/frameMorion/Scroll";
+import PurpleBtn from "../../../ui/button/BlueButton";
 
 const GettingStartedSection = () => {
   const navigate = useNavigate();
@@ -88,18 +89,6 @@ const GettingStartedSection = () => {
         viewport={{ once: false }}
       >
         <div className="flex items-center h-[140px] md:h-[220px] w-[90%] md:w-[39%] border bg-[#FFFFFF] border-[#BDBDBD] rounded-[15px] relative">
-          {/* <img
-            src="src/assets/images/SVG (5).png"
-            className="absolute md:top-[80px] top-[48px] md:left-[335px] left-[158px] w-[45%] md:w-[37%]"
-          />
-          <img
-            src="src/assets/images/7fe7f1624b741e2591310cbf55fa4c6afcf4b877.png"
-            className="absolute top-[15px] md:top-[17px] left-[160px] md:left-[325px] w-[42%] md:w-[37%]"
-          />
-          <img
-            src="src/assets/images/SVG-6.png"
-            className="absolute top-[9px] md:top-[5px] left-[245px] md:left-[469px] w-[5%] md:w-[6%]"
-          /> */}
           <div className="w-[53%] md:w-[57%] h-[110px] md:h-[170px] text-right flex flex-col gap-1 md:gap-5 items-end">
             <p className="font-[600] text-[18px] md:text-[28px] text-[#161439]">
               دانشجو شوید
@@ -108,19 +97,12 @@ const GettingStartedSection = () => {
               به میلیون ها نفر از سراسر جهان بپیوندید با هم یاد می گیرند یادگیری
               آنلاین.
             </h2>
-            <button
-              type="submit"
-              className="bg-dark-purple shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] text-white rounded-full text-responsive flex gap-1 p-1 px-2 sm:px-3 lg:px-5 items-center"
-              onClick={() => {
-                navigate();
-              }}
-            >
-              <FaArrowLeft />
-              <span className="text-[10px] sm:text-[12px] lg::text-[16px]">
-                {" "}
-                درخواست
-              </span>
-            </button>
+
+            <PurpleBtn
+              BtnIcon={<FaArrowLeft />}
+              height={"35px"}
+              content={"درخواست"}
+            />
           </div>
           <div className="relative w-1/2 h-[140px] md:h-[220px]">
             <img
@@ -128,14 +110,13 @@ const GettingStartedSection = () => {
               className="absolute bottom-0 right-0 md:w-[90%] w-[110px]"
             />
             <img
-            className="absolute bottom-0 right-5 md:w-[200px] w-[110px]"
+              className="absolute bottom-0 right-5 md:w-[200px] w-[110px]"
               src="src/assets/images/7fe7f1624b741e2591310cbf55fa4c6afcf4b877.png"
             />
           </div>
         </div>
 
         <div className="items-center justify-between flex h-[140px] md:h-[220px] w-[90%] sm:w-[45%] lg:w-[39%] border bg-[#fff] border-[#BDBDBD] rounded-[15px]  ">
-         
           <div className="w-[53%] md:w-[61%] h-[130px] md:h-[150px] text-right flex flex-col justify-center gap-1 p-1 md:gap-5 items-end ">
             <p className="font-[600] text-[14px] sm:text-[18px] lg:text-[28px] text-[#161439]">
               مربی شوید{" "}
@@ -144,16 +125,11 @@ const GettingStartedSection = () => {
               برای مثال بی اهمیت، کدام یک از ما متعهد می شویم ورزش بدنی بله این
               اتفاق در اینجا می افتد.
             </h2>
-            <button
-              type="submit"
-              className="bg-dark-purple shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] text-white rounded-full text-responsive  flex gap-1 p-1 md:p-1 px-2 sm:px-3 lg:px-5 items-center"
-            >
-              <FaArrowLeft />
-              <span className="text-[10px] sm:text-[12px] lg::text-[16px]">
-                {" "}
-                درخواست
-              </span>
-            </button>
+            <PurpleBtn
+              BtnIcon={<FaArrowLeft />}
+              height={"35px"}
+              content={"درخواست"}
+            />
           </div>
           <div className="relative w-1/2 h-[140px] md:h-[220px] ">
             <img
@@ -161,7 +137,7 @@ const GettingStartedSection = () => {
               className="absolute bottom-0 right-0 md:w-[90%] w-[110px]"
             />
             <img
-            className="absolute bottom-0 right-3 md:w-[170px]  w-[110px]"
+              className="absolute bottom-0 right-3 md:w-[170px]  w-[110px]"
               src="src/assets/images/3da9724bd304df2f0f944c30163217afe198a0b6.png"
             />
           </div>
