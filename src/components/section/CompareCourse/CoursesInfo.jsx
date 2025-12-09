@@ -35,16 +35,16 @@ const CoursesInfo = ({ cId }) => {
 
   return (
     <div className="flex flex-col items-center justify-center relative h-[800px] gap-4 ">
-      <div className="md:w-[350px] w-[100px] h-[100px] md:h-[200px] absolute top-0 shadow-[5px_5px_10px_0px_rgba(0,0,0,0.25)] rounded-[25px]">
+      <div className="md:w-[350px] w-[150px] h-[150px] md:h-[200px] absolute top-3 shadow-[5px_5px_10px_0px_rgba(0,0,0,0.25)] rounded-[25px]">
         <img
-          className="md:w-[350px] w-[200px] h-[100px] md:h-[200px rounded-[25px]"
+          className="md:w-[350px] w-[150px] h-[150px] md:h-[200px] rounded-[25px]"
           src={data?.imageAddress || "/default.png"}
         />
       </div>
 
       <div className="bg-light-purple w-[250px] md:w-[450px] md:h-[70%] flex items-center justify-center rounded-[25px] border-2 border-[#5751E133]">
         <div className="flex flex-col gap-10 w-[90%]">
-          <h2 className="font-semibold text-black text-lg mt-6">
+          <h2 className="font-semibold text-black text-lg pt-8">
             {data?.title || "در حال بارگذاری..."}
           </h2>
 
