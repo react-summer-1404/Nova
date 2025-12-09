@@ -5,7 +5,7 @@ const FAQSection = () => {
   return (
     <div
       style={{ backgroundColor: "var(--color-light-gray)" }}
-      className="w-screen  h-[500px] lg:h-[750px] flex items-center justify-center border"
+      className="w-screen  h-[500px] lg:h-[750px] flex items-center justify-center"
     >
       <div className=" md:h-[450px] md:w-2/4 flex flex-col items-center md:items-end text-right gap-2 md:gap-3 md:pr-10">
         <button className="px-4 h-[25px] text-dark-purple bg-light-purple rounded-[30px] text-[9px] ">
