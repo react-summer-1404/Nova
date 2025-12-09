@@ -12,6 +12,7 @@ const TopCategories = () => {
       <h3 className=' text-responsive text-text-gray'> امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است</h3>
     </div>
     <Slider/>
+   
     </div>
    </div>
   )
