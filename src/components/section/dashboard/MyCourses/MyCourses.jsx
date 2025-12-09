@@ -49,13 +49,13 @@ const MyCourses = () => {
         <div className="flex gap-3">
           <DashboardAutoComplete
             options={SortingColItems}
-            selected={sortColCourse ||null}
-            setSelected={setSortColCourse ||null}
+            selected={sortColCourse || null}
+            setSelected={setSortColCourse || null}
           />
           <DashboardAutoComplete
-            options={SortTypeItems }
-            selected={sortTypeCourse||null}
-            setSelected={setSortTypeCourse ||null}
+            options={SortTypeItems}
+            selected={sortTypeCourse || null}
+            setSelected={setSortTypeCourse || null}
           />
         </div>
         <div>
@@ -64,24 +64,29 @@ const MyCourses = () => {
       </div>
       <div className="w-[65%] ">
         <CourseTableRow
-          items={["قیمت","مدرس دوره",
-             "تاریخ شروع","نام دوره",]}
+          items={["قیمت", "مدرس دوره", "تاریخ شروع", "نام دوره"]}
         />
       </div>
       <div className="h-1 w-full bg-gradient-to-r from-transparent via-golden-yellow to-transparent"></div>
       <div className="w-full mt-[12px] gap-1.5 lg:gap-3 flex flex-col">
-        {data?.listOfMyCourses?.map((item) => (
-          <CourseStatusList1
-            key={item.id}
-            courseTitle={item.course.title}
-            teacheName={item.course.teacher.fName}
-            lastUpdate={item.course.startTime.slice(0,10)}
-            courseId={item.course.courseId}
-            cost={item.cost}
-          />
-        ))}
-        
+        {data?.listOfMyCourses && data.listOfMyCourses.length > 0 ? (
+          data.listOfMyCourses.map((item) => (
+            <CourseStatusList1
+              key={item.id}
+              courseTitle={item.course.title}
+              teacheName={item.course.teacher.fName}
+              lastUpdate={item.course.startTime.slice(0, 10)}
+              courseId={item.course.courseId}
+              cost={item.cost}
+            />
+          ))
+        ) : (
+          <h2 className="text-center text-[#6D6C80] text-lg font-semibold py-10">
+            دوره‌ای وجود ندارد
+          </h2>
+        )}
       </div>
+
       <CustomPagination
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}
