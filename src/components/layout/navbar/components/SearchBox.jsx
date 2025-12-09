@@ -74,13 +74,14 @@ const SearchBox = () => {
               }`}
               onClick={() => setActiveMice("search")}
             >
-              🎤
+              <FaMicrophone  className="text-white" size={20}/>
             </div>
           )}
 
           <input
             type="text"
             placeholder={getPlaceholder()}
+            value={query}
             className=" focus:outline-none lg:text-base text-right w-[90%]  text-sm  px-4 "
             onChange={(e) => {
               setQuery(e.target.value);

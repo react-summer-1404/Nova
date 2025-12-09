@@ -27,7 +27,7 @@ const SearchDict = ({setQuery}) => {
       className="bg-red-500 text-white px-3 py-2 rounded-full cursor-pointer"
       onClick={() => setActiveMice(null)}
     >
-      توقف ضبط 🎤
+      توقف  
     </div>
   );
 };

@@ -50,21 +50,23 @@ const Dictaphone = () => {
 
   return (
     <>
-      {/* فقط لانچر */}
-      {activeMice !== "commands" && (
-        <div className="fixed bottom-30 left-10 z-50">
-          <Button
-            isIconOnly
-            aria-label="Like"
-            className="w-[48px] h-[48px] cursor-pointer bg-dark-purple"
-            onPress={() => setActiveMice("commands")}
-          >
-            <FaMicrophone className="text-white" size={20} />
-          </Button>
-        </div>
-      )}
+     <div className="fixed bottom-30 left-10 z-50">
+  <Button
+    isIconOnly
+    aria-label="Like"
+    className={`w-[48px] h-[48px] cursor-pointer transition-all ease-in-out ${
+      activeMice === "commands" ? "bg-green-500" : "bg-dark-purple"
+    }`}
+    onPress={() =>
+      setActiveMice(activeMice === "commands" ? null : "commands")
+    }
+  >
+    <FaMicrophone className="text-white" size={20} />
+  </Button>
+</div>
 
-      {/* اگر فعال بود، کامپوننت فرمان‌ها mount می‌شود */}
+{activeMice === "commands" && <CommandsDict commands={commands} />}
+
       {activeMice === "commands" && (
         <CommandsDict commands={commands} />
       )}
