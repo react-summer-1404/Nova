@@ -18,7 +18,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { motion } from "framer-motion";
-
+import compare from "../../../assets/icons/compare.svg"
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = 32.5 / 2;
 const CourseProductCard = ({
@@ -64,6 +64,9 @@ const CourseProductCard = ({
   const { addedToFavorite, addFavorite } = useFavorite();
   const isFav = addedToFavorite.includes(product.courseId);
   const [sParams, setSParams] = useSearchParams("");
+  const compareList = sParams.getAll("courseId");
+  const isCompared = compareList.includes(String(product.courseId));
+
   const navigate = useNavigate();
   // --- Handle Mutations ---
   const handleDisLike = () => disLikeMutation.mutate(product.courseId);
@@ -93,7 +96,6 @@ const CourseProductCard = ({
         }
         return prevParams;
       }
-
     });
   };
 
@@ -141,22 +143,11 @@ const CourseProductCard = ({
           </div>
 
           <div
-            className="w-[36px] h-[36px]  flex flex-center rounded-[6px] bg-white"
+            className={`w-[36px] h-[36px] flex flex-center rounded-[6px] cursor-pointer 
+    ${isCompared ? "bg-golden-yellow" : "bg-white"}`}
             onClick={() => handleClickCompare("courseId", product.courseId)}
           >
-            <svg
-              width="26"
-              height="28"
-              viewBox="0 0 26 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.9995 14C13.0317 14.1807 13.0664 14.3606 13.1037 14.5396C13.6629 17.2293 14.7483 19.4676 16.0526 20.9202C17.3833 22.4017 18.9408 23.0669 20.4061 22.5629C23.3075 21.5617 24.745 16.3469 23.6135 10.9166C23.2803 9.28172 22.7181 7.73878 21.9544 6.36363M5.3371 23.4691C4.03146 22.0148 2.94738 19.7765 2.38687 17.0868C1.25532 11.6565 2.69021 6.44 5.59295 5.44048C6.7377 5.04509 7.93916 5.36582 9.04434 6.22957M12.9995 28V0"
-                stroke="var(--color-base-gray)"
-                strokeWidth="4"
-              />
-            </svg>
+           <img src={compare}/>
           </div>
         </div>
       </div>
