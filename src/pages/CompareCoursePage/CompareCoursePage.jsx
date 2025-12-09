@@ -13,11 +13,10 @@ const CompareCoursePage = () => {
       <NavigationSection title={"مقایسه دو دوره"} />
       <TopSection />
       <div className="flex-center flex-col gap-5 p-8">
-        <div className="flex justify-between w-[80%]">
+        <div className="flex md:justify-between flex-col w-[80%]">
           <CoursesInfo cId={courseIds[0]} />
           <div className="h-[300px]  flex-center">
-          <img className="w-[200px] h-[100px] pt-6 " src={vs} />
-
+          <img className="w-[200px] h-[100px] pt-6 hidden md:block" src={vs} />
           </div>
           <CoursesInfo cId={courseIds[1]} />
         </div>
