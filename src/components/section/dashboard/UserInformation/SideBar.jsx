@@ -6,9 +6,9 @@ import toast from "react-hot-toast";
 const SideBar = ({ data }) => {
   const navigate = useNavigate();
   return (
-    <div className="flex-col-center gap-14 h-full p-8 bg-dark-purple ">
+    <div className="flex-col-center gap-14 h-full p-8 bg-dark-purple rounded-l-4xl ">
       <div className="flex-col-center gap-7">
-        <div>
+        <div className="border w-full">
           
           <UserProfile
             imageUrl={data?.currentPictureAddress}
