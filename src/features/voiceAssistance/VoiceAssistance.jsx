@@ -1,4 +1,6 @@
+import { Button } from "@heroui/react";
 import React from "react";
+import { FaMicrophone } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -8,8 +10,44 @@ const Dictaphone = () => {
   const navigate = useNavigate();
 
   const commands = [
-    { command: "صفحه اصلی", callback: () => navigate("/") ,isFuzzyMatch: true,fuzzyMatchingThreshold:0.4},
-    { command: "دوره ها", callback: () => navigate("/courses") ,isFuzzyMatch: true,fuzzyMatchingThreshold:0.4},
+    {
+      command: "صفحه اصلی",
+      callback: () => navigate("/"),
+      isFuzzyMatch: true,
+      fuzzyMatchingThreshold: 0.4,
+    },
+    {
+      command: "دوره ها",
+      callback: () => navigate("/courses"),
+      isFuzzyMatch: true,
+      fuzzyMatchingThreshold: 0.4,
+    },
+    {
+      command: "وبلاگ",
+      callback: () => navigate("/blogs"),
+      isFuzzyMatch: true,
+      fuzzyMatchingThreshold: 0.4,
+    },
+    {
+      command: "مربیان",
+      callback: () => navigate("/coaches"),
+      isFuzzyMatch: true,
+      fuzzyMatchingThreshold: 0.4,
+    },
+    {
+        command: "پروفایل",
+        callback: () => navigate("/dashboard/userdashboard"),
+        isFuzzyMatch: true,
+        fuzzyMatchingThreshold: 0.4,
+      },
+      {
+        command: "داشبورد",
+        callback: () => navigate("/dashboard/userdashboard"),
+        isFuzzyMatch: true,
+        fuzzyMatchingThreshold: 0.4,
+      },
+     
+      
   ];
 
   const {
@@ -22,23 +60,32 @@ const Dictaphone = () => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
-
+  const miceOn = () => {
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: "fa-IR",
+    });
+  };
+  const miceOff = () => {
+    SpeechRecognition.stopListening();
+    resetTranscript();
+  };
   return (
-    <div>
-      <p>Microphone: {listening ? "on" : "off"}</p>
-      <button
-        onClick={() =>
-          SpeechRecognition.startListening({
-            continuous: true,
-            language: "fa-IR",
-          })
-        }
+    <div className="flex gap-4 items-center fixed bottom-30 left-10 z-50">
+
+      <Button
+        isIconOnly
+        aria-label="Like"
+        className={`w-[48px] h-[48px] cursor-pointer transition-all ease-in-out ${listening?"bg-green-500":"bg-dark-purple"}`}
+        onPress={() => {
+          listening ? miceOff() : miceOn();
+        }}
       >
-        Start
-      </button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
+        <FaMicrophone className="text-white" size={20} />
+      </Button>
+
+     
+     
     </div>
   );
 };

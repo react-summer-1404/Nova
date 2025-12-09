@@ -12,7 +12,6 @@ import OurNumbers from "../../components/section/landing/OurNumbers/OurNumbers";
 import FAQSection from "../../components/section/landing/FAQSection/FAQSection";
 import GettingStartedSection from "../../components/section/landing/GettingStartedSection/GettingStartedSection";
 import BlogSection from "../../components/section/landing/BlogSection/BlogSection";
-import Dictaphone from "../../features/voiceAssistance/VoiceAssistance";
 
 const LandingPage = () => {
   return (
@@ -22,7 +21,7 @@ const LandingPage = () => {
       animate="visible"
     >
       <HeroSection />
-<Dictaphone/>
+
       <motion.div
         variants={scrollVariant}
         initial="hidden"

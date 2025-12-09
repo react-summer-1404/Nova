@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCurrentUserProfile } from "../../servises/api/userPanel/getProfileInfo";
 import DarkMode from './../../components/ui/darkMode/DarkMode';
 import SideBar from "../../components/section/dashboard/UserInformation/SideBar";
+import Dictaphone from "../../features/voiceAssistance/VoiceAssistance";
 
 const Dashboard = () => {
   
@@ -26,6 +27,7 @@ const Dashboard = () => {
        </div>
       </div>
       <div><DarkMode /></div>
+      <div><Dictaphone /></div>
     </div>
   );
 };
