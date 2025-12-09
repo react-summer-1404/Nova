@@ -12,7 +12,7 @@ export default function AccardionComponent() {
       selectedKeys={selectedKeys}
       onSelectionChange={setSelectedKeys}
       isCompact
-      className="md:w-[57%] w-[70%]"
+      className="md:w-[57%]"
     >
       {[
         {
@@ -45,7 +45,7 @@ export default function AccardionComponent() {
               {item.title}
             </span>
           }
-          className="p-4 text-base-gray"
+          className="p-4 text-base-gray text-[10px] md:text-medium"
           style={{ direction: "rtl" }}
         >
           {defaultContent}

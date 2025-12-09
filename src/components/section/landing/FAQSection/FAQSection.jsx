@@ -5,9 +5,9 @@ const FAQSection = () => {
   return (
     <div
       style={{ backgroundColor: "var(--color-light-gray)" }}
-      className="w-screen h-[350px] sm:h-[500px] lg:h-[750px] flex items-center justify-center"
+      className="w-screen  h-[500px] lg:h-[750px] flex items-center justify-center border"
     >
-      <div className=" md:h-[450px] md:w-2/4 flex flex-col items-center md:items-end text-right gap-1 md:gap-3 md:pr-10">
+      <div className=" md:h-[450px] md:w-2/4 flex flex-col items-center md:items-end text-right gap-2 md:gap-3 md:pr-10">
         <button className="px-4 h-[25px] text-dark-purple bg-light-purple rounded-[30px] text-[9px] ">
           سوالات متداول
         </button>
@@ -18,7 +18,10 @@ const FAQSection = () => {
           Grooveصندوق ورودی مشترک بصری این کار را برای اعضای تیم آسان میکند
           سازماندهی، اولویت بندی و.در این قسمت.
         </h2>
+        <div className="  flex justify-end w-full h-[60%] "> 
         <AccardionComponent />
+        </div>
+        
       </div>
       <motion.div
         className="hidden md:block w-2/4 h-[450px]"
