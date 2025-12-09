@@ -9,6 +9,8 @@ import CustomPagination from "../../../components/ui/pagination/CustomPagination
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Plan from "../plan/Plan";
+import { IoIosHome } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 const Result = () => {
   const categoryId = useCategoryId((state) => state.categoryId);
   const levelId = useLevelStore((state) => state.levelId);
@@ -35,14 +37,16 @@ const Result = () => {
   const text = `این دوره‌ها مخصوص سطح تو هستن.با استفاده از نقشه‌ٔ راه پایین می‌تونی مسیر یادگیریت رو دنبال کنی. `;
 
   const LETTER_DELAY = 0.025;
-
+const navigate = useNavigate()
   return (
     <motion.div
-      className="w-screen flex-center flex-col bg-light-purple h-fit"
+      className="w-screen flex-center flex-col bg-light-purple h-fit relative"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
     >
+          <IoIosHome size={30} className="text-dark-purple absolute right-10 top-5 cursor-pointer" onClick={()=>navigate("/")} />
+
       <div className="w-[90%] h-[90%]  flex flex-col mt-8 flex-center gap-4">
         <div className="w-[60%]">
           <div className="flex-center ">

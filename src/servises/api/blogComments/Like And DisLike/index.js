@@ -6,4 +6,12 @@ export const postNewsCommentLike = async (CommentId) => {
   );
   return response.data;
 };
+export const deleteNewsCommentLike = async (deleteEntityId) => {
+  const response = await instance.delete(
+    `/News/DeleteCommentLikeNews`,{
+      data: { deleteEntityId }
+    }
+  );
+  return response.data;
+};
 
