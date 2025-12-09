@@ -46,7 +46,7 @@ const Dictaphone = () => {
         isFuzzyMatch: true,
         fuzzyMatchingThreshold: 0.4,
       },
-     
+      
       
   ];
 
@@ -71,6 +71,8 @@ const Dictaphone = () => {
     resetTranscript();
   };
   return (
+    <>
+    <Button className={`bg-dark-purple rounded-full  lg:w-[45px] lg:h-[45px]  flex-center cursor-pointer p-1`}></Button>
     <div className="flex gap-4 items-center fixed bottom-30 left-10 z-50">
 
       <Button
@@ -87,6 +89,7 @@ const Dictaphone = () => {
      
      
     </div>
+    </>
   );
 };
 export default Dictaphone;

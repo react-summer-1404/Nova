@@ -14,7 +14,7 @@ const PageLayout = () => {
       <div><DarkMode /></div>
       <div><DetermineButton/></div>
       <div><ScrollButton/></div>
-      <div><Dictaphone/></div>
+      <div><Dictaphone /></div>
       <main className="mt-28">
         <Outlet />
       </main>
