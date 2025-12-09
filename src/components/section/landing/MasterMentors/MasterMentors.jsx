@@ -5,8 +5,10 @@ import { getMasterTeacher } from "../../../../servises/api/landing/masterteacher
 import ErrorMessage from "../BlogSection/ErrorMessage";
 import { Spinner } from "@heroui/react";
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const MasterMentors = () => {
+  const { t } = useTranslation();
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["topMentor"],
     queryFn: getMasterTeacher,
@@ -68,18 +70,17 @@ const MasterMentors = () => {
           <button
             className ="lg:px-5 bg-light-purple text-dark-purple p-1 px-2 rounded-[30px] text-[8px] lg:text-[10px] "
           >
-            معلم های ماهر
+           {t("masterMentors.masterMentorsTag")}
           </button>
           <p           
             className =" font-[900] text-navy text-[16px] md:text-[18px] lg:text-[25px]"
           >
-            کلاس برتر ما و مربیان خبره در یک مکان
+           {t("masterMentors.masterMentorsTitle")}
           </p>
           <h2
             className ="md:text-[11px] text-[8px] hidden sm:block text-text-gray lg:text-[14px]"
           >
-            هنگامی که یک چاپگر ناشناس یک گالری از نوع و کتاب نمونه درهم درست شده
-            باقی نمانده است فقط پنج قرن
+           {t("masterMentors.masterMentorsDescribe")}
           </h2>
           <button
             type="submit"
@@ -88,7 +89,7 @@ const MasterMentors = () => {
             <FaArrowLeft className="w-[10px] mt-1 h-[10px] md:w-[13px] md:h-[13px]" />
             <Link to={"/coaches"}>
               <span className= "text-[8px] md:text-[11px] lg:text-[14px]">
-                همه مربیان را ببینید
+                {t("masterMentors.masterMentorsButton")}
               </span>
             </Link>
           </button>

@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import { scrollVariant } from '../../../../configs/frameMorion/Scroll';
+import { useTranslation } from "react-i18next";
 
 const JoinTheClub = () => {
+  const { t } = useTranslation();
   return (
     <div className ='bg-dark-purple w-screen lg:h-[321px] h-[240px] flex sm:h-[280px]'>
         <div className ='w-[28%] flex'>
@@ -16,14 +18,14 @@ const JoinTheClub = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false }}>
-          <p className ='text-right text-[22px] text-[#fff] w-[100%] md:text-[34px] md:w-[70%]'>می خواهید از دوره های جدید در جریان باشید؟</p>
+          <p className ='text-right text-[22px] text-[#fff] w-[100%] md:text-[34px] md:w-[70%]'>{t("joinTheClub.joinTheClubTitle")}</p>
           <input
             type="text"
-            placeholder='ایمیل خود را تایپ کنید'
+            placeholder={t("joinTheClub.joinTheClubInputPlaceholder")}
             className ='lg:w-[80%] lg:h-[51px] h-[30px] sm:h-[33px] sm:w-[77%] w-[100%] bg-[#4A44D1] border border-[#433EC2] rounded-[50px] placeholder: lg:text-[14px] text-[8px] sm:text-[10px] lg:indent-60 sm:indent-16 indent-10 text-[#fff]'
           />
           <button  className ='bg-golden-yellow lg:w-[35%] lg:h-[48px] absolute lg:bottom-[80px] sm:bottom-[81px] bottom-[65px] sm:h-[35px] sm:w-[47%] w-[50%] lg:right-[500px] right-[145px] sm:right-[210px] rounded-[50px] border border-[#141109] shadow-[4px_6px_0px_0px_#3D3D3D]'>
-            <p style={{color: "var(--color-blue-fot)"}}className ='text-[8px] sm:text-[10px] lg:text-[14px] font-[600]'> اکنون مشترک شوید </p>
+            <p style={{color: "var(--color-blue-fot)"}}className ='text-[8px] sm:text-[10px] lg:text-[14px] font-[600]'> {t("joinTheClub.joinTheClubButton")} </p>
           </button>
         </motion.div>
       <motion.div className =' w-[22%] h-full'

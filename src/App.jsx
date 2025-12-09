@@ -8,7 +8,6 @@ import { queryClient } from "./configs/ReactQueryConfig"
 import { Toaster } from "react-hot-toast";
 import { ToastContainer } from "react-toastify";
 
-
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>

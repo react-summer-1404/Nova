@@ -1,7 +1,9 @@
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
+import { useTranslation } from "react-i18next";
 
 export default function DashboardAutoComplete({selected,setSelected,options,variant="bordered",inputWrapper}) {
   const selectedOptionIcon = options.find((op)=>op.key===selected)
+  const { t } = useTranslation();
   return (
 
     <div style={{ direction: "rtl" }}>
@@ -24,7 +26,7 @@ export default function DashboardAutoComplete({selected,setSelected,options,vari
             inputWrapper: inputWrapper,
           },
         }}
-        placeholder="انتخاب کنید..."
+        placeholder={t("search.landingAutoCompleterPlaceHolder")}
         
       >
       
