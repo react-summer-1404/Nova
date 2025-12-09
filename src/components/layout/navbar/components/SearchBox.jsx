@@ -13,12 +13,14 @@ import all from "../../../../assets/icons/SVG.svg";
 import { FaRegNewspaper } from "react-icons/fa6";
 import { RiBookOpenLine } from "react-icons/ri";
 import { FaMicrophone } from "react-icons/fa6";
+import useMiceState from "../../../../core/store/miceState";
+import SearchDict from "../../../../features/voiceAssistance/SearchDict";
 
 const SearchBox = () => {
   const [query, setQuery] = useState("");
   const [debounceQuery] = useDebounce(query, 500);
   const [selected, setSelected] = useState("all");
-  const [miceStatus, setMiceStatus] = useState(false);
+  const { activeMice, setActiveMice } = useMiceState();
 
   const apiParams = {
     Query: debounceQuery,
@@ -63,9 +65,18 @@ const SearchBox = () => {
     <div className=" relative">
       <div className="flex-center border border-[#D3D2DF] rounded-full gap-1 p-1  xl:w-[400px] ">
         <div className="flex justify-between  w-full  ">
-          <div className=" bg-dark-purple rounded-full  lg:w-[45px] lg:h-[45px]  flex-center cursor-pointer p-1">
-            <FaMicrophone className="  w-6 h-6 text-white -scale-x-100 " />
-          </div>
+          {activeMice === "search" ? (
+            <SearchDict setQuery={setQuery} />
+          ) : (
+            <div
+              className={`bg-dark-purple rounded-full w-[45px] h-[45px] flex-center cursor-pointer ${
+                activeMice === "search" ? "bg-green-500" : "bg-dark-purple"
+              }`}
+              onClick={() => setActiveMice("search")}
+            >
+              🎤
+            </div>
+          )}
 
           <input
             type="text"
