@@ -15,6 +15,7 @@ import { favCourse } from "../../../../servises/api/userPanel/getMyFavoriteCours
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { getCourses } from "../../../../servises/api/courses/coursList";
+import MedalSection from "./MedalSection";
 const UserDashboard = () => {
   const { data } = useQuery({
     //ببرای پروسس بار
@@ -55,8 +56,7 @@ const UserDashboard = () => {
   const myCoursesComment = courseComment?.myCommentsDtos;
   const myNewsComment = newsComment?.myNewsCommetDtos;
   const totalComments = myNewsComment?.length + myCoursesComment?.length;
-  console.log("object", favCourses);
-  console.log("getCourses", activeCourses);
+
   return (
     <div className="flex-center flex-col gap-8  ">
       <div className=" flex  gap-6 items-center  justify-between  w-full">
@@ -96,9 +96,9 @@ const UserDashboard = () => {
             profileCompletionPercentage={data?.profileCompletionPercentage}
           />
         </div>
-        <div className=" bg-soft-gray radius10 h-[215px] w-1/2">
+        <div className=" bg-light-purple radius10 h-[215px] w-1/2 ">
           <h2>مدال شما </h2>
-          <img src="/default.png" className="w-[100px] h-[100px]" />
+          <MedalSection />
           <h4>یسسسسسسسسسس</h4>
         </div>
       </div>
