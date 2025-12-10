@@ -96,11 +96,13 @@ const UserDashboard = () => {
             profileCompletionPercentage={data?.profileCompletionPercentage}
           />
         </div>
-        <div className=" bg-light-purple radius10 h-[215px] w-1/2 ">
-          <h2>مدال شما </h2>
-          <MedalSection />
-          <h4>یسسسسسسسسسس</h4>
-        </div>
+        <div className="bg-light-purple radius10 h-[215px] w-1/2 flex-center flex-col ">
+  <MedalSection data={myCourseData?.length} />
+  <p className="text-gray-600 text-sm mt-2">
+    با شرکت در دوره‌ها می‌تونی خودت رو ارتقا بدی و مدال‌های بالاتر بگیری.
+  </p>
+</div>
+
       </div>
       <div className="w-full flex justify-between gap-16 ">
         <div className="w-full flex-center flex-col justify-end items-end gap-5 ">
