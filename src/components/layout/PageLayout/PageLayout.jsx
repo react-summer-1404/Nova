@@ -4,11 +4,13 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import DarkMode from "../../ui/darkMode/DarkMode";
 import ScrollButton from "../../ui/button/ScrollToTop";
+import GlobalChatWidget from "../../../features/chat/GlobalChatWidget";
 
 const PageLayout = () => {
   return (
     <div className="relative">
       <Navbar />
+      <div><GlobalChatWidget/></div>
       <div><DarkMode /></div>
       <div><ScrollButton/></div>
       <main className="mt-28">
