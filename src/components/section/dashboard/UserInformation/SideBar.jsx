@@ -8,7 +8,7 @@ const SideBar = ({ data }) => {
   return (
     <div className="flex-col-center gap-14 h-full p-8 bg-dark-purple rounded-l-4xl ">
       <div className="flex-col-center gap-7">
-        <div className="border w-full">
+        <div className="w-full">
           
           <UserProfile
             imageUrl={data?.currentPictureAddress}

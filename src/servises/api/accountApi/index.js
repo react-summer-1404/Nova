@@ -5,7 +5,8 @@ export const postMultiAccount = async (apiData) => {
   return response.data;
 };
 export const getMultiAccount = async () => {
-  const response = await instance.get("/v2/multiAccount/myAccounts",);
+  const response = await instance.get("/v2/multiAccount/myAccounts");
+  console.log("respone",response?.data)
   return response.data;
 };
 
