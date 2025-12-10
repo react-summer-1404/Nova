@@ -4,14 +4,20 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getCourseDetailComment } from "../../../../servises/api/coursesDetail/getComment";
 import UserComment from "./UserComment/UserComment";
+import { useState } from "react";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
 const CourseComment = ({ teacherName, imageAddress }) => {
   const { id } = useParams();
   const { data } = useQuery({
     queryKey: ["comment", id],
-    queryFn: ()=>getCourseDetailComment(id),
+    queryFn: () => getCourseDetailComment(id),
   });
   console.log("داده", id);
+  const PAGE_SIZE = 5;
 
+  const [page, setPage] = useState(PAGE_SIZE);
+
+  const visibleComments = data?.slice(0, page);
   return (
     <div className=" border-[#DFDFDF] flex justify-center items-center">
       <div className=" flex flex-col items-end gap-5">
@@ -39,7 +45,7 @@ const CourseComment = ({ teacherName, imageAddress }) => {
         <p className="font-[600] text-[14px] sm:text-[18px] lg:text-[22px] mr-5">
           نظر{" "}
         </p>
-        {data?.map((item) => (
+        {visibleComments?.map((item) => (
           <UserComment
             key={item.id}
             insertDate={item.insertDate.slice(0, 10)}
@@ -56,7 +62,32 @@ const CourseComment = ({ teacherName, imageAddress }) => {
             userLikedId={item.userLikedId}
           />
         ))}
-
+        <div className=" w-full flex-center gap-4 ">
+          {page > PAGE_SIZE && (
+            <div className="flex gap-1 items-center cursor-pointer">
+              <GoChevronUp className="text-dark-purple" />
+              <h2
+                onClick={() =>
+                  setPage((prev) => Math.max(PAGE_SIZE, prev - PAGE_SIZE))
+                }
+                className="text-dark-purple"
+              >
+                نمایش کمتر
+              </h2>
+            </div>
+          )}
+          {page < (data?.length || 0) && (
+            <div className="flex gap-1 items-center cursor-pointer">
+              <GoChevronDown className="text-dark-purple" />
+              <h2
+                onClick={() => setPage((prev) => prev + PAGE_SIZE)}
+                className="text-dark-purple"
+              >
+                نمایش بیشتر
+              </h2>
+            </div>
+          )}
+        </div>
         <div className=" w-full h-[270px] md:h-[390px] bg-[#F7F7FA] rounded-[10px] flex justify-center items-center">
           <CommentForm />
         </div>
