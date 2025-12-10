@@ -8,9 +8,8 @@ import PostReply from "./PostReply";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import useToggle from "../../../../../hooks/useToggle";
-import { postNewsCommentLike } from "../../../../../servises/api/blogComments/Like And DisLike";
+import { deleteNewsCommentLike, postNewsCommentLike } from "../../../../../servises/api/blogComments/Like And DisLike";
 import { motion } from "framer-motion";
-import { deleteNewsLike } from "../../../../../servises/api/news/newsLikeAndDislike";
 
 const UserComment = ({
   insertDate,
@@ -44,7 +43,7 @@ const UserComment = ({
     },
   });
   const deleteLikeMutation = useMutation({
-    mutationFn: () => deleteNewsLike(deleteEntityId),
+    mutationFn: (deleteEntityId) => deleteNewsCommentLike(deleteEntityId),
     onError: (error) => {
       console.error(error);
       toast.error("مشکلی رخ داد")
