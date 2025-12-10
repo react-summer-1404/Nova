@@ -5,7 +5,7 @@ import Tag from "../../../../ui/Tag/Tag";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import ModalSection from "../../../../ui/Modal/ModalSection";
 import PostReply from "./PostReply";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import useToggle from "../../../../../hooks/useToggle";
 import { postNewsCommentLike } from "../../../../../servises/api/blogComments/Like And DisLike";
@@ -58,6 +58,10 @@ const UserComment = ({
   const toggleReplies = async () => {
     setShowReplies((prev) => !prev);
   };
+  const { data } = useQuery({
+    queryKey: ["replies", id],
+    queryFn: () => getNewsCommentReply(id),
+  });
 
   return (
     <>
@@ -118,7 +122,7 @@ const UserComment = ({
                 className="md:px-3 text-dark-purple text-[10px] md:text-[12px] bg-light-purple h-[30px] px-2 rounded-[10px] flex items-center"
                 onClick={toggleReplies}
               >
-                {showReplies ? " بستن  پاسخ ها" : " مشاهده پاسخ ها"}
+                {showReplies ? `(${data?.length}) بستن  پاسخ ها` : `(${data?.length})مشاهده پاسخ ها`}
               </button>
               <ModalSection
                 StyleModal={
@@ -143,7 +147,7 @@ const UserComment = ({
           </div>
         </div>
       </motion.div>
-      {showReplies && <GetReply parentCommentId={id} newsId={newsId} />}
+      {showReplies && <GetReply parentCommentId={id} data={data} />}
     </>
   );
 };

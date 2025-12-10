@@ -24,7 +24,7 @@ const PostReply = ( {initialValues = initialData, CourseCommandId , CourseId, on
         mutationFn : postCommentReply,
         onSuccess: (data) => {
             if (data.success) {
-                toast.success("نظر با موفقیت ثبت شد در انتظار تایید مدیران ...")
+                toast.success(data?.message)
                 queryClient.invalidateQueries(['replies', CourseId, CourseCommandId]);
                 onSuccess?.();
             } else {

@@ -24,7 +24,7 @@ const PostReply = ({ initialValues = initialData, newsId, parentId,userId  }) =>
     mutationFn: postNewsReply,
     onSuccess: (data) => {
       if (data.success) {
-        toast.success("پاسخ شما  با موفقیت ثبت شد در انتظار تایید مدیران ...");
+        toast.success(data?.message);
       } else {
         toast.error("ارسال نظر با خطا مواجه شد");
       }

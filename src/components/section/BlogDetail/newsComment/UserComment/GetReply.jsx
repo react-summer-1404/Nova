@@ -4,16 +4,12 @@ import { useParams } from "react-router-dom";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { getNewsCommentReply } from "../../../../../servises/api/blogComments/replyComment";
 
-const GetReply = ({ newsId }) => {
-  const { data } = useQuery({
-    queryKey: ["replies", newsId],
-    queryFn: () => getNewsCommentReply(newsId),
-  });
-
+const GetReply = ({ data,parentCommentId }) => {
+ 
   if (!data || data.length === 0) {
     return (<p className='text-red-500 text-sm items-center flex'> پاسخی ثبت نشده</p>)
 }
-  console.log("replyData", newsId);
+  // console.log("replyData", parentCommentId);
   return (
     <div className="w-full">
       {data?.map((item) => (

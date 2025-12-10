@@ -15,7 +15,7 @@ const GetReply = ({ parentCommentId }) => {
     if (!data || data.length === 0) {
         return (<p className='text-red-500 text-sm items-center flex'> پاسخی ثبت نشده</p>)
     }
-
+console.log("data",data)
     console.log("replyData", parentCommentId)
     return (
         <div className='w-full'>
