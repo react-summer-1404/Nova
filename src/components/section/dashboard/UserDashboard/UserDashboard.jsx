@@ -14,6 +14,7 @@ import { GoComment } from "react-icons/go";
 import { favCourse } from "../../../../servises/api/userPanel/getMyFavoriteCourses";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { getCourses } from "../../../../servises/api/courses/coursList";
 const UserDashboard = () => {
   const { data } = useQuery({
     //ببرای پروسس بار
@@ -45,10 +46,17 @@ const UserDashboard = () => {
     queryKey: ["favCourse"],
     queryFn: favCourse,
   });
+  const { data: Courses } = useQuery({
+    queryKey: ["getCourses2"],
+    queryFn: getCourses,
+  });
+  const currentCourse = Courses?.courseFilterDtos;
+  const activeCourses = currentCourse?.filter((item) => item.active == true);
   const myCoursesComment = courseComment?.myCommentsDtos;
   const myNewsComment = newsComment?.myNewsCommetDtos;
   const totalComments = myNewsComment?.length + myCoursesComment?.length;
   console.log("object", favCourses);
+  console.log("getCourses", activeCourses);
   return (
     <div className="flex-center flex-col gap-8  ">
       <div className=" flex  gap-6 items-center  justify-between  w-full">
@@ -95,9 +103,8 @@ const UserDashboard = () => {
         </div>
       </div>
       <div className="w-full flex justify-between gap-16 ">
-        <div className="w-full flex-center flex-col justify-end items-end gap-5 border">
-          <h4 className="text-[18px] text-base-gray border w-full text-right">
-           
+        <div className="w-full flex-center flex-col justify-end items-end gap-5 ">
+          <h4 className="text-[18px] text-base-gray  w-full text-right">
             : جدیدترین اخبار و مقالات
           </h4>
           {newsData?.news?.slice(0, 2).map((news) => {
@@ -114,26 +121,24 @@ const UserDashboard = () => {
             <span className="text-gray-500">{"< مشاهده همه"}</span>
           </Link>
         </div>
-        <div className="w-full flex-center flex-col justify-end items-end gap-5 border">
-          <h4 className="text-[18px] text-base-gray border w-full text-right">
-            
-            
+        <div className="w-full flex-center flex-col justify-end items-end gap-5 ">
+          <h4 className="text-[18px] text-base-gray  w-full text-right">
+            دوره های در حال برگزاری
           </h4>
-          {newsData?.news?.slice(0, 2).map((news) => {
+          {activeCourses?.slice(0, 2).map((course) => {
             return (
               <CurrentCourseCard
-                title={news.title}
-                classTime={news.updateDate}
-                teacherName={news.addUserFullName}
-                img={news.currentImageAddress}
+                title={course.title}
+                cost={course.cost}
+                teacherName={course.teacherName}
+                img={course.imageAddress}
               />
             );
           })}
-          <Link to="/blogs">
+          <Link to="/courses">
             <span className="text-gray-500">{"< مشاهده همه"}</span>
           </Link>
         </div>
-        
       </div>
     </div>
   );
