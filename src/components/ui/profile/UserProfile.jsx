@@ -11,7 +11,7 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
     queryKey: ["getUserAccount"],
     queryFn: getMultiAccount,
   });
-console.log("full data", data);
+console.log("all data", data);
 
   return (
     <div className="flex-col-center gap-4  ">

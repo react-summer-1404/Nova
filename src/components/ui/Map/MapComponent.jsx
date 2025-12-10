@@ -43,8 +43,8 @@ function LocationFinderDummy({ setPosition }) {
   return null;
 }
 
-function MapComponent({position ,setPosition}) {
-console.log(position)
+function MapComponent({ position, setPosition }) {
+  console.log(position);
   return (
     <div className="relative w-[755px] h-[400px] ">
       <MapContainer
@@ -52,7 +52,7 @@ console.log(position)
         zoom={14}
         scrollWheelZoom={true}
         zoomControl={true}
-        style={{ height: "100%", width: "100%" ,borderRadius:"10px"}}
+        style={{ height: "100%", width: "100%", borderRadius: "10px" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
