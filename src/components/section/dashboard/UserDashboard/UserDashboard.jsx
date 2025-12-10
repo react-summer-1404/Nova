@@ -13,6 +13,7 @@ import { CourseComment } from "../../../../servises/api/userPanel/getCourseComme
 import { GoComment } from "react-icons/go";
 import { favCourse } from "../../../../servises/api/userPanel/getMyFavoriteCourses";
 import { CiHeart } from "react-icons/ci";
+import { Link } from "react-router-dom";
 const UserDashboard = () => {
   const { data } = useQuery({
     //ببرای پروسس بار
@@ -49,8 +50,8 @@ const UserDashboard = () => {
   const totalComments = myNewsComment?.length + myCoursesComment?.length;
   console.log("object", favCourses);
   return (
-    <div className="flex flex-col gap-8 border">
-      <div className=" flex  gap-6 items-center justify-evenly">
+    <div className="flex-center flex-col gap-8  ">
+      <div className=" flex  gap-6 items-center  justify-between  w-full">
         <CourseInfoCard
           icon={
             <GoComment
@@ -61,10 +62,8 @@ const UserDashboard = () => {
           courseCount={totalComments}
           subtext={"نظر داده اید"}
         />
-         <CourseInfoCard
-          icon={
-            <CiHeart className="course-info-card-icon rounded-[50px]" />
-          }
+        <CourseInfoCard
+          icon={<CiHeart className="course-info-card-icon rounded-[50px]" />}
           courseCount={favCourses?.favoriteCourseDto?.length}
           subtext={"دوره علاقه نشان دادید"}
         />
@@ -82,18 +81,23 @@ const UserDashboard = () => {
           courseCount={myCourseData?.length}
           subtext={"دوره شرکت کردید"}
         />
-
-       
       </div>
-      <div className="w-full flex-wrap flex-right gap-16">
-        <div className="h- bg-soft-gray radius10 h-[215px] ">
+      <div className="w-full flex justify-between gap-16 ">
+        <div className="flex-center bg-soft-gray radius10 h-[215px]  w-1/2">
           <ProfileProgrgressBar
             profileCompletionPercentage={data?.profileCompletionPercentage}
           />
         </div>
-        <div className="flex-col-right gap-8">
-          <h4 className="text-[18px] text-base-gray">
-            {" "}
+        <div className=" bg-soft-gray radius10 h-[215px] w-1/2">
+          <h2>مدال شما </h2>
+          <img src="/default.png" className="w-[100px] h-[100px]" />
+          <h4>یسسسسسسسسسس</h4>
+        </div>
+      </div>
+      <div className="w-full flex justify-between gap-16 ">
+        <div className="w-full flex-center flex-col justify-end items-end gap-5 border">
+          <h4 className="text-[18px] text-base-gray border w-full text-right">
+           
             : جدیدترین اخبار و مقالات
           </h4>
           {newsData?.news?.slice(0, 2).map((news) => {
@@ -106,17 +110,30 @@ const UserDashboard = () => {
               />
             );
           })}
+          <Link to="/blogs">
+            <span className="text-gray-500">{"< مشاهده همه"}</span>
+          </Link>
         </div>
-      </div>
-      <div className="w-full flex flex-col justify-end items-end gap-5">
-        <h4 className="text-[18px] text-base-gray">
-          : دوره های در حال برگزاری
-        </h4>
-        <CurrentCourseCard
-          title={"آموزش Tailwind css"}
-          classTime={"چهارشنبه ها . ۱۷:۳۰"}
-          teacherName={"مهدی اصغری"}
-        />
+        <div className="w-full flex-center flex-col justify-end items-end gap-5 border">
+          <h4 className="text-[18px] text-base-gray border w-full text-right">
+            
+            
+          </h4>
+          {newsData?.news?.slice(0, 2).map((news) => {
+            return (
+              <CurrentCourseCard
+                title={news.title}
+                classTime={news.updateDate}
+                teacherName={news.addUserFullName}
+                img={news.currentImageAddress}
+              />
+            );
+          })}
+          <Link to="/blogs">
+            <span className="text-gray-500">{"< مشاهده همه"}</span>
+          </Link>
+        </div>
+        
       </div>
     </div>
   );
