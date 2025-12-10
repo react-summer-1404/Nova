@@ -18,19 +18,16 @@ import { getCourses } from "../../../../servises/api/courses/coursList";
 import MedalSection from "./MedalSection";
 const UserDashboard = () => {
   const { data } = useQuery({
-    //ببرای پروسس بار
     queryKey: ["usercurrentinfodashboard"],
     queryFn: getCurrentUserProfile,
   });
 
   const { data: newsData } = useQuery({
-    // برای اخبار
     queryKey: "dashboardnews",
     queryFn: () => getBlogs(),
   });
 
   const { data: myCourseData } = useQuery({
-    // برای کورسها
     queryKey: ["getMyReserveCourses2"],
     queryFn: getMyReserveCourses,
   });
@@ -59,52 +56,52 @@ const UserDashboard = () => {
 
   return (
     <div className="flex-center flex-col gap-8  ">
-      <div className=" flex  gap-6 items-center  justify-between  w-full">
+      <div className=" flex  gap-2 items-center  justify-between  w-full ">
         <CourseInfoCard
           icon={
             <GoComment
               size={10}
-              className="course-info-card-icon rounded-[50px]"
+              className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px]"
             />
           }
           courseCount={totalComments}
           subtext={"نظر داده اید"}
         />
         <CourseInfoCard
-          icon={<CiHeart className="course-info-card-icon rounded-[50px]" />}
+          icon={<CiHeart className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px]" />}
           courseCount={favCourses?.favoriteCourseDto?.length}
           subtext={"دوره علاقه نشان دادید"}
         />
         <CourseInfoCard
           icon={
-            <CiShoppingCart className="course-info-card-icon rounded-[50px] " />
+            <CiShoppingCart className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px] " />
           }
           courseCount={myCourseData?.length}
           subtext={"دوره رزرو کردید"}
         />
         <CourseInfoCard
           icon={
-            <PiGraduationCapThin className="course-info-card-icon rounded-[50px]" />
+            <PiGraduationCapThin className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px]" />
           }
           courseCount={myCourseData?.length}
           subtext={"دوره شرکت کردید"}
         />
       </div>
-      <div className="w-full flex justify-between gap-16 ">
-        <div className="flex-center bg-soft-gray radius10 h-[215px]  w-1/2">
+      <div className="w-full flex justify-between gap-16 md:flex-row flex-col">
+        <div className="flex-center bg-soft-gray radius10 h-[215px]  md:w-1/2">
           <ProfileProgrgressBar
             profileCompletionPercentage={data?.profileCompletionPercentage}
           />
         </div>
-        <div className="bg-light-purple radius10 h-[215px] w-1/2 flex-center flex-col ">
-  <MedalSection data={myCourseData?.length} />
-  <p className="text-gray-600 text-sm mt-2">
-    با شرکت در دوره‌ها می‌تونی خودت رو ارتقا بدی و مدال‌های بالاتر بگیری.
-  </p>
-</div>
-
+        <div className="bg-light-purple radius10 h-[215px] md:w-1/2 flex-center flex-col ">
+          <MedalSection data={myCourseData?.length} />
+          <p className="text-gray-600 text-sm mt-2">
+            با شرکت در دوره‌ها می‌تونی خودت رو ارتقا بدی و مدال‌های بالاتر
+            بگیری.
+          </p>
+        </div>
       </div>
-      <div className="w-full flex justify-between gap-16 ">
+      <div className="w-full flex justify-between gap-16 md:flex-row flex-col">
         <div className="w-full flex-center flex-col justify-end items-end gap-5 ">
           <h4 className="text-[18px] text-base-gray  w-full text-right">
             : جدیدترین اخبار و مقالات
