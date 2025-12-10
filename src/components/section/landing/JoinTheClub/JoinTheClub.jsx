@@ -6,7 +6,9 @@ import line from "../../../../assets/images/line.png";
 import YellowButton from "../../../ui/button/YellowButton";
 import Tag from "../../../ui/Tag/Tag";
 import { GoArrowLeft } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 const JoinTheClub = () => {
+  const navigate =useNavigate()
   return (
     <div className="bg-dark-purple w-screen  flex sm:h-[280px] flex-center">
       <div className="md:w-[80%]  w-full  justify-end flex lg:h-[280px] relative items-center gap-4 ">
@@ -28,6 +30,7 @@ const JoinTheClub = () => {
             width={"200px"}
             height={"35px"}
             icon={<GoArrowLeft size={16}/>}
+            onClick={()=>navigate("/determineLevel")}
           />
         </div>
         <motion.div
@@ -44,12 +47,15 @@ const JoinTheClub = () => {
           
         </motion.div>
       </div>
-        <div className=" lg:w-[30%] w-[60%] lg:h-full h-[280px] overflow-visible hidden md:block ">
+        <div className=" lg:w-[30%] w-[60%] lg:h-full h-[280px]  hidden md:block ">
           <div className="relative h-[280px] md:h-full  ">
-            <img
+            <motion.img
               src={pic}
               className=" absolute bottom-0 w-full"
-            
+              initial={{ x: 300 }}
+              whileInView={{ x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 1 }}
             />
           </div>
         </div>
