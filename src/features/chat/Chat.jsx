@@ -1,60 +1,74 @@
-import { useEffect, useState } from "react";
-import socket from "../../socket";
+import React, { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
-import React from 'react'
+const socket = io("http://localhost:3001");
 
-export default function Chat() {
-    const [messages, setMessages] = useState([]);
-    const [text, setText] = useState(""); 
+const Chat = () => {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("Connected to server:", socket.id);
+    });
   
-    useEffect(() => {
-      socket.on("chat message", (msg) => {
-        setMessages((prev) => [...prev, msg]);
-      });
+    socket.on("chat message", (msg) => {
+      console.log("Received message:", msg);
+      setMessages((prev) => [...prev, msg]);
+    });
   
-      return () => socket.off("chat message");
-    }, []);
-  
-    const handleSend = () => {
-      if (text.trim() === "") return;
-  
-      const newMessage = {
-        user: { role: "کاربر" }, 
-        text: text.trim(),
-      };
-  
-      socket.emit("chat message", newMessage); 
-      setMessages((prev) => [...prev, newMessage]); 
-      setText("");
+    return () => socket.off("chat message"); 
+  }, []);
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    const message = {
+      user: { role: "کاربر" }, 
+      text: input,
+      time: new Date().toLocaleTimeString("fa-IR", { hour: "2-digit", minute: "2-digit" }),
     };
-  
-    return (
-      <div className="p-4 space-y-4" style={{direction: "rtl"}}>
-        <h2>👋 چت آنلاین</h2>
-  
-        <div className="space-y-2">
-          {messages.map((m, i) => (
-            <p key={i}>
-              <strong>{m.user?.role}:</strong> {m.text}
-            </p>
-          ))}
-        </div>
-  
-        <div className="flex gap-2 mt-4">
-          <input
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="پیام بنویس..."
-            className="flex-1 px-3 py-2 border rounded"
-          />
-          <button
-            onClick={handleSend}
-            className="px-4 py-2 bg-dark-purple text-white rounded"
-          >
-            ارسال
-          </button>
-        </div>
+
+    socket.emit("chat message", message);
+    setInput("");
+  };
+
+  return (
+    <div style={{ padding: "1rem", maxWidth: "500px", margin: "auto" }}>
+      <h2> چت یوزر</h2>
+
+      <div
+        style={{
+          border: "1px solid #ccc",
+          padding: "1rem",
+          height: "300px",
+          overflowY: "auto",
+          marginBottom: "1rem",
+          background: "#f9f9f9",
+        }}
+      >
+        {messages.map((msg, index) => (
+          <div key={index} style={{ marginBottom: "0.5rem" }}>
+            <strong>{msg.user?.role || "ناشناس"}</strong> ({msg.time}): {msg.text}
+          </div>
+        ))}
       </div>
-    );
-  }
+
+      <form onSubmit={handleSend}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="پیام خود را بنویسید..."
+          style={{ width: "80%", padding: "0.5rem" }}
+        />
+        <button type="submit" style={{ padding: "0.5rem 1rem" }}>
+          ارسال
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Chat;
