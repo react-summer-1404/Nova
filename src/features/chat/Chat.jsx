@@ -8,16 +8,19 @@ const Chat = () => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
+    fetch("http://localhost:3001/messages")
+    .then((res) => res.json())
+    .then((data) => setMessages(data));
     socket.on("connect", () => {
       console.log("Connected to server:", socket.id);
     });
-  
+
     socket.on("chat message", (msg) => {
       console.log("Received message:", msg);
       setMessages((prev) => [...prev, msg]);
     });
-  
-    return () => socket.off("chat message"); 
+
+    return () => socket.off("chat message");
   }, []);
 
   const handleSend = (e) => {
@@ -25,9 +28,12 @@ const Chat = () => {
     if (!input.trim()) return;
 
     const message = {
-      user: { role: "کاربر" }, 
+      user: { role: "کاربر" },   
       text: input,
-      time: new Date().toLocaleTimeString("fa-IR", { hour: "2-digit", minute: "2-digit" }),
+      time: new Date().toLocaleTimeString("fa-IR", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
     };
 
     socket.emit("chat message", message);
@@ -35,35 +41,40 @@ const Chat = () => {
   };
 
   return (
-    <div style={{ padding: "1rem", maxWidth: "500px", margin: "auto" }}>
-      <h2> چت یوزر</h2>
-
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: "1rem",
-          height: "300px",
-          overflowY: "auto",
-          marginBottom: "1rem",
-          background: "#f9f9f9",
-        }}
-      >
+    <div className="flex flex-col h-screen bg-[url('../../../public/telegram.jpg')] bg-cover bg-center" style={{direction: "rtl"}}>
+      <div className="flex-1 p-4 overflow-y-auto flex flex-col space-y-2">
         {messages.map((msg, index) => (
-          <div key={index} style={{ marginBottom: "0.5rem" }}>
-            <strong>{msg.user?.role || "ناشناس"}</strong> ({msg.time}): {msg.text}
+          <div
+            key={index}
+            className={`max-w-[70%] px-4 py-3 rounded-xl shadow ${
+              msg.user?.role === "کاربر"
+                ? "bg-green-100 self-end text-right"
+                : "bg-white self-start text-left"
+            }`}
+          >
+            <div className="text-sm text-gray-600 mb-1">
+              <strong>{msg.user?.role || "ناشناس"}</strong> • {msg.time}
+            </div>
+            <div className="text-base">{msg.text}</div>
           </div>
         ))}
       </div>
 
-      <form onSubmit={handleSend}>
+      <form
+        onSubmit={handleSend}
+        className="flex p-4 gap-2 bg-white shadow"
+      >
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="پیام خود را بنویسید..."
-          style={{ width: "80%", padding: "0.5rem" }}
+          className="flex-1 border border-dark-purple rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300 " 
         />
-        <button type="submit" style={{ padding: "0.5rem 1rem" }}>
+        <button
+          type="submit"
+          className="ml-2 px-4 py-2 bg-dark-purple text-white rounded-lg hover:bg-blue-600 transition"
+        >
           ارسال
         </button>
       </form>
