@@ -8,7 +8,7 @@ i18next.use(initReactI18next).init({
       translation: {
         landing: "صفحه اصلی",
         trainingCoursesPage: "دوره های آموزشی",
-        blogPage: "دوره های آموزشی",
+        blogPage: "وبلاگ ها",
         coachersPage: "مربیان",
         numberOne: "نامبروان",
         alwaysTheBest: "همیشه بهترین",
