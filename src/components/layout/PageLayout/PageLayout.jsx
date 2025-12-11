@@ -6,11 +6,13 @@ import DarkMode from "../../ui/darkMode/DarkMode";
 import ScrollButton from "../../ui/button/ScrollToTop";
 import DetermineButton from "../../ui/button/DetermineButton";
 import Dictaphone from "../../../features/voiceAssistance/VoiceAssistance";
+import GlobalChatWidget from "../../../features/chat/GlobalChatWidget";
 
 const PageLayout = () => {
   return (
     <div className="relative">
       <Navbar />
+      <div><GlobalChatWidget/></div>
       <div><DarkMode /></div>
       <div><DetermineButton/></div>
       <div><ScrollButton/></div>
