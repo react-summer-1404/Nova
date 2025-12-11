@@ -1,5 +1,6 @@
-import i18next from "i18next";
+import i18next from 'i18next';
 import { initReactI18next } from "react-i18next";
+
 
 i18next.use(initReactI18next).init({
   resources: {
@@ -58,8 +59,8 @@ i18next.use(initReactI18next).init({
             "امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است",
         },
         joinTheClub: {
-          joinTheClubTitle: "میخواهید در جریان دوره های جدید باشید؟",
-          joinTheClubInputPlaceholder: "ایمیل خود را وارد کنید",
+          joinTheClubTag: "! تعیین سطح",
+          joinTheClubTitle: "با تعیین سطح می‌تونی دوره‌های مناسب خودت رو پیدا کنی و قوی‌تر از همیشه شروع کنی",
           joinTheClubButton: "اکنون مشترک شوید",
         },
         masterMentors: {
@@ -193,8 +194,8 @@ i18next.use(initReactI18next).init({
             "Today, because virtual communications have grown significantly",
         },
         joinTheClub: {
-          joinTheClubTitle: "Want to stay updated on new courses?",
-          joinTheClubInputPlaceholder: "Type your email address",
+          joinTheClubTag: "Determine the level",
+          joinTheClubTitle: "By determining your level, you can find the right courses for you and start stronger than ever.",
           joinTheClubButton: "Subscribe Now",
         },
         masterMentors: {
