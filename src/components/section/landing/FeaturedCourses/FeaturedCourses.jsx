@@ -13,7 +13,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
+
 const FeaturedCourses = () => {
+  const { t } = useTranslation();
   const [pointTab, setPointTab] = useState("همه دوره‌ها");
 
   const { data: topCourseData } = useQuery({
@@ -41,15 +44,15 @@ const FeaturedCourses = () => {
       >
         <div className="flex flex-col items-center gap-3">
           <Tag
-            title={"دوره های کلاس برتر"}
+            title={t("featuredCoursesPage.featuredCoursesTag")}
             textColor={"var(--color-dark-purple)"}
             bgColor={"var(--color-light-purple)"}
           />
           <h2 className="font-bold md:text-4xl text-lg text-black">
-            بهترین دوره‌های آموزشی جهان ما را کاوش کنید
+           {t("featuredCoursesPage.featuredCoursesTitle")}
           </h2>
           <h3 className=" text-responsive text-base-gray ">
-            امروزه به دلیل آن که ارتباطات فضای مجازی رونق زیادی یافته است
+            {t("featuredCoursesPage.featuredCoursesDescribe")}
           </h3>
           <Tabs pointTab={pointTab} setPointTab={setPointTab} />
         </div>

@@ -7,8 +7,10 @@ import YellowButton from "../../../ui/button/YellowButton";
 import Tag from "../../../ui/Tag/Tag";
 import { GoArrowLeft } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const JoinTheClub = () => {
   const navigate =useNavigate()
+  const { t } = useTranslation();
   return (
     <div className="bg-dark-purple w-screen  flex sm:h-[280px] flex-center">
       <div className="md:w-[80%]  w-full  justify-end flex lg:h-[280px] relative items-center gap-4 ">
@@ -26,7 +28,7 @@ const JoinTheClub = () => {
      
         <div className="z-30">
           <YellowButton
-            text={"همین حالا امتحان کنید"}
+            text={t("joinTheClub.joinTheClubButton")}
             width={"200px"}
             height={"35px"}
             icon={<GoArrowLeft size={16}/>}
@@ -40,9 +42,9 @@ const JoinTheClub = () => {
           whileInView="visible"
           viewport={{ once: false }}
         >
-          <Tag bgColor={"var(--color-light-purple)"} textColor={"var(--color-dark-purple)"} title={" ! تعیین سطح "} width={"200px"}/>
+          <Tag bgColor={"var(--color-light-purple)"} textColor={"var(--color-dark-purple)"} title={t("joinTheClub.joinTheClubTag")} width={"200px"}/>
           <p className="text-[22px] text-white md:w-[400px] w-[350px]  font-semibold">
-          با تعیین سطح می‌تونی دوره‌های مناسب خودت رو پیدا کنی و قوی‌تر از همیشه شروع کنی
+         {t("joinTheClub.joinTheClubTitle")}
           </p>
           
         </motion.div>

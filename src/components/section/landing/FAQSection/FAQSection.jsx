@@ -1,7 +1,9 @@
 import React from "react";
 import AccardionComponent from "../../../ui/AccardionComponent/AccardionComponent";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 const FAQSection = () => {
+  const { t } = useTranslation();
   return (
     <div
       style={{ backgroundColor: "var(--color-light-gray)" }}
@@ -9,14 +11,13 @@ const FAQSection = () => {
     >
       <div className=" md:h-[450px] md:w-2/4 flex flex-col items-center md:items-end text-right gap-2 md:gap-3 md:pr-10">
         <button className="px-4 h-[25px] text-dark-purple bg-light-purple rounded-[30px] text-[9px] ">
-          سوالات متداول
+         {t("fAQSection.fAQSectionTag")}
         </button>
         <span className="text-navy text-[16px] sm:text-[18px] lg:text-[20px] font-[700] w-[65%] md:w-[32%] leading-6]">
-          شروع به تمرین از مربیان حرفه ای جهان
+         {t("fAQSection.fAQSectionTitle")}
         </span>
         <h2 className="text-dark-gray text-[8px] sm:text-[9px] lg:text-[10px] w-[67%] md:w-[51%] font-[400] text-text2-fot">
-          Grooveصندوق ورودی مشترک بصری این کار را برای اعضای تیم آسان میکند
-          سازماندهی، اولویت بندی و.در این قسمت.
+         {t("fAQSection.fAQSectionDescribe")}
         </h2>
         <div className="  flex justify-end w-full h-[60%] "> 
         <AccardionComponent />

@@ -15,8 +15,10 @@ import { RiBookOpenLine } from "react-icons/ri";
 import { FaMicrophone } from "react-icons/fa6";
 import useMiceState from "../../../../core/store/miceState";
 import SearchDict from "../../../../features/voiceAssistance/SearchDict";
+import { useTranslation } from "react-i18next";
 
 const SearchBox = () => {
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [debounceQuery] = useDebounce(query, 500);
   const [selected, setSelected] = useState("all");
@@ -26,10 +28,10 @@ const SearchBox = () => {
     Query: debounceQuery,
   };
   const getPlaceholder = () => {
-    if (selected === "courses") return "...جستجو برای دوره‌ها";
-    if (selected === "blogs") return "...جستجو برای وبلاگ‌ها ";
-    if (selected === "all") return "...جستجو در همه دسته‌ها";
-    else return "...جستجو";
+    if (selected === "courses") return t("search.courses");
+    if (selected === "blogs") return t("search.blogs");
+    if (selected === "all") return t("search.all");
+    else return t("landingSearchPlaceHolder");
   };
   const { data: Course } = useQuery({
     queryKey: ["searchCourse", debounceQuery],
@@ -48,15 +50,19 @@ const SearchBox = () => {
     console.log("search", debounceQuery);
   }, [debounceQuery]);
   const options = [
-    { key: "all", label: "همه", icon: <img src={all} className="w-3 h-3" /> },
     {
-      key: "courses",
-      label: "دوره ها",
+      key: "search.all",
+      label: t("all"),
+      icon: <img src={all} className="w-3 h-3" />,
+    },
+    {
+      key: "search.courses",
+      label: t("courses"),
       icon: <RiBookOpenLine className="text-dark-purple" />,
     },
     {
-      key: "blogs",
-      label: "وبلاگ ها",
+      key: "search.blogs",
+      label: t("blogs"),
       icon: <FaRegNewspaper className="text-dark-purple" />,
     },
   ];
@@ -74,7 +80,7 @@ const SearchBox = () => {
               }`}
               onClick={() => setActiveMice("search")}
             >
-              <FaMicrophone  className="text-white" size={20}/>
+              <FaMicrophone className="text-white" size={20} />
             </div>
           )}
 

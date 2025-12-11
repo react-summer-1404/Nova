@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { variantPages } from "../../configs/frameMorion/PagesVariants";
 import { scrollVariant } from "../../configs/frameMorion/Scroll";
@@ -20,7 +20,7 @@ const LandingPage = () => {
       initial="hidden"
       animate="visible"
     >
-      <HeroSection />
+      <HeroSection/>
 
       <motion.div
         variants={scrollVariant}

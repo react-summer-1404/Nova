@@ -1,10 +1,11 @@
 import { Accordion, AccordionItem } from "@heroui/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function AccardionComponent() {
-  const defaultContent =
-    "صندوق ورودی مشترک بصری Groove سازماندهی اعضای تیم را آسان می کند ...";
-    
+  const { t } = useTranslation();
+  const defaultContent = t("fAQSection.fAQSectionA1");
+
   const [selectedKeys, setSelectedKeys] = useState(new Set(["1"]));
 
   return (
@@ -17,19 +18,19 @@ export default function AccardionComponent() {
       {[
         {
           key: "1",
-          title: "نامبر وان می خواهد به شما چه چیزی دهد؟",
+          title: t("fAQSection.fAQSectionQ1"),
         },
         {
           key: "2",
-          title: "چرا ما را برای تحصیل خود انتخاب کنید؟",
+          title: t("fAQSection.fAQSectionQ2"),
         },
         {
           key: "3",
-          title: "چگونه خدماتی را برای شما ارائه می کنیم؟",
+          title: t("fAQSection.fAQSectionQ3"),
         },
         {
           key: "4",
-          title: "آیا برای دوره خود مقرون به صرفه هستید؟",
+          title: t("fAQSection.fAQSectionQ4"),
         },
       ].map((item) => (
         <AccordionItem
@@ -38,7 +39,9 @@ export default function AccardionComponent() {
           title={
             <span
               style={{
-                color: selectedKeys.has(item.key) ? "var(--color-dark-purple)" : "var(--color-text-gray)",
+                color: selectedKeys.has(item.key)
+                  ? "var(--color-dark-purple)"
+                  : "var(--color-text-gray)",
                 transition: "color 0.3s",
               }}
             >

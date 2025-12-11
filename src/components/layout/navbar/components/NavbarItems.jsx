@@ -1,14 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const NavbarItems = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const items = [
-    { title: "مربیان", path: "/coaches" },
-    { title: "وبلاگ", path: "/blogs" },
-    { title: "دوره های آموزشی", path: "/courses" },
-    { title: "صفحه اصلی", path: "/" },
+    { title: t("coachersPage"), path: "/coaches" },
+    { title:t("blogPage"), path: "/blogs" },
+    { title: t("trainingCoursesPage"), path: "/courses" },
+    { title: t("landing"), path: "/" },
   ];
 
   return (
