@@ -115,9 +115,9 @@ const CourseExplanation = ({ describe }) => {
   return (
     <div className="flex justify-center py-8">
       <div className="w-[95%] max-w-4xl mx-auto">
-        <h2 className="font-bold text-[20px] md:text-[24px] mb-8 text-right">
-          شرح دوره
-        </h2>
+        {/* <h2 className="font-bold text-[20px] md:text-[24px] mb-8 text-right">
+          توضیحات 
+        </h2> */}
 
         <div className="text-right leading-7" dir="rtl">
           {isEditorJS ? (

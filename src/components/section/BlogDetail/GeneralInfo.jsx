@@ -7,7 +7,6 @@ import { TfiComment } from "react-icons/tfi";
 
 const GeneralInfo = ({detailItems}) => {
 const shortDate = detailItems?.insertDate.slice(0,10);
-
   return (
     <div className="flex text-text-gray text-sm  sm:justify-between sm:flex-row  sm:items-end  md:p-0 flex-col-reverse items-center gap-4 px-2 pb-6">
       <div className="flex gap-3 items-center ">
