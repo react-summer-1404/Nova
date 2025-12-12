@@ -26,7 +26,7 @@ const Dashboard = () => {
             </div>
             <Header data={data} />
           </div>
-          <main className="px-8 py-2 w-screen lg:w-full ">
+          <main className="px-8 py-2 w-screen lg:w-full">
             <Outlet />
           </main>
         </div>

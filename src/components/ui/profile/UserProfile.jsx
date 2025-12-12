@@ -23,6 +23,8 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
     useToggle(false);
+  const [selectedDeleteId, setSelectedDeleteId] = useState(null);
+
   const navigate = useNavigate();
   const { data } = useQuery({
     queryKey: ["getUserAccount"],
@@ -56,7 +58,6 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
       if (newToken) {
         setToken(newToken);
         console.log("توکن جدید:", newToken);
-        navigate("/");
       }
 
       queryClient.invalidateQueries(["getUserAccount"]);
@@ -80,8 +81,8 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
       queryClient.invalidateQueries(["getUserAccount"]);
     },
     onError: (error) => {
-      toast.error(error?.response?.data?.message||"مشکلی رخ داد" );
-      console.log("error=========>",error)
+      toast.error(error?.response?.data?.message || "مشکلی رخ داد");
+      console.log("error=========>", error);
     },
   });
 
@@ -94,20 +95,21 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
       </div>
 
       <div className="w-[90%]">
-        <Accordion >
+        <Accordion>
           <AccordionItem
             style={{ direction: "rtl" }}
             key="1"
-            title={
-              <span className="text-white">حساب های کاربری</span>
-            }
-            
+            title={<span className="text-white">حساب های کاربری</span>}
           >
             <div className="flex flex-col  h-fit gap-5 p-4">
               <ModalSection
                 StyleModal={"h-[30px] bg-transparent "}
                 Icon={
-                  <TiPlus className="text-white mb-1 cursor-pointer" size={20} stroke="4" />
+                  <TiPlus
+                    className="text-white mb-1 cursor-pointer"
+                    size={20}
+                    stroke="4"
+                  />
                 }
                 isOpen={isViewModalOpen}
                 onClose={toggleViewModal}
@@ -189,21 +191,20 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
               />
 
               {data?.accounts?.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex  items-center text-white "
-                >
-                 <div className="flex gap-4 items-center " onClick={()=>mutationActiveAccount.mutate(item.id)}>
-                 <AvatarComponent
-                    src={item.currentPictureAddress || "/default.png"}
-                    size="sm"
-                  />
-                 <div className="flex gap-1">
-                  <span>{item.fName || "کاربر بدون نام"}</span>
-                 <span>{item.lName}</span>
-                 </div>
-
-                 </div>
+                <div key={item.id} className="flex  items-center text-white ">
+                  <div
+                    className="flex gap-4 items-center "
+                    onClick={() => mutationActiveAccount.mutate(item.id)}
+                  >
+                    <AvatarComponent
+                      src={item.currentPictureAddress || "/default.png"}
+                      size="sm"
+                    />
+                    <div className="flex gap-1">
+                      <span>{item.fName || "کاربر بدون نام"}</span>
+                      <span>{item.lName}</span>
+                    </div>
+                  </div>
                   <ModalSection
                     StyleModal={"h-fit bg-transparent"}
                     Icon={
@@ -211,7 +212,10 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
                     }
                     isOpen={isDeleteModalOpen}
                     onClose={toggleDeleteModal}
-                    onOpen={toggleDeleteModal}
+                    onOpen={() => {
+                      setSelectedDeleteId(item.id);
+                      toggleDeleteModal();
+                    }}
                     content={
                       <div className="flex-col-center gap-5">
                         <p className="text-navy">
@@ -226,10 +230,17 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
                           </Button>
 
                           <Button
-                            className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
-                            onPress={() =>
-                              mutationDeleteAccount.mutate(item.id)
-                            }
+                            className="w-[70px] h-[35px] bg-red-600 text-white"
+                            onPress={() => {
+                              console.log("selected id", selectedDeleteId);
+
+                              if (selectedDeleteId === data.activeId) {
+                                toast.error("نمی‌توانید حساب فعال را حذف کنید");
+                                return;
+                              }
+
+                              mutationDeleteAccount.mutate(selectedDeleteId);
+                            }}
                           >
                             حذف
                           </Button>
