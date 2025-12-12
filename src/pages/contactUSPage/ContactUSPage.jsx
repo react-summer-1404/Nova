@@ -3,9 +3,12 @@ import { Textarea } from "@heroui/input";
 import { Input } from "@heroui/react";
 import { YellowButton } from "../../components/ui";
 import { GoArrowLeft } from "react-icons/go";
+import message from "../../assets/icons/SVG (1).svg";
+import call from "../../assets/icons/SVG (2).svg";
+import loc from "../../assets/icons/SVG (3).svg";
 const ContactUsPage = () => {
   return (
-    <div className="w-screen flex-center flex-col ">
+    <div className="w-screen flex-center flex-col p-8">
       <div className="flex w-[70%]  items-center border justify-between">
         <div className="bg-light-gray border border-soft-gray w-[60%] items-end flex flex-col  gap-5 p-6 rounded">
           <div className="flex flex-col gap-3 text-right">
@@ -15,7 +18,10 @@ const ContactUsPage = () => {
               *
             </h4>
           </div>
-          <Textarea className="max-w-2xl" />
+          <Textarea
+            className="max-w-2xl "
+            classNames={{ inputWrapper: "bg-white " }}
+          />
           <div className="flex gap-5">
             <Input
               className="bg-white rounded-[12px]"
@@ -44,34 +50,36 @@ const ContactUsPage = () => {
           />
         </div>
         <div className="flex flex-col gap-5">
-          <div className="flex bg-light-gray gap-3 p-6 items-center rounded">
-            <div className="flex flex-col gap-2 text-right">
+          <div className="flex bg-light-gray gap-3 p-6 items-center rounded  justify-end">
+            <div className="flex flex-col gap-1 text-right ">
               <h2 className="font-bold text-[20px]">نشانی</h2>
               <span className="text-text-gray">
                 آوامیلیگ درایو، کنزینگتون لندن، انگلستان
               </span>
             </div>
-            <div className="w-[50px] h-[50px] rounded-full bg-dark-purple "></div>
+            <div className="w-[50px] h-[50px] rounded-full bg-dark-purple flex-center ">
+              <img src={loc} />
+            </div>
           </div>
 
-          <div className="flex bg-light-gray gap-3 p-6  rounded items-center">
-            <div className="flex flex-col gap-2 text-right">
-              <h2 className="font-bold text-[20px]">نشانی</h2>
-              <span className="text-text-gray">
-                آوامیلیگ درایو، کنزینگتون لندن، انگلستان
-              </span>
+          <div className="flex bg-light-gray gap-3 p-6  rounded items-center justify-end">
+            <div className="flex flex-col gap-1 text-right">
+              <h2 className="font-bold text-[20px]">تلفن</h2>
+              <span className="text-text-gray">+33 443 524</span>
             </div>
-            <div className="w-[50px] h-[50px] rounded-full bg-dark-purple "></div>
+            <div className="w-[50px] h-[50px] rounded-full bg-dark-purple flex-center">
+              <img src={call} />
+            </div>
           </div>
 
-          <div className="flex bg-light-gray gap-3 p-6 rounded items-center">
-            <div className="flex flex-col gap-2 text-right">
-              <h2 className="font-bold text-[20px]">نشانی</h2>
-              <span className="text-text-gray">
-                آوامیلیگ درایو، کنزینگتون لندن، انگلستان
-              </span>
+          <div className="flex bg-light-gray gap-3 p-6 rounded items-center justify-end">
+            <div className="flex flex-col gap-1 text-right">
+              <h2 className="font-bold text-[20px]">ادرس ایمیل</h2>
+              <span className="text-text-gray">numberOne@gmail.com</span>
             </div>
-            <div className="w-[50px] h-[50px] rounded-full bg-dark-purple"></div>
+            <div className="w-[50px] h-[50px] rounded-full bg-dark-purple flex-center">
+              <img src={message} />
+            </div>
           </div>
         </div>
       </div>
