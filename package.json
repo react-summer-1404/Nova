@@ -47,6 +47,7 @@
     "typewriter-effect": "^2.22.0",
     "use-debounce": "^10.0.6",
     "yup": "^1.7.1",
+    "zaman": "^2.1.1",
     "zod": "^4.1.12",
     "zustand": "^5.0.8"
   },
