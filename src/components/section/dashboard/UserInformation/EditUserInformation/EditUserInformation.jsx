@@ -9,11 +9,16 @@ import toast from "react-hot-toast";
 import ImageContainer from "./ImageContainer/ImageContainer";
 import ButtonSection from "./ButtonSection/ButtonSection";
 import MapContainer from "./MapContainer/MapContainer";
+import { DatePicker } from "zaman";
+import { useState } from "react";
+
 const validationSchema = yup.object({
   BirthDay: yup.string().required("*الزامی است"),
 });
 const EditUserInformation = () => {
-   const queryClient = useQueryClient()
+  const [date, setDate] = useState(null);
+  console.log("date", date);
+  const queryClient = useQueryClient();
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: getCurrentUserProfile,
@@ -28,7 +33,7 @@ const EditUserInformation = () => {
     },
     onSuccess: () => {
       toast.success("پروفایل شما اپدیت شد");
-      queryClient.invalidateQueries(["usercurrentinfo"]); 
+      queryClient.invalidateQueries(["usercurrentinfo"]);
     },
   });
 
@@ -55,7 +60,7 @@ const EditUserInformation = () => {
   return (
     <div className="w-screen  ">
       <div
-        className="flex flex-col md:w-[68%] gap-5  justify-start w-[70%] " 
+        className="flex flex-col md:w-[68%] gap-5  justify-start w-[70%] "
         style={{ direction: "rtl" }}
       >
         <Subject />
@@ -65,7 +70,7 @@ const EditUserInformation = () => {
               FName: currentProf?.fName || "",
               LName: currentProf?.lName || "",
               NationalCode: currentProf?.nationalCode || "",
-              BirthDay: currentProf?.birthDay.slice(0,10) || "",
+              BirthDay: currentProf?.birthDay.slice(0, 10) || "",
               TelegramLink: currentProf?.telegramLink || "",
               HomeAdderess: currentProf?.homeAdderess || "",
               LinkdinProfile: currentProf?.linkdinProfile || "",
@@ -103,15 +108,32 @@ const EditUserInformation = () => {
                         labelClass="indent-2 -mb-2"
                       />
 
-                      <FormGroup
-                        type={"text"}
-                        name={"BirthDay"}
-                        id={"BirthDay"}
-                        label={"تاریخ تولد"}
-                        inputClass="h-[35px]"
-                        labelClass="indent-2 -mb-2"
-                        errorClass="text-[12px] w-full  text-right -mt-3 "
-                      />
+                    
+                      <label
+                        style={{ color: "var(--color-text-gray2)" }}
+                        className={`font-[400] text-[10px]   md:text-[14px] text-right `}
+                      >
+                        تاریخ تولد
+                      </label>
+                      <Field name="BirthDay">
+                        {({ field, form }) => (
+                          <div
+                            style={{ direction: "rtl" }}
+                          >
+                            <DatePicker
+                              inputClass="mt-[-30px]  border indent-5 focus:outline-none border-[#E1E4E7]  w-full rounded-[5px] bg-white h-[35px]"
+                          accentColor="#5751e1"
+                            defaultValue={field.value ? new Date(field.value) : null }
+                              value={field.value ? new Date(field.value) : null}
+                              onChange={(e) =>
+                                form.setFieldValue("BirthDay", e.value)
+                              }
+                              locale="fa"
+                              direction="rtl"
+                            />
+                          </div>
+                        )}
+                      </Field>
 
                       <FormGroup
                         type={"email"}
@@ -139,7 +161,7 @@ const EditUserInformation = () => {
                         inputClass="h-[35px]"
                         labelClass="indent-2 -mb-2"
                       >
-                       <option value="true">مرد</option>
+                        <option value="true">مرد</option>
                         <option value="false">زن</option>
                       </FormGroup>
 
@@ -148,8 +170,8 @@ const EditUserInformation = () => {
                         name={"phoneNumber"}
                         id={"phoneNumber"}
                         label={"شماره همراه"}
-                        inputClass="h-[35px]"
-                        labelClass="indent-2 -mb-2"
+                        inputClass="h-[35px] mt-[2px]"
+                        labelClass="indent-2 -mb-2 "
                       />
 
                       <FormGroup

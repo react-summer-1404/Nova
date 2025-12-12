@@ -19,6 +19,7 @@ import {
 } from "framer-motion";
 import { motion } from "framer-motion";
 import compare from "../../../assets/icons/compare.svg"
+import { formatJalali } from "../../../core/services/date";
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = 32.5 / 2;
 const CourseProductCard = ({
@@ -100,6 +101,7 @@ const CourseProductCard = ({
   };
 
   const courseDate = product.startTime ? product.startTime.slice(0, 10) : "";
+
   return (
     <motion.div
       ref={ref}
@@ -265,7 +267,7 @@ const CourseProductCard = ({
         <div className="flex justify-between pt-5" style={{ direction: "rtl" }}>
           <div className="flex items-center">
             <MdOutlineDateRange className="text-[#5F5F66]" />
-            <div className="text-[#5F5F66]">{courseDate}</div>
+            <div className="text-[#5F5F66]">{formatJalali(courseDate)}</div>
           </div>
 
           <span
