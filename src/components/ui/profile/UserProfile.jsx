@@ -21,7 +21,6 @@ import { TiPlus } from "react-icons/ti";
 const UserProfile = ({ imageUrl, userName, fName }) => {
   const displayName = fName || userName || "کاربر گرامی";
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
-  const [selected, setSelected] = useState("");
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
     useToggle(false);
   const navigate = useNavigate();
@@ -94,8 +93,8 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
         <span>{displayName}</span>
       </div>
 
-      <div className="w-full">
-        <Accordion className="text-white">
+      <div className="w-[90%]">
+        <Accordion >
           <AccordionItem
             style={{ direction: "rtl" }}
             key="1"
