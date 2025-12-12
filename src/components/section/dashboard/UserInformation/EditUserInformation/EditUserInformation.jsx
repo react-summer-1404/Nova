@@ -9,16 +9,11 @@ import toast from "react-hot-toast";
 import ImageContainer from "./ImageContainer/ImageContainer";
 import ButtonSection from "./ButtonSection/ButtonSection";
 import MapContainer from "./MapContainer/MapContainer";
-import { useState } from "react";
-import DatePicker from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
 const validationSchema = yup.object({
   BirthDay: yup.string().required("*الزامی است"),
 });
 const EditUserInformation = () => {
-  const [value, setValue] = useState();
-  const queryClient = useQueryClient();
+   const queryClient = useQueryClient()
   const { data: currentProf } = useQuery({
     queryKey: ["currentProfUser"],
     queryFn: getCurrentUserProfile,
@@ -33,7 +28,7 @@ const EditUserInformation = () => {
     },
     onSuccess: () => {
       toast.success("پروفایل شما اپدیت شد");
-      queryClient.invalidateQueries(["usercurrentinfo"]);
+      queryClient.invalidateQueries(["usercurrentinfo"]); 
     },
   });
 
@@ -60,7 +55,7 @@ const EditUserInformation = () => {
   return (
     <div className="w-screen  ">
       <div
-        className="flex flex-col md:w-[68%] gap-5  justify-start w-[70%] "
+        className="flex flex-col md:w-[68%] gap-5  justify-start w-[70%] " 
         style={{ direction: "rtl" }}
       >
         <Subject />
@@ -70,7 +65,7 @@ const EditUserInformation = () => {
               FName: currentProf?.fName || "",
               LName: currentProf?.lName || "",
               NationalCode: currentProf?.nationalCode || "",
-              BirthDay: currentProf?.birthDay.slice(0, 10) || "",
+              BirthDay: currentProf?.birthDay.slice(0,10) || "",
               TelegramLink: currentProf?.telegramLink || "",
               HomeAdderess: currentProf?.homeAdderess || "",
               LinkdinProfile: currentProf?.linkdinProfile || "",
@@ -108,20 +103,15 @@ const EditUserInformation = () => {
                         labelClass="indent-2 -mb-2"
                       />
 
-                      <label>تاریخ تولد</label>
-                      <>
-                        <DatePicker
-                          value={values.BirthDay}
-                          onChange={setFieldValue(
-                            "BirthDay",
-                            date ? date.format("YYYY/MM/DD") : ""
-                          )}
-                          calendar={persian}
-                          locale={persian_fa}
-                          calendarPosition="bottom-right"
-                        />
-                        {value?.toDate?.().toString()}
-                      </>
+                      <FormGroup
+                        type={"text"}
+                        name={"BirthDay"}
+                        id={"BirthDay"}
+                        label={"تاریخ تولد"}
+                        inputClass="h-[35px]"
+                        labelClass="indent-2 -mb-2"
+                        errorClass="text-[12px] w-full  text-right -mt-3 "
+                      />
 
                       <FormGroup
                         type={"email"}
@@ -149,7 +139,7 @@ const EditUserInformation = () => {
                         inputClass="h-[35px]"
                         labelClass="indent-2 -mb-2"
                       >
-                        <option value="true">مرد</option>
+                       <option value="true">مرد</option>
                         <option value="false">زن</option>
                       </FormGroup>
 
