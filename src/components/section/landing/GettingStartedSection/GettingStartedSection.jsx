@@ -87,7 +87,7 @@ const GettingStartedSection = () => {
         whileInView="visible"
         viewport={{ once: false }}
       >
-        <div className="flex items-center h-[140px] md:h-[220px] w-[90%] md:w-[39%] border bg-[#FFFFFF] border-[#BDBDBD] rounded-[15px] relative">
+        <div className="flex items-center h-[140px] md:h-[220px] w-[Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process90%] md:w-[39%] border bg-[#FFFFFF] border-[#BDBDBD] rounded-[15px] relative">
           <div className="w-[53%] md:w-[57%] h-[110px] md:h-[170px] text-right flex flex-col gap-1 md:gap-5 items-end">
             <p className="font-[600] text-[18px] md:text-[28px] text-[#161439]">
               {t(

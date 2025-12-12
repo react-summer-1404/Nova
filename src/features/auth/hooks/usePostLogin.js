@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const usePostLogin = () => {
   const navigate = useNavigate();
   return usePostData(login, {
-    onSuccess: () => {
-      navigate("/dashboard");
-    },
+    // onSuccess: () => {
+    //   navigate("/dashboard");
+    // },
   });
 };
 

@@ -1,12 +1,14 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
 import { setToken } from "../../../hooks/localStorage";
 import usePostLogin from "../hooks/usePostLogin";
 import PasswordField from "../componenets/authForm/PasswordField";
 import { useRequestState } from "../hooks/useRequestState";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUserProfile } from "../../../servises/api/userPanel/getProfileInfo";
 
 const validationSchema = yup.object({
   phoneOrGmail: yup
@@ -25,6 +27,11 @@ const validationSchema = yup.object({
 });
 
 const LoginForm = () => {
+  const{data} = useQuery({
+    queryKey:"roles",
+    queryFn:getCurrentUserProfile
+  })
+  const navigate= useNavigate()
   const {
     mutateAsync: PostLoginData,
     isPending,
@@ -59,6 +66,8 @@ const LoginForm = () => {
       const token = data.token;
       if (token) {
         setToken(token);
+        setRole(data.roles);
+        navigate('/dashboard')
         if (values.rememberMe) {
           try {
             localStorage.setItem(
