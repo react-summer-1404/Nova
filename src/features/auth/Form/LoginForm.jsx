@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
-import { setToken } from "../../../hooks/localStorage";
+import { setRole, setToken } from "../../../hooks/localStorage";
 import usePostLogin from "../hooks/usePostLogin";
 import PasswordField from "../componenets/authForm/PasswordField";
 import { useRequestState } from "../hooks/useRequestState";
@@ -27,10 +27,10 @@ const validationSchema = yup.object({
 });
 
 const LoginForm = () => {
-  const{data} = useQuery({
-    queryKey:"roles",
-    queryFn:getCurrentUserProfile
-  })
+  // const{data} = useQuery({
+  //   queryKey:"roles",
+  //   queryFn:getCurrentUserProfile
+  // })
   const navigate= useNavigate()
   const {
     mutateAsync: PostLoginData,
@@ -67,6 +67,7 @@ const LoginForm = () => {
       if (token) {
         setToken(token);
         setRole(data.roles);
+        console.log("get rolse", data.roles)
         navigate('/dashboard')
         if (values.rememberMe) {
           try {
