@@ -8,12 +8,16 @@ import call from "../../assets/icons/SVG (2).svg";
 import loc from "../../assets/icons/SVG (3).svg";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import NavigationSection from "../../components/ui/navigation/NavigationSection"
+
 
 const ContactUsPage = () => {
   const position = [36.598656, 53.064654];
   return (
     <div className="w-screen flex-center flex-col p-8 gap-5">
-      <div className="flex lg::w-[80%] md:w-[90%]  items-center border justify-between md:flex-row flex-col gap-4">
+      <NavigationSection title={"تماس با ما"} />
+
+      <div className="flex lg::w-[80%] md:w-[90%]  items-center  justify-between md:flex-row flex-col gap-4">
         <div className="bg-light-gray flex-center border border-soft-gray md:w-[70%] w-full items-end flex flex-col  gap-5 p-6 rounded">
          <div className="flex flex-col gap-5 items-end">
          <div className="flex flex-col gap-3 text-right">
@@ -89,7 +93,7 @@ const ContactUsPage = () => {
           </div>
         </div>
       </div>
-      <div className="lg::w-[80%] md:w-[90%] border">
+      <div className="lg::w-[80%] md:w-[90%] w-full ">
         {" "}
         <MapContainer
           center={position}
