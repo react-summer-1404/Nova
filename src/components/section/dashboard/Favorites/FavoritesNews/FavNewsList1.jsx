@@ -140,7 +140,7 @@ const mutationFavoriteNewsDelete = useMutation({
 
       <div className="lg:w-[4%] rounded-full w-8 h-8">
         <img
-          src={currentImageAddress}
+          src={currentImageAddress||"/default.png"}
           alt={title}
           className="w-full h-full rounded-full object-cover"
         />

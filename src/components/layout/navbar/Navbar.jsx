@@ -57,7 +57,7 @@ const Navbar = () => {
 
               >
                 <AvatarComponent
-                  src={data?.currentPictureAddress}
+                  src={data?.currentPictureAddress||"/default.png"}
                   onclick={() => navigate("/dashboard")}
                 />
               </Badge>

@@ -5,6 +5,7 @@ const NavbarItems = () => {
   const location = useLocation();
 
   const items = [
+    { title: "تماس با ما", path: "/contactUs" },
     { title: "مربیان", path: "/coaches" },
     { title: "وبلاگ", path: "/blogs" },
     { title: "دوره های آموزشی", path: "/courses" },
