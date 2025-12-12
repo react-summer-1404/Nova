@@ -9,8 +9,8 @@ import loc from "../../assets/icons/SVG (3).svg";
 const ContactUsPage = () => {
   return (
     <div className="w-screen flex-center flex-col p-8">
-      <div className="flex w-[70%]  items-center border justify-between">
-        <div className="bg-light-gray border border-soft-gray w-[60%] items-end flex flex-col  gap-5 p-6 rounded">
+      <div className="flex lg::w-[80%] md:w-[90%]  items-center border justify-between md:flex-row flex-col gap-4">
+        <div className="bg-light-gray border border-soft-gray md:w-[60%] w-full items-end flex flex-col  gap-5 p-6 rounded">
           <div className="flex flex-col gap-3 text-right">
             <h2 className="font-bold text-[30px]">برای ما پیام ارسال کنید</h2>
             <h4 className="text-text-gray ">
