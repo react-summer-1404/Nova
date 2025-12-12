@@ -6,21 +6,24 @@ import SideBar from "../../../../components/section/dashboard/UserInformation/si
 import { MdMenu } from "react-icons/md";
 import { Link } from "react-router";
 
-const Header = ({data}) => {
+const Header = ({ data }) => {
+  
   return (
-     <div className={"flex justify-between  w-full items-center"}>
-    <div className="flex items-center justify-start p-8 gap-3 ">
-    <Link to={"/"}>
-    <IoHome
-        style={{ color: "var(--color-dark-purple)" }}
-        className="cursor-pointer w-[20px] h-[20px]"
-        
-      />
-    </Link>
-    </div>
+    <div className={"flex justify-between  w-full items-center"}>
+      <div className="flex items-center justify-between p-8 gap-3">
+        <Link to={"/"}>
+          <IoHome className="cursor-pointer text-dark-purple" size={30} />
+        </Link>
 
-      <div className="lg:hidden">
-      <DrawerComponent buttonStyle={"bg-transparent"} Icon={<MdMenu size={22} className="text-dark-purple"/>} Content={<SideBar data={data}/>}/>
+        
+      </div>
+
+      <div className="lg:hidden ">
+        <DrawerComponent
+          buttonStyle={"bg-transparent"}
+          Icon={<MdMenu size={30} className="text-dark-purple" />}
+          Content={<SideBar data={data} />}
+        />
       </div>
     </div>
   );
