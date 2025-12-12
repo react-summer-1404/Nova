@@ -139,7 +139,7 @@ const SearchBox = () => {
                       <h2>{item.title}</h2>
                       <img
                         className="w-8 h-8 rounded-sm"
-                        src={item.imageAddress}
+                        src={item.imageAddress||"/default.png"}
                       />
                     </div>
                   </div>
@@ -163,7 +163,7 @@ const SearchBox = () => {
                       <h2>{item.title}</h2>
                       <img
                         className="w-8 h-8 rounded-sm"
-                        src={item.currentImageAddress}
+                        src={item.currentImageAddress||"/default.png"}
                       />
                     </div>
                   </div>
