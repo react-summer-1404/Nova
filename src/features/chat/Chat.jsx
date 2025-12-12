@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
@@ -8,19 +9,20 @@ const Chat = () => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3001/messages")
-    .then((res) => res.json())
-    .then((data) => setMessages(data));
-    socket.on("connect", () => {
-      console.log("Connected to server:", socket.id);
-    });
+    axios.get("http://localhost:3001/messages")
+      .then(res => setMessages(res.data))
+      .catch(err => console.error("Error fetching messages:", err));
+  }, []);
 
+  useEffect(() => {
     socket.on("chat message", (msg) => {
       console.log("Received message:", msg);
       setMessages((prev) => [...prev, msg]);
     });
 
-    return () => socket.off("chat message");
+    return () => {
+      socket.off("chat message")
+    };
   }, []);
 
   const handleSend = (e) => {
@@ -41,7 +43,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[url('../../../public/telegram.jpg')] bg-cover bg-center" style={{direction: "rtl"}}>
+    <div className="flex flex-col overflow-hidden h-screen bg-[url('../../../public/telegram.jpg')] bg-cover bg-center" style={{direction: "rtl"}}>
       <div className="flex-1 p-4 overflow-y-auto flex flex-col space-y-2">
         {messages.map((msg, index) => (
           <div
