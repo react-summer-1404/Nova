@@ -1,59 +1,86 @@
 import AvatarComponent from "../Avatar/Avatar";
 import { Accordion, AccordionItem } from "@heroui/accordion";
-import { Button, Checkbox } from "@heroui/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  deleteMultiAccount,
   getMultiAccount,
   postMultiAccount,
 } from "../../../servises/api/accountApi";
 import ModalSection from "../Modal/ModalSection";
 import useToggle from "../../../hooks/useToggle";
-import { ErrorMessage, Field, Formik } from "formik";
-import FormGroup from "../../section/CourseDetail/CourseComment/component/FormGroup";
+import { Field, Formik, ErrorMessage } from "formik";
 import { Form } from "react-router";
-import { Input } from "@heroui/input";
-import PasswordField from "../../../features/auth/componenets/authForm/PasswordField";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import YellowButton from "../button/YellowButton";
+import { setToken } from "../../../hooks/localStorage";
+import { Button } from "@heroui/react";
+import { HiOutlineTrash } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
 const UserProfile = ({ imageUrl, userName, fName }) => {
   const displayName = fName || userName || "کاربر گرامی";
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
-  const [isSelected, setIsSelected] = useState(false);
+  const [selected, setSelected] = useState("");
+  const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
+    useToggle(false);
+    const navigate = useNavigate()
   const { data } = useQuery({
     queryKey: ["getUserAccount"],
     queryFn: getMultiAccount,
   });
   const queryClient = useQueryClient();
-  console.log("all data", data);
+
   const mutationCreateAccount = useMutation({
-    mutationFn: () => postMultiAccount(apiData),
+    mutationFn: (values) => postMultiAccount(values),
     onSuccess: (data) => {
-      const msg = data?.message;
-      toast.success(msg);
+      toast.success(data?.message || "حساب کاربری با موفقیت ایجاد شد");
+
+      const newToken = data?.token;
+      if (newToken) {
+        setToken(newToken);
+        console.log("توکن جدید:", newToken);
+      }
+
       queryClient.invalidateQueries(["getUserAccount"]);
     },
     onError: (error) => {
-      const msg = error?.response?.data?.message;
-      toast.error(msg);
-      console.log("error=======>", error);
+      toast.error(error?.response?.data?.message || "خطا در ایجاد حساب");
     },
   });
+  const mutationDeleteAccount = useMutation({
+    mutationFn: (id) => deleteMultiAccount(id),
+    onSuccess: (data) => {
+      toast.success(data?.message || "حساب کاربری با موفقیت حذف شد");
+
+      const newToken = data?.token;
+      if (newToken) {
+        setToken(newToken);
+        console.log("توکن جدید:", newToken);
+        navigate("/")
+      }
+
+      queryClient.invalidateQueries(["getUserAccount"]);
+    },
+    onError: (error) => {
+      toast.error(error?.response?.data?.message || "خطا در حذف حساب");
+    },
+  });
+
   return (
-    <div className="flex-col-center gap-4  ">
+    <div className="flex-col-center gap-4">
       <AvatarComponent src={imageUrl} size="lg" />
       <div className="w-[80px] flex-col-center text-white text-lg overflow-ellipsis text-nowrap">
         <span>خوش آمدی</span>
         <span>{displayName}</span>
       </div>
-      <div className=" w-full">
+
+      <div className="w-full">
         <Accordion>
           <AccordionItem
             style={{ direction: "rtl" }}
             key="1"
             title="حساب های کاربری"
           >
-            <div className="flex justify-start items-start flex-col border h-fit gap-5">
+            <div className="flex flex-col border h-fit gap-5 p-4">
               <ModalSection
                 StyleModal={"h-[30px] bg-transparent"}
                 ButtonText={"+"}
@@ -61,67 +88,125 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
                 onClose={toggleViewModal}
                 onOpen={toggleViewModal}
                 content={
-                  <>
-                    <Formik
-                      initialValues={{
-                        phoneOrGmail: "",
-                        password: "",
-                        rememberMe: "",
-                      }}
-                      onSubmit={(values) => {
-                        mutationCreateAccount.mutate(values);
-                      }}
-                    >
-                      <Form className="flex flex-col gap-4" dir="rtl">
-                        <div className=" flex flex-col">
-                          <Input
-                            variant="bordered"
-                            color="default"
-                            label="ایمیل"
+                  <Formik
+                    initialValues={{
+                      phoneOrGmail: "",
+                      password: "",
+                      rememberMe: false,
+                    }}
+                    onSubmit={(values, { resetForm }) => {
+                      mutationCreateAccount.mutate(values);
+                      resetForm();
+                    }}
+                  >
+                    {({ handleSubmit, values, handleChange }) => (
+                      <Form
+                        onSubmit={handleSubmit}
+                        className="flex flex-col gap-3"
+                        dir="rtl"
+                      >
+                        <div className="flex flex-col">
+                          <label
+                            htmlFor="phoneOrGmail"
+                            className="text-white mb-1"
+                          >
+                            ایمیل
+                          </label>
+                          <input
+                            id="phoneOrGmail"
+                            name="phoneOrGmail"
                             type="email"
-                            autoComplete="none"
+                            value={values.phoneOrGmail}
+                            onChange={handleChange}
+                            className="p-2 rounded border"
+                            placeholder="ایمیل خود را وارد کنید"
                           />
                         </div>
-                        <div className=" flex flex-col">
-                          <PasswordField
+
+                        <div className="flex flex-col">
+                          <label htmlFor="password" className="text-white mb-1">
+                            رمز عبور
+                          </label>
+                          <input
+                            id="password"
                             name="password"
-                            label="رمز عبور جدید"
-                            autoComplete="new-password"
-                          />
-                          <ErrorMessage
-                            name="rememberMe"
-                            component="div"
-                            className="text-red-500 text-sm mt-1"
+                            type="password"
+                            value={values.password}
+                            onChange={handleChange}
+                            className="p-2 rounded border"
+                            placeholder="رمز عبور جدید"
                           />
                         </div>
-                        <Checkbox
-                          isSelected={isSelected}
-                          onValueChange={setIsSelected}
+
+                        <div className="flex items-center gap-2">
+                          <input
+                            id="rememberMe"
+                            name="rememberMe"
+                            type="checkbox"
+                            checked={values.rememberMe}
+                            onChange={handleChange}
+                          />
+                          <label htmlFor="rememberMe" className="text-white">
+                            مرا به خاطر بسپار
+                          </label>
+                        </div>
+
+                        <button
+                          type="submit"
+                          className="bg-yellow-400 text-black px-4 py-2 rounded mt-2 w-fit"
                         >
-                          مرا به خاطر بسپار
-                        </Checkbox>
-                        <YellowButton
-                          height={"35px"}
-                          text={"ذخیره"}
-                          type={"submit"}
-                        />
+                          ذخیره
+                        </button>
                       </Form>
-                    </Formik>
-                  </>
+                    )}
+                  </Formik>
                 }
               />
-              {data?.accounts?.map((item) => {
-                return (
-                  <div key={item.id} className="mr-2 flex gap-4 text-white">
-                    <AvatarComponent
-                      src={item.currentPictureAddress || "/default.png"}
-                      size="sm"
-                    />
-                    <span>{item.fName || "کاربر بدون نام"}</span>
-                    <div>{item.id}</div>
-                  </div>
-                );
-              })}
+
+              {data?.accounts?.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex gap-4 items-center text-white"
+                >
+                  <AvatarComponent
+                    src={item.currentPictureAddress || "/default.png"}
+                    size="sm"
+                  />
+                  <span>{item.fName || "کاربر بدون نام"}</span>
+                  <div className="text-sm">{item.id}</div>
+                  <ModalSection
+                    StyleModal={"h-fit bg-transparent"}
+                    Icon={
+                      <HiOutlineTrash className="text-dark-purple w-5 h-5 cursor-pointer" />
+                    }
+                    isOpen={isDeleteModalOpen}
+                    onClose={toggleDeleteModal}
+                    onOpen={toggleDeleteModal}
+                    content={
+                      <div className="flex-col-center gap-5">
+                        <p className="text-navy">
+                          ایا از حذف این دوره اطمینن دارید؟
+                        </p>
+                        <div className="flex w-full justify-evenly">
+                          <Button
+                            className="w-[70px] h-[35px] bg-gray-300 text-gray-800 font-medium rounded-md hover:bg-gray-400 transition-all duration-200"
+                            onPress={() => setIsDeleteModalOpen(false)}
+                          >
+                            لغو
+                          </Button>
+
+                          <Button
+                            className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
+                            onPress={() => mutationDeleteAccount.mutate(item.id)}
+                          >
+                            حذف
+                          </Button>
+                        </div>
+                      </div>
+                    }
+                  />
+                </div>
+              ))}
             </div>
           </AccordionItem>
         </Accordion>
