@@ -95,13 +95,16 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
       </div>
 
       <div className="w-full">
-        <Accordion>
+        <Accordion className="text-white">
           <AccordionItem
             style={{ direction: "rtl" }}
             key="1"
-            title="حساب های کاربری"
+            title={
+              <span className="text-white">حساب های کاربری</span>
+            }
+            
           >
-            <div className="flex flex-col border h-fit gap-5 p-4">
+            <div className="flex flex-col  h-fit gap-5 p-4">
               <ModalSection
                 StyleModal={"h-[30px] bg-transparent "}
                 Icon={
@@ -191,7 +194,7 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
                   key={item.id}
                   className="flex  items-center text-white "
                 >
-                 <div className="flex gap-4 items-center border" onClick={()=>mutationActiveAccount.mutate(item.id)}>
+                 <div className="flex gap-4 items-center " onClick={()=>mutationActiveAccount.mutate(item.id)}>
                  <AvatarComponent
                     src={item.currentPictureAddress || "/default.png"}
                     size="sm"
