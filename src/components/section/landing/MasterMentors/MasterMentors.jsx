@@ -84,17 +84,7 @@ const MasterMentors = () => {
           >
            {t("masterMentors.masterMentorsDescribe")}
           </h2>
-          <button
-            type="submit"
-            className =" text-white mt-[5px] shadow-[4px_6px_0px_0px_rgba(5,0,113,1)] bg-dark-purple rounded-full flex gap-1 px-2 h-[30px] leading-2.5 sm:h-[27px] lg:px-4 items-center"
-          >
-            <FaArrowLeft className="w-[10px] mt-1 h-[10px] md:w-[13px] md:h-[13px]" />
-            <Link to={"/coaches"}>
-              <span className= "text-[8px] md:text-[11px] lg:text-[14px]">
-                {t("masterMentors.masterMentorsButton")}
-              </span>
-            </Link>
-          </button>
+          <PurpleBtn height={"35px"} content={t("masterMentors.masterMentorsButton")} BtnIcon={<FaArrowLeft/>}/>
         </div>
       </div>
     </div>
