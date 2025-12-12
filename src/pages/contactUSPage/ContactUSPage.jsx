@@ -6,12 +6,17 @@ import { GoArrowLeft } from "react-icons/go";
 import message from "../../assets/icons/SVG (1).svg";
 import call from "../../assets/icons/SVG (2).svg";
 import loc from "../../assets/icons/SVG (3).svg";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+
 const ContactUsPage = () => {
+  const position = [36.598656, 53.064654];
   return (
-    <div className="w-screen flex-center flex-col p-8">
+    <div className="w-screen flex-center flex-col p-8 gap-5">
       <div className="flex lg::w-[80%] md:w-[90%]  items-center border justify-between md:flex-row flex-col gap-4">
-        <div className="bg-light-gray border border-soft-gray md:w-[60%] w-full items-end flex flex-col  gap-5 p-6 rounded">
-          <div className="flex flex-col gap-3 text-right">
+        <div className="bg-light-gray flex-center border border-soft-gray md:w-[70%] w-full items-end flex flex-col  gap-5 p-6 rounded">
+         <div className="flex flex-col gap-5 items-end">
+         <div className="flex flex-col gap-3 text-right">
             <h2 className="font-bold text-[30px]">برای ما پیام ارسال کنید</h2>
             <h4 className="text-text-gray ">
               آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند
@@ -25,19 +30,19 @@ const ContactUsPage = () => {
           <div className="flex gap-5">
             <Input
               className="bg-white rounded-[12px]"
-              label="نشانی ایمیل"
+              label="سایت اینترنتی *"
               type="email"
               variant="bordered"
             />
             <Input
               className="bg-white rounded-[12px] "
-              label="نام خانوادگی"
+              label="پست الکترونیک *"
               type="text"
               variant="bordered"
             />
             <Input
               className="bg-white rounded-[12px]"
-              label="نام"
+              label="نام *" 
               type="text"
               variant="bordered"
             />
@@ -48,6 +53,7 @@ const ContactUsPage = () => {
             text={"ارسال کنید"}
             icon={<GoArrowLeft size={20} />}
           />
+         </div>
         </div>
         <div className="flex flex-col gap-5">
           <div className="flex bg-light-gray gap-3 p-6 items-center rounded  justify-end">
@@ -83,7 +89,20 @@ const ContactUsPage = () => {
           </div>
         </div>
       </div>
-      <div>map</div>
+      <div className="lg::w-[80%] md:w-[90%] border">
+        {" "}
+        <MapContainer
+          center={position}
+          zoom={13}
+          style={{ width: "100%", height: "400px" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+          <Marker position={position}>
+            <Popup>تهران</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
     </div>
   );
 };
