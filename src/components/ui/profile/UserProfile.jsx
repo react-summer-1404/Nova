@@ -2,6 +2,7 @@ import AvatarComponent from "../Avatar/Avatar";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  activeMultiAccount,
   deleteMultiAccount,
   getMultiAccount,
   postMultiAccount,
@@ -16,13 +17,14 @@ import { setToken } from "../../../hooks/localStorage";
 import { Button } from "@heroui/react";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import { TiPlus } from "react-icons/ti";
 const UserProfile = ({ imageUrl, userName, fName }) => {
   const displayName = fName || userName || "کاربر گرامی";
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
   const [selected, setSelected] = useState("");
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
     useToggle(false);
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const { data } = useQuery({
     queryKey: ["getUserAccount"],
     queryFn: getMultiAccount,
@@ -55,13 +57,32 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
       if (newToken) {
         setToken(newToken);
         console.log("توکن جدید:", newToken);
-        navigate("/")
+        navigate("/");
       }
 
       queryClient.invalidateQueries(["getUserAccount"]);
     },
     onError: (error) => {
       toast.error(error?.response?.data?.message || "خطا در حذف حساب");
+    },
+  });
+  const mutationActiveAccount = useMutation({
+    mutationFn: (id) => activeMultiAccount(id),
+    onSuccess: (data) => {
+      toast.success(data?.message);
+      const newToken = data?.token;
+
+      if (newToken) {
+        setToken(newToken);
+        console.log("توکن جدید:", newToken);
+        navigate("/");
+      }
+
+      queryClient.invalidateQueries(["getUserAccount"]);
+    },
+    onError: (error) => {
+      toast.error(error?.response?.data?.message||"مشکلی رخ داد" );
+      console.log("error=========>",error)
     },
   });
 
@@ -82,8 +103,10 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
           >
             <div className="flex flex-col border h-fit gap-5 p-4">
               <ModalSection
-                StyleModal={"h-[30px] bg-transparent"}
-                ButtonText={"+"}
+                StyleModal={"h-[30px] bg-transparent "}
+                Icon={
+                  <TiPlus className="text-white mb-1 cursor-pointer" size={20} stroke="4" />
+                }
                 isOpen={isViewModalOpen}
                 onClose={toggleViewModal}
                 onOpen={toggleViewModal}
@@ -166,18 +189,23 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
               {data?.accounts?.map((item) => (
                 <div
                   key={item.id}
-                  className="flex gap-4 items-center text-white"
+                  className="flex  items-center text-white "
                 >
-                  <AvatarComponent
+                 <div className="flex gap-4 items-center border" onClick={()=>mutationActiveAccount.mutate(item.id)}>
+                 <AvatarComponent
                     src={item.currentPictureAddress || "/default.png"}
                     size="sm"
                   />
+                 <div className="flex gap-1">
                   <span>{item.fName || "کاربر بدون نام"}</span>
-                  <div className="text-sm">{item.id}</div>
+                 <span>{item.lName}</span>
+                 </div>
+
+                 </div>
                   <ModalSection
                     StyleModal={"h-fit bg-transparent"}
                     Icon={
-                      <HiOutlineTrash className="text-dark-purple w-5 h-5 cursor-pointer" />
+                      <HiOutlineTrash className="text-white mb-1 cursor-pointer" />
                     }
                     isOpen={isDeleteModalOpen}
                     onClose={toggleDeleteModal}
@@ -185,7 +213,7 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
                     content={
                       <div className="flex-col-center gap-5">
                         <p className="text-navy">
-                          ایا از حذف این دوره اطمینن دارید؟
+                          ایا از حذف این حساب اطمینن دارید؟
                         </p>
                         <div className="flex w-full justify-evenly">
                           <Button
@@ -197,7 +225,9 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
 
                           <Button
                             className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
-                            onPress={() => mutationDeleteAccount.mutate(item.id)}
+                            onPress={() =>
+                              mutationDeleteAccount.mutate(item.id)
+                            }
                           >
                             حذف
                           </Button>
