@@ -12,6 +12,8 @@ import SearchBox from "./components/SearchBox";
 import NavbarItems from "./components/NavbarItems";
 import { motion, useScroll } from "framer-motion";
 import AccountBtn from "./components/AccountBtn";
+import { Badge } from "@heroui/react";
+import { getNotification } from "../../../servises/api/notificationApi";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -32,7 +34,12 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
   }, []);
+  const { data: notif } = useQuery({
+    queryKey: ["getNotification2"],
+    queryFn: getNotification,
+    enabled: !!token,
 
+  });
   return (
     <div
       className={`w-full p-4 gap-6   fixed top-0 left-0 bg-white z-999  ${
@@ -43,10 +50,19 @@ const Navbar = () => {
         <div className="flex-center md:flex-start  items-center xl:gap-6 md:gap-2 ">
           <div className="hidden lg:flex">
             {token ? (
-              <AvatarComponent
-                src={data?.currentPictureAddress}
-                onclick={() => navigate("/dashboard")}
-              />
+              <Badge
+                color="danger"
+                content=""
+                size="md"
+                placement="top-right"
+                className={notif?.length ? "block" : "hidden"}
+
+              >
+                <AvatarComponent
+                  src={data?.currentPictureAddress||"/default.png"}
+                  onclick={() => navigate("/dashboard")}
+                />
+              </Badge>
             ) : (
               <AccountBtn onclick={() => navigate("/auth")} />
             )}
@@ -65,7 +81,7 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <NavbarItems />
           </div>
-          <Logo/>
+          <Logo />
         </div>
       </div>
       <motion.div

@@ -21,7 +21,7 @@ const Responsive = ({data}) => {
           <div className="flex justify-between ">
             {token ? (
               <AvatarComponent
-                src={data?.currentPictureAddress}
+                src={data?.currentPictureAddress||"/default.png"}
                 onclick={() => navigate("/dashboard")}
               />
             ) : (

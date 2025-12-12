@@ -18,7 +18,7 @@ export const deleteMultiAccount = async (id) => {
 };
 export const activeMultiAccount= async (id) => {
 
-  const response = await instance.patch(`/v2/multiAccount/activeAccount//${id}`);
+  const response = await instance.patch(`/v2/multiAccount/activeAccount/${id}`);
 
   return response.data;
 };

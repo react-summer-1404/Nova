@@ -35,7 +35,7 @@ const Slider = () => {
   }, [data]);
   return (
     <div
-      className="flex justify-evenly items-center gap-2 md:gap-10 px-10 sm:px-8 p-8 rounded-4xl w-fit mx-auto  "
+      className="flex justify-evenly items-center gap-2 md:gap-10 px-10 sm:px-8 p-8 rounded-4xl w-fit mx-auto "
     >
         <div
           className="flex transition-transform duration-500 ease-in-out gap-[44px] flex-wrap"
@@ -55,7 +55,7 @@ export default Slider;
 
 const TechCard = ({ item }) => {
   return (
-    <div className="w-full p-4 rounded   relative overflow-hidden group bg-light-purple cursor-pointer shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]">
+    <div className="w-full p-4 rounded   relative overflow-hidden group bg-light-purple cursor-pointer shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] ">
 
       {/* Hover background */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#4C1D95] to-[#7C3AED] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
@@ -75,7 +75,7 @@ const TechCard = ({ item }) => {
         alt={item.techName}
       />
 
-      <h3 className="font-medium text-lg  text-black  group-hover: text-black relative z-10 duration-300">
+      <h3 className="font-medium text-lg  text-black  group-hover:  relative z-10 duration-300">
         {item.techName}
       </h3>
 
