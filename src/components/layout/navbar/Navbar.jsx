@@ -37,6 +37,8 @@ const Navbar = () => {
   const { data: notif } = useQuery({
     queryKey: ["getNotification2"],
     queryFn: getNotification,
+    enabled: !!token,
+
   });
   return (
     <div
