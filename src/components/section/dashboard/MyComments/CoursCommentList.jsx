@@ -10,6 +10,9 @@ import { getCourseDetail } from "../../../../servises/api/coursesDetail/getDetai
 import { deleteCommentCourse } from "../../../../servises/api/coursesDetail/deleteComment";
 import toast from "react-hot-toast";
 import { CiMenuKebab } from "react-icons/ci";
+import FormGroup from "../../CourseDetail/CourseComment/component/FormGroup";
+import { Form, Formik } from "formik";
+import { putEditComment } from "../../../../servises/api/userPanel/updateComment";
 const CoursCommentList = ({
   title,
   author,
@@ -18,7 +21,7 @@ const CoursCommentList = ({
   accept,
   courseId,
   id,
-  
+  describe,
 }) => {
   const acceptStatus = accept ? (
     <p className="text-[#005A34]">تایید شده</p>
@@ -26,9 +29,9 @@ const CoursCommentList = ({
     <p className="text-[#DE5204]"> در انتظار تایید</p>
   );
   const [isDeleteModalOpen, toggleDeleteModal, setIsDeleteModalOpen] =
-  useToggle(false);
-const [isViewModalOpen, toggleViewModal] = useToggle(false);
-const [mobileView, toggleMobileView] = useToggle(false);
+    useToggle(false);
+  const [isViewModalOpen, toggleViewModal] = useToggle(false);
+  const [mobileView, toggleMobileView] = useToggle(false);
   const queryClient = useQueryClient();
 
   const { data, isLoading } = useQuery({
@@ -38,7 +41,7 @@ const [mobileView, toggleMobileView] = useToggle(false);
   });
 
   const mutationCourseDelete = useMutation({
-    mutationFn: (id) =>deleteCommentCourse(id),
+    mutationFn: (id) => deleteCommentCourse(id),
     onSuccess: () => {
       toast.success("کامنت  با موفقیت حذف شد");
       queryClient.invalidateQueries(["CourseComment"]);
@@ -48,46 +51,72 @@ const [mobileView, toggleMobileView] = useToggle(false);
       console.log("خطا", error), toast.error("حذف کامنت با خطا مواجه شد");
     },
   });
+  const mutationCommentEdit = useMutation({
+    mutationFn: (formData) => putEditComment(formData),
+    onSuccess: (data) => {
+      const msg = data?.message;
+      toast.success(msg);
+      queryClient.invalidateQueries(["CourseComment"]);
+      toggleViewModal();
+    },
+    onError: (error) => {
+      const msg = error?.response?.data?.message;
+      toast.error(msg);
+      console.log("خطا", error);
+    }
+  });
+
+  const handleSubmit = async (values) => {
+    try {
+      const formData = new FormData();
+      formData.append("FName", values.FName);
+      formData.append("LName", values.LName);
+      formData.append("NationalCode", values.NationalCode);
+      formData.append("BirthDay", values.BirthDay);
+
+      await mutationCommentEdit.mutateAsync(formData);
+    } catch (error) {
+      console.log("خطا در ارسال فرم:", error);
+    }
+  };
   return (
     <div className="justify-center items-center gap-8 flex w-full h-[40px] py-2 text-[10px] lg:text-[14px] font[600] text-navy even:bg-[#F7F7F7] odd:bg-[#C8C1ED4D] rounded-[5px] shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)]">
-       <div className="md:hidden">
-     <ModalSection
-      StyleModal={"bg-transparent"}
-        Icon={<CiMenuKebab/>}
-        isOpen={mobileView}
-        onClose={toggleMobileView}
-        onOpen={toggleMobileView}
-        content={
-         <div className="flex flex-col gap-3">
-          
-           <div className="flex-col-center gap-5">
-              <p className="text-navy">ایا از حذف این دوره اطمینن دارید؟</p>
-              <div className="w-full flex-center">
-             <CourseProductCard product={data} />
-           </div>
-              <div className="flex w-full justify-evenly">
-                <Button
-                  className="w-[70px] h-[35px] bg-gray-300 text-gray-800 font-medium rounded-md hover:bg-gray-400 transition-all duration-200"
-                  onPress={() => setIsDeleteModalOpen(false)}
-                >
-                  لغو
-                </Button>
+      <div className="md:hidden">
+        <ModalSection
+          StyleModal={"bg-transparent"}
+          Icon={<CiMenuKebab />}
+          isOpen={mobileView}
+          onClose={toggleMobileView}
+          onOpen={toggleMobileView}
+          content={
+            <div className="flex flex-col gap-3">
+              <div className="flex-col-center gap-5">
+                <p className="text-navy">ایا از حذف این دوره اطمینن دارید؟</p>
+                <div className="w-full flex-center">
+                  <CourseProductCard product={data} />
+                </div>
+                <div className="flex w-full justify-evenly">
+                  <Button
+                    className="w-[70px] h-[35px] bg-gray-300 text-gray-800 font-medium rounded-md hover:bg-gray-400 transition-all duration-200"
+                    onPress={() => setIsDeleteModalOpen(false)}
+                  >
+                    لغو
+                  </Button>
 
-                <Button
-                  className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
-                  onPress={() => mutationDelete.mutate(reservedId)}
-                >
-                  حذف
-                </Button>
+                  <Button
+                    className="w-[70px] h-[35px] bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-all duration-200 shadow-sm"
+                    onPress={() => mutationDelete.mutate(reservedId)}
+                  >
+                    حذف
+                  </Button>
+                </div>
               </div>
             </div>
-             
-         </div>
-        }
-      />
-     </div>
+          }
+        />
+      </div>
       <div className="w-[10%] lg:w-[5%] md:flex hidden">
-      <ModalSection
+        <ModalSection
           StyleModal={"h-fit bg-transparent"}
           Icon={
             <HiOutlineTrash className="text-dark-purple w-5 h-5 cursor-pointer" />
@@ -126,13 +155,24 @@ const [mobileView, toggleMobileView] = useToggle(false);
           onClose={toggleViewModal}
           onOpen={toggleViewModal}
           content={
-            isLoading ? (
-              <p>در حال بارگذاری...</p>
-            ) : (
-              <div className="w-full flex-center">
-                <CourseProductCard product={data} />
-              </div>
-            )
+            // isLoading ? (
+            //   <p>در حال بارگذاری...</p>
+            // ) : (
+            //   <div className="w-full flex-center">
+            //     <CourseProductCard product={data} />
+            //   </div>
+            // )
+            <Formik
+              initialValues={{
+                Title: title,
+                Describe: describe,
+              }}
+            >
+              <Form>
+                <FormGroup label={"عنوان"} name={"Title"} />
+                <FormGroup label={"توضیحات دوره"} name={"Describe"} />
+              </Form>
+            </Formik>
           }
         />
       </div>

@@ -8,7 +8,6 @@ const CourseComments = () => {
         queryKey : ["CourseComment"],
         queryFn :   CourseComment,
     })
-
     
     return (
         <div className ='w-full h-[300px] items-center mt-[12px] gap-1.5 lg:gap-3 flex flex-col'>
@@ -22,6 +21,7 @@ const CourseComments = () => {
                     author={item.author}
                     title={item.title}
                     accept={item.accept}
+                    describe={item.describe}
                 />
                 
         ))
