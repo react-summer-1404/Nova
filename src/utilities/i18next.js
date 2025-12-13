@@ -15,6 +15,8 @@ i18next.use(initReactI18next).init({
         all: "همه",
         courses: "دوره ها",
         blogs: "وبلاگ ها",
+        aboutUs:"درباره ما",
+        contact:"تماس با ما",
         landingSearchPlaceHolder: "جستوجو کنید...",
 
         search: {
@@ -151,6 +153,8 @@ i18next.use(initReactI18next).init({
         all: "All",
         courses: "Courses",
         blogs: "Blogs",
+        aboutUs:"About Us",
+        contact:"Conect Us",
         landingSearchPlaceHolder: "Search here...",
 
         search: {

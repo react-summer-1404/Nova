@@ -11,6 +11,8 @@ const NavbarItems = () => {
     { title:t("blogPage"), path: "/blogs" },
     { title: t("trainingCoursesPage"), path: "/courses" },
     { title: t("landing"), path: "/" },
+    { title: t("aboutUs"), path: "/aboutUs" },
+    { title: t("contact"), path: "/contactUs" },
   ];
 
   return (
