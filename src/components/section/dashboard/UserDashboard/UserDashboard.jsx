@@ -16,7 +16,11 @@ import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { getCourses } from "../../../../servises/api/courses/coursList";
 import MedalSection from "./MedalSection";
+import { getRole } from "../../../../hooks/localStorage";
 const UserDashboard = () => {
+  const roles = getRole();
+  const isStudent = roles.includes("student");   
+
   const { data } = useQuery({
     queryKey: ["usercurrentinfodashboard"],
     queryFn: getCurrentUserProfile,
@@ -30,6 +34,7 @@ const UserDashboard = () => {
   const { data: myCourseData } = useQuery({
     queryKey: ["getMyReserveCourses2"],
     queryFn: getMyReserveCourses,
+    enabled:isStudent
   });
   const { data: newsComment } = useQuery({
     queryKey: ["NewsComment2"],
@@ -64,26 +69,26 @@ const UserDashboard = () => {
               className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px]"
             />
           }
-          courseCount={totalComments}
+          courseCount={totalComments||0}
           subtext={"نظر داده اید"}
         />
         <CourseInfoCard
           icon={<CiHeart className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px]" />}
-          courseCount={favCourses?.favoriteCourseDto?.length}
+          courseCount={favCourses?.favoriteCourseDto?.length||0}
           subtext={"دوره علاقه نشان دادید"}
         />
         <CourseInfoCard
           icon={
             <CiShoppingCart className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px] " />
           }
-          courseCount={myCourseData?.length}
+          courseCount={myCourseData?.length||0}
           subtext={"دوره رزرو کردید"}
         />
         <CourseInfoCard
           icon={
             <PiGraduationCapThin className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] p-2.5 text-center bg-dark-purple text-white rounded-[50px]" />
           }
-          courseCount={myCourseData?.length}
+          courseCount={myCourseData?.length||0}
           subtext={"دوره شرکت کردید"}
         />
       </div>
@@ -94,7 +99,7 @@ const UserDashboard = () => {
           />
         </div>
         <div className="bg-light-purple radius10 h-[215px] md:w-1/2 flex-center flex-col ">
-          <MedalSection data={myCourseData?.length} />
+          <MedalSection data={myCourseData?.length||0} />
           <p className="text-gray-600 text-sm mt-2">
             با شرکت در دوره‌ها می‌تونی خودت رو ارتقا بدی و مدال‌های بالاتر
             بگیری.

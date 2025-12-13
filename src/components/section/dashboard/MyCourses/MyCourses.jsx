@@ -8,6 +8,7 @@ import { useDebounce } from "use-debounce";
 import CustomPagination from "../../../ui/pagination/CustomPagination";
 import DashboardAutoComplete from "../../../ui/DashboardAutoComplete/DashboardAutoComplete";
 import CourseStatusList1 from "./MyCoursesLisst1";
+import { getRole } from "../../../../hooks/localStorage";
 const SortingColItems = [
   { key: "desc", label: "نزولی" },
   { key: "asc", label: " صعودی" },
@@ -17,6 +18,8 @@ const SortTypeItems = [
   { key: "lastUpdate", label: "اخرین اپدیت" },
 ];
 const MyCourses = () => {
+  const roles = getRole(); 
+  const isStudent = roles.includes("student"); 
   const [pageNumber, setPageNumber] = useState(1);
   const [rowsOfthePage, setRowsOfthePage] = useState(10);
   const [searchInput, setSearchInput] = useState("");
@@ -36,13 +39,16 @@ const MyCourses = () => {
   const { data } = useQuery({
     queryKey: ["myCourses", apiParams],
     queryFn: () => getMyCourses(apiParams),
+    enabled:isStudent
   });
   console.log("course", data);
 
   useEffect(() => {
     setSearchInput(searchDelay);
   }, [searchDelay]);
-
+  if (!isStudent) {
+    return <p className="text-red-500 text-2xl">فقط دانشجویان اجازه دسترسی به این قسمت را دارند</p>;
+  }
   return (
     <div className="w-full flex-col-center gap-8  ">
       <div className="w-full  flex flex-col-reverse items-center md:flex-row justify-between gap-4">

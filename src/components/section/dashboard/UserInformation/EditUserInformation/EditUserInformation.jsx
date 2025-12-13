@@ -70,7 +70,7 @@ const EditUserInformation = () => {
               FName: currentProf?.fName || "",
               LName: currentProf?.lName || "",
               NationalCode: currentProf?.nationalCode || "",
-              BirthDay: currentProf?.birthDay.slice(0, 10) || "",
+              BirthDay: currentProf?.birthDay?.slice(0, 10) || "",
               TelegramLink: currentProf?.telegramLink || "",
               HomeAdderess: currentProf?.homeAdderess || "",
               LinkdinProfile: currentProf?.linkdinProfile || "",

@@ -4,11 +4,15 @@ import { getHomeWorkList } from "../../../../servises/api/userPanel/homeWork";
 import HomeWorkInfo from "./HomeWorkInfo";
 import { useQuery } from "@tanstack/react-query";
 import { Spinner } from "@heroui/spinner";
+import { getRole } from "../../../../hooks/localStorage";
 
 const HomeWorkList = () => {
+  const roles = getRole();
+  const isStudent = roles.includes("student");
   const { data , isLoading } = useQuery({
     queryKey: ["getHomeWorkList"],
     queryFn: getHomeWorkList,
+    enabled:isStudent
   });
   if (isLoading) {
     return (
@@ -17,7 +21,9 @@ const HomeWorkList = () => {
       </div>
     );
   }
-  
+  if (!isStudent) {
+    return <p className="text-red-500 text-2xl">فقط دانشجویان اجازه دسترسی به این قسمت را دارند</p>;
+  }
   return (
     <div>
       <div className="flex flex-col items-center w-full  gap-4 ">
