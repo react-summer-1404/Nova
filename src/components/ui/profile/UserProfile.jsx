@@ -14,10 +14,11 @@ import { Form } from "react-router";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { setToken } from "../../../hooks/localStorage";
-import { Button } from "@heroui/react";
+import { Button, Input } from "@heroui/react";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { TiPlus } from "react-icons/ti";
+import InputComponent from "../Input/InputComponent";
 const UserProfile = ({ imageUrl, userName, fName }) => {
   const displayName = fName || userName || "کاربر گرامی";
   const [isViewModalOpen, toggleViewModal] = useToggle(false);
@@ -133,28 +134,23 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
                         dir="rtl"
                       >
                         <div className="flex flex-col">
-                          <label
-                            htmlFor="phoneOrGmail"
-                            className="text-white mb-1"
-                          >
-                            ایمیل
-                          </label>
-                          <input
+                          <InputComponent 
                             id="phoneOrGmail"
-                            name="phoneOrGmail"
-                            type="email"
+                            name={"phoneOrGmail"}
+                            type={"email"}
                             value={values.phoneOrGmail}
                             onChange={handleChange}
                             className="p-2 rounded border"
-                            placeholder="ایمیل خود را وارد کنید"
+                            label={"ایمیل"}
+                            placeholder={"ایمیل خود را وارد کنید"}
                           />
                         </div>
 
                         <div className="flex flex-col">
-                          <label htmlFor="password" className="text-white mb-1">
+                          {/* <label htmlFor="password" className="text-white mb-1">
                             رمز عبور
-                          </label>
-                          <input
+                          </label> */}
+                          {/* <input
                             id="password"
                             name="password"
                             type="password"
@@ -162,6 +158,16 @@ const UserProfile = ({ imageUrl, userName, fName }) => {
                             onChange={handleChange}
                             className="p-2 rounded border"
                             placeholder="رمز عبور جدید"
+                          /> */}
+                          <InputComponent 
+                            id="password"
+                            name={"password"}
+                            type={"password"}
+                            value={values.password}
+                            onChange={handleChange}
+                            className="p-2 rounded border"
+                            label={"پسورد"}
+                            placeholder={"رمز عبور جدید"}
                           />
                         </div>
 

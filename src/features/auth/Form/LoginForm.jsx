@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { FormField } from "../componenets/authForm/Authform";
 import YellowButton from "../../../components/ui/button/YellowButton";
-import { setRole, setToken } from "../../../hooks/localStorage";
+import { getRole, setRole, setToken } from "../../../hooks/localStorage";
 import usePostLogin from "../hooks/usePostLogin";
 import PasswordField from "../componenets/authForm/PasswordField";
 import { useRequestState } from "../hooks/useRequestState";
@@ -67,7 +67,8 @@ const LoginForm = () => {
       if (token) {
         setToken(token);
         setRole(data.roles);
-        console.log("get rolse", data.roles)
+        const role = getRole()
+        console.log("get rolse", role) 
         navigate('/dashboard')
         if (values.rememberMe) {
           try {
