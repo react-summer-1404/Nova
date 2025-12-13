@@ -110,14 +110,14 @@ const ChatBot = () => {
       >
         <ModalContent>
           {(onClose) => (
-            <div className="w-full bg-Cosmic-Blue">
+            <div className="w-full bg-white pb-4">
               <ModalHeader
                 style={{ direction: "rtl" }}
-                className="flex flex-col gap-1 text-white"
+                className="flex flex-col gap-1 text-white "
               ></ModalHeader>
               <ModalBody>
-                <div className=" h-80 bg-Sunray flex flex-col items-center justify-between relative">
-                  <div className="w-[90%] flex flex-col gap-4 justify-start overflow-y-auto">
+                <div className=" h-[450px] rounded-[8px] bg-Sunray flex flex-col items-center justify-between relative">
+                  <div className="w-[90%]  flex flex-col gap-4 justify-start overflow-y-auto">
                     {messages.map((msg) => (
                       <ChatMessage
                         key={msg.id}
@@ -131,7 +131,7 @@ const ChatBot = () => {
                   </div>
                   <div
                     style={{ direction: "rtl" }}
-                    className="w-full flex items-center justify-between gap-1"
+                    className="w-[90%] flex items-center justify-between gap-1  mb-2"
                   >
                     <Input
                       onKeyDown={(e) => {
@@ -147,7 +147,7 @@ const ChatBot = () => {
                       }}
                     />
                     <Button
-                      className="bg-Electric-Blue text-white"
+                      className="bg-dark-purple text-white"
                       onPress={handleSendMessage}
                     >
                       ارسال
