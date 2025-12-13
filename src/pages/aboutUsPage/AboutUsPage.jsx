@@ -96,7 +96,7 @@ const AboutUsPage = () => {
             </div>
             <Swiper
               className="w-[93%]"
-              modules={[Navigation, Autoplay]}
+              modules={[Navigation]}
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               spaceBetween={20}
               autoplay={true}
