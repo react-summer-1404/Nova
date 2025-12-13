@@ -12,7 +12,7 @@ import ChatBot from "../../ui/button/ChatBot";
 const PageLayout = () => {
   return (
     <div className="relative">
-      <Navbar />
+     <div> <Navbar /></div>
       <div><GlobalChatWidget/></div>
       <div><DarkMode /></div>
       <div><DetermineButton/></div>
