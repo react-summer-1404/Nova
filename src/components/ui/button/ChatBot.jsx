@@ -12,7 +12,6 @@ import React, { useEffect, useState } from "react";
 import { FaRobot } from "react-icons/fa";
 import { Tooltip } from "react-leaflet";
 import ChatMessage from "../../chatbotElement/ChatMessage";
-
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState();
@@ -102,7 +101,7 @@ const ChatBot = () => {
         <FaRobot className="text-white" size={20} />
       </Button>
       <Modal
-        className=" bg-Cosmic-Blue flex items-center"
+        className=" bg-Cosmic-Blue flex items-center mt-8"
         backdrop="opaque"
         isOpen={isOpen}
         size="4xl"
@@ -110,7 +109,7 @@ const ChatBot = () => {
       >
         <ModalContent>
           {(onClose) => (
-            <div className="w-full bg-white pb-4">
+            <div className="w-full bg-white pb-4 ">
               <ModalHeader
                 style={{ direction: "rtl" }}
                 className="flex flex-col gap-1 text-white "
