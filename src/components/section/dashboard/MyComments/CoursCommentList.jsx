@@ -1,6 +1,5 @@
 import React from "react";
 import { HiOutlineTrash } from "react-icons/hi2";
-import { IoEyeOutline } from "react-icons/io5";
 import useToggle from "../../../../hooks/useToggle";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import ModalSection from "../../../ui/Modal/ModalSection";
@@ -13,6 +12,8 @@ import { CiMenuKebab } from "react-icons/ci";
 import FormGroup from "../../CourseDetail/CourseComment/component/FormGroup";
 import { Form, Formik } from "formik";
 import { putEditComment } from "../../../../servises/api/userPanel/updateComment";
+import YellowButton from "../../../ui/button/YellowButton";
+import { LiaEdit } from "react-icons/lia";
 const CoursCommentList = ({
   title,
   author,
@@ -69,10 +70,10 @@ const CoursCommentList = ({
   const handleSubmit = async (values) => {
     try {
       const formData = new FormData();
-      formData.append("FName", values.FName);
-      formData.append("LName", values.LName);
-      formData.append("NationalCode", values.NationalCode);
-      formData.append("BirthDay", values.BirthDay);
+      formData.append("Title", values.Title);
+      formData.append("Describe", values.Describe);
+      formData.append("CommentId", id);
+      formData.append("CourseId", courseId);
 
       await mutationCommentEdit.mutateAsync(formData);
     } catch (error) {
@@ -149,30 +150,28 @@ const CoursCommentList = ({
         <ModalSection
           StyleModal={"h-fit bg-transparent"}
           Icon={
-            <IoEyeOutline className="text-dark-purple w-5 h-5 cursor-pointer" />
+            <LiaEdit className="text-dark-purple w-5 h-5 cursor-pointer" />
           }
           isOpen={isViewModalOpen}
           onClose={toggleViewModal}
           onOpen={toggleViewModal}
           content={
-            // isLoading ? (
-            //   <p>در حال بارگذاری...</p>
-            // ) : (
-            //   <div className="w-full flex-center">
-            //     <CourseProductCard product={data} />
-            //   </div>
-            // )
-            <Formik
+          
+            <div>
+              <Formik
               initialValues={{
                 Title: title,
                 Describe: describe,
               }}
+              onSubmit={handleSubmit}
             >
-              <Form>
-                <FormGroup label={"عنوان"} name={"Title"} />
-                <FormGroup label={"توضیحات دوره"} name={"Describe"} />
+              <Form className="flex flex-col justify-end gap-5">
+                <FormGroup label={"عنوان"} name={"Title"} inputClass="h-[40px]" labelClass="-mb-1 mr-2" />
+                <FormGroup label={"توضیحات کامنت"} name={"Describe"} inputClass="h-[100px]" labelClass="-mb-1 mr-2" as="textarea"/>
+            <YellowButton type={"submit"} text={"ویرایش"} height={"35px"}/>
               </Form>
             </Formik>
+            </div>
           }
         />
       </div>
