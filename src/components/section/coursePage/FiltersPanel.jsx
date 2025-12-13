@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCourseLevel } from "../../../servises/api/courses/courseLevel";
+import { getCourseLevel, getCourseType } from "../../../servises/api/courses/courseLevel";
 import { getTeachers } from "../../../servises/api/teachers";
 import InfoCard from "../../ui/infoCard/InfoCard";
 import CheckList from "../../ui/checkList/CheckList";
@@ -43,15 +43,25 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
     onChangeParams("courseLevelId", debounceLevel);
   }, [debounceLevel]);
 
-  //  Course State 
-  const [selectedState, setSelectedState] = useState(
-    paramsObject.courseState?.split(",") 
+  //Course Types
+  const [selectedType, setSelectedType] = useState(
+    paramsObject.CourseTypeId?.split(",") 
   );
-  const [debounceState] = useDebounce(selectedState, 500);
+  const [debounceType] = useDebounce(selectedType, 500);
 
   useEffect(() => {
-    onChangeParams("courseState", debounceState);
-  }, [debounceState]);
+    onChangeParams("CourseTypeId", debounceType);
+  }, [debounceType]);
+
+  // //  Course State 
+  // const [selectedState, setSelectedState] = useState(
+  //   paramsObject.courseState?.split(",") 
+  // );
+  // const [debounceState] = useDebounce(selectedState, 500);
+
+  // useEffect(() => {
+  //   onChangeParams("courseState", debounceState);
+  // }, [debounceState]);
 
   // Teachers 
   const [selectedTeacher, setSelectedTeacher] = useState(
@@ -71,7 +81,12 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
     queryFn: getCourseLevel,
     staleTime: 1000 * 60 * 10,    
   });
-
+  const { data: courseType } = useQuery({
+    queryKey: ["courseType"],
+    queryFn: getCourseType,
+    staleTime: 1000 * 60 * 10,    
+  });
+console.log("type",courseType)
   const { data: teachersData } = useQuery({
     queryKey: ["teachers"],
     queryFn: getTeachers,
@@ -98,15 +113,23 @@ const FiltersPanel = ({ paramsObject, onChangeParams }) => {
           setSelected={setSelectedLevel}
         />
       </InfoCard>
-
       <InfoCard title="نحوه برگزاری">
+        <CheckList
+          data={courseType}
+          labelKey="typeName"
+          selected={selectedType}
+          setSelected={setSelectedType}
+        />
+      </InfoCard>
+
+      {/* <InfoCard title="نحوه برگزاری">
         <CheckList
           data={courseState}
           labelKey="label"
           selected={selectedState}
           setSelected={setSelectedState}
         />
-      </InfoCard>
+      </InfoCard> */}
 
       <InfoCard title="مربیان">
         <CheckList

@@ -6,12 +6,13 @@ import Chat from "./Chat";
 import ModalSection from "../../components/ui/Modal/ModalSection";
 import useToggle from "../../hooks/useToggle";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import { getToken } from "../../hooks/localStorage";
 export default function GlobalChatWidget() {
   const [isModalOpen, toggleModal, setIsModalOpen] = useToggle(false);
-
+const token =getToken()
   return (
     <>
-      <div className="fixed bottom-30 right-10 rounded-lg z-50  w-[48px] h-[48px] bg-dark-purple dark:bg-Violet-Blue" >
+      <div className={`fixed right-10 rounded-lg z-50  w-[48px] h-[48px] bg-dark-purple dark:bg-Violet-Blue ${token?"bottom-30":"bottom-11"}`} >
       <ModalSection
         modalTitle="صفحه چت"
         StyleModal={

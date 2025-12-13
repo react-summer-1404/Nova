@@ -34,14 +34,14 @@ const SearchBox = () => {
     else return t("landingSearchPlaceHolder");
   };
   const { data: Course } = useQuery({
-    queryKey: ["searchCourse", debounceQuery],
+    queryKey: ["searchCourse", debounceQuery, selected],
     queryFn: () => getCourses(apiParams),
     enabled:
       debounceQuery.length > 0 &&
       (selected === "courses" || selected === "all"),
   });
   const { data: blogs } = useQuery({
-    queryKey: ["searchBlogs", debounceQuery],
+    queryKey: ["searchBlogs", debounceQuery, selected],
     queryFn: () => getBlogs(apiParams),
     enabled:
       debounceQuery.length > 0 && (selected === "blogs" || selected === "all"),
@@ -51,17 +51,17 @@ const SearchBox = () => {
   }, [debounceQuery]);
   const options = [
     {
-      key: "search.all",
+      key: "all",
       label: t("all"),
       icon: <img src={all} className="w-3 h-3" />,
     },
     {
-      key: "search.courses",
+      key: "courses",
       label: t("courses"),
       icon: <RiBookOpenLine className="text-dark-purple" />,
     },
     {
-      key: "search.blogs",
+      key: "blogs",
       label: t("blogs"),
       icon: <FaRegNewspaper className="text-dark-purple" />,
     },

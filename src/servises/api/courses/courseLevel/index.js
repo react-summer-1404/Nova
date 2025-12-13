@@ -4,4 +4,8 @@ export const getCourseLevel = async () => {
   const response = await instance.get("/CourseLevel/GetAllCourseLevel");
   return response.data;
 };
-
+export const getCourseType = async () => {
+  const response = await instance.get("/CourseType/GetCourseTypes");
+  console.log("response====>",response?.data)
+  return response.data;
+};
