@@ -12,12 +12,13 @@ const UserCartFavorites = () => {
   const { i18n } = useTranslation();
   const { addedToFavorite } = useFavorite();
   const { addedNewsToFavorite } = useNewsFavorite();
-  const [lanNotif,setLanNotif] = useState("fa")
-  
+  const [lanNotif, setLanNotif] = useState("fa");
+
   const handleChangeLan = () => {
     const newLan = lanNotif === "fa" ? "en" : "fa";
     i18n.changeLanguage(newLan);
     setLanNotif(newLan);
+    document.documentElement.dir = "rtl";
   };
 
   return (
