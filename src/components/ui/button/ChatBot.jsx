@@ -31,7 +31,7 @@ const ChatBot = () => {
   //   ** Handle Sending Message ==========
   const handleSendMessage = async () => {
     const userMessage = {
-      //   id: Date.now(),
+        id: Date.now(),
       text: text,
       sender: "user",
     };
@@ -89,7 +89,7 @@ const ChatBot = () => {
       <Button
         isIconOnly
         aria-label="Like"
-        className="w-[48px] h-[48px] bg-Cosmic-Blue dark:bg-Violet-Blue cursor-pointer transition-all ease-in-out"
+        className="w-[48px] h-[48px]  bg-dark-purple dark:bg-Violet-Blue cursor-pointer transition-all ease-in-out"
         onPress={() => handleOpen()}
         title="چت با هوش مصنوعی"
       >
