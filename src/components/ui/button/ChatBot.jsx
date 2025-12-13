@@ -19,7 +19,7 @@ const ChatBot = () => {
   const [loading, setLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-//   const apiKey = process.env.REACT_APP_OPENROUTER_KEY;
+  //   const apiKey = process.env.REACT_APP_OPENROUTER_KEY;
 
   const handleOpen = () => {
     onOpen();
@@ -31,7 +31,7 @@ const ChatBot = () => {
   //   ** Handle Sending Message ==========
   const handleSendMessage = async () => {
     const userMessage = {
-        id: Date.now(),
+      id: Date.now(),
       text: text,
       sender: "user",
     };
@@ -53,7 +53,8 @@ const ChatBot = () => {
         {
           method: "POST",
           headers: {
-            Authorization: "Bearer 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",
+            Authorization:
+              "Bearer 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",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -69,10 +70,15 @@ const ChatBot = () => {
       );
 
       const data = await response.json();
+      const botRes =
+        data?.choices?.[0]?.message?.content || 
+        data?.choices?.[0]?.text ||
+        "ربات جوابی نداد";
+
       console.log("API response:", data);
       const botMessage = {
         id: Date.now() + 1,
-        text: data.choices[0].message.content,
+        text: botRes,
         sender: "bot",
       };
 
@@ -105,9 +111,10 @@ const ChatBot = () => {
         <ModalContent>
           {(onClose) => (
             <div className="w-full bg-Cosmic-Blue">
-              <ModalHeader style={{ direction: "rtl" }} className="flex flex-col gap-1 text-white">
-               
-              </ModalHeader>
+              <ModalHeader
+                style={{ direction: "rtl" }}
+                className="flex flex-col gap-1 text-white"
+              ></ModalHeader>
               <ModalBody>
                 <div className=" h-80 bg-Sunray flex flex-col items-center justify-between relative">
                   <div className="w-[90%] flex flex-col gap-4 justify-start overflow-y-auto">
@@ -139,7 +146,12 @@ const ChatBot = () => {
                         setText(e.target.value);
                       }}
                     />
-                    <Button className="bg-Electric-Blue text-white" onPress={handleSendMessage}>ارسال</Button>
+                    <Button
+                      className="bg-Electric-Blue text-white"
+                      onPress={handleSendMessage}
+                    >
+                      ارسال
+                    </Button>
                   </div>
                 </div>
               </ModalBody>
