@@ -8,7 +8,7 @@ const Plan = () => {
     <div className="flex flex-col flex-wrap gap-4  " >
       {colors.map((color) => (
         <Breadcrumbs key={color} color={color}   classNames={{
-            list: "bg-linear-to-br from-violet-500 to-fuchsia-500 shadow-small ",
+            list: "bg-linear-to-br from-violet-500 to-fuchsia-500 shadow-small  ",
 
           }}
           itemClasses={{
