@@ -1,9 +1,10 @@
 import React from 'react'
 import { useQuery } from "@tanstack/react-query";
 import { getLandingReport } from "../../../../servises/api/landing/landingReport";
-import { t } from 'i18next';
+import { useTranslation } from "react-i18next"
 
 const OurNumbers = () => {
+  const { t } = useTranslation();
   const { data } = useQuery({
     queryKey: ["report"],
     queryFn: getLandingReport,

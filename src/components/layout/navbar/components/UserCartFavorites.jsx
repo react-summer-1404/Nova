@@ -18,7 +18,7 @@ const UserCartFavorites = () => {
     const newLan = lanNotif === "fa" ? "en" : "fa";
     i18n.changeLanguage(newLan);
     setLanNotif(newLan);
-    document.documentElement.dir = "rtl";
+    document.documentElement.dir = newLan === "fa" ? "ltr" : "rtl";
   };
 
   return (
