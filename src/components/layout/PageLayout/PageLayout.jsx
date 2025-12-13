@@ -8,14 +8,17 @@ import DetermineButton from "../../ui/button/DetermineButton";
 import Dictaphone from "../../../features/voiceAssistance/VoiceAssistance";
 import GlobalChatWidget from "../../../features/chat/GlobalChatWidget";
 import ChatBot from "../../ui/button/ChatBot";
+import { getToken } from "../../../hooks/localStorage";
 
 const PageLayout = () => {
+  const token =getToken()
+
   return (
     <div className="relative">
      <div> <Navbar /></div>
       <div><GlobalChatWidget/></div>
       <div><DarkMode /></div>
-      <div><DetermineButton/></div>
+      {token&&<div><DetermineButton/></div>}
       <div><ScrollButton/></div>
       <div><Dictaphone /></div>
       <div><ChatBot /></div>

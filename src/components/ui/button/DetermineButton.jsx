@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const DetermineButton = () => {
   const navigate = useNavigate();
-
   return (
     <div className="flex gap-4 items-center fixed bottom-11 right-10 z-50 ">
       <Tooltip content="رفتن به تعیین سطح" placement="left">
