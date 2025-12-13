@@ -58,7 +58,7 @@ const ImageSection = () => {
             key={item.teacherId}
             className="flex gap-2 w-full justify-between items-center "
           >
-            <h3 className="text-sm text-right text-black">{item.fullName}</h3>
+            <h3 className="text-sm text-right text-black whitespace-nowrap">{item.fullName}</h3>
             <AvatarComponent size={"sm"} src={item.pictureAddress} />
           </Link>
         ))}
