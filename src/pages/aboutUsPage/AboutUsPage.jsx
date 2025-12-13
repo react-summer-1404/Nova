@@ -104,26 +104,26 @@ const AboutUsPage = () => {
                 320: { slidesPerView: 1 },
                 400: { slidesPerView: 1 },
                 640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
+                1024: { slidesPerView: 2 },
                 1500: { slidesPerView: 4 },
               }}
             >
-              <SwiperSlide className="!w-auto !h-auto">
+              <SwiperSlide className="!w-[32%] !h-auto">
                 <Comments name={"سارا"} profile={pic2} />
               </SwiperSlide>
-              <SwiperSlide className="!w-auto !h-auto">
+              <SwiperSlide className="!w-[32%] !h-auto">
                 <Comments name={"علی"} profile={pic1} />
               </SwiperSlide>
-              <SwiperSlide className="!w-auto !h-auto">
+              <SwiperSlide className="!w-[32%] !h-auto">
                 <Comments name={"لیلا"} profile={pic3} />
               </SwiperSlide>
-              <SwiperSlide className="!w-auto !h-auto">
+              <SwiperSlide className="!w-[32%] !h-auto">
                 <Comments name={"سارا"} profile={pic4} />
               </SwiperSlide>
-              <SwiperSlide className="!w-auto !h-auto">
+              <SwiperSlide className="!w-[32%] !h-auto">
                 <Comments name={"امیر"} profile={pic5} />
               </SwiperSlide>
-              <SwiperSlide className="!w-auto !h-auto">
+              <SwiperSlide className="!w-[32%] !h-auto">
                 <Comments name={"فاطی"} profile={pic6} />
               </SwiperSlide>
             </Swiper>
