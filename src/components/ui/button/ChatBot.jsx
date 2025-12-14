@@ -115,7 +115,7 @@ const ChatBot = () => {
                 className="flex flex-col gap-1 text-white "
               ></ModalHeader>
               <ModalBody>
-                <div className=" h-[450px] rounded-[8px] bg-Sunray flex flex-col items-center justify-between relative">
+                <div className =" h-[450px] rounded-[8px] bg-[url('../../../public/photo_2025-12-14_08-57-17.jpg')] flex flex-col items-center justify-between relative">
                   <div className="w-[90%]  flex flex-col gap-4 justify-start overflow-y-auto">
                     {messages.map((msg) => (
                       <ChatMessage
