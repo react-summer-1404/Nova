@@ -27,7 +27,7 @@
 
 ## 📑 Table of Contents
 
-- [About](#about)
+- [About](#user-content--about)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Application Architecture](#application-architecture)
