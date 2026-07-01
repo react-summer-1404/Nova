@@ -27,12 +27,12 @@
 
 ## 📑 Table of Contents
 
-- [About](#user-content-about)
-- [Highlights](#user-content-highlights)
-- [Features](#user-content-features)
-- [Tech Stack](#user-content-tech-stack)
-- [Application Architecture](#user-content-application-architecture)
-- [Screenshots](#user-content-screenshots)
+- [About](#user-content--about)
+- [Highlights](#user-content--highlights)
+- [Features](#user-content--features)
+- [Tech Stack](#user-content-tech--stack)
+- [Application Architecture](#user-content-application--architecture)
+- [Screenshots](#user-content--screenshots)
 - [Getting Started](#user-content-getting-started)
 - [Project Structure](#user-content-project-structure)
 - [Team](#user-content-team)
