@@ -232,6 +232,7 @@ Explore the user interface of **Nova** through some of its main pages.
 <p align="center">
 <img src="./docs/screenshots/dashboard.png" width="90%">
 </p>
+
 ## 🚀 Getting Started
 
 Follow the steps below to run the project locally.
@@ -248,7 +249,7 @@ Make sure you have the following installed:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/<organization-or-username>/nova.git
+git clone https://github.com/react-summer-1404/Nova.git
 ```
 
 ---
@@ -268,7 +269,7 @@ npm install
 Create a `.env` file in the project root and add the required environment variables.
 
 ```env
-VITE_API_BASE_URL=YOUR_API_BASE_URL
+VITE_API_BASE_URL=https://sepehracademy.liara.run
 ```
 
 > Contact the backend team if you need access to the API endpoints or environment configuration.
