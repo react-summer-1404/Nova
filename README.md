@@ -27,15 +27,15 @@
 
 ## 📑 Table of Contents
 
-- [About](#user-content--about)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Application Architecture](#application-architecture)
-- [Screenshots](#screenshots)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Team](#team)
-
+- [About](#user-content-about)
+- [Highlights](#user-content-highlights)
+- [Features](#user-content-features)
+- [Tech Stack](#user-content-tech-stack)
+- [Application Architecture](#user-content-application-architecture)
+- [Screenshots](#user-content-screenshots)
+- [Getting Started](#user-content-getting-started)
+- [Project Structure](#user-content-project-structure)
+- [Team](#user-content-team)
 
  
 ## 📖 About
