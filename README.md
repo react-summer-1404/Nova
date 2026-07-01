@@ -55,8 +55,8 @@ Built with a modern frontend architecture, Nova emphasizes performance, responsi
 - ⚡ Optimized with TanStack Query
 - 🎙️ Integrated voice assistant
 - 💬 Real-time chat system
-- 🛠️ **[Nova Admin Panel](https://github.com/YOUR_USERNAME/nova-admin)** for full content management
-- 
+- 🛠️ **[Nova Admin Panel](https://github.com/react-summer-1404/Nova-admin-panel)** for full content management
+  
 ## ✨ Features
 
 ### 🎓 Learning Experience
